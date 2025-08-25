@@ -26,12 +26,9 @@
           text = "jesse@jbhannah.net ${signing_key}";
         };
 
-        ".config/nvim/init.lua" = {
-          source = ./dotfiles/.config/nvim/init.lua;
-        };
-
-        ".config/nvim/lua/config" = {
-          source = ./dotfiles/.config/nvim/lua/config;
+        ".config/nvim" = {
+          source = ./dotfiles/.config/nvim;
+          recursive = true;
         };
       };
 
@@ -45,6 +42,7 @@
         nil
         nixd
         nixfmt-rfc-style
+        ruby
         tmux
       ];
 
@@ -142,6 +140,7 @@
         viAlias = true;
         vimAlias = true;
         vimdiffAlias = true;
+        withNodeJs = true;
 
         extraPackages = with pkgs; [
           ast-grep

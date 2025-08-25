@@ -20,22 +20,16 @@ require("lazy").setup({
 		{
 			"LazyVim/LazyVim",
 			import = "lazyvim.plugins",
-		},
-		{
-			"folke/snacks.nvim",
 			opts = {
-				picker = {
-					sources = {
-						files = {
-							hidden = true,
-						},
-					},
-				},
-			},
+				colorscheme = "catppuccin-mocha",
+			}
 		},
 
 		{ import = "lazyvim.plugins.extras.ai.copilot" },
 		{ import = "lazyvim.plugins.extras.ai.copilot-chat" },
+		{ import = "lazyvim.plugins.extras.coding.yanky" },
+		{ import = "lazyvim.plugins.extras.editor.dial" },
+		{ import = "lazyvim.plugins.extras.editor.inc-rename" },
 		{ import = "lazyvim.plugins.extras.lang.docker" },
 		{ import = "lazyvim.plugins.extras.lang.java" },
 		{ import = "lazyvim.plugins.extras.lang.json" },
@@ -48,16 +42,13 @@ require("lazy").setup({
 		{ import = "lazyvim.plugins.extras.lang.toml" },
 		{ import = "lazyvim.plugins.extras.lang.typescript" },
 		{ import = "lazyvim.plugins.extras.lang.yaml" },
+		{ import = "lazyvim.plugins.extras.test.core" },
+		{ import = "lazyvim.plugins.extras.util.dot" },
+		{ import = "lazyvim.plugins.extras.util.mini-hipatterns" },
 		{ import = "lazyvim.plugins.extras.vscode" },
 
 		-- import/override with your plugins
-		-- { import = "plugins" },
-		{
-			'vscode-neovim/vscode-multi-cursor.nvim',
-			event = 'VeryLazy',
-			cond = not not vim.g.vscode,
-			opts = {},
-		}
+		{ import = "plugins" },
 	},
 	defaults = {
 		-- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
@@ -68,7 +59,7 @@ require("lazy").setup({
 		version = false, -- always use the latest git commit
 		-- version = "*", -- try installing the latest stable version for plugins that support semver
 	},
-	install = { colorscheme = { "tokyonight", "habamax" } },
+	install = { colorscheme = { "catppuccin", "tokyonight", "habamax" } },
 	checker = {
 		enabled = true, -- check for plugin updates periodically
 		notify = true, -- notify on update
