@@ -26,6 +26,11 @@
           text = "jesse@jbhannah.net ${signing_key}";
         };
 
+        ".config/lazygit" = {
+          source = ./dotfiles/.config/lazygit;
+          recursive = true;
+        };
+
         ".config/nvim" = {
           source = ./dotfiles/.config/nvim;
           recursive = true;
@@ -36,6 +41,7 @@
         cascadia-code
         devenv
         httpie
+        lazygit
         k9s
         kubectl
         kubernetes-helm
@@ -145,7 +151,6 @@
         extraPackages = with pkgs; [
           ast-grep
           imagemagick
-          lazygit
           lua5_1
           luarocks
           lynx
