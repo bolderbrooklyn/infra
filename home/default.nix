@@ -71,7 +71,17 @@
         ];
       };
 
-      programs.fish.enable = true;
+      programs.fish = {
+        enable = true;
+
+        functions = {
+          fish_greeting = "";
+        };
+
+        interactiveShellInit = ''
+          fish_vi_key_bindings
+        '';
+      };
 
       programs.fzf = {
         enable = true;
@@ -161,7 +171,16 @@
         forwardAgent = true;
       };
 
-      programs.starship.enable = true;
+      programs.starship = {
+        enable = true;
+
+        settings = {
+          shell = {
+            disabled = false;
+            fish_indicator = "🐟";
+          };
+        };
+      };
 
       programs.zsh = {
         enable = true;

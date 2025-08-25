@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   imports = [
     ../../.
@@ -6,16 +6,6 @@
   ];
 
   networking.hostName = "Miraidon";
-
-  environment.systemPackages = with pkgs; [
-    fish
-    powershell
-  ];
-
-  environment.shells = with pkgs; [
-    fish
-    powershell
-  ];
 
   homebrew = {
     taps = [
@@ -43,7 +33,6 @@
       "distroav"
       "firefox"
       "gcloud-cli"
-      "ghostty"
       "google-drive"
       "imageoptim"
       "krita"
@@ -81,8 +70,6 @@
       "Pixelmator Pro" = 1289583905;
     };
   };
-
-  programs.fish.enable = true;
 
   system.stateVersion = 6;
 }

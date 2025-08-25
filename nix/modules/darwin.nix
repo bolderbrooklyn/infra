@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 let
   brew = "${config.homebrew.brewPrefix}/brew";
 
@@ -14,6 +19,16 @@ in
   users.users.${config.system.primaryUser} = {
     home = "/Users/${config.system.primaryUser}";
   };
+
+  environment.systemPackages = with pkgs; [
+    fish
+    powershell
+  ];
+
+  environment.shells = with pkgs; [
+    fish
+    powershell
+  ];
 
   homebrew = {
     enable = true;
@@ -48,6 +63,7 @@ in
       }
       "arc"
       "dash"
+      "ghostty"
       "google-chrome"
       "httpie-desktop"
       {
@@ -74,6 +90,7 @@ in
 
   programs.bash.interactiveShellInit = shellInit;
 
+  programs.fish.enable = true;
   programs.fish.shellInit = ''
     ${brew} shellenv | source
   '';
