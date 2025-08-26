@@ -37,6 +37,7 @@ in
       "domt4/autoupdate"
       "jbhannah/pkpw"
       "sst/tap"
+      "th-ch/youtube-music"
     ];
 
     brews = [
@@ -62,6 +63,7 @@ in
         args.appdir = "/Applications";
       }
       "arc"
+      "alt-tab"
       "dash"
       "ghostty"
       "google-chrome"
@@ -75,10 +77,15 @@ in
       "the-unarchiver"
       "visual-studio-code"
       "warp"
+      "zed"
+
+      "th-ch/youtube-music/youtube-music"
     ];
 
     masApps = {
+      "1Password for Safari" = 1569813296;
       "Name Mangler 3" = 603637384;
+      "Pixelmator Pro" = 1289583905;
       "Yoink" = 457622435;
     };
 

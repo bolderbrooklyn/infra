@@ -8,10 +8,6 @@
   networking.hostName = "Miraidon";
 
   homebrew = {
-    taps = [
-      "th-ch/youtube-music"
-    ];
-
     brews = [
       {
         name = "syncthing";
@@ -22,7 +18,6 @@
 
     casks = [
       "alfred"
-      "alt-tab"
       "balenaetcher"
       "brave-browser"
       "calibre"
@@ -55,19 +50,14 @@
       "virtualbox"
       "vivaldi"
       "xquartz"
-      "zed"
       "zen"
-
-      "th-ch/youtube-music/youtube-music"
     ];
 
     masApps = {
-      "1Password for Safari" = 1569813296;
       "Compressor" = 424390742;
       "Final Cut Pro" = 424389933;
       "Logic Pro" = 634148309;
       "Motion" = 434290957;
-      "Pixelmator Pro" = 1289583905;
     };
   };
 

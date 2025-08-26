@@ -5,12 +5,12 @@
     ../../modules/darwin.nix
   ];
 
-  system.primaryUser = "bhannah";
-
   networking.hostName = "Okidogi";
+  system.primaryUser = "bhannah";
 
   homebrew = {
     casks = [
+      "keeper-password-manager"
       "slack"
     ];
   };
