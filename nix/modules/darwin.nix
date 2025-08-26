@@ -67,7 +67,7 @@ in
       "google-chrome"
       "httpie-desktop"
       {
-        name = "ollama-app";
+        name = "lm-studio";
         args.appdir = "/Applications";
       }
       "pearcleaner"
