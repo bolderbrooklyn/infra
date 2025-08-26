@@ -143,8 +143,16 @@
         enable = true;
 
         settings = {
-          email = "jesse@jbhannah.net";
-          name = "Jesse Brooklyn Hannah";
+          user.email = "jesse@jbhannah.net";
+          user.name = "Jesse Brooklyn Hannah";
+
+          signing = {
+            behavior = "own";
+            backend = "ssh";
+            key = signing_key;
+            program = lib.mkIf pkgs.stdenv.isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+            allowed-signers = "${config.home.homeDirectory}/.config/git/allowed_signers";
+          };
         };
       };
 
