@@ -32,6 +32,10 @@
           source = ./dotfiles/.config/ghostty/config;
         };
 
+        ".config/opencode/opencode.jsonc" = {
+          source = ./dotfiles/.config/opencode/opencode.jsonc;
+        };
+
         ".config/powershell/Microsoft.PowerShell_profile.ps1" = {
           source = ./dotfiles/.config/powershell/Microsoft.PowerShell_profile.ps1;
         };
