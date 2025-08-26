@@ -42,7 +42,6 @@
         devenv
         httpie
         lazygit
-        k9s
         kubectl
         kubernetes-helm
         nil
@@ -139,6 +138,17 @@
       };
 
       programs.home-manager.enable = true;
+
+      programs.jujutsu = {
+        enable = true;
+
+        settings = {
+          email = "jesse@jbhannah.net";
+          name = "Jesse Brooklyn Hannah";
+        };
+      };
+
+      programs.k9s.enable = true;
 
       programs.neovim = {
         enable = true;
