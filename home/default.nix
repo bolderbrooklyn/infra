@@ -236,6 +236,12 @@
         enable = true;
 
         settings = {
+          direnv = {
+            disabled = false;
+          };
+          scala = {
+            detect_folders = [ ];
+          };
           shell = {
             disabled = false;
             fish_indicator = "🐟";
