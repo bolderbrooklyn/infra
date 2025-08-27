@@ -53,10 +53,6 @@
         lazygit
         kubectl
         kubernetes-helm
-        nil
-        nixd
-        nixfmt-rfc-style
-        ruby
         tmux
       ];
 
@@ -170,6 +166,12 @@
         };
       };
 
+      programs.gpg.enable = true;
+      services.gpg-agent = {
+        enable = true;
+        pinentry.package = lib.mkIf pkgs.stdenv.isDarwin pkgs.pinentry_mac;
+      };
+
       programs.home-manager.enable = true;
 
       programs.jujutsu = {
@@ -206,7 +208,7 @@
           luarocks
           lynx
           markdownlint-cli2
-          nil
+          ruby
           shfmt
           stylua
           wget
@@ -257,12 +259,6 @@
         syntaxHighlighting = {
           enable = true;
         };
-      };
-
-      programs.gpg.enable = true;
-      services.gpg-agent = {
-        enable = true;
-        pinentry.package = lib.mkIf pkgs.stdenv.isDarwin pkgs.pinentry_mac;
       };
     };
 }
