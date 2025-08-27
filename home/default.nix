@@ -216,8 +216,11 @@
       programs.ssh = {
         enable = true;
         enableDefaultConfig = false;
-        matchBlocks."*".forwardAgent = true;
-        matchBlocks."*".identityAgent = ''"${_1password_ssh_agent_sock}"'';
+
+        matchBlocks."*" = {
+          forwardAgent = true;
+          identityAgent = ''"${_1password_ssh_agent_sock}"'';
+        };
       };
 
       programs.starship = {
