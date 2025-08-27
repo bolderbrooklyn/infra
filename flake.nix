@@ -7,7 +7,8 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    _1password-shell-plugins.url = "github:1Password/shell-plugins";
+    # _1password-shell-plugins.url = "github:1Password/shell-plugins";
+    _1password-shell-plugins.url = "github:BJSummerfield/shell-plugins/bjs/fish-plugins";
     _1password-shell-plugins.inputs.nixpkgs.follows = "nixpkgs";
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
