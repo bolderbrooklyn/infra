@@ -35,11 +35,6 @@
           text = "jesse@jbhannah.net ${signing_key}";
         };
 
-        ".config/lazygit" = {
-          source = ./dotfiles/.config/lazygit;
-          recursive = true;
-        };
-
         ".config/nvim" = {
           source = ./dotfiles/.config/nvim;
           recursive = true;
@@ -50,10 +45,8 @@
         cascadia-code
         devenv
         httpie
-        lazygit
         kubectl
         kubernetes-helm
-        tmux
       ];
 
       programs._1password-shell-plugins = {
@@ -191,6 +184,8 @@
         };
       };
 
+      programs.lazygit.enable = true;
+
       programs.k9s.enable = true;
 
       programs.neovim = {
@@ -244,6 +239,8 @@
         };
       };
 
+      programs.tmux.enable = true;
+
       programs.zsh = {
         enable = true;
 
@@ -260,5 +257,7 @@
           enable = true;
         };
       };
+
+      xdg.enable = true;
     };
 }
