@@ -109,6 +109,14 @@
         changeDirWidgetCommand = "fd --type d --hidden";
       };
 
+      programs.gemini-cli = {
+        enable = true;
+
+        settings = {
+          vimMode = true;
+        };
+      };
+
       programs.gh = {
         enable = true;
         gitCredentialHelper.enable = true;
