@@ -7,6 +7,11 @@
   ];
 
   nix.package = pkgs.lixPackageSets.stable.lix;
+
+  nix.gc.automatic = true;
+  nix.optimise.automatic = true;
+
+  nix.settings.auto-optimise-store = true;
   nix.settings.experimental-features = [
     "flakes"
     "nix-command"

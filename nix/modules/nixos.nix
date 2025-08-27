@@ -1,11 +1,5 @@
 { pkgs, ... }:
 {
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
-
-  nix.gc.automatic = true;
   networking.networkmanager.enable = true;
   i18n.defaultLocale = "en_US.UTF-8";
 

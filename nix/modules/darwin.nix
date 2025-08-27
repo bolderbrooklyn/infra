@@ -14,6 +14,10 @@ in
 {
   system.primaryUser = lib.mkDefault "brooklyn";
 
+  nix.settings.trusted-users = [
+    config.system.primaryUser
+  ];
+
   users.users.${config.system.primaryUser} = {
     home = "/Users/${config.system.primaryUser}";
   };
