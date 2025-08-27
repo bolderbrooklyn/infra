@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, inputs, ... }:
 {
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
@@ -7,19 +7,28 @@
   home-manager.users.${config.system.primaryUser} =
     {
       config,
-      pkgs,
       lib,
+      pkgs,
       ...
     }:
     let
+      _1password_ssh_agent_sock = "${config.home.homeDirectory}/${
+        if pkgs.stdenv.isDarwin then "Library/Group Containers/2BUA8C4S2C.com.1password/t" else ".1password"
+      }/agent.sock";
+
       signing_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOAnSncawa7Y3U7/ZUkqnXLrAgJ5mxNLLKOgM20+dsV+";
     in
     {
       imports = [
+        inputs._1password-shell-plugins.hmModules.default
         ./aliases/default.nix
       ];
 
       home.stateVersion = "25.05";
+
+      home.sessionVariables = {
+        SSH_AUTH_SOCK = _1password_ssh_agent_sock;
+      };
 
       home.file = {
         ".config/git/allowed_signers" = {
@@ -50,6 +59,13 @@
         ruby
         tmux
       ];
+
+      programs._1password-shell-plugins = {
+        enable = true;
+        plugins = with pkgs; [
+          gh
+        ];
+      };
 
       programs.bat.enable = true;
 
@@ -134,6 +150,15 @@
           log.showSignature = true;
           merge.conflictStyle = "zdiff3";
           pull.rebase = true;
+
+          credential."https://gist.github.com".helper = lib.mkForce [
+            ""
+            "!op plugin run -- gh auth git-credential"
+          ];
+          credential."https://github.com".helper = lib.mkForce [
+            ""
+            "!op plugin run -- gh auth git-credential"
+          ];
         };
       };
 
@@ -190,7 +215,9 @@
 
       programs.ssh = {
         enable = true;
-        forwardAgent = true;
+        enableDefaultConfig = false;
+        matchBlocks."*".forwardAgent = true;
+        matchBlocks."*".identityAgent = ''"${_1password_ssh_agent_sock}"'';
       };
 
       programs.starship = {
