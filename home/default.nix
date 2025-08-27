@@ -239,6 +239,12 @@
           direnv = {
             disabled = false;
           };
+          gcloud = {
+            disabled = true;
+          };
+          nix_shell = {
+            symbol = " ";
+          };
           scala = {
             detect_folders = [ ];
           };
