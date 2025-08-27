@@ -12,8 +12,6 @@ let
   '';
 in
 {
-  nix.enable = false;
-
   system.primaryUser = lib.mkDefault "brooklyn";
 
   users.users.${config.system.primaryUser} = {
