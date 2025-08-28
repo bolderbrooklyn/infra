@@ -12,3 +12,6 @@ $(ACTIONS):
 .PHONY: $(SUDO_ACTIONS)
 $(SUDO_ACTIONS):
 	$(SUDO_REBUILD_CMD) $(REBUILD_ARGS)
+
+up:
+	nix flake update
