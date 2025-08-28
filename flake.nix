@@ -31,7 +31,7 @@
           ./nix/hosts/tinkaton
           agenix.nixosModules.default
           home-manager.nixosModules.home-manager
-          ./home
+          ./nix/home
         ];
       };
 
@@ -42,8 +42,8 @@
         modules = [
           ./nix/hosts/miraidon
           home-manager.darwinModules.home-manager
-          ./home
-          ./home/darwin.nix
+          ./nix/home
+          ./nix/home/darwin.nix
         ];
       };
 
@@ -54,8 +54,8 @@
         modules = [
           ./nix/hosts/okidogi
           home-manager.darwinModules.home-manager
-          ./home
-          ./home/darwin.nix
+          ./nix/home
+          ./nix/home/darwin.nix
         ];
       };
     };
