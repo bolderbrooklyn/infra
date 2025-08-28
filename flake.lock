@@ -8,15 +8,16 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1756393455,
-        "narHash": "sha256-dtilXBCyFULDcZzjsOZJ7/UHiHNP552pL7I6VPeZ6A4=",
-        "owner": "1Password",
+        "lastModified": 1756403283,
+        "narHash": "sha256-J6pS4s7Gl3pSq1EW1+7jtF3rpwO7qzB9zdKzfNA3nWw=",
+        "owner": "jbhannah",
         "repo": "shell-plugins",
-        "rev": "0e02f8a453506e30dae9f63da40ccc94c2d58163",
+        "rev": "16d75077300615f5c98d2277b88cac578b42454c",
         "type": "github"
       },
       "original": {
-        "owner": "1Password",
+        "owner": "jbhannah",
+        "ref": "trunk",
         "repo": "shell-plugins",
         "type": "github"
       }
