@@ -115,7 +115,8 @@ in
   system.activationScripts.postActivation = {
     enable = true;
     text = ''
-      sudo -u ${config.system.primaryUser} -i ${brew} autoupdate start --upgrade --immediate --cleanup --sudo || true
+      sudo -u ${config.system.primaryUser} -i ${brew} autoupdate delete
+      sudo -u ${config.system.primaryUser} -i ${brew} autoupdate start
     '';
   };
 }
