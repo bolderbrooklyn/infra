@@ -47,6 +47,8 @@
         httpie
         kubectl
         kubernetes-helm
+        nixd
+        nixfmt-rfc-style
       ];
 
       programs._1password-shell-plugins = {
@@ -63,6 +65,8 @@
         nix-direnv.enable = true;
 
         config = {
+          hide_env_diff = true;
+          strict_env = true;
           warn_timeout = "20s";
         };
       };
