@@ -27,6 +27,7 @@
       "discord"
       "distroav"
       "firefox"
+      "freetube"
       "gcloud-cli"
       "google-drive"
       "imageoptim"
