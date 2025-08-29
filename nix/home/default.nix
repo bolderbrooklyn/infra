@@ -110,7 +110,7 @@
         enable = true;
 
         settings = {
-          vimMode = true;
+          selectedAuthType = "oauth-personal";
         };
       };
 
