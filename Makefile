@@ -13,5 +13,7 @@ $(ACTIONS):
 $(SUDO_ACTIONS):
 	$(SUDO_REBUILD_CMD) $(REBUILD_ARGS)
 
-up:
+update:
 	nix flake update
+
+up: update switch
