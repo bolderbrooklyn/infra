@@ -42,8 +42,13 @@
       };
 
       targets.darwin.defaults = {
+        "com.apple.menuextra.clock" = {
+          Show24Hour = true;
+          ShowAMPM = false;
+        };
+
         "com.microsoft.VSCode" = {
-          "ApplePressAndHoldEnabled" = false;
+          ApplePressAndHoldEnabled = false;
         };
       };
     };
