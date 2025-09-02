@@ -31,6 +31,11 @@
       };
 
       home.file = {
+        ".config/btop/themes" = {
+          source = ../../dotfiles/.config/btop/themes;
+          recursive = true;
+        };
+
         ".config/git/allowed_signers" = {
           text = "jesse@jbhannah.net ${signing_key}";
         };
@@ -59,6 +64,14 @@
       };
 
       programs.bat.enable = true;
+
+      programs.btop = {
+        enable = true;
+        settings = {
+          color_theme = "catppuccin_mocha";
+          vim_keys = true;
+        };
+      };
 
       programs.direnv = {
         enable = true;
