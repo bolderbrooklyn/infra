@@ -7,6 +7,7 @@
     "use_modifier_to_send": true
   },
   "always_treat_brackets_as_autoclosed": true,
+  "auto_signature_help": true,
   "base_keymap": "Atom",
   "buffer_font_family": "Cascadia Code NF",
   "buffer_font_size": 15,
@@ -14,29 +15,38 @@
     "source.fixAll": true,
     "source.organizeImports": true
   },
+  "diagnostics": {
+    "inline": {
+      "enabled": true
+    }
+  },
   "features": {
     "edit_prediction_provider": "copilot"
   },
-  "icon_theme": "Catppuccin Mocha",
+  "file_scan_exclusions": [
+    "**/.devenv",
+    "**/.direnv",
+    "**/.git",
+    "**/.svn",
+    "**/.hg",
+    "**/.jj",
+    "**/.repo",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.classpath",
+    "**/.settings"
+  ],
+  "icon_theme": {
+    "dark": "Catppuccin Mocha",
+    "light": "Catppuccin Latte",
+    "mode": "system"
+  },
   "indent_guides": {
     "coloring": "indent_aware"
   },
   "inlay_hints": {
-    "edit_debounce_ms": 700,
-    "enabled": true,
-    "scroll_debounce_ms": 50,
-    "show_background": false,
-    "show_other_hints": true,
-    "show_parameter_hints": true,
-    "show_type_hints": true,
-    "show_value_hints": true,
-    "toggle_on_modifiers_press": {
-      "alt": false,
-      "control": false,
-      "function": false,
-      "platform": false,
-      "shift": false
-    }
+    "enabled": true
   },
   "journal": {
     "hour_format": "hour24",
@@ -57,23 +67,34 @@
       ]
     }
   },
+  "line_indicator_format": "short",
   "minimap": {
-    "show": "auto"
+    "display_in": "all_editors",
+    "show": "always"
   },
+  "preview_tabs": {
+    "enable_preview_from_code_navigation": true,
+    "enable_preview_from_file_finder": true
+  },
+  "project_panel": {
+    "hide_root": true
+  },
+  "relative_line_numbers": true,
+  "seed_search_query_from_cursor": "selection",
   "show_whitespaces": "boundary",
   "tabs": {
+    "activate_on_close": "left_neighbour",
     "file_icons": true,
-    "git_status": true
+    "git_status": true,
+    "show_diagnostics": "all"
   },
   "theme": {
     "dark": "Catppuccin Mocha",
     "light": "Catppuccin Latte",
     "mode": "system"
   },
-  "ui_font_size": 16,
   "use_smartcase_search": true,
   "vim": {
-    "toggle_relative_line_numbers": true,
     "use_smartcase_find": true
   },
   "vim_mode": true
