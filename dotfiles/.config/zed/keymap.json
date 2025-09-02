@@ -5,5 +5,19 @@
     "bindings": {
       "cmd-i": "assistant::InlineAssist"
     }
+  },
+  {
+    "context": "Workspace && !Terminal",
+    "use_key_equivalents": true,
+    "bindings": {
+      "cmd-ctrl-r": "task::Spawn"
+    }
+  },
+  {
+    "context": "vim_mode == visual",
+    "use_key_equivalents": true,
+    "bindings": {
+      "shift-s": ["vim::PushAddSurrounds", {}]
+    }
   }
 ]
