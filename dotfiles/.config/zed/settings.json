@@ -10,10 +10,14 @@
   "base_keymap": "Atom",
   "buffer_font_family": "Cascadia Code NF",
   "buffer_font_size": 15,
+  "code_actions_on_format": {
+    "source.fixAll": true,
+    "source.organizeImports": true
+  },
   "features": {
     "edit_prediction_provider": "copilot"
   },
-  "icon_theme": "Catppuccin Macchiato",
+  "icon_theme": "Catppuccin Mocha",
   "indent_guides": {
     "coloring": "indent_aware"
   },
@@ -43,7 +47,14 @@
       "language_servers": ["nixd", "!nil"]
     },
     "Python": {
-      "language_servers": ["...", "ruff", "!pylsp"]
+      "language_servers": ["...", "ruff", "!pyright"],
+      "formatter": [
+        {
+          "language_server": {
+            "name": "ruff"
+          }
+        }
+      ]
     }
   },
   "minimap": {
@@ -55,7 +66,7 @@
     "git_status": true
   },
   "theme": {
-    "dark": "Catppuccin Macchiato",
+    "dark": "Catppuccin Mocha",
     "light": "Catppuccin Latte",
     "mode": "system"
   },
