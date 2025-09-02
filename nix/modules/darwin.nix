@@ -38,7 +38,6 @@ in
     taps = [
       "domt4/autoupdate"
       "jbhannah/pkpw"
-      "sst/tap"
       "th-ch/youtube-music"
     ];
 
@@ -55,7 +54,6 @@ in
       "mas"
 
       "jbhannah/pkpw/pkpw"
-      "sst/tap/opencode"
     ];
 
     caskArgs.appdir = "~/Applications";

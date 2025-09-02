@@ -247,6 +247,14 @@
           ];
       };
 
+      programs.opencode = {
+        enable = true;
+
+        settings = {
+          theme = "catppuccin";
+        };
+      };
+
       programs.ripgrep.enable = true;
       programs.ripgrep-all.enable = true;
 
