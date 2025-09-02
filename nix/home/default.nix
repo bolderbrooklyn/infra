@@ -21,6 +21,7 @@
     {
       imports = [
         inputs._1password-shell-plugins.hmModules.default
+        inputs.catppuccin.homeModules.catppuccin
         ./aliases/default.nix
       ];
 
@@ -31,11 +32,6 @@
       };
 
       home.file = {
-        ".config/btop/themes" = {
-          source = ../../dotfiles/.config/btop/themes;
-          recursive = true;
-        };
-
         ".config/git/allowed_signers" = {
           text = "jesse@jbhannah.net ${signing_key}";
         };
@@ -56,6 +52,11 @@
         nixfmt-rfc-style
       ];
 
+      catppuccin = {
+        enable = true;
+        flavor = "mocha";
+      };
+
       programs._1password-shell-plugins = {
         enable = true;
         plugins = with pkgs; [
@@ -67,8 +68,8 @@
 
       programs.btop = {
         enable = true;
+
         settings = {
-          color_theme = "catppuccin_mocha";
           vim_keys = true;
         };
       };
