@@ -206,7 +206,17 @@
         };
       };
 
-      programs.lazygit.enable = true;
+      programs.lazygit = {
+        enable = true;
+
+        settings = {
+          git.mainBranches = [
+            "trunk"
+            "main"
+            "master"
+          ];
+        };
+      };
 
       programs.k9s.enable = true;
 
