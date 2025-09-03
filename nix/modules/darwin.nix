@@ -1,5 +1,4 @@
 {
-  pkgs,
   config,
   lib,
   ...
@@ -21,16 +20,6 @@ in
   users.users.${config.system.primaryUser} = {
     home = "/Users/${config.system.primaryUser}";
   };
-
-  environment.systemPackages = with pkgs; [
-    fish
-    powershell
-  ];
-
-  environment.shells = with pkgs; [
-    fish
-    powershell
-  ];
 
   homebrew = {
     enable = true;
