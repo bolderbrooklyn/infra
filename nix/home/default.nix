@@ -43,13 +43,10 @@
       };
 
       home.packages = with pkgs; [
-        cascadia-code
         devenv
         httpie
         kubectl
         kubernetes-helm
-        nixd
-        nixfmt-rfc-style
       ];
 
       catppuccin = {
@@ -235,6 +232,9 @@
           luarocks
           lynx
           markdownlint-cli2
+          nil
+          nixd
+          nixfmt-rfc-style
           ruby
           shfmt
           stylua
@@ -256,7 +256,6 @@
       };
 
       programs.ripgrep.enable = true;
-      programs.ripgrep-all.enable = true;
 
       programs.ssh = {
         enable = true;

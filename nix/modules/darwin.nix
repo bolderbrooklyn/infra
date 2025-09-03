@@ -1,8 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}:
+{ config, lib, ... }:
 let
   brew = "${config.homebrew.brewPrefix}/brew";
 

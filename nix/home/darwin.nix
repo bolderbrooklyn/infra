@@ -4,6 +4,7 @@
     { pkgs, ... }:
     {
       imports = [
+        ./gui
         ./aliases/darwin.nix
       ];
 
@@ -12,22 +13,16 @@
       };
 
       home.file = {
-        ".config/ghostty/config" = {
-          source = ../../dotfiles/.config/ghostty/config;
-        };
-
         ".config/powershell/Microsoft.PowerShell_profile.ps1" = {
           source = ../../dotfiles/.config/powershell/Microsoft.PowerShell_profile.ps1;
-        };
-
-        ".config/zed" = {
-          source = ../../dotfiles/.config/zed;
-          recursive = true;
         };
       };
 
       home.packages = with pkgs; [
         fishPlugins.macos
+        nil
+        nixd
+        nixfmt-rfc-style
       ];
 
       services.macos-remap-keys = {
