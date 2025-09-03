@@ -92,8 +92,33 @@
         hidden = true;
 
         ignores = [
+          "*.app/"
+          "*.photolibrary/"
+          ".Trash/"
+          ".aitk/"
+          ".azure/"
+          ".cache/"
+          ".cargo/"
+          ".colima/_lima/"
           ".direnv/"
+          ".gem/"
           ".git/"
+          ".jj/"
+          ".lmstudio/"
+          ".local/share"
+          ".local/state"
+          ".mono/"
+          ".pytest_cache/"
+          ".rustup/"
+          ".venv/"
+          ".yarn/"
+          "Library/"
+          "__pycache__/"
+          "cache/"
+          "node_modules/"
+          "out/"
+          "refs/"
+          "tmp/"
         ];
       };
 
@@ -290,6 +315,8 @@
       };
 
       programs.tmux.enable = true;
+
+      programs.zoxide.enable = true;
 
       programs.zsh = {
         enable = true;
