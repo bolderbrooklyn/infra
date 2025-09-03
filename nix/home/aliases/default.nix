@@ -2,7 +2,7 @@
 {
   home.shellAliases = {
     l = "ls -alh";
-    cat = "${pkgs.bat.meta.mainProgram}";
+    cat = "${pkgs.bat}/bin/bat";
   };
 
   imports = [
