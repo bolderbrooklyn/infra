@@ -7,12 +7,18 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    systems.url = "github:nix-systems/default";
     # _1password-shell-plugins.url = "github:1Password/shell-plugins";
     _1password-shell-plugins.url = "github:jbhannah/shell-plugins/trunk";
     _1password-shell-plugins.inputs.nixpkgs.follows = "nixpkgs";
+    _1password-shell-plugins.inputs.systems.follows = "systems";
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
+    agenix.inputs.darwin.follows = "nix-darwin";
+    agenix.inputs.home-manager.follows = "home-manager";
+    agenix.inputs.systems.follows = "systems";
     catppuccin.url = "github:catppuccin/nix";
+    catppuccin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
