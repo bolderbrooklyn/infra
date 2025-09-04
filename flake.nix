@@ -19,6 +19,24 @@
     agenix.inputs.systems.follows = "systems";
     catppuccin.url = "github:catppuccin/nix";
     catppuccin.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    homebrew-core = {
+      url = "github:Homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:Homebrew/homebrew-cask";
+      flake = false;
+    };
+    homebrew-pkpw = {
+      url = "github:jbhannah/pkpw";
+      flake = false;
+    };
+    homebrew-youtube-music = {
+      url = "github:th-ch/homebrew-youtube-music";
+      flake = false;
+    };
   };
 
   outputs =

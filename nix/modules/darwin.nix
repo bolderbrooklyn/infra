@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  inputs,
+  lib,
+  ...
+}:
 let
   brew = "${config.homebrew.brewPrefix}/brew";
 
@@ -7,6 +12,10 @@ let
   '';
 in
 {
+  imports = [
+    inputs.nix-homebrew.darwinModules.nix-homebrew
+  ];
+
   system.primaryUser = lib.mkDefault "brooklyn";
 
   nix.settings.trusted-users = [
@@ -17,14 +26,23 @@ in
     home = "/Users/${config.system.primaryUser}";
   };
 
+  nix-homebrew = {
+    enable = true;
+    enableRosetta = true;
+    user = config.system.primaryUser;
+    taps = {
+      "homebrew/homebrew-core" = inputs.homebrew-core;
+      "homebrew/homebrew-cask" = inputs.homebrew-cask;
+      "jbhannah/homebrew-pkpw" = inputs.homebrew-pkpw;
+      "th-ch/homebrew-youtube-music" = inputs.homebrew-youtube-music;
+    };
+    mutableTaps = false;
+    autoMigrate = true;
+  };
+
   homebrew = {
     enable = true;
-
-    taps = [
-      "domt4/autoupdate"
-      "jbhannah/pkpw"
-      "th-ch/youtube-music"
-    ];
+    taps = builtins.attrNames config.nix-homebrew.taps;
 
     brews = [
       "colima"
@@ -34,8 +52,7 @@ in
       "docker-credential-helper"
       "lima-additional-guestagents"
       "mas"
-
-      "jbhannah/pkpw/pkpw"
+      "pkpw"
     ];
 
     caskArgs.appdir = "~/Applications";
@@ -59,9 +76,8 @@ in
       "the-unarchiver"
       "visual-studio-code"
       "warp"
+      "youtube-music"
       "zed"
-
-      "th-ch/youtube-music/youtube-music"
     ];
 
     masApps = {
@@ -90,13 +106,5 @@ in
     enable = true;
     reattach = true;
     touchIdAuth = true;
-  };
-
-  system.activationScripts.postActivation = {
-    enable = true;
-    text = ''
-      sudo -u ${config.system.primaryUser} -i ${brew} autoupdate delete
-      sudo -u ${config.system.primaryUser} -i ${brew} autoupdate start
-    '';
   };
 }

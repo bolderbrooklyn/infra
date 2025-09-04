@@ -53,6 +53,23 @@
         "type": "github"
       }
     },
+    "brew-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1756059815,
+        "narHash": "sha256-UALOxoXoFIHbwKzcqbqCAqw5cC0MJEehLaWSet5vxfE=",
+        "owner": "Homebrew",
+        "repo": "brew",
+        "rev": "02947ea4edbdef5fcce9ee57fa289547f4d096c9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Homebrew",
+        "ref": "4.6.7",
+        "repo": "brew",
+        "type": "github"
+      }
+    },
     "catppuccin": {
       "inputs": {
         "nixpkgs": [
@@ -93,6 +110,70 @@
         "type": "github"
       }
     },
+    "homebrew-cask": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1757004984,
+        "narHash": "sha256-wsBTZ30rnp+ZE7M/Can7Zg2IVFx/EuerJbguFmERu58=",
+        "owner": "Homebrew",
+        "repo": "homebrew-cask",
+        "rev": "d62d14968ca9a3019437ba1ff1dd42c56f4fe59b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Homebrew",
+        "repo": "homebrew-cask",
+        "type": "github"
+      }
+    },
+    "homebrew-core": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1757009881,
+        "narHash": "sha256-wtxr1etwCbjpIhL2PdtDg4OmnMheOg3F8qbO0rLy+UM=",
+        "owner": "Homebrew",
+        "repo": "homebrew-core",
+        "rev": "6a3dba553453981615ce35f22dbb96238211eccf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Homebrew",
+        "repo": "homebrew-core",
+        "type": "github"
+      }
+    },
+    "homebrew-pkpw": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1756927359,
+        "narHash": "sha256-NcKNfo2ahQI8tbicD22ARzr8/0tZ6lUpnkvBfeeFw1M=",
+        "owner": "jbhannah",
+        "repo": "pkpw",
+        "rev": "d197dd06b44f981b4f29937582df7270c34bfa28",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jbhannah",
+        "repo": "pkpw",
+        "type": "github"
+      }
+    },
+    "homebrew-youtube-music": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1731101531,
+        "narHash": "sha256-XD4ShzgYp4/BLSQO112pXAb5SxGrQr1MRaepfjTB2CA=",
+        "owner": "th-ch",
+        "repo": "homebrew-youtube-music",
+        "rev": "9ccc1e40dd77c2b21564b470ed9fca50b07bceb1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "th-ch",
+        "repo": "homebrew-youtube-music",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -111,6 +192,24 @@
         "owner": "nix-darwin",
         "ref": "master",
         "repo": "nix-darwin",
+        "type": "github"
+      }
+    },
+    "nix-homebrew": {
+      "inputs": {
+        "brew-src": "brew-src"
+      },
+      "locked": {
+        "lastModified": 1756398546,
+        "narHash": "sha256-n4GVDLhKu65XFraJuCzap2AaZji4xhPaZMTJ8aQdD3s=",
+        "owner": "zhaofengli",
+        "repo": "nix-homebrew",
+        "rev": "3aa475996cb3bc1ecefa88c99c466e6f0bc17431",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zhaofengli",
+        "repo": "nix-homebrew",
         "type": "github"
       }
     },
@@ -136,7 +235,12 @@
         "agenix": "agenix",
         "catppuccin": "catppuccin",
         "home-manager": "home-manager",
+        "homebrew-cask": "homebrew-cask",
+        "homebrew-core": "homebrew-core",
+        "homebrew-pkpw": "homebrew-pkpw",
+        "homebrew-youtube-music": "homebrew-youtube-music",
         "nix-darwin": "nix-darwin",
+        "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs",
         "systems": "systems"
       }

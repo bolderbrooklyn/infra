@@ -83,7 +83,10 @@
 
       programs.eza = {
         enable = true;
-        extraOptions = [ "--group-directories-first" ];
+        extraOptions = [
+          "--group-directories-first"
+          "--smart-group"
+        ];
         git = true;
       };
 
