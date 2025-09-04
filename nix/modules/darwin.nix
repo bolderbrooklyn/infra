@@ -4,13 +4,6 @@
   lib,
   ...
 }:
-let
-  brew = "${config.homebrew.brewPrefix}/brew";
-
-  shellInit = ''
-    eval "$(${brew} shellenv)"
-  '';
-in
 {
   imports = [
     inputs.nix-homebrew.darwinModules.nix-homebrew
@@ -93,14 +86,7 @@ in
     };
   };
 
-  programs.bash.interactiveShellInit = shellInit;
-
   programs.fish.enable = true;
-  programs.fish.shellInit = ''
-    ${brew} shellenv | source
-  '';
-
-  programs.zsh.shellInit = shellInit;
 
   security.pam.services.sudo_local = {
     enable = true;
