@@ -85,7 +85,7 @@
         enable = true;
         extraOptions = [
           "--group-directories-first"
-          "--smart-group"
+          "--group"
         ];
         git = true;
       };
