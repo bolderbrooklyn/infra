@@ -37,7 +37,6 @@ in
       "th-ch/homebrew-youtube-music" = inputs.homebrew-youtube-music;
     };
     mutableTaps = false;
-    autoMigrate = true;
   };
 
   homebrew = {
