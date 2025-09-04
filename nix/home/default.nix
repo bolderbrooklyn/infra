@@ -299,18 +299,11 @@
         enable = true;
 
         settings = {
-          direnv = {
-            disabled = false;
-          };
-          gcloud = {
-            disabled = true;
-          };
-          nix_shell = {
-            symbol = " ";
-          };
-          scala = {
-            detect_folders = [ ];
-          };
+          direnv.disabled = false;
+          gcloud.disabled = true;
+          nix_shell.symbol = " ";
+          scala.detect_folders = [ ];
+
           shell = {
             disabled = false;
             fish_indicator = "🐟";
