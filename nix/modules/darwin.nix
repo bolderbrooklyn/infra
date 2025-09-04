@@ -42,6 +42,7 @@
       "docker-buildx"
       "docker-compose"
       "docker-credential-helper"
+      "gemini-cli"
       "lima-additional-guestagents"
       "mas"
       "pkpw"
