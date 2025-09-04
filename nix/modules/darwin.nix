@@ -27,10 +27,7 @@ in
     ];
 
     brews = [
-      {
-        name = "colima";
-        restart_service = "changed";
-      }
+      "colima"
       "docker"
       "docker-buildx"
       "docker-compose"
