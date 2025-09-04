@@ -5,6 +5,7 @@
   ];
 
   imports = [
+    ./alacritty.nix
     ./ghostty.nix
     ./zed.nix
   ];

@@ -137,6 +137,7 @@
         };
 
         interactiveShellInit = ''
+          string match -q "$TERM" alacritty; and not set -q TMUX; and exec tmux new-session -As0
           fish_vi_key_bindings
         '';
       };
@@ -306,15 +307,22 @@
           gcloud.disabled = true;
           nix_shell.symbol = " ";
           scala.detect_folders = [ ];
-
-          shell = {
-            disabled = false;
-            fish_indicator = "🐟";
-          };
+          shell.disabled = false;
         };
       };
 
-      programs.tmux.enable = true;
+      programs.tmux = {
+        enable = true;
+
+        clock24 = true;
+        keyMode = "vi";
+        mouse = true;
+        shortcut = "a";
+
+        extraConfig = ''
+          set -g status-position top
+        '';
+      };
 
       programs.zoxide.enable = true;
 

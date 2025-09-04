@@ -60,8 +60,9 @@ in
         name = "1password";
         args.appdir = "/Applications";
       }
-      "arc"
+      "alacritty"
       "alt-tab"
+      "arc"
       "dash"
       "ghostty"
       "google-chrome"
