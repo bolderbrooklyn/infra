@@ -87,7 +87,7 @@ in
       };
       lsp = {
         nil.settings = {
-          nil.nix.flake.autoArchive = true;
+          nix.flake.autoArchive = true;
         };
       };
       line_indicator_format = "short";
