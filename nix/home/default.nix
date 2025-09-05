@@ -281,6 +281,10 @@
           ];
       };
 
+      programs.nushell = {
+        enable = true;
+      };
+
       programs.opencode = {
         enable = true;
 

@@ -1,4 +1,12 @@
 { inputs, pkgs, ... }:
+let
+  shells = with pkgs; [
+    fish
+    nushell
+    powershell
+    xonsh
+  ];
+in
 {
   nix.package = pkgs.lixPackageSets.stable.lix;
 
@@ -13,16 +21,16 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = with pkgs; [
-    git
-    vim
-    wget
-  ];
+  environment.shells = shells;
 
-  environment.shells = with pkgs; [
-    fish
-    powershell
-  ];
+  environment.systemPackages =
+    with pkgs;
+    [
+      git
+      vim
+      wget
+    ]
+    ++ shells;
 
   system.configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
 

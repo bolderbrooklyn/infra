@@ -1,11 +1,20 @@
 { ... }:
 let
   _git_status_ignore_submodules = "none";
+  posixShellAliases = {
+    __git_branch_current = "git rev-parse --abbrev-ref HEAD";
+
+    gpA = "git push --all && git push --tags";
+    gpp = "git pull origin $(__git_branch_current 2> /dev/null) && git push origin (__git_branch_current 2> /dev/null)";
+    gCa = "git add $(gCl)";
+    gCe = "git mergetool $(gCl)";
+    gCO = "gCo $(gCl)";
+    gCT = "gCt $(gCl)";
+    gpc = "git push --set-upstream origin $(__git_branch_current 2> /dev/null)";
+  };
 in
 {
   home.shellAliases = {
-    __git_branch_current = "git rev-parse --abbrev-ref HEAD";
-
     # Git
     g = "git";
 
@@ -54,12 +63,8 @@ in
 
     # Conflict (C)
     gCl = "git --no-pager diff --name-only --diff-filter=U";
-    gCa = "git add $(gCl)";
-    gCe = "git mergetool $(gCl)";
     gCo = "git checkout --ours --";
-    gCO = "gCo $(gCl)";
     gCt = "git checkout --theirs --";
-    gCT = "gCt $(gCl)";
 
     # Data (d)
     gd = "git ls-files";
@@ -183,10 +188,7 @@ in
     gpf = "git push --force-with-lease";
     gpF = "git push --force";
     gpa = "git push --all";
-    gpA = "git push --all && git push --tags";
     gpt = "git push --tags";
-    gpc = "git push --set-upstream origin $(__git_branch_current 2> /dev/null)";
-    gpp = "git pull origin $(__git_branch_current 2> /dev/null) && git push origin (__git_branch_current 2> /dev/null)";
 
     # Rebase (r)
     gr = "git rebase";
@@ -251,4 +253,8 @@ in
     gwx = "git rm -r";
     gwX = "git rm -rf";
   };
+
+  programs.bash.shellAliases = posixShellAliases;
+  programs.fish.shellAliases = posixShellAliases;
+  programs.zsh.shellAliases = posixShellAliases;
 }
