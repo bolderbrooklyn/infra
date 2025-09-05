@@ -1,0 +1,30 @@
+name: Update Nix Flake
+
+on:
+  schedule:
+    - cron: "0 0 * * 0"
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  update-flake:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v24
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update flake
+        run: nix flake update
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: update nix flake inputs"
+          title: "Update Nix flake inputs"
+          body: "Automated update of Nix flake inputs"
+          branch: update-flake
