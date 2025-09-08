@@ -6,6 +6,10 @@
   };
 
   config = lib.mkIf config.starship.enable {
+    programs.powershell.extraConfig = lib.mkIf config.programs.powershell.enable [
+      "Invoke-Expression (&starship init powershell)"
+    ];
+
     home-manager.users.${config.common.username}.programs.starship = {
       enable = true;
 

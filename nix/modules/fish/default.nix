@@ -27,7 +27,7 @@ in
       useBabelfish = true;
     };
 
-    environment.shells = lib.mkIf cfg.defaultShell [ fish ];
+    environment.shells = [ fish ];
 
     users.users.${config.common.username}.shell = lib.mkIf cfg.defaultShell fish;
 

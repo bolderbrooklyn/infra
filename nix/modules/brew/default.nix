@@ -1,4 +1,9 @@
-{ config, inputs, ... }:
+{
+  config,
+  inputs,
+  lib,
+  ...
+}:
 {
   imports = [
     inputs.nix-homebrew.darwinModules.nix-homebrew
@@ -30,4 +35,8 @@
       HOMEBREW_NO_ENV_HINTS = 1;
     };
   };
+
+  programs.powershell.extraConfig = lib.mkIf config.programs.powershell.enable [
+    "$(/opt/homebrew/bin/brew shellenv) | Invoke-Expression"
+  ];
 }

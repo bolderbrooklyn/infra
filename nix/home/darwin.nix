@@ -9,10 +9,6 @@
       ./aliases/darwin.nix
     ];
 
-    xdg.configFile."powershell/Microsoft.PowerShell_profile.ps1" = {
-      source = ../../dotfiles/.config/powershell/Microsoft.PowerShell_profile.ps1;
-    };
-
     home.packages = with pkgs; [
       nil
       nixd

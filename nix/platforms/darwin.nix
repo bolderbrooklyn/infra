@@ -9,7 +9,6 @@ let
 
   shells = with pkgs; [
     nushell
-    powershell
     xonsh
   ];
 in
@@ -20,6 +19,7 @@ in
     ../home/darwin.nix
     ../modules/brew
     ../modules/gui
+    ../modules/powershell
   ];
 
   environment.systemPackages = shells;
@@ -89,6 +89,8 @@ in
       upgrade = true;
     };
   };
+
+  programs.powershell.enable = true;
 
   security.pam.services.sudo_local = {
     enable = true;
