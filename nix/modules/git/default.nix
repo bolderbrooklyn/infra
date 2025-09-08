@@ -19,6 +19,11 @@ let
 in
 {
   options.git = {
+    enable = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+    };
+
     signingKey = {
       type = lib.mkOption {
         type = lib.types.enum [
@@ -47,15 +52,15 @@ in
     };
   };
 
-  config = {
+  imports = [
+    ./aliases/gh.nix
+    ./aliases/git.nix
+  ];
+
+  config = lib.mkIf cfg.enable {
     home-manager.users.${config.common.username} =
       { config, ... }:
       {
-        imports = [
-          ./aliases/gh.nix
-          ./aliases/git.nix
-        ];
-
         programs.git = {
           enable = true;
           lfs.enable = true;
@@ -107,8 +112,10 @@ in
           enable = true;
 
           settings = {
-            user.email = cfg.user.email;
-            user.name = cfg.user.name;
+            user = {
+              email = cfg.user.email;
+              name = cfg.user.name;
+            };
 
             signing = {
               behavior = "own";
@@ -131,12 +138,11 @@ in
           };
         };
 
-        xdg.configFile."git/allowed_signers" = {
-          text = ''
-            jesse@jbhannah.net ${cfg.signingKey.key}
-            bhannah@tvscientific.com ${cfg.signingKey.key}
-          '';
-        };
+        # TODO: move these to an attrset
+        xdg.configFile."git/allowed_signers".text = ''
+          jesse@jbhannah.net ${cfg.signingKey.key}
+          bhannah@tvscientific.com ${cfg.signingKey.key}
+        '';
       };
   };
 }

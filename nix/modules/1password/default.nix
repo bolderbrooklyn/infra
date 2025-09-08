@@ -24,8 +24,8 @@
 
       programs._1password-shell-plugins = {
         enable = true;
-        plugins = with pkgs; [
-          (lib.mkIf config.programs.gh.enable gh)
+        plugins = lib.mkIf config.programs.gh.enable [
+          pkgs.gh
         ];
       };
 

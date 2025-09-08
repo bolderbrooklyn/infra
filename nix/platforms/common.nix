@@ -19,6 +19,8 @@ in
 
   imports = [
     ../modules/1password
+    ../modules/direnv
+    ../modules/fish
     ../modules/git
     ../modules/nvim
   ];
@@ -41,23 +43,23 @@ in
 
     time.timeZone = "America/Los_Angeles";
 
+    direnv.enable = true;
+
+    fish = {
+      enable = true;
+      defaultShell = true;
+    };
+
     environment.systemPackages = with pkgs; [
-      fish
       git
       vim
       wget
     ];
 
-    environment.shells = with pkgs; [
-      fish
-    ];
-
-    programs.fish.enable = true;
     programs.zsh.enable = true;
 
     users.users.${username} = {
       home = home;
-      shell = pkgs.fish;
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINSrqkXtluHRGoNSDuwpPj2pZXlNZFxPFqsmwxjP1X0P"
       ];
