@@ -1,7 +1,7 @@
 { ... }:
 {
   imports = [
-    ../../platforms/darwin.nix
+    ../../platforms/darwin
   ];
 
   networking.hostName = "Okidogi";

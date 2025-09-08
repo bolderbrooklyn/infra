@@ -18,12 +18,62 @@
     taps = {
       "homebrew/homebrew-core" = inputs.homebrew-core;
       "homebrew/homebrew-cask" = inputs.homebrew-cask;
+      "jbhannah/homebrew-pkpw" = inputs.homebrew-pkpw;
     };
   };
 
   homebrew = {
     enable = true;
     taps = builtins.attrNames config.nix-homebrew.taps;
+
+    brews = [
+      "colima"
+      "docker"
+      "docker-buildx"
+      "docker-compose"
+      "docker-credential-helper"
+      "gemini-cli"
+      "lima-additional-guestagents"
+      "mas"
+      "pkpw"
+    ];
+
+    caskArgs.appdir = "~/Applications";
+    casks = [
+      {
+        name = "1password";
+        args.appdir = "/Applications";
+      }
+      "alacritty"
+      "alt-tab"
+      "arc"
+      "dash"
+      "ghostty"
+      "google-chrome"
+      "httpie-desktop"
+      {
+        name = "lm-studio";
+        args.appdir = "/Applications";
+      }
+      "pearcleaner"
+      "stats"
+      "the-unarchiver"
+      "visual-studio-code"
+      "warp"
+      "zed"
+    ];
+
+    masApps = {
+      "1Password for Safari" = 1569813296;
+      "Name Mangler 3" = 603637384;
+      "Pixelmator Pro" = 1289583905;
+      "Yoink" = 457622435;
+    };
+
+    onActivation = {
+      cleanup = "zap";
+      upgrade = true;
+    };
   };
 
   home-manager.users.${config.common.username} = {

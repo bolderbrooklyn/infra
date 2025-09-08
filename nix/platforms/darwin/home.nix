@@ -1,19 +1,20 @@
 { config, pkgs, ... }:
 {
   imports = [
-    ./.
+    ../../home
   ];
 
   home-manager.users.${config.common.username} = {
-    imports = [
-      ./aliases/darwin.nix
-    ];
-
     home.packages = with pkgs; [
       nil
       nixd
       nixfmt-rfc-style
     ];
+
+    home.shellAliases = {
+      pbc = "pbcopy";
+      pbp = "pbpaste";
+    };
 
     services.macos-remap-keys = {
       enable = true;

@@ -1,10 +1,14 @@
-{ ... }:
+{ inputs, ... }:
 {
   imports = [
-    ../../platforms/darwin.nix
+    ../../platforms/darwin
   ];
 
   networking.hostName = "Miraidon";
+
+  nix-homebrew.taps = {
+    "th-ch/homebrew-youtube-music" = inputs.homebrew-youtube-music;
+  };
 
   homebrew = {
     brews = [
@@ -50,6 +54,7 @@
       "virtualbox"
       "vivaldi"
       "xquartz"
+      "youtube-music"
       "zen"
     ];
 
