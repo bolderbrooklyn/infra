@@ -1,11 +1,13 @@
 { config, lib, ... }:
 {
-  options.starship.enable = lib.mkOption {
-    type = lib.types.bool;
-    default = false;
+  options.programs.starship = {
+    enable = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+    };
   };
 
-  config = lib.mkIf config.starship.enable {
+  config = lib.mkIf config.programs.starship.enable {
     programs.powershell.extraConfig = lib.mkIf config.programs.powershell.enable [
       "Invoke-Expression (&starship init powershell)"
     ];
@@ -14,7 +16,7 @@
       enable = true;
 
       settings = {
-        direnv.disabled = !config.direnv.enable;
+        direnv.disabled = !config.programs.direnv.enable;
         gcloud.disabled = true;
         nix_shell.symbol = " ";
         scala.detect_folders = [ ];

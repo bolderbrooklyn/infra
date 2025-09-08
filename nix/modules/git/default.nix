@@ -5,7 +5,7 @@
   ...
 }:
 let
-  cfg = config.git;
+  cfg = config.programs.git;
 
   signingKey = {
     type = "ssh";
@@ -18,7 +18,7 @@ let
   };
 in
 {
-  options.git = {
+  options.programs.git = {
     enable = lib.mkOption {
       type = lib.types.bool;
       default = true;

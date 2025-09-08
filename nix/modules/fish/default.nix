@@ -6,15 +6,10 @@
 }:
 let
   fish = pkgs.fish;
-  cfg = config.fish;
+  cfg = config.programs.fish;
 in
 {
-  options.fish = {
-    enable = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-    };
-
+  options.programs.fish = {
     defaultShell = lib.mkOption {
       type = lib.types.bool;
       default = false;
@@ -22,10 +17,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    programs.fish = {
-      enable = cfg.enable;
-      useBabelfish = true;
-    };
+    programs.fish.useBabelfish = true;
 
     environment.shells = [ fish ];
 

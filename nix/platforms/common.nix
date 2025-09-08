@@ -44,14 +44,14 @@ in
 
     time.timeZone = "America/Los_Angeles";
 
-    direnv.enable = true;
+    programs.direnv.enable = true;
 
-    fish = {
+    programs.fish = {
       enable = true;
       defaultShell = true;
     };
 
-    starship.enable = true;
+    programs.starship.enable = true;
 
     environment.systemPackages = with pkgs; [
       git

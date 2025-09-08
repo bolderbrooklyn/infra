@@ -5,14 +5,7 @@
   ...
 }:
 {
-  options.direnv = {
-    enable = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-    };
-  };
-
-  config = lib.mkIf config.direnv.enable {
+  config = lib.mkIf config.programs.direnv.enable {
     home-manager.users.${config.common.username} = {
       home.packages = [ pkgs.devenv ];
 

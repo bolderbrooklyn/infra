@@ -15,7 +15,7 @@ let
   };
 in
 {
-  home-manager.users.${config.common.username} = lib.mkIf config.git.enable {
+  home-manager.users.${config.common.username} = lib.mkIf config.programs.git.enable {
     home.shellAliases = {
       # Git
       g = "git";
@@ -257,7 +257,7 @@ in
     };
 
     programs.bash.shellAliases = posixShellAliases;
-    programs.fish.shellAliases = lib.mkIf config.fish.enable posixShellAliases;
+    programs.fish.shellAliases = lib.mkIf config.programs.fish.enable posixShellAliases;
     programs.zsh.shellAliases = posixShellAliases;
   };
 }

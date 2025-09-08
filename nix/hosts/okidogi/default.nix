@@ -7,7 +7,7 @@
   networking.hostName = "Okidogi";
   common.username = "bhannah";
 
-  git.user = {
+  programs.git.user = {
     name = "Brooke Hannah";
     email = "bhannah@tvscientific.com";
   };
