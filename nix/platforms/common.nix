@@ -17,6 +17,11 @@ in
     };
   };
 
+  imports = [
+    ../modules/1password
+    ../modules/nvim
+  ];
+
   config = {
     system.configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
 

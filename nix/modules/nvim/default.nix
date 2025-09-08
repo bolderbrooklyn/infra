@@ -1,0 +1,39 @@
+{ config, pkgs, ... }:
+{
+  home-manager.users.${config.common.username} = {
+    home.file.".config/nvim" = {
+      source = ./config;
+      recursive = true;
+    };
+
+    programs.neovim = {
+      enable = true;
+      defaultEditor = true;
+      viAlias = true;
+      vimAlias = true;
+      vimdiffAlias = true;
+      withNodeJs = true;
+
+      extraPackages = with pkgs; [
+        ast-grep
+        imagemagick
+        lua5_1
+        luarocks
+        lynx
+        markdownlint-cli2
+        nil
+        nixd
+        nixfmt-rfc-style
+        ruby
+        shfmt
+        stylua
+        wget
+      ];
+
+      extraLuaPackages =
+        ps: with ps; [
+          tiktoken_core
+        ];
+    };
+  };
+}

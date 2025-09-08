@@ -11,33 +11,19 @@
       ...
     }:
     let
-      _1password_ssh_agent_sock = "${config.home.homeDirectory}/${
-        if pkgs.stdenv.isDarwin then "Library/Group Containers/2BUA8C4S2C.com.1password/t" else ".1password"
-      }/agent.sock";
-
       signing_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOAnSncawa7Y3U7/ZUkqnXLrAgJ5mxNLLKOgM20+dsV+";
     in
     {
       imports = [
-        inputs._1password-shell-plugins.hmModules.default
         inputs.catppuccin.homeModules.catppuccin
         ./aliases/default.nix
       ];
 
       home.stateVersion = "25.05";
 
-      home.sessionVariables = {
-        SSH_AUTH_SOCK = _1password_ssh_agent_sock;
-      };
-
       home.file = {
         ".config/git/allowed_signers" = {
           text = "jesse@jbhannah.net ${signing_key}";
-        };
-
-        ".config/nvim" = {
-          source = ../../dotfiles/.config/nvim;
-          recursive = true;
         };
       };
 
@@ -51,13 +37,6 @@
       catppuccin = {
         enable = true;
         flavor = "mocha";
-      };
-
-      programs._1password-shell-plugins = {
-        enable = true;
-        plugins = with pkgs; [
-          gh
-        ];
       };
 
       programs.bat.enable = true;
@@ -194,21 +173,11 @@
 
         extraConfig = {
           fetch.prune = true;
-          gpg.ssh.program = lib.mkIf pkgs.stdenv.isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
           gpg.ssh.allowedSignersFile = "${config.home.homeDirectory}/.config/git/allowed_signers";
           init.defaultBranch = "trunk";
           log.showSignature = true;
           merge.conflictStyle = "zdiff3";
           pull.rebase = true;
-
-          credential."https://gist.github.com".helper = lib.mkForce [
-            ""
-            "!op plugin run -- gh auth git-credential"
-          ];
-          credential."https://github.com".helper = lib.mkForce [
-            ""
-            "!op plugin run -- gh auth git-credential"
-          ];
         };
       };
 
@@ -231,7 +200,6 @@
             behavior = "own";
             backend = "ssh";
             key = signing_key;
-            program = lib.mkIf pkgs.stdenv.isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
             allowed-signers = "${config.home.homeDirectory}/.config/git/allowed_signers";
           };
         };
@@ -251,36 +219,6 @@
 
       programs.k9s.enable = true;
 
-      programs.neovim = {
-        enable = true;
-        defaultEditor = true;
-        viAlias = true;
-        vimAlias = true;
-        vimdiffAlias = true;
-        withNodeJs = true;
-
-        extraPackages = with pkgs; [
-          ast-grep
-          imagemagick
-          lua5_1
-          luarocks
-          lynx
-          markdownlint-cli2
-          nil
-          nixd
-          nixfmt-rfc-style
-          ruby
-          shfmt
-          stylua
-          wget
-        ];
-
-        extraLuaPackages =
-          ps: with ps; [
-            tiktoken_core
-          ];
-      };
-
       programs.nushell = {
         enable = true;
       };
@@ -295,15 +233,7 @@
 
       programs.ripgrep.enable = true;
 
-      programs.ssh = {
-        enable = true;
-        enableDefaultConfig = false;
-
-        matchBlocks."*" = {
-          forwardAgent = true;
-          identityAgent = ''"${_1password_ssh_agent_sock}"'';
-        };
-      };
+      programs.ssh.enable = true;
 
       programs.starship = {
         enable = true;
