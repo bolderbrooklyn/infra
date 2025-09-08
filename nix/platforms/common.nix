@@ -23,6 +23,7 @@ in
     ../modules/fish
     ../modules/git
     ../modules/nvim
+    ../modules/starship
   ];
 
   config = {
@@ -49,6 +50,8 @@ in
       enable = true;
       defaultShell = true;
     };
+
+    starship.enable = true;
 
     environment.systemPackages = with pkgs; [
       git

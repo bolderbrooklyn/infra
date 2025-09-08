@@ -129,18 +129,6 @@
 
     programs.ssh.enable = true;
 
-    programs.starship = {
-      enable = true;
-
-      settings = {
-        direnv.disabled = false;
-        gcloud.disabled = true;
-        nix_shell.symbol = " ";
-        scala.detect_folders = [ ];
-        shell.disabled = false;
-      };
-    };
-
     programs.tmux = {
       enable = true;
 
