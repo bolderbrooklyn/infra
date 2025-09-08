@@ -4,15 +4,7 @@
   home-manager.backupFileExtension = "backup";
 
   home-manager.users.${config.common.username} =
-    {
-      config,
-      lib,
-      pkgs,
-      ...
-    }:
-    let
-      signing_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOAnSncawa7Y3U7/ZUkqnXLrAgJ5mxNLLKOgM20+dsV+";
-    in
+    { lib, pkgs, ... }:
     {
       imports = [
         inputs.catppuccin.homeModules.catppuccin
@@ -20,12 +12,6 @@
       ];
 
       home.stateVersion = "25.05";
-
-      home.file = {
-        ".config/git/allowed_signers" = {
-          text = "jesse@jbhannah.net ${signing_key}";
-        };
-      };
 
       home.packages = with pkgs; [
         devenv
@@ -138,49 +124,6 @@
         };
       };
 
-      programs.gh = {
-        enable = true;
-        gitCredentialHelper.enable = true;
-
-        extensions = with pkgs; [
-          gh-copilot
-        ];
-      };
-
-      programs.git = {
-        enable = true;
-        lfs.enable = true;
-
-        userEmail = "jesse@jbhannah.net";
-        userName = "Jesse Brooklyn Hannah";
-
-        signing = {
-          key = signing_key;
-          format = "ssh";
-          signByDefault = true;
-          signer = "ssh-keygen";
-        };
-
-        delta = {
-          enable = true;
-
-          options = {
-            line-numbers = true;
-            navigate = true;
-            side-by-side = true;
-          };
-        };
-
-        extraConfig = {
-          fetch.prune = true;
-          gpg.ssh.allowedSignersFile = "${config.home.homeDirectory}/.config/git/allowed_signers";
-          init.defaultBranch = "trunk";
-          log.showSignature = true;
-          merge.conflictStyle = "zdiff3";
-          pull.rebase = true;
-        };
-      };
-
       programs.gpg.enable = true;
       services.gpg-agent = {
         enable = true;
@@ -188,34 +131,6 @@
       };
 
       programs.home-manager.enable = true;
-
-      programs.jujutsu = {
-        enable = true;
-
-        settings = {
-          user.email = "jesse@jbhannah.net";
-          user.name = "Jesse Brooklyn Hannah";
-
-          signing = {
-            behavior = "own";
-            backend = "ssh";
-            key = signing_key;
-            allowed-signers = "${config.home.homeDirectory}/.config/git/allowed_signers";
-          };
-        };
-      };
-
-      programs.lazygit = {
-        enable = true;
-
-        settings = {
-          git.mainBranches = [
-            "trunk"
-            "main"
-            "master"
-          ];
-        };
-      };
 
       programs.k9s.enable = true;
 

@@ -19,6 +19,7 @@ in
 
   imports = [
     ../modules/1password
+    ../modules/git
     ../modules/nvim
   ];
 

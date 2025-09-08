@@ -25,11 +25,11 @@
       programs._1password-shell-plugins = {
         enable = true;
         plugins = with pkgs; [
-          gh
+          (lib.mkIf config.programs.gh.enable gh)
         ];
       };
 
-      programs.git.extraConfig = {
+      programs.git.extraConfig = lib.mkIf config.programs.git.enable {
         gpg.ssh.program = lib.mkIf pkgs.stdenv.isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
 
         credential."https://gist.github.com".helper = lib.mkForce [
@@ -42,7 +42,7 @@
         ];
       };
 
-      programs.jujutsu.settings = {
+      programs.jujutsu.settings = lib.mkIf config.programs.jujutsu.enable {
         signing.program = lib.mkIf pkgs.stdenv.isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
       };
 

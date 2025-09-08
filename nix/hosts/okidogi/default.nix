@@ -7,6 +7,11 @@
   networking.hostName = "Okidogi";
   common.username = "bhannah";
 
+  git.user = {
+    name = "Brooke Hannah";
+    email = "bhannah@tvscientific.com";
+  };
+
   homebrew = {
     casks = [
       "keeper-password-manager"
