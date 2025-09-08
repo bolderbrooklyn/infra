@@ -1,7 +1,6 @@
 { ... }:
 {
   imports = [
-    ../../.
     ../../platforms/darwin.nix
   ];
 
@@ -61,6 +60,4 @@
       "Motion" = 434290957;
     };
   };
-
-  system.stateVersion = 6;
 }

@@ -75,9 +75,6 @@
 
         modules = [
           ./nix/hosts/tinkaton
-          agenix.nixosModules.default
-          home-manager.nixosModules.home-manager
-          ./nix/home
         ];
       };
 
@@ -87,9 +84,6 @@
 
         modules = [
           ./nix/hosts/miraidon
-          home-manager.darwinModules.home-manager
-          ./nix/home
-          ./nix/home/darwin.nix
         ];
       };
 
@@ -99,9 +93,6 @@
 
         modules = [
           ./nix/hosts/okidogi
-          home-manager.darwinModules.home-manager
-          ./nix/home
-          ./nix/home/darwin.nix
         ];
       };
     };

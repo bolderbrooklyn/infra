@@ -1,28 +1,41 @@
 {
   config,
   inputs,
-  lib,
+  pkgs,
   ...
 }:
+let
+  username = config.common.username;
+
+  shells = with pkgs; [
+    nushell
+    powershell
+    xonsh
+  ];
+in
 {
   imports = [
+    ./common.nix
     inputs.nix-homebrew.darwinModules.nix-homebrew
+    inputs.home-manager.darwinModules.home-manager
+    ../home/darwin.nix
   ];
 
-  system.primaryUser = lib.mkDefault "brooklyn";
+  environment.systemPackages = shells;
+  environment.shells = shells;
+
+  system.stateVersion = 6;
+
+  system.primaryUser = username;
 
   nix.settings.trusted-users = [
-    config.system.primaryUser
+    username
   ];
-
-  users.users.${config.system.primaryUser} = {
-    home = "/Users/${config.system.primaryUser}";
-  };
 
   nix-homebrew = {
     enable = true;
     enableRosetta = true;
-    user = config.system.primaryUser;
+    user = username;
     taps = {
       "homebrew/homebrew-core" = inputs.homebrew-core;
       "homebrew/homebrew-cask" = inputs.homebrew-cask;
@@ -86,8 +99,6 @@
       upgrade = true;
     };
   };
-
-  programs.fish.enable = true;
 
   security.pam.services.sudo_local = {
     enable = true;

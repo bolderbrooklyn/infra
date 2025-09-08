@@ -1,23 +1,27 @@
-{ pkgs, ... }:
+{ config, inputs, ... }:
+let
+  username = config.common.username;
+in
 {
+  imports = [
+    ./common.nix
+    inputs.agenix.nixosModules.default
+    inputs.home-manager.nixosModules.home-manager
+    ../home/default.nix
+  ];
+
   networking.networkmanager.enable = true;
   i18n.defaultLocale = "en_US.UTF-8";
 
   users.mutableUsers = false;
 
-  users.users.brooklyn = {
+  users.users.${username} = {
     uid = 1000;
-    home = "/home/brooklyn";
     isNormalUser = true;
     extraGroups = [ "wheel" ];
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINSrqkXtluHRGoNSDuwpPj2pZXlNZFxPFqsmwxjP1X0P"
-    ];
-    shell = pkgs.zsh;
   };
 
   programs.nix-ld.enable = true;
-  programs.zsh.enable = true;
 
   services.openssh = {
     enable = true;

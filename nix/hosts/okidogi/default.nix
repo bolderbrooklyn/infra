@@ -1,12 +1,11 @@
 { ... }:
 {
   imports = [
-    ../../.
     ../../platforms/darwin.nix
   ];
 
   networking.hostName = "Okidogi";
-  system.primaryUser = "bhannah";
+  common.username = "bhannah";
 
   homebrew = {
     casks = [
@@ -14,6 +13,4 @@
       "slack"
     ];
   };
-
-  system.stateVersion = 6;
 }

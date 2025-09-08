@@ -1,6 +1,10 @@
 { config, ... }:
 {
-  home-manager.users.${config.system.primaryUser} =
+  imports = [
+    ./.
+  ];
+
+  home-manager.users.${config.common.username} =
     { pkgs, ... }:
     {
       imports = [

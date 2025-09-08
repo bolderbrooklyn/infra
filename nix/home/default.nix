@@ -3,7 +3,7 @@
   home-manager.useGlobalPkgs = true;
   home-manager.backupFileExtension = "backup";
 
-  home-manager.users.${config.system.primaryUser} =
+  home-manager.users.${config.common.username} =
     {
       config,
       lib,
