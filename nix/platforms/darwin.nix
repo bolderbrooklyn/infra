@@ -16,9 +16,9 @@ in
 {
   imports = [
     ./common.nix
-    inputs.nix-homebrew.darwinModules.nix-homebrew
     inputs.home-manager.darwinModules.home-manager
     ../home/darwin.nix
+    ../modules/brew
     ../modules/gui
   ];
 
@@ -33,23 +33,12 @@ in
     username
   ];
 
-  nix-homebrew = {
-    enable = true;
-    enableRosetta = true;
-    user = username;
-    taps = {
-      "homebrew/homebrew-core" = inputs.homebrew-core;
-      "homebrew/homebrew-cask" = inputs.homebrew-cask;
-      "jbhannah/homebrew-pkpw" = inputs.homebrew-pkpw;
-      "th-ch/homebrew-youtube-music" = inputs.homebrew-youtube-music;
-    };
-    mutableTaps = false;
+  nix-homebrew.taps = {
+    "jbhannah/homebrew-pkpw" = inputs.homebrew-pkpw;
+    "th-ch/homebrew-youtube-music" = inputs.homebrew-youtube-music;
   };
 
   homebrew = {
-    enable = true;
-    taps = builtins.attrNames config.nix-homebrew.taps;
-
     brews = [
       "colima"
       "docker"
