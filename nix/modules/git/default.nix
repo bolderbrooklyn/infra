@@ -56,12 +56,6 @@ in
           ./aliases/git.nix
         ];
 
-        home.file = {
-          ".config/git/allowed_signers" = {
-            text = "${cfg.user.email} ${cfg.signingKey.key}";
-          };
-        };
-
         programs.git = {
           enable = true;
           lfs.enable = true;
@@ -92,7 +86,7 @@ in
 
           extraConfig = {
             fetch.prune = true;
-            gpg.ssh.allowedSignersFile = "${config.home.homeDirectory}/.config/git/allowed_signers";
+            gpg.ssh.allowedSignersFile = "${config.xdg.configHome}/git/allowed_signers";
             init.defaultBranch = "trunk";
             log.showSignature = true;
             merge.conflictStyle = "zdiff3";
@@ -120,7 +114,7 @@ in
               behavior = "own";
               backend = cfg.signingKey.type;
               key = cfg.signingKey.key;
-              allowed-signers = "${config.home.homeDirectory}/.config/git/allowed_signers";
+              allowed-signers = "${config.xdg.configHome}/git/allowed_signers";
             };
           };
         };
@@ -135,6 +129,13 @@ in
               "master"
             ];
           };
+        };
+
+        xdg.configFile."git/allowed_signers" = {
+          text = ''
+            jesse@jbhannah.net ${cfg.signingKey.key}
+            bhannah@tvscientific.com ${cfg.signingKey.key}
+          '';
         };
       };
   };

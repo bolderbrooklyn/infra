@@ -1,11 +1,6 @@
 { config, pkgs, ... }:
 {
   home-manager.users.${config.common.username} = {
-    home.file.".config/nvim" = {
-      source = ./config;
-      recursive = true;
-    };
-
     programs.neovim = {
       enable = true;
       defaultEditor = true;
@@ -34,6 +29,11 @@
         ps: with ps; [
           tiktoken_core
         ];
+    };
+
+    xdg.configFile.nvim = {
+      source = ./config;
+      recursive = true;
     };
   };
 }

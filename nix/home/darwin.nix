@@ -15,10 +15,8 @@
         HOMEBREW_NO_ENV_HINTS = 1;
       };
 
-      home.file = {
-        ".config/powershell/Microsoft.PowerShell_profile.ps1" = {
-          source = ../../dotfiles/.config/powershell/Microsoft.PowerShell_profile.ps1;
-        };
+      xdg.configFile."powershell/Microsoft.PowerShell_profile.ps1" = {
+        source = ../../dotfiles/.config/powershell/Microsoft.PowerShell_profile.ps1;
       };
 
       home.packages = with pkgs; [
