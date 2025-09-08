@@ -8,7 +8,6 @@
     { pkgs, ... }:
     {
       imports = [
-        ./gui
         ./aliases/darwin.nix
       ];
 

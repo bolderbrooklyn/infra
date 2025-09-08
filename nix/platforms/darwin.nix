@@ -19,6 +19,7 @@ in
     inputs.nix-homebrew.darwinModules.nix-homebrew
     inputs.home-manager.darwinModules.home-manager
     ../home/darwin.nix
+    ../modules/gui
   ];
 
   environment.systemPackages = shells;

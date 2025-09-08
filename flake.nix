@@ -61,13 +61,7 @@
   };
 
   outputs =
-    inputs@{
-      nixpkgs,
-      nix-darwin,
-      home-manager,
-      agenix,
-      ...
-    }:
+    inputs@{ nixpkgs, nix-darwin, ... }:
     {
       nixosConfigurations.tinkaton = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
