@@ -2,7 +2,7 @@
 {
   imports = [
     ../../.
-    ../../modules/darwin.nix
+    ../../platforms/darwin.nix
   ];
 
   networking.hostName = "Miraidon";
