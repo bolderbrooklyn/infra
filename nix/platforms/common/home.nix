@@ -1,6 +1,5 @@
 {
   config,
-  inputs,
   lib,
   pkgs,
   ...
@@ -10,29 +9,11 @@
   home-manager.backupFileExtension = "backup";
 
   home-manager.users.${config.common.username} = {
-    imports = [
-      inputs.catppuccin.homeModules.catppuccin
-    ];
-
     home.stateVersion = "25.05";
 
     home.packages = with pkgs; [
       httpie
-      kubectl
-      kubernetes-helm
     ];
-
-    home.shellAliases = {
-      l = "ls -alh";
-      cat = "${pkgs.bat}/bin/bat";
-    };
-
-    catppuccin = {
-      enable = true;
-      flavor = "mocha";
-    };
-
-    programs.bat.enable = true;
 
     programs.btop = {
       enable = true;
@@ -40,15 +21,6 @@
       settings = {
         vim_keys = true;
       };
-    };
-
-    programs.eza = {
-      enable = true;
-      extraOptions = [
-        "--group-directories-first"
-        "--group"
-      ];
-      git = true;
     };
 
     programs.fd = {
@@ -115,8 +87,6 @@
 
     programs.home-manager.enable = true;
 
-    programs.k9s.enable = true;
-
     programs.nushell = {
       enable = true;
     };
@@ -147,23 +117,6 @@
     };
 
     programs.zoxide.enable = true;
-
-    programs.zsh = {
-      enable = true;
-
-      autocd = true;
-      defaultKeymap = "viins";
-
-      history = {
-        append = true;
-        extended = true;
-        ignoreAllDups = true;
-      };
-
-      syntaxHighlighting = {
-        enable = true;
-      };
-    };
 
     xdg.enable = true;
   };

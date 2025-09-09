@@ -2,6 +2,7 @@
 {
   imports = [
     ../../platforms/darwin
+    ../../modules/kubectl
   ];
 
   networking.hostName = "Miraidon";

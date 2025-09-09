@@ -20,11 +20,15 @@ in
   imports = [
     ./home.nix
     ../../modules/1password
+    ../../modules/bat
+    ../../modules/catppuccin
     ../../modules/direnv
+    ../../modules/eza
     ../../modules/fish
     ../../modules/git
     ../../modules/nvim
     ../../modules/starship
+    ../../modules/zsh
   ];
 
   config = {
@@ -45,7 +49,14 @@ in
 
     time.timeZone = "America/Los_Angeles";
 
+    environment.systemPackages = with pkgs; [
+      vim
+      wget
+    ];
+
+    programs.bat.enable = true;
     programs.direnv.enable = true;
+    programs.eza.enable = true;
 
     programs.fish = {
       enable = true;
@@ -53,13 +64,6 @@ in
     };
 
     programs.starship.enable = true;
-
-    environment.systemPackages = with pkgs; [
-      git
-      vim
-      wget
-    ];
-
     programs.zsh.enable = true;
 
     users.users.${username} = {
