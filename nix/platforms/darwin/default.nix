@@ -1,9 +1,4 @@
-{
-  config,
-  inputs,
-  pkgs,
-  ...
-}:
+{ config, pkgs, ... }:
 let
   username = config.common.username;
 
@@ -14,9 +9,8 @@ let
 in
 {
   imports = [
-    ../common.nix
-    inputs.home-manager.darwinModules.home-manager
     ./home.nix
+    ../common
     ../../modules/brew
     ../../modules/gui
     ../../modules/powershell

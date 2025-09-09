@@ -18,12 +18,13 @@ in
   };
 
   imports = [
-    ../modules/1password
-    ../modules/direnv
-    ../modules/fish
-    ../modules/git
-    ../modules/nvim
-    ../modules/starship
+    ./home.nix
+    ../../modules/1password
+    ../../modules/direnv
+    ../../modules/fish
+    ../../modules/git
+    ../../modules/nvim
+    ../../modules/starship
   ];
 
   config = {

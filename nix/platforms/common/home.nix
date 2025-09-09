@@ -12,7 +12,6 @@
   home-manager.users.${config.common.username} = {
     imports = [
       inputs.catppuccin.homeModules.catppuccin
-      ./aliases/default.nix
     ];
 
     home.stateVersion = "25.05";
@@ -22,6 +21,11 @@
       kubectl
       kubernetes-helm
     ];
+
+    home.shellAliases = {
+      l = "ls -alh";
+      cat = "${pkgs.bat}/bin/bat";
+    };
 
     catppuccin = {
       enable = true;

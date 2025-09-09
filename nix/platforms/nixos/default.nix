@@ -4,10 +4,9 @@ let
 in
 {
   imports = [
-    ./common.nix
     inputs.agenix.nixosModules.default
     inputs.home-manager.nixosModules.home-manager
-    ../home/default.nix
+    ../common
   ];
 
   networking.networkmanager.enable = true;
