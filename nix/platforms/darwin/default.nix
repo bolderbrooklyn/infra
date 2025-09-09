@@ -13,6 +13,8 @@ in
     ../common
     ../../modules/brew
     ../../modules/gui
+    ../../modules/kubectl
+    ../../modules/mise
     ../../modules/powershell
   ];
 
@@ -27,6 +29,7 @@ in
     username
   ];
 
+  programs.mise.enable = true;
   programs.powershell.enable = true;
 
   security.pam.services.sudo_local = {
