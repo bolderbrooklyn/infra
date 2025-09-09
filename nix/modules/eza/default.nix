@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ config, lib, ... }:
 {
   options.programs.eza = {
     enable = lib.mkOption {
@@ -15,7 +10,7 @@
   config = lib.mkIf config.programs.eza.enable {
     home-manager.users.${config.common.username} = {
       home.shellAliases = {
-        l = "${pkgs.eza}/bin/eza -alh";
+        l = "eza -alh";
       };
 
       programs.eza = {
