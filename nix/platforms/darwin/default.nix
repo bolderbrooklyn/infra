@@ -12,6 +12,7 @@ in
     ./home.nix
     ../common
     ../../modules/brew
+    ../../modules/docker
     ../../modules/gui
     ../../modules/kubectl
     ../../modules/mise

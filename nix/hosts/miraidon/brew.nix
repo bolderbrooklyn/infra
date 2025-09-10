@@ -1,5 +1,4 @@
 { inputs, ... }:
-
 {
   nix-homebrew.taps = {
     "th-ch/homebrew-youtube-music" = inputs.homebrew-youtube-music;
