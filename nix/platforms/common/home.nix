@@ -87,10 +87,6 @@
 
     programs.home-manager.enable = true;
 
-    programs.nushell = {
-      enable = true;
-    };
-
     programs.opencode = {
       enable = true;
 

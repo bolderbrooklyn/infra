@@ -1,11 +1,6 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 let
   username = config.common.username;
-
-  shells = with pkgs; [
-    nushell
-    xonsh
-  ];
 in
 {
   imports = [
@@ -16,11 +11,10 @@ in
     ../../modules/gui
     ../../modules/kubectl
     ../../modules/mise
+    ../../modules/nushell
     ../../modules/powershell
+    ../../modules/xonsh
   ];
-
-  environment.systemPackages = shells;
-  environment.shells = shells;
 
   system.stateVersion = 6;
 
