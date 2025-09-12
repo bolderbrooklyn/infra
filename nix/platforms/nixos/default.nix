@@ -11,6 +11,7 @@ in
   imports = [
     home-manager.nixosModules.home-manager
     ../common
+    ../../modules/tailscale
   ];
 
   networking.networkmanager.enable = true;
