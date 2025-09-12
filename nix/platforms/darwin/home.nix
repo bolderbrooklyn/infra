@@ -21,6 +21,24 @@
       pbp = "pbpaste";
     };
 
+    programs.gemini-cli = {
+      enable = true;
+      package = if pkgs.stdenv.isDarwin then null else pkgs.gemini-cli;
+
+      settings = {
+        preferredEditor = "zed";
+        selectedAuthType = "oauth-personal";
+      };
+    };
+
+    programs.opencode = {
+      enable = true;
+
+      settings = {
+        theme = "catppuccin";
+      };
+    };
+
     services.macos-remap-keys = {
       enable = true;
       keyboard = {

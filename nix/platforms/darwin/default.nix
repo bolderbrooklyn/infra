@@ -14,7 +14,6 @@ in
     ../../modules/kubectl
     ../../modules/mise
     ../../modules/nushell
-    ../../modules/powershell
     ../../modules/xonsh
     ../../modules/zed
   ];
@@ -22,10 +21,6 @@ in
   system.stateVersion = 6;
 
   system.primaryUser = username;
-
-  nix.settings.trusted-users = [
-    username
-  ];
 
   security.pam.services.sudo_local = {
     enable = true;

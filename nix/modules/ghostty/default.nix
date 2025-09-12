@@ -10,8 +10,6 @@ in
 {
   imports = [ ../font ];
 
-  homebrew.casks = lib.mkIf useCask [ "ghostty" ];
-
   home-manager.users.${config.common.username} = {
     programs.ghostty = {
       enable = true;

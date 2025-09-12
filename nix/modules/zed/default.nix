@@ -10,8 +10,6 @@ in
 {
   imports = [ ../font ];
 
-  homebrew.casks = lib.mkIf useCask [ "zed" ];
-
   home-manager.users.${config.common.username} = {
     home.shellAliases.zed = lib.mkIf (!useCask) "zeditor";
 

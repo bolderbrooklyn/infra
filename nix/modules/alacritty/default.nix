@@ -1,16 +1,9 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ config, pkgs, ... }:
 let
   useCask = pkgs.stdenv.isDarwin;
 in
 {
   imports = [ ../font ];
-
-  homebrew.casks = lib.mkIf useCask [ "alacritty" ];
 
   home-manager.users.${config.common.username} = {
     programs.alacritty = {

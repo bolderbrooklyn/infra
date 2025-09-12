@@ -69,16 +69,6 @@
       changeDirWidgetCommand = "fd --type d --hidden";
     };
 
-    programs.gemini-cli = {
-      enable = true;
-      package = if pkgs.stdenv.isDarwin then null else pkgs.gemini-cli;
-
-      settings = {
-        preferredEditor = "zed";
-        selectedAuthType = "oauth-personal";
-      };
-    };
-
     programs.gpg.enable = true;
     services.gpg-agent = {
       enable = true;
@@ -86,14 +76,6 @@
     };
 
     programs.home-manager.enable = true;
-
-    programs.opencode = {
-      enable = true;
-
-      settings = {
-        theme = "catppuccin";
-      };
-    };
 
     programs.ripgrep.enable = true;
 

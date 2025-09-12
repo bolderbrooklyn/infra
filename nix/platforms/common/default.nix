@@ -26,6 +26,7 @@ in
     ../../modules/fish
     ../../modules/git
     ../../modules/nvim
+    ../../modules/powershell
     ../../modules/starship
     ../../modules/zsh
   ];
@@ -42,6 +43,10 @@ in
     nix.settings.experimental-features = [
       "flakes"
       "nix-command"
+    ];
+
+    nix.settings.trusted-users = [
+      username
     ];
 
     nixpkgs.config.allowUnfree = true;

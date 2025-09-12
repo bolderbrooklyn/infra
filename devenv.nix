@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
-  packages = [ ];
+  packages = with pkgs; [ gnumake ];
 }

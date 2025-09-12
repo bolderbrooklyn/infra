@@ -2,7 +2,7 @@
   description = "Infrastructure flake";
 
   inputs = {
-    nixpkgs-25-05.url = "github:NixOS/nixpkgs/release-25.05";
+    nixpkgs-25-05.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     systems.url = "github:nix-systems/default";
@@ -89,7 +89,6 @@
         };
 
         modules = [
-          home-manager-25-05.nixosModules.home-manager
           ./nix/hosts/tinkaton
         ];
       };
@@ -103,7 +102,6 @@
         };
 
         modules = [
-          home-manager-unstable.darwinModules.home-manager
           ./nix/hosts/miraidon
         ];
       };
@@ -117,7 +115,6 @@
         };
 
         modules = [
-          home-manager-unstable.darwinModules.home-manager
           ./nix/hosts/okidogi
         ];
       };

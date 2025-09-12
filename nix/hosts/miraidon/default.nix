@@ -5,4 +5,6 @@
   ];
 
   networking.hostName = "Miraidon";
+
+  programs.powershell.enable = true;
 }

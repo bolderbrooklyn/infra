@@ -7,7 +7,6 @@
   modulesPath,
   ...
 }:
-
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
@@ -27,12 +26,12 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/5370cf61-0f03-4b8a-b527-5e849d45d199";
+    device = "/dev/disk/by-uuid/725c8a4d-380f-443d-93f7-98c4a9aa387a";
     fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/8F15-853F";
+    device = "/dev/disk/by-uuid/668A-ECDE";
     fsType = "vfat";
     options = [
       "fmask=0077"
@@ -41,7 +40,7 @@
   };
 
   swapDevices = [
-    { device = "/dev/disk/by-uuid/f11c6ffc-9635-4b66-bab4-596b426833e0"; }
+    { device = "/dev/disk/by-uuid/c039585f-521d-4209-ab2a-269c642ebe52"; }
   ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
