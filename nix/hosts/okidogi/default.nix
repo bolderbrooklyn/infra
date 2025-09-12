@@ -1,6 +1,7 @@
-{ ... }:
 {
   imports = [
+    ./brew.nix
+    ./home.nix
     ../../platforms/darwin
   ];
 
@@ -10,12 +11,5 @@
   programs.git.user = {
     name = "Brooke Hannah";
     email = "bhannah@tvscientific.com";
-  };
-
-  homebrew = {
-    casks = [
-      "keeper-password-manager"
-      "slack"
-    ];
   };
 }
