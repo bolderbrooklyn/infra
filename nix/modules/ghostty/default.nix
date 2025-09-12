@@ -18,6 +18,8 @@ in
 
       settings = {
         adjust-cell-height = "15%";
+        clipboard-read = "allow";
+        clipboard-write = "allow";
         font-family = config.gui.font.name;
         font-size = config.gui.font.size;
         fullscreen = true;
