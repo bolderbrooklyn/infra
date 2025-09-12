@@ -5,22 +5,30 @@
   pkgs,
   ...
 }:
+let
+  username = config.common.username;
+
+  useCask = pkgs.stdenv.isDarwin;
+in
 {
-  home-manager.users.${config.common.username} =
+  programs._1password.enable = !useCask;
+
+  programs._1password-gui = lib.mkIf (!useCask) {
+    enable = true;
+    polkitPolicyOwners = [ username ];
+  };
+
+  home-manager.users.${username} =
     { config, ... }:
     let
       _1password_ssh_agent_sock = "${config.home.homeDirectory}/${
         if pkgs.stdenv.isDarwin then "Library/Group Containers/2BUA8C4S2C.com.1password/t" else ".1password"
       }/agent.sock";
-
-      useCask = pkgs.stdenv.isDarwin;
     in
     {
       imports = [
         inputs._1password-shell-plugins.hmModules.default
       ];
-
-      home.packages = lib.mkIf (!useCask) (with pkgs; [ _1password-gui ]);
 
       home.sessionVariables = {
         SSH_AUTH_SOCK = _1password_ssh_agent_sock;
