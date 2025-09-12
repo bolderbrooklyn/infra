@@ -58,7 +58,6 @@ in
       defaultShell = true;
     };
 
-    programs.starship.enable = true;
     programs.zsh.enable = true;
 
     users.users.${username} = {

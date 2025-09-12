@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  progams.zsh.enable = true;
+  programs.zsh.enable = true;
   environment.shells = [ pkgs.zsh ];
 
   home-manager.users.${config.common.username} = {
