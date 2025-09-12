@@ -15,7 +15,7 @@ let
   };
 in
 {
-  home-manager.users.${config.common.username} = lib.mkIf config.programs.git.enable {
+  home-manager.users.${config.common.username} = {
     home.shellAliases = {
       # Git
       g = "git";

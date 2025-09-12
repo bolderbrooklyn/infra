@@ -53,9 +53,6 @@ in
       wget
     ];
 
-    programs.bat.enable = true;
-    programs.eza.enable = true;
-
     programs.fish = {
       enable = true;
       defaultShell = true;

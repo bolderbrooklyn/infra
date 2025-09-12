@@ -11,7 +11,7 @@ in
   options.programs.powershell = {
     enable = lib.mkOption {
       type = lib.types.bool;
-      default = false;
+      default = true;
     };
 
     extraConfig = lib.mkOption {

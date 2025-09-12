@@ -1,27 +1,22 @@
-{ config, lib, ... }:
+{ config, ... }:
 {
-  options.programs.eza = {
-    enable = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-    };
-  };
+  config = {
+    home-manager.users.${config.common.username} =
+      { config, ... }:
+      {
+        home.shellAliases = {
+          l = "eza -alh";
+        };
 
-  config = lib.mkIf config.programs.eza.enable {
-    home-manager.users.${config.common.username} = {
-      home.shellAliases = {
-        l = "eza -alh";
+        programs.eza = {
+          enable = true;
+          git = config.programs.git.enable;
+
+          extraOptions = [
+            "--group-directories-first"
+            "--group"
+          ];
+        };
       };
-
-      programs.eza = {
-        enable = true;
-        git = config.programs.git.enable;
-
-        extraOptions = [
-          "--group-directories-first"
-          "--group"
-        ];
-      };
-    };
   };
 }

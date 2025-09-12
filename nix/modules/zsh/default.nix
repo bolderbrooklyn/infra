@@ -1,10 +1,6 @@
+{ config, pkgs, ... }:
 {
-  config,
-  lib,
-  pkgs,
-  ...
-}:
-lib.mkIf config.programs.zsh.enable {
+  progams.zsh.enable = true;
   environment.shells = [ pkgs.zsh ];
 
   home-manager.users.${config.common.username} = {

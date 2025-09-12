@@ -19,11 +19,6 @@ let
 in
 {
   options.programs.git = {
-    enable = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
-    };
-
     signingKey = {
       type = lib.mkOption {
         type = lib.types.enum [
@@ -57,7 +52,7 @@ in
     ./aliases/git.nix
   ];
 
-  config = lib.mkIf cfg.enable {
+  config = {
     home-manager.users.${config.common.username} =
       { config, ... }:
       {

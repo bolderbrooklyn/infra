@@ -27,9 +27,6 @@ in
     username
   ];
 
-  programs.mise.enable = true;
-  programs.powershell.enable = true;
-
   security.pam.services.sudo_local = {
     enable = true;
     reattach = true;

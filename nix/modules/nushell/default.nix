@@ -1,8 +1,12 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 let
-  xonsh = pkgs.xonsh;
+  nu = pkgs.nushell;
 in
 {
-  environment.systemPackages = [ xonsh ];
-  environment.shells = [ xonsh ];
+  environment.systemPackages = [ nu ];
+  environment.shells = [ nu ];
+
+  home-manager.users.${config.common.username} = {
+    programs.nushell.enable = true;
+  };
 }

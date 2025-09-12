@@ -1,27 +1,24 @@
 { config, lib, ... }:
 {
-  options.programs.starship = {
-    enable = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-    };
-  };
-
-  config = lib.mkIf config.programs.starship.enable {
+  config = {
     programs.powershell.extraConfig = lib.mkIf config.programs.powershell.enable [
       "Invoke-Expression (&starship init powershell)"
     ];
 
-    home-manager.users.${config.common.username}.programs.starship = {
-      enable = true;
+    home-manager.users.${config.common.username} =
+      { config, ... }:
+      {
+        programs.starship = {
+          enable = true;
 
-      settings = {
-        direnv.disabled = !config.programs.direnv.enable;
-        gcloud.disabled = true;
-        nix_shell.symbol = " ";
-        scala.detect_folders = [ ];
-        shell.disabled = false;
+          settings = {
+            direnv.disabled = !config.programs.direnv.enable;
+            gcloud.disabled = true;
+            nix_shell.symbol = " ";
+            scala.detect_folders = [ ];
+            shell.disabled = false;
+          };
+        };
       };
-    };
   };
 }
