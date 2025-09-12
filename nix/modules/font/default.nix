@@ -22,12 +22,6 @@
     };
   };
 
-  imports = [
-    ./alacritty.nix
-    ./ghostty.nix
-    ./zed.nix
-  ];
-
   config = {
     home-manager.users.${config.common.username} = {
       home.packages = [ config.gui.font.package ];

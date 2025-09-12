@@ -19,7 +19,6 @@ in
 
   imports = [
     ./home.nix
-    ../../modules/1password
     ../../modules/bat
     ../../modules/catppuccin
     ../../modules/direnv

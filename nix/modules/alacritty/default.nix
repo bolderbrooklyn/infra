@@ -1,9 +1,21 @@
-{ config, pkgs, ... }:
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  useCask = pkgs.stdenv.isDarwin;
+in
+{
+  imports = [ ../font ];
+
+  homebrew.casks = lib.mkIf useCask [ "alacritty" ];
+
   home-manager.users.${config.common.username} = {
     programs.alacritty = {
       enable = true;
-      package = if pkgs.stdenv.isDarwin then null else pkgs.alacritty;
+      package = if useCask then null else pkgs.alacritty;
 
       settings = {
         font = {

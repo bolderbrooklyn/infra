@@ -6,14 +6,17 @@ in
   imports = [
     ./home.nix
     ../common
+    ../../modules/1password
+    ../../modules/alacritty
     ../../modules/brew
     ../../modules/docker
-    ../../modules/gui
+    ../../modules/ghostty
     ../../modules/kubectl
     ../../modules/mise
     ../../modules/nushell
     ../../modules/powershell
     ../../modules/xonsh
+    ../../modules/zed
   ];
 
   system.stateVersion = 6;

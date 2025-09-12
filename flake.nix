@@ -84,7 +84,6 @@
         system = "x86_64-linux";
         specialArgs = {
           inherit inputs;
-          nixpkgs = nixpkgs-25-05;
           home-manager = home-manager-25-05;
           catppuccin = catppuccin-25-05;
         };
@@ -99,7 +98,6 @@
         system = "aarch64-darwin";
         specialArgs = {
           inherit inputs;
-          nixpkgs = nixpkgs-unstable;
           home-manager = home-manager-unstable;
           catppuccin = catppuccin-unstable;
         };
@@ -114,7 +112,6 @@
         system = "aarch64-darwin";
         specialArgs = {
           inherit inputs;
-          nixpkgs = nixpkgs-unstable;
           home-manager = home-manager-unstable;
           catppuccin = catppuccin-unstable;
         };
