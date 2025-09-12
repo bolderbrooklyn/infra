@@ -1,11 +1,16 @@
-{ config, inputs, ... }:
+{
+  config,
+  home-manager,
+  inputs,
+  ...
+}:
 let
   username = config.common.username;
 in
 {
   imports = [
     inputs.agenix.nixosModules.default
-    inputs.home-manager.nixosModules.home-manager
+    home-manager.nixosModules.home-manager
     ../common
   ];
 

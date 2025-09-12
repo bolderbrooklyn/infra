@@ -2,43 +2,51 @@
   description = "Infrastructure flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs-25-05.url = "github:NixOS/nixpkgs/release-25.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+
     systems.url = "github:nix-systems/default";
 
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    home-manager = {
+    home-manager-25-05 = {
+      url = "github:nix-community/home-manager/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs-25-05";
+    };
+
+    home-manager-unstable = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     _1password-shell-plugins = {
       # url = "github:1Password/shell-plugins";
       url = "github:jbhannah/shell-plugins/trunk";
-
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
-      };
     };
 
     agenix = {
       url = "github:ryantm/agenix";
 
+      # currently only used in nixos-25.05, so lock to those inputs
       inputs = {
-        darwin.follows = "nix-darwin";
-        home-manager.follows = "home-manager";
-        nixpkgs.follows = "nixpkgs";
+        darwin.follows = "";
+        home-manager.follows = "home-manager-25-05";
+        nixpkgs.follows = "nixpkgs-25-05";
         systems.follows = "systems";
       };
     };
 
-    catppuccin = {
+    catppuccin-25-05 = {
+      url = "github:catppuccin/nix/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs-25-05";
+    };
+
+    catppuccin-unstable = {
       url = "github:catppuccin/nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
@@ -61,31 +69,58 @@
   };
 
   outputs =
-    inputs@{ nixpkgs, nix-darwin, ... }:
+    inputs@{
+      nixpkgs-25-05,
+      nixpkgs-unstable,
+      nix-darwin,
+      home-manager-25-05,
+      home-manager-unstable,
+      catppuccin-25-05,
+      catppuccin-unstable,
+      ...
+    }:
     {
-      nixosConfigurations.tinkaton = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.tinkaton = nixpkgs-25-05.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
+        specialArgs = {
+          inherit inputs;
+          nixpkgs = nixpkgs-25-05;
+          home-manager = home-manager-25-05;
+          catppuccin = catppuccin-25-05;
+        };
 
         modules = [
+          home-manager-25-05.nixosModules.home-manager
           ./nix/hosts/tinkaton
         ];
       };
 
       darwinConfigurations."Miraidon" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
-        specialArgs = { inherit inputs; };
+        specialArgs = {
+          inherit inputs;
+          nixpkgs = nixpkgs-unstable;
+          home-manager = home-manager-unstable;
+          catppuccin = catppuccin-unstable;
+        };
 
         modules = [
+          home-manager-unstable.darwinModules.home-manager
           ./nix/hosts/miraidon
         ];
       };
 
       darwinConfigurations."Okidogi" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
-        specialArgs = { inherit inputs; };
+        specialArgs = {
+          inherit inputs;
+          nixpkgs = nixpkgs-unstable;
+          home-manager = home-manager-unstable;
+          catppuccin = catppuccin-unstable;
+        };
 
         modules = [
+          home-manager-unstable.darwinModules.home-manager
           ./nix/hosts/okidogi
         ];
       };

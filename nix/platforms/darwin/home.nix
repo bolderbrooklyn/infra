@@ -1,12 +1,12 @@
 {
   config,
-  inputs,
+  home-manager,
   pkgs,
   ...
 }:
 {
   imports = [
-    inputs.home-manager.darwinModules.home-manager
+    home-manager.darwinModules.home-manager
   ];
 
   home-manager.users.${config.common.username} = {
