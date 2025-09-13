@@ -54,8 +54,8 @@ in
   };
 
   system.autoUpgrade = {
-    enable = false;
-    flake = "github:jbhannah/infra";
+    enable = true;
+    flake = "github:jbhannah/infra#${config.networking.hostName}";
     persistent = true;
     allowReboot = true;
     rebootWindow = {
