@@ -13,9 +13,8 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../platforms/nixos
-    ../../modules/ghostty
+    ../../modules/font
     ../../modules/plex
-    ../../modules/zed
   ];
 
   # Bootloader.
