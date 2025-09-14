@@ -24,6 +24,7 @@
         ruby
         shfmt
         stylua
+        unzip
         wget
       ];
 
