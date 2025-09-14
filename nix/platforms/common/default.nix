@@ -28,6 +28,7 @@ in
     ../../modules/nvim
     ../../modules/powershell
     ../../modules/starship
+    ../../modules/tmux
     ../../modules/zsh
   ];
 

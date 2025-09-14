@@ -34,7 +34,6 @@ in
         };
 
         interactiveShellInit = ''
-          string match -q "$TERM" alacritty; and not set -q TMUX; and exec tmux new-session -As0
           fish_vi_key_bindings
         '';
       };
