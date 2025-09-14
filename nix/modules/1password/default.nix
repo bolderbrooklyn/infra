@@ -13,10 +13,14 @@ in
 {
   programs._1password.enable = !useCask;
 
-  programs._1password-gui = lib.mkIf (!useCask) {
-    enable = true;
-    polkitPolicyOwners = [ username ];
-  };
+  programs._1password-gui = {
+    enable = !useCask;
+  }
+  // lib.mkIf (!useCask) (
+    lib.optionalAttrs (builtins.hasAttr "polkitPolicyOwners" config.programs._1password-gui) {
+      polkitPolicyOwners = [ username ];
+    }
+  );
 
   home-manager.users.${username} =
     { config, ... }:
