@@ -23,8 +23,6 @@
   };
 
   config = {
-    home-manager.users.${config.common.username} = {
-      home.packages = [ config.gui.font.package ];
-    };
+    fonts.packages = [ config.gui.font.package ];
   };
 }
