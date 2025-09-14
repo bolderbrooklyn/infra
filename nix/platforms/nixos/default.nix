@@ -1,7 +1,6 @@
 {
   config,
   home-manager,
-  inputs,
   ...
 }:
 let
