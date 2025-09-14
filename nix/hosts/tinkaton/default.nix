@@ -14,6 +14,7 @@
     ./hardware-configuration.nix
     ../../platforms/nixos
     ../../modules/ghostty
+    ../../modules/plex
     ../../modules/zed
   ];
 
@@ -113,11 +114,6 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
-
-  services.plex = {
-    enable = true;
-    openFirewall = true;
-  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
