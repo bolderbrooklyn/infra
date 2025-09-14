@@ -87,15 +87,6 @@
   #  wget
   # ];
 
-  fileSystems."/mnt/genesect/media" = {
-    device = "genesect.home.local:/nfs/Media";
-    fsType = "nfs";
-    options = [
-      "noatime"
-      "nodiratime"
-    ];
-  };
-
   home-manager.users.${config.common.username} = {
     home.packages = with pkgs; [
       kdePackages.kate
