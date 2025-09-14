@@ -11,6 +11,7 @@
 
       extraPackages = with pkgs; [
         ast-grep
+        cargo
         imagemagick
         lua5_1
         luarocks
@@ -19,6 +20,7 @@
         nil
         nixd
         nixfmt-rfc-style
+        python3
         ruby
         shfmt
         stylua
