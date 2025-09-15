@@ -13,6 +13,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../platforms/nixos
+    ../../modules/crafty
     ../../modules/font
     ../../modules/plex
   ];
