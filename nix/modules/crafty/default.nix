@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 let
   crafty = {
     name = "crafty";
@@ -17,10 +17,18 @@ let
       from = 25500;
       to = 25600;
     };
+    voicePorts = {
+      from = 24400;
+      to = 24500;
+    };
   };
 in
 {
   imports = [ ../podman ];
+
+  environment.systemPackages = with pkgs; [
+    ferium
+  ];
 
   users.groups.crafty = {
     gid = crafty.uid;
@@ -51,6 +59,7 @@ in
       "${builtins.toString crafty.craftyPort}:${builtins.toString crafty.craftyPort}/tcp" # crafty
       "${builtins.toString crafty.bedrockPort}:${builtins.toString crafty.bedrockPort}/udp" # bedrock
       "${builtins.toString crafty.javaPorts.from}-${builtins.toString crafty.javaPorts.to}:${builtins.toString crafty.javaPorts.from}-${builtins.toString crafty.javaPorts.to}" # java
+      "${builtins.toString crafty.voicePorts.from}-${builtins.toString crafty.voicePorts.to}:${builtins.toString crafty.voicePorts.from}-${builtins.toString crafty.voicePorts.to}/udp" # voice
     ];
 
     volumes = [
@@ -81,5 +90,6 @@ in
 
   networking.firewall.allowedUDPPortRanges = [
     crafty.javaPorts
+    crafty.voicePorts
   ];
 }
