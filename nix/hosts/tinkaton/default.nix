@@ -14,7 +14,7 @@
     ./hardware-configuration.nix
     ../../platforms/nixos
     ../../modules/crafty
-    ../../modules/font
+    ../../modules/ghostty
     ../../modules/plex
   ];
 
@@ -90,6 +90,7 @@
   home-manager.users.${config.common.username} = {
     home.packages = with pkgs; [
       kdePackages.kate
+      wayclip
     ];
   };
 

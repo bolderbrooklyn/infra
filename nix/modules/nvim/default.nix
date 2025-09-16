@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   home-manager.users.${config.common.username} = {
     programs.neovim = {
@@ -23,9 +28,14 @@
         python3
         ruby
         shfmt
+        sqlite
         stylua
         unzip
         wget
+
+        nodePackages.prettier
+
+        (lib.mkIf (!pkgs.stdenv.isDarwin) llvm)
       ];
 
       extraLuaPackages =
