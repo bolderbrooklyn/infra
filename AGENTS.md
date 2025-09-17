@@ -1,32 +1,27 @@
-# Agent Guidelines for Infrastructure Repository
+# Agent Guidelines for infra
 
-## Build/Test Commands
+## Build Commands
+- **Build**: `make build` - Build the system configuration
+- **Deploy**: `make switch` - Deploy configuration changes (default target)
+- **Check**: `make check` - Check configuration validity
+- **Update**: `make update` - Update flake inputs
+- **Full Update**: `make up` - Update inputs and deploy
 
-- `make build` - Build the Nix configuration without switching
-- `make check` - Check configuration (dry-run)
-- `make switch` - Apply configuration changes (requires sudo)
-- `make update` - Update flake inputs
-- `make up` - Update and switch in one command
+## Code Style
+- **Language**: Nix expressions for system configuration
+- **Formatting**: Use `nixfmt-rfc-style` for consistent formatting
+- **Imports**: Group by type - system modules first, then local modules
+- **Naming**: Use kebab-case for module names, camelCase for options
+- **Structure**: Follow existing module patterns in `nix/modules/`
+- **Comments**: Minimal comments, prefer self-documenting code
+- **Attributes**: Use `lib.mkOption` for configurable options with proper types
 
-## Code Style Guidelines
+## Architecture
+- **Hosts**: Machine-specific configs in `nix/hosts/`
+- **Modules**: Reusable components in `nix/modules/`
+- **Platforms**: Common configs in `nix/platforms/`
+- **Flake**: All dependencies managed through `flake.nix`
 
-- Language: Nix configuration files
-- Formatting: 2-space indentation, no tabs
-- Imports: Use relative paths (e.g., `./module.nix`, `../../platforms/common`)
-- Structure: Group imports at top, options first, config second
-- Comments: Use `#` for single-line, `/* */` for blocks
-- Variables: Use camelCase for local variables, kebab-case for option names
-- Conditionals: Use `lib.mkIf` for config conditionals
-- Default branch: `trunk` (not main/master)
-
-## Error Handling
-
-- Use `lib.mkOption` with proper types and defaults
-- Handle platform differences with `pkgs.stdenv.isDarwin`
-- Use `lib.mkIf` for conditional configuration
-
-## File Structure
-
-- Host configs: `nix/hosts/<hostname>/`
-- Modules: `nix/modules/<name>/default.nix`
-- Platform configs: `nix/platforms/<platform>/`
+## Testing
+- No automated tests - validate with `make check` before deploying
+- Test changes with `make build` first, then `make switch`
