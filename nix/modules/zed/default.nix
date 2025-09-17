@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  options,
   pkgs,
   ...
 }:
@@ -158,3 +159,10 @@ in
     };
   };
 }
+// lib.mkIf useCask (
+  lib.optionalAttrs (builtins.hasAttr "homebrew" options) {
+    homebrew.casks = [
+      "zed"
+    ];
+  }
+)

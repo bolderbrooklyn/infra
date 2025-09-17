@@ -36,15 +36,9 @@
 
     caskArgs.appdir = "~/Applications";
     casks = [
-      {
-        name = "1password";
-        args.appdir = "/Applications";
-      }
-      "alacritty"
       "alt-tab"
       "arc"
       "dash"
-      "ghostty"
       "google-chrome"
       "httpie-desktop"
       {
@@ -56,7 +50,6 @@
       "the-unarchiver"
       "visual-studio-code"
       "warp"
-      "zed"
     ];
 
     masApps = {
