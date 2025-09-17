@@ -30,6 +30,7 @@
         shfmt
         sqlite
         stylua
+        tree-sitter
         unzip
         wget
 
