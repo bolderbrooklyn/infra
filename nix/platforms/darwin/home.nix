@@ -21,16 +21,6 @@
       pbp = "pbpaste";
     };
 
-    programs.gemini-cli = {
-      enable = true;
-      package = if pkgs.stdenv.isDarwin then null else pkgs.gemini-cli;
-
-      settings = {
-        preferredEditor = "zed";
-        selectedAuthType = "oauth-personal";
-      };
-    };
-
     services.macos-remap-keys = {
       enable = true;
       keyboard = {
