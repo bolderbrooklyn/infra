@@ -1,16 +1,26 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  options,
+  pkgs,
+  ...
+}:
+let
+  useBrew = pkgs.stdenv.isDarwin;
+in
 {
   programs.opencode = {
     enable = true;
-    package = if pkgs.stdenv.isDarwin then null else pkgs.opencode;
+    package = if useBrew then null else pkgs.opencode;
 
     settings = {
       theme = "catppuccin";
     };
   };
 }
-// lib.mkIf pkgs.stdenv.isDarwin {
-  homebrew.brews = [
-    "opencode"
-  ];
-}
+// lib.mkIf useBrew (
+  lib.optionalAttrs (builtins.hasAttr "homebrew" options) {
+    homebrew.brews = [
+      "opencode"
+    ];
+  }
+)
