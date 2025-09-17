@@ -1,10 +1,4 @@
-{
-  config,
-  lib,
-  options,
-  pkgs,
-  ...
-}:
+{ config, pkgs, ... }:
 let
   useCask = pkgs.stdenv.isDarwin;
 in
@@ -36,10 +30,3 @@ in
     };
   };
 }
-// lib.mkIf useCask (
-  lib.optionalAttrs (builtins.hasAttr "homebrew" options) {
-    homebrew.casks = [
-      "alacritty"
-    ];
-  }
-)
