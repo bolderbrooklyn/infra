@@ -31,14 +31,6 @@
       };
     };
 
-    programs.opencode = {
-      enable = true;
-
-      settings = {
-        theme = "catppuccin";
-      };
-    };
-
     services.macos-remap-keys = {
       enable = true;
       keyboard = {

@@ -14,6 +14,7 @@ in
     ../../modules/kubectl
     ../../modules/mise
     ../../modules/nushell
+    ../../modules/opencode
     ../../modules/xonsh
     ../../modules/zed
   ];
