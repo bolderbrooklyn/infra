@@ -6,6 +6,10 @@
 }:
 {
   home-manager.users.${config.common.username} = {
+    home.sessionVariables = {
+      DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = 1;
+    };
+
     programs.neovim = {
       enable = true;
       defaultEditor = true;
@@ -17,16 +21,20 @@
       extraPackages = with pkgs; [
         ast-grep
         cargo
+        icu
         imagemagick
         lua5_1
         luarocks
         lynx
         markdownlint-cli2
+        marksman
         nil
         nixd
         nixfmt-rfc-style
         python3
+        rubocop
         ruby
+        ruby-lsp
         shfmt
         sqlite
         stylua
