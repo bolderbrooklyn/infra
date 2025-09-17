@@ -30,4 +30,3 @@
 - Host configs: `nix/hosts/<hostname>/`
 - Modules: `nix/modules/<name>/default.nix`
 - Platform configs: `nix/platforms/<platform>/`
-
