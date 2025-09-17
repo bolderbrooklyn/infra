@@ -2,7 +2,6 @@
   config,
   inputs,
   lib,
-  options,
   pkgs,
   ...
 }:
@@ -71,13 +70,3 @@ in
       };
     };
 }
-// lib.mkIf useCask (
-  lib.optionalAttrs (builtins.hasAttr "homebrew" options) {
-    homebrew.casks = [
-      {
-        name = "1password";
-        args.appdir = "/Applications";
-      }
-    ];
-  }
-)

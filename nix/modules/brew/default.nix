@@ -35,6 +35,10 @@
 
     caskArgs.appdir = "~/Applications";
     casks = [
+      {
+        name = "1password";
+        args.appdir = "/Applications";
+      }
       "alt-tab"
       "arc"
       "dash"
