@@ -2,6 +2,7 @@
   imports = [
     ./brew.nix
     ../../platforms/darwin
+    ../../modules/aerospace
   ];
 
   networking.hostName = "Miraidon";
