@@ -91,6 +91,7 @@ in
             log.showSignature = true;
             merge.conflictStyle = "zdiff3";
             pull.rebase = true;
+            push.autoSetupRemote = true;
           };
         };
 
