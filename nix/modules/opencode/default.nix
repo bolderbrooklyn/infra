@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   options,
   pkgs,
@@ -8,12 +9,14 @@ let
   useBrew = pkgs.stdenv.isDarwin;
 in
 {
-  programs.opencode = {
-    enable = true;
-    package = if useBrew then null else pkgs.opencode;
+  home-manager.users.${config.common.username} = {
+    programs.opencode = {
+      enable = true;
+      package = lib.mkIf useBrew null;
 
-    settings = {
-      theme = "catppuccin";
+      settings = {
+        theme = "catppuccin";
+      };
     };
   };
 }
