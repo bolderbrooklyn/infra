@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  options,
   pkgs,
   ...
 }:
@@ -20,10 +19,3 @@ in
     };
   };
 }
-// lib.mkIf useBrew (
-  lib.optionalAttrs (builtins.hasAttr "homebrew" options) {
-    homebrew.brews = [
-      "opencode"
-    ];
-  }
-)
