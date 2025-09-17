@@ -10,6 +10,7 @@ in
     ../../modules/alacritty
     ../../modules/brew
     ../../modules/docker
+    ../../modules/gemini-cli
     ../../modules/ghostty
     ../../modules/kubectl
     ../../modules/mise

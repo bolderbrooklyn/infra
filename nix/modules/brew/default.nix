@@ -28,7 +28,6 @@
 
     brews = [
       "colima"
-      "gemini-cli"
       "lima-additional-guestagents"
       "mas"
       "pkpw"
