@@ -5,7 +5,6 @@
     ../../platforms/nixos
     ../../modules/crafty
     ../../modules/ghostty
-    ../../modules/opencode
     ../../modules/plex
   ];
 
