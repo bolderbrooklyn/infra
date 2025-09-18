@@ -64,6 +64,7 @@
       "1Password for Safari" = 1569813296;
       "Name Mangler 3" = 603637384;
       "Pixelmator Pro" = 1289583905;
+      "Xcode" = 497799835;
       "Yoink" = 457622435;
     };
 
