@@ -21,6 +21,7 @@
       extraPackages = with pkgs; [
         ast-grep
         cargo
+        go
         icu
         imagemagick
         lua5_1
