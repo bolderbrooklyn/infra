@@ -9,7 +9,6 @@
       escapeTime = 0;
       keyMode = "vi";
       mouse = true;
-      sensibleOnTop = true;
       shortcut = "a";
       terminal = "tmux-256color";
 
