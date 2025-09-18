@@ -35,6 +35,7 @@
       "pkpw"
     ];
 
+    greedyCasks = true;
     caskArgs.appdir = "~/Applications";
     casks = [
       {
