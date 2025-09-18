@@ -47,15 +47,6 @@ in
 
       programs.git.extraConfig = lib.mkIf config.programs.git.enable {
         gpg.ssh.program = lib.mkIf pkgs.stdenv.isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
-
-        credential."https://gist.github.com".helper = lib.mkForce [
-          ""
-          "!op plugin run -- gh auth git-credential"
-        ];
-        credential."https://github.com".helper = lib.mkForce [
-          ""
-          "!op plugin run -- gh auth git-credential"
-        ];
       };
 
       programs.jujutsu.settings = lib.mkIf config.programs.jujutsu.enable {
