@@ -29,11 +29,9 @@
         markdownlint-cli2
         marksman
         nil
-        nixd
         nixfmt-rfc-style
         python3
         rubocop
-        ruby
         ruby-lsp
         shfmt
         sqlite
