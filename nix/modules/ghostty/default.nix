@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }:
@@ -12,7 +13,7 @@ in
   home-manager.users.${config.common.username} = {
     programs.ghostty = {
       enable = true;
-      package = if useCask then null else pkgs.ghostty;
+      package = lib.mkIf useCask null;
       installVimSyntax = !useCask;
 
       settings = {

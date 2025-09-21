@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   useCask = pkgs.stdenv.isDarwin;
 in
@@ -8,7 +13,7 @@ in
   home-manager.users.${config.common.username} = {
     programs.alacritty = {
       enable = true;
-      package = if useCask then null else pkgs.alacritty;
+      package = lib.mkIf useCask null;
 
       settings = {
         font = {
