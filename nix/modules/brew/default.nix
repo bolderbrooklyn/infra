@@ -35,7 +35,6 @@
       "pkpw"
     ];
 
-    greedyCasks = true;
     caskArgs.appdir = "~/Applications";
     casks = [
       {
@@ -53,10 +52,7 @@
         name = "lm-studio";
         args.appdir = "/Applications";
       }
-      {
-        name = "pearcleaner";
-        greedy = false;
-      }
+      "pearcleaner"
       "stats"
       "the-unarchiver"
       "visual-studio-code"
