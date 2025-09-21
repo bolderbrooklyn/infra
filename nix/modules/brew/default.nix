@@ -53,7 +53,10 @@
         name = "lm-studio";
         args.appdir = "/Applications";
       }
-      "pearcleaner"
+      {
+        name = "pearcleaner";
+        greedy = false;
+      }
       "stats"
       "the-unarchiver"
       "visual-studio-code"
