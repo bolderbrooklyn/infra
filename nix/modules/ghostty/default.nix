@@ -21,7 +21,7 @@ in
         clipboard-write = "allow";
         font-family = config.gui.font.name;
         font-size = config.gui.font.size;
-        fullscreen = true;
+        fullscreen = useCask;
         window-inherit-working-directory = false;
       };
     };
