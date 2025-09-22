@@ -7,6 +7,7 @@
       baseIndex = 1;
       clock24 = true;
       escapeTime = 0;
+      historyLimit = 10000;
       keyMode = "vi";
       mouse = true;
       shortcut = "a";
