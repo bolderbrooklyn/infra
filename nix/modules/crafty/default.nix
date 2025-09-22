@@ -41,12 +41,18 @@ in
   };
 
   systemd.tmpfiles.rules = [
-    "d ${crafty.baseDir} 0755 ${crafty.name} ${crafty.name} - -"
-    "d ${crafty.backupsDir} 0755 ${crafty.name} ${crafty.name} - -"
-    "d ${crafty.logsDir} 0755 ${crafty.name} ${crafty.name} - -"
-    "d ${crafty.serversDir} 0755 ${crafty.name} ${crafty.name} - -"
-    "d ${crafty.configDir} 0755 ${crafty.name} ${crafty.name} - -"
-    "d ${crafty.importDir} 0755 ${crafty.name} ${crafty.name} - -"
+    # "d ${crafty.baseDir} 0755 ${crafty.name} ${crafty.name} - -"
+    # "d ${crafty.backupsDir} 0755 ${crafty.name} ${crafty.name} - -"
+    # "d ${crafty.logsDir} 0755 ${crafty.name} ${crafty.name} - -"
+    # "d ${crafty.serversDir} 0755 ${crafty.name} ${crafty.name} - -"
+    # "d ${crafty.configDir} 0755 ${crafty.name} ${crafty.name} - -"
+    # "d ${crafty.importDir} 0755 ${crafty.name} ${crafty.name} - -"
+    "d ${crafty.baseDir} 0755 1000 0 - -"
+    "d ${crafty.backupsDir} 0755 1000 0 - -"
+    "d ${crafty.logsDir} 0755 1000 0 - -"
+    "d ${crafty.serversDir} 0755 1000 0 - -"
+    "d ${crafty.configDir} 0755 1000 0 - -"
+    "d ${crafty.importDir} 0755 1000 0 - -"
   ];
 
   virtualisation.oci-containers.containers.crafty = {
