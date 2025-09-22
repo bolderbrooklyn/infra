@@ -5,6 +5,13 @@
       cat = "bat";
     };
 
-    programs.bat.enable = true;
+    programs.bat = {
+      enable = true;
+
+      config = {
+        # fix mouse scrolling inside tmux
+        pager = "less --RAW-CONTROL-CHARS --quit-if-one-screen --mouse";
+      };
+    };
   };
 }
