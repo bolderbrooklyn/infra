@@ -18,6 +18,7 @@
       ];
 
       extraConfig = ''
+        set -g allow-passthrough on
         set -g status-position top
       '';
 
