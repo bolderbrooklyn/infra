@@ -9,7 +9,7 @@ in
     ../../modules/1password
     ../../modules/alacritty
     ../../modules/brew
-    ../../modules/docker
+    ../../modules/colima
     ../../modules/gemini-cli
     ../../modules/ghostty
     ../../modules/kubectl

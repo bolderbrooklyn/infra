@@ -27,9 +27,7 @@
     taps = builtins.attrNames config.nix-homebrew.taps;
 
     brews = [
-      "colima"
       "gemini-cli"
-      "lima-additional-guestagents"
       "mas"
       "opencode"
       "pkpw"
