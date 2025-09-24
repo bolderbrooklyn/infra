@@ -9,6 +9,7 @@ in
     ../../modules/1password
     ../../modules/alacritty
     ../../modules/brew
+    ../../modules/buku
     ../../modules/colima
     ../../modules/gemini-cli
     ../../modules/ghostty
