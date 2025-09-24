@@ -37,6 +37,11 @@
       "com.microsoft.VSCode" = {
         ApplePressAndHoldEnabled = false;
       };
+
+      NSGlobalDomain = {
+        AppleShowAllExtensions = true;
+        AppleShowAllFiles = true;
+      };
     };
   };
 }
