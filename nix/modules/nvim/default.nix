@@ -32,7 +32,6 @@
         nil
         nixfmt-rfc-style
         python3
-        ruby
         shfmt
         sqlite
         stylua
