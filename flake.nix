@@ -110,18 +110,5 @@
           ./nix/hosts/miraidon
         ];
       };
-
-      darwinConfigurations."Okidogi" = nix-darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        specialArgs = {
-          inherit inputs;
-          home-manager = home-manager-unstable;
-          catppuccin = catppuccin-unstable;
-        };
-
-        modules = [
-          ./nix/hosts/okidogi
-        ];
-      };
     };
 }
