@@ -48,6 +48,7 @@
         name = "tailscale-app";
         args.appdir = "/Applications";
       }
+      "telegram"
       "virtualbox"
       "vivaldi"
       "xquartz"
