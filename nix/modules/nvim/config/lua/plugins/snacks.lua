@@ -5,13 +5,13 @@ local pickerOptions = {
 return {
 	{
 		"folke/snacks.nvim",
-		opts = {
-			picker = {
+		opts = function(_, opts)
+			opts.picker = {
 				sources = {
 					explorer = pickerOptions,
 					files = pickerOptions,
 				},
-			},
-		},
+			}
+		end,
 	},
 }

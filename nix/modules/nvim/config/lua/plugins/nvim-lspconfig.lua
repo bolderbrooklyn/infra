@@ -1,11 +1,9 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
-		opts = {
-			servers = {
-				marksman = {
-					mason = false,
-				},
+		opts = function(_, opts)
+			opts.servers = {
+				marksman = { mason = false },
 				nil_ls = {
 					mason = false,
 					settings = {
@@ -18,7 +16,7 @@ return {
 						},
 					},
 				},
-			},
-		},
+			}
+		end,
 	},
 }
