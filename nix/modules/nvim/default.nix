@@ -32,8 +32,7 @@
         nil
         nixfmt-rfc-style
         python3
-        rubocop
-        ruby-lsp
+        ruby
         shfmt
         sqlite
         stylua
