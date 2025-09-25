@@ -44,7 +44,10 @@
       "pokemon-tcg-live"
       "prismlauncher"
       "steam"
-      "tailscale-app"
+      {
+        name = "tailscale-app";
+        args.appdir = "/Applications";
+      }
       "virtualbox"
       "vivaldi"
       "xquartz"
