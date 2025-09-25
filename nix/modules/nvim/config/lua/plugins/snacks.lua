@@ -1,16 +1,15 @@
+local pickerOptions = {
+	hidden = true,
+}
+
 return {
 	{
 		"folke/snacks.nvim",
 		opts = {
 			picker = {
 				sources = {
-					explorer = {
-						hidden = true,
-						ignored = true,
-					},
-					files = {
-						hidden = true,
-					},
+					explorer = pickerOptions,
+					files = pickerOptions,
 				},
 			},
 		},
