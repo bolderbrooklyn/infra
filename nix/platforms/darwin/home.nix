@@ -29,9 +29,19 @@
     };
 
     targets.darwin.defaults = {
+      "com.apple.finder" = {
+        _FXSortFoldersFirst = true;
+        _FXSortFoldersFirstOnDesktop = true;
+        ShowStatusBar = true;
+      };
+
       "com.apple.menuextra.clock" = {
         Show24Hour = true;
-        ShowAMPM = false;
+        ShowDate = 0;
+      };
+
+      "com.apple.safari" = {
+        IncludeDevelopMenu = true;
       };
 
       "com.microsoft.VSCode" = {
