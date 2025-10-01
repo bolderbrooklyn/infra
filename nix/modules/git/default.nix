@@ -56,6 +56,10 @@ in
     home-manager.users.${config.common.username} =
       { config, ... }:
       {
+        home.packages = with pkgs; [
+          lazyjj
+        ];
+
         programs.git = {
           enable = true;
           lfs.enable = true;
