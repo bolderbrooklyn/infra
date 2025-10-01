@@ -31,6 +31,7 @@
         marksman
         nil
         nixfmt-rfc-style
+        pkg-config
         python3
         shfmt
         sqlite
@@ -59,6 +60,13 @@
           pynvim
           pyperclip
         ];
+
+      extraWrapperArgs = [
+        "--suffix"
+        "PKG_CONFIG_PATH"
+        ":"
+        "${lib.makeSearchPathOutput "dev" "lib/pkgconfig" [ pkgs.imagemagick.dev ]}"
+      ];
     };
 
     xdg.configFile.nvim = {
