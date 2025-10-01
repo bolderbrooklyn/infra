@@ -1,4 +1,7 @@
 name: Update Nix Flake
+permissions:
+  contents: read
+  pull-requests: write
 
 on:
   schedule:
