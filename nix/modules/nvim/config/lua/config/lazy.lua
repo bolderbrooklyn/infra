@@ -46,7 +46,6 @@ require("lazy").setup({
 		{ import = "lazyvim.plugins.extras.lang.ruby" },
 		{ import = "lazyvim.plugins.extras.lang.rust" },
 		{ import = "lazyvim.plugins.extras.lang.sql" },
-		{ import = "lazyvim.plugins.extras.lang.tailwind" },
 		{ import = "lazyvim.plugins.extras.lang.toml" },
 		{ import = "lazyvim.plugins.extras.lang.typescript" },
 		{ import = "lazyvim.plugins.extras.lang.yaml" },
@@ -55,6 +54,8 @@ require("lazy").setup({
 		{ import = "lazyvim.plugins.extras.util.dot" },
 		{ import = "lazyvim.plugins.extras.util.mini-hipatterns" },
 		{ import = "lazyvim.plugins.extras.util.octo" },
+		{ import = "lazyvim.plugins.extras.util.rest" },
+		{ import = "lazyvim.plugins.extras.util.startuptime" },
 		{ import = "lazyvim.plugins.extras.vscode" },
 
 		-- import/override with your plugins
