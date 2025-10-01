@@ -1,6 +1,6 @@
 return {
 	{
-		"swaitsh/lazyjj.nvim",
+		"swaits/lazyjj.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = {},
 	},
