@@ -33,6 +33,8 @@
         nixfmt-rfc-style
         pkg-config
         python3
+        rubocop
+        ruby-lsp
         shfmt
         sqlite
         stylua
