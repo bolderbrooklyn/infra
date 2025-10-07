@@ -1,6 +1,7 @@
 name: Update Nix Flake
+
 permissions:
-  contents: read
+  contents: write
   pull-requests: write
 
 on:
@@ -12,22 +13,15 @@ jobs:
   update-flake:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v5
-
-      - name: Install Nix
-        uses: cachix/install-nix-action@v31
+      - uses: actions/checkout@v5
+      - uses: cachix/install-nix-action@v31
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Update flake
-        run: nix flake update
-
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v7
+      - run: nix flake update
+      - uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "chore: update nix flake inputs"
           title: "Update Nix flake inputs"
           body: "Automated update of Nix flake inputs"
-          branch: update-flake
+          branch: update-flake-${{ github.run_id }}
