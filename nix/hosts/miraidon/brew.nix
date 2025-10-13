@@ -16,7 +16,6 @@
     casks = [
       "alfred"
       "balenaetcher"
-      "brave-browser"
       "calibre"
       "chatgpt"
       "chrome-remote-desktop-host"
@@ -52,6 +51,7 @@
       "virtualbox"
       "vivaldi"
       "xquartz"
+      "yaak"
       "youtube-music"
       "zen"
     ];
