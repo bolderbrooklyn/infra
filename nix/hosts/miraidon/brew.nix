@@ -1,16 +1,18 @@
 { inputs, ... }:
 {
   nix-homebrew.taps = {
+    "oven-sh/bun" = inputs.homebrew-oven-sh-bun;
     "th-ch/homebrew-youtube-music" = inputs.homebrew-youtube-music;
   };
 
   homebrew = {
     brews = [
+      "bun"
+      "imageoptim-cli"
       {
         name = "syncthing";
         restart_service = "changed";
       }
-      "imageoptim-cli"
     ];
 
     casks = [
@@ -48,6 +50,7 @@
         args.appdir = "/Applications";
       }
       "telegram"
+      "transmission"
       "virtualbox"
       "vivaldi"
       "xquartz"

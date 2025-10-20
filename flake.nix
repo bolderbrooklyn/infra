@@ -63,6 +63,10 @@
       url = "github:Homebrew/homebrew-cask";
       flake = false;
     };
+    homebrew-oven-sh-bun = {
+      url = "github:oven-sh/homebrew-bun";
+      flake = false;
+    };
     homebrew-pkpw = {
       url = "github:jbhannah/pkpw";
       flake = false;

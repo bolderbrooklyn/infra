@@ -13,7 +13,7 @@
     enable = true;
     enableRosetta = true;
     user = config.common.username;
-    mutableTaps = false;
+    mutableTaps = true;
 
     taps = {
       "homebrew/homebrew-core" = inputs.homebrew-core;

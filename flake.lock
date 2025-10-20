@@ -182,6 +182,22 @@
         "type": "github"
       }
     },
+    "homebrew-oven-sh-bun": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1760128803,
+        "narHash": "sha256-ufQcxwFYKMfGTsbL9MC70Sm0f9T/tB/gcec06ODeXhM=",
+        "owner": "oven-sh",
+        "repo": "homebrew-bun",
+        "rev": "1ee0d3ca43ed417e6dfc81f15134fbf66d7c0972",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oven-sh",
+        "repo": "homebrew-bun",
+        "type": "github"
+      }
+    },
     "homebrew-pkpw": {
       "flake": false,
       "locked": {
@@ -295,6 +311,7 @@
         "home-manager-unstable": "home-manager-unstable",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
+        "homebrew-oven-sh-bun": "homebrew-oven-sh-bun",
         "homebrew-pkpw": "homebrew-pkpw",
         "homebrew-youtube-music": "homebrew-youtube-music",
         "nix-darwin": "nix-darwin",
