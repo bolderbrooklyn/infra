@@ -71,10 +71,6 @@
       url = "github:jbhannah/pkpw";
       flake = false;
     };
-    homebrew-youtube-music = {
-      url = "github:th-ch/homebrew-youtube-music";
-      flake = false;
-    };
   };
 
   outputs =

@@ -214,22 +214,6 @@
         "type": "github"
       }
     },
-    "homebrew-youtube-music": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1758483973,
-        "narHash": "sha256-7rcUremYRB9JsqaY6SyRfXk1GnrTfyJjYUi0fDiI5Sk=",
-        "owner": "th-ch",
-        "repo": "homebrew-youtube-music",
-        "rev": "b87d9c3dfa2ec58c182b6bfda182ccbdc58beb5c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "th-ch",
-        "repo": "homebrew-youtube-music",
-        "type": "github"
-      }
-    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -313,7 +297,6 @@
         "homebrew-core": "homebrew-core",
         "homebrew-oven-sh-bun": "homebrew-oven-sh-bun",
         "homebrew-pkpw": "homebrew-pkpw",
-        "homebrew-youtube-music": "homebrew-youtube-music",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs-25-05": "nixpkgs-25-05",

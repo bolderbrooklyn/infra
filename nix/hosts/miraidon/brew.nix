@@ -2,7 +2,6 @@
 {
   nix-homebrew.taps = {
     "oven-sh/bun" = inputs.homebrew-oven-sh-bun;
-    "th-ch/homebrew-youtube-music" = inputs.homebrew-youtube-music;
   };
 
   homebrew = {
@@ -55,7 +54,6 @@
       "vivaldi"
       "xquartz"
       "yaak"
-      "youtube-music"
       "zen"
     ];
 
