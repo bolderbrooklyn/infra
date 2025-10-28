@@ -52,17 +52,6 @@
           tiktoken_core
         ];
 
-      extraPython3Packages =
-        ps: with ps; [
-          cairosvg
-          jupyter_client
-          kaleido
-          plotly
-          pnglatex
-          pynvim
-          pyperclip
-        ];
-
       extraWrapperArgs = [
         "--suffix"
         "PKG_CONFIG_PATH"

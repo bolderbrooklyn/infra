@@ -56,10 +56,6 @@ in
     home-manager.users.${config.common.username} =
       { config, ... }:
       {
-        home.packages = with pkgs; [
-          lazyjj
-        ];
-
         programs.delta = {
           enable = true;
           enableGitIntegration = true;
@@ -105,24 +101,6 @@ in
           extensions = with pkgs; [
             gh-copilot
           ];
-        };
-
-        programs.jujutsu = {
-          enable = true;
-
-          settings = {
-            user = {
-              email = cfg.user.email;
-              name = cfg.user.name;
-            };
-
-            signing = {
-              behavior = "own";
-              backend = cfg.signingKey.type;
-              key = cfg.signingKey.key;
-              allowed-signers = "${config.xdg.configHome}/git/allowed_signers";
-            };
-          };
         };
 
         programs.lazygit = {
