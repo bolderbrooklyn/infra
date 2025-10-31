@@ -56,20 +56,12 @@ in
     home-manager.users.${config.common.username} =
       { config, ... }:
       {
-        programs.delta = {
-          enable = true;
-          enableGitIntegration = true;
-
-          options = {
-            line-numbers = true;
-            navigate = true;
-            side-by-side = true;
-          };
-        };
-
         programs.git = {
           enable = true;
           lfs.enable = true;
+
+          userEmail = cfg.user.email;
+          userName = cfg.user.name;
 
           signing = {
             key = cfg.signingKey.key;
@@ -78,12 +70,21 @@ in
             signer = "ssh-keygen";
           };
 
+          delta = {
+            enable = true;
+
+            options = {
+              line-numbers = true;
+              navigate = true;
+              side-by-side = true;
+            };
+          };
+
           ignores = [
             ".DS_Store"
           ];
 
-          settings = {
-            user = cfg.user;
+          extraConfig = {
             fetch.prune = true;
             gpg.ssh.allowedSignersFile = "${config.xdg.configHome}/git/allowed_signers";
             init.defaultBranch = "trunk";
