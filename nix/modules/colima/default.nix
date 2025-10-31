@@ -15,7 +15,7 @@
       ];
 
       launchd.agents.colima = {
-        enable = false;
+        enable = true;
         config = {
           Label = "org.nix-community.home.colima";
           ProgramArguments = [
