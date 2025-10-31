@@ -37,6 +37,7 @@
         ruby-lsp
         shfmt
         sqlite
+        statix
         stylua
         tree-sitter
         unzip
