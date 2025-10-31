@@ -36,6 +36,11 @@ in
             set -q argv[1]; or set argv fish
             echo (fish_prompt_pwd_dir_length=1 prompt_pwd): $argv;
           '';
+
+          take = ''
+            mkdir -p $argv[1]
+            cd $argv[1]
+          '';
         };
 
         interactiveShellInit = ''
