@@ -54,6 +54,7 @@
       "stats"
       "the-unarchiver"
       "visual-studio-code"
+      "vlc"
       "warp"
       "zed"
     ];
