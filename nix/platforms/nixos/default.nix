@@ -13,7 +13,10 @@ in
     ../../modules/tailscale
   ];
 
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    dns = "systemd-resolved";
+  };
 
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -51,6 +54,8 @@ in
       PermitRootLogin = "no";
     };
   };
+
+  services.resolved.enable = true;
 
   system.autoUpgrade = {
     enable = true;
