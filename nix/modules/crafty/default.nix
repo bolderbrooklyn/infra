@@ -11,7 +11,7 @@ let
     importDir = "${crafty.baseDir}/import";
 
     dynmapPort = 8123;
-    craftyPort = 8443;
+    craftyPort = 9443;
     bedrockPort = 19132;
     javaPorts = {
       from = 25500;
@@ -62,7 +62,7 @@ in
 
     ports = [
       "${builtins.toString crafty.dynmapPort}:${builtins.toString crafty.dynmapPort}/tcp" # dynmap
-      "${builtins.toString crafty.craftyPort}:${builtins.toString crafty.craftyPort}/tcp" # crafty
+      "${builtins.toString crafty.craftyPort}:8443/tcp" # crafty
       "${builtins.toString crafty.bedrockPort}:${builtins.toString crafty.bedrockPort}/udp" # bedrock
       "${builtins.toString crafty.javaPorts.from}-${builtins.toString crafty.javaPorts.to}:${builtins.toString crafty.javaPorts.from}-${builtins.toString crafty.javaPorts.to}" # java
       "${builtins.toString crafty.voicePorts.from}-${builtins.toString crafty.voicePorts.to}:${builtins.toString crafty.voicePorts.from}-${builtins.toString crafty.voicePorts.to}/udp" # voice
