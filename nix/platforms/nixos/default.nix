@@ -4,7 +4,7 @@
   ...
 }:
 let
-  username = config.common.username;
+  inherit (config.common) username;
 in
 {
   imports = [
