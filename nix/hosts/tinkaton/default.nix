@@ -10,32 +10,38 @@
   ];
 
   networking.hostName = "tinkaton";
+  networking.firewall.allowedTCPPorts = [ 443 ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  services.xserver.enable = true;
-
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
-
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+    kernelPackages = pkgs.linuxPackages_latest;
   };
 
-  services.printing.enable = true;
+  services = {
+    xserver.enable = true;
 
-  services.pulseaudio.enable = false;
+    displayManager.sddm.enable = true;
+    desktopManager.plasma6.enable = true;
+
+    xserver.xkb = {
+      layout = "us";
+      variant = "";
+    };
+
+    printing.enable = true;
+
+    pulseaudio.enable = false;
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+    };
+  };
+
   security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
 
   gui.font.size = 13;
 
