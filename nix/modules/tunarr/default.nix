@@ -16,22 +16,22 @@ in
   };
 
   users.users.tunarr = {
+    inherit (tunarr) uid;
     isSystemUser = true;
-    uid = tunarr.uid;
     group = tunarr.name;
   };
 
   systemd.tmpfiles.rules = [
-    "d ${tunarr.baseDir} 0755 1000 0 - -"
+    "d ${tunarr.baseDir} 0755 0 0 - -"
   ];
 
   virtualisation.oci-containers.containers.tunarr = {
-    image = "ghcr.io/tunarr/tunarr:latest";
+    image = "chrisbenincasa/tunarr:latest";
     autoStart = true;
     pull = "newer";
 
     ports = [
-      "${tunarr.webPort}:8000"
+      "${builtins.toString tunarr.webPort}:8000"
     ];
 
     devices = [
@@ -43,8 +43,13 @@ in
     ];
 
     environment = {
+      TUNARR_DATABASE_PATH = "/config/tunarr";
       TUNARR_SERVER_TRUST_PROXY = "TRUE";
       TZ = config.time.timeZone;
     };
   };
+
+  networking.firewall.allowedTCPPorts = [
+    tunarr.webPort
+  ];
 }
