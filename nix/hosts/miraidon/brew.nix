@@ -25,7 +25,6 @@
       "distroav"
       "firefox"
       "freetube"
-      "gcloud-cli"
       "google-drive"
       "imageoptim"
       "krita"
@@ -43,6 +42,7 @@
       "plexamp"
       "pokemon-tcg-live"
       "prismlauncher"
+      "slack"
       "steam"
       {
         name = "tailscale-app";
