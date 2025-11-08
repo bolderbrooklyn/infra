@@ -5,19 +5,21 @@ let
   };
 in
 {
-  services.plex = {
-    enable = true;
-    openFirewall = true;
-  };
+  services = {
+    plex = {
+      enable = true;
+      openFirewall = true;
+    };
 
-  services.ombi = {
-    enable = true;
-    openFirewall = true;
-  };
+    ombi = {
+      enable = true;
+      openFirewall = true;
+    };
 
-  services.tautulli = {
-    enable = true;
-    openFirewall = true;
+    tautulli = {
+      enable = true;
+      openFirewall = true;
+    };
   };
 
   users.groups.media = {
@@ -27,7 +29,7 @@ in
 
   users.users.media = {
     isSystemUser = true;
-    uid = media.uid;
+    inherit (media) uid;
     group = media.name;
   };
 
