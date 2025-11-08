@@ -6,6 +6,7 @@
     ../../modules/crafty
     ../../modules/ghostty
     ../../modules/plex
+    ../../modules/tunarr
     ../../modules/unifi
   ];
 
