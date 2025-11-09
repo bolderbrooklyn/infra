@@ -46,5 +46,21 @@
 
       settings.auth.method = "External";
     };
+
+    lidarr = {
+      enable = true;
+      group = "media";
+      openFirewall = true;
+
+      settings.auth.method = "External";
+    };
+
+    readarr = {
+      enable = true;
+      group = "media";
+      openFirewall = true;
+
+      settings.auth.method = "External";
+    };
   };
 }
