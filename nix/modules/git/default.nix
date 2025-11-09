@@ -56,20 +56,7 @@ in
     home-manager.users.${config.common.username} =
       { config, ... }:
       {
-        programs.git = {
-          enable = true;
-          lfs.enable = true;
-
-          userEmail = cfg.user.email;
-          userName = cfg.user.name;
-
-          signing = {
-            key = cfg.signingKey.key;
-            format = cfg.signingKey.type;
-            signByDefault = true;
-            signer = "ssh-keygen";
-          };
-
+        programs = {
           delta = {
             enable = true;
 
@@ -80,39 +67,53 @@ in
             };
           };
 
-          ignores = [
-            ".DS_Store"
-          ];
+          git = {
+            enable = true;
+            lfs.enable = true;
 
-          extraConfig = {
-            fetch.prune = true;
-            gpg.ssh.allowedSignersFile = "${config.xdg.configHome}/git/allowed_signers";
-            init.defaultBranch = "trunk";
-            log.showSignature = true;
-            merge.conflictStyle = "zdiff3";
-            pull.rebase = true;
-            push.autoSetupRemote = true;
-          };
-        };
+            signing = {
+              inherit (cfg.signingKey) key;
+              format = cfg.signingKey.type;
+              signByDefault = true;
+              signer = "ssh-keygen";
+            };
 
-        programs.gh = {
-          enable = true;
-          gitCredentialHelper.enable = true;
-
-          extensions = with pkgs; [
-            gh-copilot
-          ];
-        };
-
-        programs.lazygit = {
-          enable = true;
-
-          settings = {
-            git.mainBranches = [
-              "trunk"
-              "main"
-              "master"
+            ignores = [
+              ".DS_Store"
             ];
+
+            settings = {
+              user.email = cfg.user.email;
+              user.name = cfg.user.name;
+              fetch.prune = true;
+              gpg.ssh.allowedSignersFile = "${config.xdg.configHome}/git/allowed_signers";
+              init.defaultBranch = "trunk";
+              log.showSignature = true;
+              merge.conflictStyle = "zdiff3";
+              pull.rebase = true;
+              push.autoSetupRemote = true;
+            };
+          };
+
+          gh = {
+            enable = true;
+            gitCredentialHelper.enable = true;
+
+            extensions = with pkgs; [
+              gh-copilot
+            ];
+          };
+
+          lazygit = {
+            enable = true;
+
+            settings = {
+              git.mainBranches = [
+                "trunk"
+                "main"
+                "master"
+              ];
+            };
           };
         };
 
