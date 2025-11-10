@@ -11,10 +11,10 @@ in
       openFirewall = true;
     };
 
-    ombi = {
-      enable = true;
-      openFirewall = true;
-    };
+    # ombi = {
+    #   enable = true;
+    #   openFirewall = true;
+    # };
 
     tautulli = {
       enable = true;
