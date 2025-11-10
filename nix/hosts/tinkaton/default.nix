@@ -7,6 +7,7 @@
     ../../modules/k3s
     ../../modules/ghostty
     ../../modules/plex
+    ../../modules/postgresql
     ../../modules/servarr
     # ../../modules/tunarr
     ../../modules/unifi
