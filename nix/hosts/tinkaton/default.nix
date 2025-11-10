@@ -4,10 +4,11 @@
     ./hardware-configuration.nix
     ../../platforms/nixos
     ../../modules/crafty
+    ../../modules/k3s
     ../../modules/ghostty
     ../../modules/plex
     ../../modules/servarr
-    ../../modules/tunarr
+    # ../../modules/tunarr
     ../../modules/unifi
   ];
 
