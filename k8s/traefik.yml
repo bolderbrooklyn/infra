@@ -1,0 +1,19 @@
+apiVersion: helm.cattle.io/v1
+kind: HelmChartConfig
+metadata:
+  name: traefik
+  namespace: kube-system
+spec:
+  valuesContent: |-
+    image:
+      repository: docker.io/library/traefik
+      tag: 3.6.0
+    additionalArguments:
+      - "--certificatesresolvers.le.acme.email=jesse@jbhannah.net"
+      - "--certificatesresolvers.le.acme.storage=/data/acme.json"
+      - "--certificatesresolvers.le.acme.httpchallenge.entrypoint=web"
+    persistence:
+      enabled: true
+      name: data
+      size: 1Gi
+      storageClass: ""
