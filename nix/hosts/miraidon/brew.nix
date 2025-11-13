@@ -26,6 +26,7 @@
       "firefox"
       "freetube"
       "google-drive"
+      "iina"
       "imageoptim"
       "krita"
       "libndi"
