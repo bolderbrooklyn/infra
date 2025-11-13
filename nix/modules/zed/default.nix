@@ -24,6 +24,7 @@ in
           nixd
           nixfmt-rfc-style
           nodejs
+          statix
         ]
       );
 
@@ -110,7 +111,7 @@ in
         project_panel = {
           hide_root = true;
         };
-        relative_line_numbers = true;
+        relative_line_numbers = "enabled";
         seed_search_query_from_cursor = "selection";
         show_whitespaces = "boundary";
         tabs = {
@@ -118,6 +119,9 @@ in
           file_icons = true;
           git_status = true;
           show_diagnostics = "all";
+        };
+        terminal = {
+          line_height = "comfortable";
         };
         theme = {
           mode = "system";
