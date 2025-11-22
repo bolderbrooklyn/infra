@@ -28,9 +28,12 @@
       "google-drive"
       "iina"
       "imageoptim"
-      "kitty"
       "krita"
       "libndi"
+      {
+        name = "lm-studio";
+        args.appdir = "/Applications";
+      }
       "melonds"
       "mgba-app"
       "microsoft-edge"

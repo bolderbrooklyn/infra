@@ -46,13 +46,11 @@
       "ghostty"
       "google-chrome"
       "httpie-desktop"
-      {
-        name = "lm-studio";
-        args.appdir = "/Applications";
-      }
+      "kitty"
       "pearcleaner"
       "stats"
       "the-unarchiver"
+      "todoist"
       "visual-studio-code"
       "vlc"
       "warp"
