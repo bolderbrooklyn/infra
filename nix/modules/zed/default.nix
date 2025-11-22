@@ -68,6 +68,11 @@ in
           "**/.classpath"
           "**/.settings"
         ];
+        icon_theme = lib.mkForce {
+          mode = "system";
+          dark = "Catppuccin Mocha";
+          light = "Catppuccin Latte";
+        };
         indent_guides = {
           coloring = "indent_aware";
         };
@@ -91,6 +96,14 @@ in
                   name = "ruff";
                 };
               }
+            ];
+          };
+          Ruby = {
+            language_servers = [
+              "ruby-lsp"
+              "rubocop"
+              "!solargraph"
+              "..."
             ];
           };
         };
@@ -123,8 +136,10 @@ in
         terminal = {
           line_height = "comfortable";
         };
-        theme = {
+        theme = lib.mkForce {
           mode = "system";
+          dark = "Catppuccin Mocha";
+          light = "Catppuccin Latte";
         };
         use_smartcase_search = true;
         vim = {
