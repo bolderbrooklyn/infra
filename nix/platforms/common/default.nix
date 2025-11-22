@@ -24,7 +24,9 @@ in
     ../../modules/direnv
     ../../modules/eza
     ../../modules/fish
+    ../../modules/gemini-cli
     ../../modules/git
+    ../../modules/opencode
     ../../modules/nvim
     ../../modules/powershell
     ../../modules/starship
