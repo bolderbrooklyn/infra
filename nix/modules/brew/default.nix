@@ -50,7 +50,7 @@
       "pearcleaner"
       "stats"
       "the-unarchiver"
-      "todoist"
+      "todoist-app"
       "visual-studio-code"
       "vlc"
       "warp"
