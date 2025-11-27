@@ -6,7 +6,7 @@
   ...
 }:
 let
-  username = config.common.username;
+  inherit (config.common) username;
   home = "/${if pkgs.stdenv.isDarwin then "Users" else "home"}/${username}";
 in
 {
@@ -38,20 +38,24 @@ in
   config = {
     system.configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
 
-    nix.package = pkgs.lixPackageSets.stable.lix;
+    nix = {
+      package = pkgs.lixPackageSets.stable.lix;
 
-    nix.gc.automatic = true;
-    nix.optimise.automatic = true;
+      gc.automatic = true;
+      optimise.automatic = true;
 
-    nix.settings.auto-optimise-store = true;
-    nix.settings.experimental-features = [
-      "flakes"
-      "nix-command"
-    ];
+      settings = {
+        auto-optimise-store = true;
+        experimental-features = [
+          "flakes"
+          "nix-command"
+        ];
 
-    nix.settings.trusted-users = [
-      username
-    ];
+        trusted-users = [
+          username
+        ];
+      };
+    };
 
     nixpkgs.config.allowUnfree = true;
 
@@ -70,7 +74,7 @@ in
     programs.zsh.enable = true;
 
     users.users.${username} = {
-      home = home;
+      inherit home;
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINSrqkXtluHRGoNSDuwpPj2pZXlNZFxPFqsmwxjP1X0P"
       ];

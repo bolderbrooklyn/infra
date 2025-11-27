@@ -5,6 +5,8 @@
     nixpkgs-25-05.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
+    nixpkgs-mongodb-7_0_21.url = "github:NixOS/nixpkgs/50d5614029a8afcbdff6dc1663dd428eafb752f4";
+
     systems.url = "github:nix-systems/default";
 
     nix-darwin = {
@@ -77,6 +79,7 @@
     inputs@{
       nixpkgs-25-05,
       nixpkgs-unstable,
+      nixpkgs-mongodb-7_0_21,
       nix-darwin,
       home-manager-25-05,
       home-manager-unstable,
