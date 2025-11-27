@@ -55,8 +55,6 @@
     hashedPassword = "$y$j9T$dXFtKCrUb27GthmYMAj/g0$6eOWmc92SNPNLadtqwC.g60JGua0HHoct7dmc/xulO/";
   };
 
-  programs.firefox.enable = true;
-
   home-manager.users.${config.common.username} = {
     home.packages = with pkgs; [
       kdePackages.kate
