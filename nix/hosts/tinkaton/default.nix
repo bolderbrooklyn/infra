@@ -4,7 +4,8 @@
     ./hardware-configuration.nix
     ../../platforms/nixos
     ../../modules/crafty
-    ../../modules/k3s
+    # ../../modules/k3s
+    ../../modules/forgejo
     ../../modules/ghostty
     ../../modules/plex
     ../../modules/postgresql
