@@ -1,4 +1,9 @@
 { pkgs, ... }:
 {
-  packages = with pkgs; [ gnumake ];
+  packages = with pkgs; [
+    gnumake
+    nil
+    nixd
+    nixfmt-rfc-style
+  ];
 }
