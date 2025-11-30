@@ -8,6 +8,7 @@
     brews = [
       "bun"
       "imageoptim-cli"
+      "sdl2"
       {
         name = "syncthing";
         restart_service = "changed";
@@ -23,6 +24,7 @@
       "claude"
       "discord"
       "distroav"
+      "dolphin"
       "firefox"
       "freetube"
       "google-drive"
