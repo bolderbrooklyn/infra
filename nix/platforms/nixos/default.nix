@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   home-manager,
   ...
 }:
@@ -11,6 +12,10 @@ in
     home-manager.nixosModules.home-manager
     ../common
     ../../modules/tailscale
+  ];
+
+  environment.systemPackages = [
+    inputs.agenix.packages.${config.nixpkgs.hostPlatform.system}.default
   ];
 
   networking.networkmanager = {

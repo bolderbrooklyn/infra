@@ -34,17 +34,16 @@
       };
     };
 
-    # agenix = {
-    #   url = "github:ryantm/agenix";
-    #
-    #   # currently only used in nixos-25.05, so lock to those inputs
-    #   inputs = {
-    #     darwin.follows = "";
-    #     home-manager.follows = "home-manager-25-05";
-    #     nixpkgs.follows = "nixpkgs-25-05";
-    #     systems.follows = "systems";
-    #   };
-    # };
+    agenix = {
+      url = "github:ryantm/agenix";
+
+      inputs = {
+        darwin.follows = "";
+        home-manager.follows = "home-manager-unstable";
+        nixpkgs.follows = "nixpkgs-unstable";
+        systems.follows = "systems";
+      };
+    };
 
     catppuccin-25-05 = {
       url = "github:catppuccin/nix/release-25.05";
@@ -77,13 +76,10 @@
 
   outputs =
     inputs@{
-      nixpkgs-25-05,
       nixpkgs-unstable,
-      nixpkgs-mongodb-7_0_21,
       nix-darwin,
-      home-manager-25-05,
       home-manager-unstable,
-      catppuccin-25-05,
+      agenix,
       catppuccin-unstable,
       ...
     }:
@@ -98,6 +94,7 @@
 
         modules = [
           ./nix/hosts/tinkaton
+          agenix.nixosModules.default
         ];
       };
 
