@@ -9,10 +9,13 @@
     ../../modules/ghostty
     ../../modules/plex
     ../../modules/postgresql
+    ../../modules/romm
     ../../modules/servarr
     # ../../modules/tunarr
     ../../modules/unifi
   ];
+
+  age.secrets.romm.file = ./secrets/romm.age;
 
   networking.hostName = "tinkaton";
   networking.firewall.allowedTCPPorts = [ 443 ];
