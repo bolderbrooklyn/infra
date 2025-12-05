@@ -1,36 +1,53 @@
 { config, ... }:
 let
   romm = {
-    libraryDir = "/mnt/genesect/emulation";
+    name = "romm";
+    dbName = "${romm.name}-db";
+    uid = 30200;
+    storageDir = "/mnt/genesect/emulation";
+    libraryDir = "${romm.storageDir}/library";
+    assetsDir = "${romm.storageDir}/assets";
     stateDir = "/var/lib/romm";
+    resourcesDir = "${romm.storageDir}/resources";
+    configDir = "${romm.stateDir}/config";
+    redisDataDir = "${romm.stateDir}/redis-data";
+    dbDir = "${romm.stateDir}/db";
     port = 12000;
   };
 in
 {
   imports = [ ../podman ];
 
-  virtualisation.oci-containers.containers.romm = {
+  systemd.tmpfiles.rules = [
+    "d ${romm.stateDir} 0755 0 0 - -"
+    "d ${romm.configDir} 0755 0 0 - -"
+    "d ${romm.dbDir} 0755 0 0 - -"
+    "d ${romm.resourcesDir} 0755 0 0 - -"
+    "d ${romm.redisDataDir} 0755 0 0 - -"
+    "f ${romm.configDir}/config.yml 0644 0 0 - -"
+  ];
+
+  virtualisation.oci-containers.containers."${romm.name}" = {
     image = "rommapp/romm:latest";
     autoStart = true;
     pull = "newer";
 
-    dependsOn = [ "romm-db" ];
+    dependsOn = [ romm.dbName ];
 
     ports = [ "${builtins.toString romm.port}:8080/tcp" ];
 
     volumes = [
-      "${romm.libraryDir}/library:/romm/library"
-      "${romm.stateDir}/resources:/romm/resources"
-      "${romm.libraryDir}/assets:/romm/assets"
-      "${romm.stateDir}/config:/romm/config"
-      "${romm.stateDir}/redis-data:/redis-data"
+      "${romm.libraryDir}:/romm/library"
+      "${romm.resourcesDir}:/romm/resources"
+      "${romm.assetsDir}:/romm/assets"
+      "${romm.configDir}:/romm/config"
+      "${romm.redisDataDir}:/redis-data"
     ];
 
     environment = {
-      DB_HOST = "romm-db";
-      DB_NAME = "romm";
-      DB_USER = "romm-user";
-      DB_PASSWD = "romm";
+      DB_HOST = romm.dbName;
+      DB_NAME = romm.dbName;
+      DB_USER = romm.dbName;
       HLTB_API_ENABLED = "true";
       PLAYMATCH_API_ENABLED = "true";
       TZ = config.time.timeZone;
@@ -41,25 +58,27 @@ in
     ];
   };
 
-  virtualisation.oci-containers.containers.romm-db = {
+  virtualisation.oci-containers.containers."${romm.dbName}" = {
     image = "mariadb:latest";
     autoStart = true;
     pull = "newer";
 
     volumes = [
-      "${romm.stateDir}/db:/var/lib/mysql"
+      "${romm.dbDir}:/var/lib/mysql"
     ];
 
     environment = {
-      MARIADB_ROOT_PASSWORD = "romm";
-      MARIADB_DATABASE = "romm";
-      MARIADB_USER = "romm-user";
-      MARIADB_PASSWORD = "romm";
+      MARIADB_DATABASE = romm.dbName;
+      MARIADB_USER = romm.dbName;
       TZ = config.time.timeZone;
     };
+
+    environmentFiles = [
+      config.age.secrets.romm.path
+    ];
   };
 
-  fileSystems."${romm.libraryDir}" = {
+  fileSystems."${romm.storageDir}" = {
     device = "genesect.home.local:/nfs/Emulation";
     fsType = "nfs";
     options = [
