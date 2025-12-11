@@ -12,7 +12,7 @@ let
     configDir = "${romm.stateDir}/config";
     redisDataDir = "${romm.stateDir}/redis-data";
     dbDir = "${romm.stateDir}/db";
-    port = 12000;
+    port = 8090;
   };
 in
 {
@@ -48,7 +48,6 @@ in
       DB_HOST = romm.dbName;
       DB_NAME = romm.dbName;
       DB_USER = romm.dbName;
-      HLTB_API_ENABLED = "true";
       PLAYMATCH_API_ENABLED = "true";
       TZ = config.time.timeZone;
     };
