@@ -27,6 +27,8 @@ in
     "f ${romm.configDir}/config.yml 0644 0 0 - -"
   ];
 
+  systemd.services.podman-romm.requires = [ "mnt-genesect-emulation.mount" ];
+
   virtualisation.oci-containers.containers."${romm.name}" = {
     image = "rommapp/romm:latest";
     autoStart = true;

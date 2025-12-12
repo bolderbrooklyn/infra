@@ -1,5 +1,12 @@
 { pkgs, ... }:
 {
+  systemd.services.transmission.requires = [ "mnt-genesect-media.mount" ];
+  systemd.services.prowlarr.requires = [ "mnt-genesect-media.mount" ];
+  systemd.services.radarr.requires = [ "mnt-genesect-media.mount" ];
+  systemd.services.sonarr.requires = [ "mnt-genesect-media.mount" ];
+  systemd.services.lidarr.requires = [ "mnt-genesect-media.mount" ];
+  systemd.services.readarr.requires = [ "mnt-genesect-media.mount" ];
+
   services = {
     transmission = {
       enable = true;

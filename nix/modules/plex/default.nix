@@ -5,6 +5,8 @@ let
   };
 in
 {
+  systemd.services.plex.requires = [ "mnt-genesect-media.mount" ];
+
   services = {
     plex = {
       enable = true;
