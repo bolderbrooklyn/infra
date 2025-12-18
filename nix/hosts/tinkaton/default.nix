@@ -11,6 +11,7 @@
     ../../modules/postgresql
     ../../modules/romm
     ../../modules/servarr
+    ../../modules/syncthing
     # ../../modules/tunarr
     ../../modules/unifi
   ];
@@ -64,6 +65,37 @@
       kdePackages.kate
       wayclip
     ];
+  };
+
+  services.syncthing.settings.folders = {
+    "/mnt/genesect/emulation/library" = {
+      id = "emulation";
+      label = "Emulation";
+      versioning.type = "staggered";
+      ignorePerms = true;
+      devices = [
+        "archaludon"
+        "frosmoth"
+        "miraidon"
+      ];
+    };
+
+    "/mnt/genesect/sync" = {
+      id = "default";
+      label = "Default";
+      versioning.type = "staggered";
+      ignorePerms = true;
+      devices = [
+        "archaludon"
+        "frosmoth"
+        "miraidon"
+      ];
+    };
+  };
+
+  fileSystems."/mnt/genesect/sync" = {
+    device = "genesect.home.local:/nfs/Sync";
+    fsType = "nfs";
   };
 
   system.stateVersion = "25.05";
