@@ -12,7 +12,7 @@ let
     configDir = "${romm.stateDir}/config";
     redisDataDir = "${romm.stateDir}/redis-data";
     dbDir = "${romm.stateDir}/db";
-    port = 8090;
+    port = 8180;
   };
 in
 {
@@ -82,10 +82,6 @@ in
   fileSystems."${romm.storageDir}" = {
     device = "genesect.home.local:/nfs/Emulation";
     fsType = "nfs";
-    options = [
-      "noatime"
-      "nodiratime"
-    ];
   };
 
   networking.firewall.allowedTCPPorts = [
