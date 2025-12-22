@@ -4,7 +4,6 @@
     ./hardware-configuration.nix
     ../../platforms/nixos
     ../../modules/crafty
-    # ../../modules/k3s
     ../../modules/forgejo
     ../../modules/ghostty
     ../../modules/plex
@@ -12,9 +11,15 @@
     ../../modules/romm
     ../../modules/servarr
     ../../modules/syncthing
-    # ../../modules/tunarr
     ../../modules/unifi
   ];
+  
+  services.cron = {
+    enable = true;
+    systemCronJobs = [
+      "0 2 * * 1 root /run/current-system/sw/bin/systemctl reboot"
+    ];
+  };
 
   age.secrets.romm.file = ./secrets/romm.age;
 
