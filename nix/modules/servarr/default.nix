@@ -23,6 +23,8 @@ in
   systemd.services.lidarr.requires = servarrAfter;
   systemd.services.readarr.requires = servarrAfter;
 
+  systemd.services.transmission.serviceConfig.BindPaths = [ "/mnt/genesect/passport/Downloads" ];
+
   services = {
     transmission = {
       enable = true;
