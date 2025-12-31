@@ -13,7 +13,7 @@
     ../../modules/syncthing
     ../../modules/unifi
   ];
-  
+
   services.cron = {
     enable = true;
     systemCronJobs = [
@@ -100,6 +100,11 @@
 
   fileSystems."/mnt/genesect/sync" = {
     device = "genesect.home.local:/nfs/Sync";
+    fsType = "nfs";
+  };
+
+  fileSystems."/mnt/genesect/passport" = {
+    device = "genesect.home.local:/nfs/Passport";
     fsType = "nfs";
   };
 

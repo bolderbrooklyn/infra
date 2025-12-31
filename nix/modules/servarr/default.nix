@@ -1,11 +1,27 @@
 { pkgs, ... }:
+let
+  transmissionAfter = [
+    "mnt-genesect-media.mount"
+  ];
+
+  servarrAfter = transmissionAfter ++ [
+    "transmission.service"
+  ];
+in
 {
-  systemd.services.transmission.requires = [ "mnt-genesect-media.mount" ];
-  systemd.services.prowlarr.requires = [ "mnt-genesect-media.mount" ];
-  systemd.services.radarr.requires = [ "mnt-genesect-media.mount" ];
-  systemd.services.sonarr.requires = [ "mnt-genesect-media.mount" ];
-  systemd.services.lidarr.requires = [ "mnt-genesect-media.mount" ];
-  systemd.services.readarr.requires = [ "mnt-genesect-media.mount" ];
+  systemd.services.transmission.after = transmissionAfter;
+  systemd.services.prowlarr.after = servarrAfter;
+  systemd.services.radarr.after = servarrAfter;
+  systemd.services.sonarr.after = servarrAfter;
+  systemd.services.lidarr.after = servarrAfter;
+  systemd.services.readarr.after = servarrAfter;
+
+  systemd.services.transmission.requires = transmissionAfter;
+  systemd.services.prowlarr.requires = servarrAfter;
+  systemd.services.radarr.requires = servarrAfter;
+  systemd.services.sonarr.requires = servarrAfter;
+  systemd.services.lidarr.requires = servarrAfter;
+  systemd.services.readarr.requires = servarrAfter;
 
   services = {
     transmission = {
