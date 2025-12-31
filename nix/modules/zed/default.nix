@@ -78,6 +78,8 @@ in
         };
         inlay_hints = {
           enabled = true;
+          show_other_hints = false;
+          show_type_hints = false;
         };
         journal = {
           hour_format = "hour24";
@@ -120,7 +122,7 @@ in
           show = "always";
         };
         preview_tabs = {
-          enable_preview_from_code_navigation = true;
+          enable_keep_preview_on_code_navigation = true;
           enable_preview_from_file_finder = true;
         };
         project_panel = {
