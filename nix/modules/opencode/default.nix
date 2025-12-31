@@ -15,6 +15,7 @@ in
 
       settings = {
         theme = "catppuccin";
+        autoupdate = false;
       };
     };
   };
