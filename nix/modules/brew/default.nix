@@ -30,7 +30,6 @@
       "gemini-cli"
       "mas"
       "mole"
-      "opencode"
       "pkpw"
     ];
 
