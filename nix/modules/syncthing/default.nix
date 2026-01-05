@@ -13,7 +13,7 @@ in
   services.syncthing = {
     enable = true;
     openDefaultPorts = true;
-    guiAddress = "0.0.0.0:${builtins.toString syncthing.guiPort}";
+    guiAddress = "0.0.0.0:${toString syncthing.guiPort}";
 
     settings = {
       devices = builtins.mapAttrs (name: id: {

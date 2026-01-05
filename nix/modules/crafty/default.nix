@@ -61,11 +61,11 @@ in
     pull = "newer";
 
     ports = [
-      "${builtins.toString crafty.dynmapPort}:${builtins.toString crafty.dynmapPort}/tcp" # dynmap
-      "${builtins.toString crafty.craftyPort}:8443/tcp" # crafty
-      "${builtins.toString crafty.bedrockPort}:${builtins.toString crafty.bedrockPort}/udp" # bedrock
-      "${builtins.toString crafty.javaPorts.from}-${builtins.toString crafty.javaPorts.to}:${builtins.toString crafty.javaPorts.from}-${builtins.toString crafty.javaPorts.to}" # java
-      "${builtins.toString crafty.voicePorts.from}-${builtins.toString crafty.voicePorts.to}:${builtins.toString crafty.voicePorts.from}-${builtins.toString crafty.voicePorts.to}/udp" # voice
+      "${toString crafty.dynmapPort}:${toString crafty.dynmapPort}/tcp" # dynmap
+      "${toString crafty.craftyPort}:8443/tcp" # crafty
+      "${toString crafty.bedrockPort}:${toString crafty.bedrockPort}/udp" # bedrock
+      "${toString crafty.javaPorts.from}-${toString crafty.javaPorts.to}:${toString crafty.javaPorts.from}-${toString crafty.javaPorts.to}" # java
+      "${toString crafty.voicePorts.from}-${toString crafty.voicePorts.to}:${toString crafty.voicePorts.from}-${toString crafty.voicePorts.to}/udp" # voice
     ];
 
     volumes = [

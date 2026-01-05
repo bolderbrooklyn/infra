@@ -32,7 +32,7 @@ in
       "/dev/dri:/dev/dri"
     ];
 
-    ports = [ "${builtins.toString unmanic.port}:${builtins.toString unmanic.port}" ];
+    ports = [ "${toString unmanic.port}:${toString unmanic.port}" ];
 
     volumes = [
       "/var/lib/${unmanic.name}:/config"

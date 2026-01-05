@@ -37,7 +37,7 @@ in
 
     dependsOn = [ romm.dbName ];
 
-    ports = [ "${builtins.toString romm.port}:8080/tcp" ];
+    ports = [ "${toString romm.port}:8080/tcp" ];
 
     volumes = [
       "${romm.libraryDir}:/romm/library"
