@@ -14,14 +14,12 @@ in
   systemd.services.radarr.after = servarrAfter;
   systemd.services.sonarr.after = servarrAfter;
   systemd.services.lidarr.after = servarrAfter;
-  systemd.services.readarr.after = servarrAfter;
 
   systemd.services.transmission.requires = transmissionAfter;
   systemd.services.prowlarr.requires = servarrAfter;
   systemd.services.radarr.requires = servarrAfter;
   systemd.services.sonarr.requires = servarrAfter;
   systemd.services.lidarr.requires = servarrAfter;
-  systemd.services.readarr.requires = servarrAfter;
 
   systemd.services.transmission.serviceConfig.BindPaths = [ "/mnt/genesect/passport/Downloads" ];
 
@@ -73,14 +71,6 @@ in
     };
 
     lidarr = {
-      enable = true;
-      group = "media";
-      openFirewall = true;
-
-      settings.auth.method = "External";
-    };
-
-    readarr = {
       enable = true;
       group = "media";
       openFirewall = true;
