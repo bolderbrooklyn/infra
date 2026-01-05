@@ -6,6 +6,7 @@
     ../../modules/crafty
     ../../modules/forgejo
     ../../modules/ghostty
+    ../../modules/navidrome
     ../../modules/plex
     ../../modules/postgresql
     ../../modules/romm
