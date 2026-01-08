@@ -120,7 +120,6 @@ in
         # TODO: move these to an attrset
         xdg.configFile."git/allowed_signers".text = ''
           jesse@jbhannah.net ${cfg.signingKey.key}
-          bhannah@tvscientific.com ${cfg.signingKey.key}
         '';
       };
   };
