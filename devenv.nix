@@ -4,6 +4,6 @@
     gnumake
     nil
     nixd
-    nixfmt-rfc-style
+    nixfmt
   ];
 }

@@ -11,7 +11,7 @@
 ## Code Style
 
 - **Language**: Nix expressions for system configuration
-- **Formatting**: Use `nixfmt-rfc-style` for consistent formatting
+- **Formatting**: Use `nixfmt` for consistent formatting
 - **Imports**: Group by type - system modules first, then local modules
 - **Naming**: Use kebab-case for module names, camelCase for options
 - **Structure**: Follow existing module patterns in `nix/modules/`

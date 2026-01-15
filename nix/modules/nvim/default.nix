@@ -30,7 +30,7 @@
         markdownlint-cli2
         marksman
         nil
-        nixfmt-rfc-style
+        nixfmt
         pkg-config
         python3
         rubocop
