@@ -18,8 +18,13 @@ in
         package = lib.mkIf isDarwin null;
 
         settings = {
-          theme = "catppuccin";
           autoupdate = lib.mkIf (!isDarwin) false;
+          default_agent = "plan";
+          theme = "catppuccin";
+
+          keybinds = {
+            input_submit = "super+return,return";
+          };
         };
       };
     };
