@@ -3,6 +3,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../platforms/nixos
+    ../../modules/audiobookshelf
     ../../modules/crafty
     ../../modules/forgejo
     ../../modules/ghostty
