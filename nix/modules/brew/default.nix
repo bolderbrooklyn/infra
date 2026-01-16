@@ -27,7 +27,6 @@
     taps = builtins.attrNames config.nix-homebrew.taps;
 
     brews = [
-      "gemini-cli"
       "mas"
       "mole"
       "pkpw"

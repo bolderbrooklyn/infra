@@ -9,6 +9,8 @@
 
     systems.url = "github:nix-systems/default";
 
+    llm-agents.url = "github:numtide/llm-agents.nix";
+
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs-unstable";

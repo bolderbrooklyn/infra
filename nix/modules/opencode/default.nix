@@ -1,31 +1,24 @@
 {
   config,
-  lib,
+  inputs,
   pkgs,
   ...
 }:
-let
-  isDarwin = pkgs.stdenv.isDarwin;
-in
 {
-  home-manager.users.${config.common.username} =
-    { config, ... }:
-    {
-      home.sessionPath = lib.mkIf isDarwin [ "${config.home.homeDirectory}/.opencode/bin" ];
+  home-manager.users.${config.common.username} = {
+    programs.opencode = {
+      enable = true;
+      package = inputs.llm-agents.packages.${pkgs.system}.opencode;
 
-      programs.opencode = {
-        enable = true;
-        package = lib.mkIf isDarwin null;
+      settings = {
+        autoupdate = false;
+        default_agent = "plan";
+        theme = "catppuccin";
 
-        settings = {
-          autoupdate = lib.mkIf (!isDarwin) false;
-          default_agent = "plan";
-          theme = "catppuccin";
-
-          keybinds = {
-            input_submit = "super+return,return";
-          };
+        keybinds = {
+          input_submit = "super+return,return";
         };
       };
     };
+  };
 }
