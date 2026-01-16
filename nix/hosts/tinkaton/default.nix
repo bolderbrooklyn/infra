@@ -4,6 +4,7 @@
     ./hardware-configuration.nix
     ../../platforms/nixos
     ../../modules/audiobookshelf
+    ../../modules/calibre
     ../../modules/crafty
     ../../modules/forgejo
     ../../modules/ghostty
