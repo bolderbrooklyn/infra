@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 let
   forgejo = {
     domain = "forgejo.anteater-wall.ts.net";
@@ -21,6 +21,21 @@ in
         DOMAIN = forgejo.domain;
         HTTP_PORT = forgejo.port;
         ROOT_URL = "https://${forgejo.domain}/";
+      };
+    };
+  };
+
+  services.gitea-actions-runner = {
+    instances = {
+      tinkaton = {
+        enable = true;
+        name = "tinkaton";
+        labels = [
+          "debian-latest:docker://node:lts-bullseye"
+          "ubuntu-latest:docker://node:lts-bullseye"
+        ];
+        url = "http://localhost:3000";
+        tokenFile = config.age.secrets."gitea-actions-runner-forgejo".path;
       };
     };
   };

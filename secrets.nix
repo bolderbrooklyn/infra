@@ -7,4 +7,9 @@ in
     tinkaton
     brooklyn
   ];
+
+  "nix/hosts/tinkaton/secrets/gitea-actions-runner-forgejo.age".publicKeys = [
+    tinkaton
+    brooklyn
+  ];
 }

@@ -24,6 +24,7 @@
   };
 
   age.secrets.romm.file = ./secrets/romm.age;
+  age.secrets."gitea-actions-runner-forgejo".file = ./secrets/gitea-actions-runner-forgejo.age;
 
   networking.hostName = "tinkaton";
   networking.firewall.allowedTCPPorts = [ 443 ];
