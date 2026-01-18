@@ -33,6 +33,7 @@ in
     ../../modules/starship
     ../../modules/superfile
     ../../modules/tmux
+    ../../modules/yazi
     ../../modules/zsh
   ];
 
