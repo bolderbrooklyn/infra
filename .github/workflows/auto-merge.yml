@@ -1,0 +1,35 @@
+name: Auto Merge
+
+permissions:
+  contents: write
+  pull-requests: write
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'PR number to merge'
+        required: true
+        type: number
+
+jobs:
+  auto-merge:
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      (
+        github.event.pull_request.draft == false &&
+        (
+          github.actor == 'dependabot[bot]' ||
+          startsWith(github.head_ref, 'update-flake-') ||
+          startsWith(github.head_ref, 'update-devenv-')
+        )
+      )
+    steps:
+      - name: Enable auto-merge for PR
+        run: gh pr merge --auto --squash "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url || format('https://github.com/{0}/pull/{1}', github.repository, github.event.inputs.pr_number) }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
