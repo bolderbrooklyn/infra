@@ -1,22 +1,31 @@
 {
   config,
-  lib,
+  inputs,
   pkgs,
   ...
 }:
-let
-  useBrew = pkgs.stdenv.isDarwin;
-in
 {
   home-manager.users.${config.common.username} = {
     programs.gemini-cli = {
       enable = true;
-      package = lib.mkIf useBrew null;
+      package = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.gemini-cli;
 
       settings = {
-        preferredEditor = "nvim";
-        selectedAuthType = "oauth-personal";
-        vimMode = true;
+        general = {
+          enableAutoUpdate = false;
+          enablePromptCompletion = true;
+          preferredEditor = "nvim";
+          previewFeatures = true;
+          vimMode = true;
+        };
+        ide = {
+          enabled = true;
+          hasSeenNudge = false;
+        };
+        security.auth.selectedType = "oauth-personal";
+        experimental = {
+          skills = true;
+        };
       };
     };
   };

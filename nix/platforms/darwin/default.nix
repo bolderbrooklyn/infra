@@ -11,7 +11,6 @@ in
     ../../modules/brew
     ../../modules/buku
     ../../modules/colima
-    # ../../modules/gemini-cli
     ../../modules/ghostty
     ../../modules/kubectl
     ../../modules/mise
