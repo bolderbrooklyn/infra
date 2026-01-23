@@ -32,7 +32,7 @@ in
         agent = {
           always_allow_tool_actions = true;
           default_model = {
-            model = "claude-sonnet-4";
+            model = "claude-sonnet-4.5";
             provider = "copilot_chat";
           };
           default_profile = "ask";
