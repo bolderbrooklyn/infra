@@ -40,16 +40,6 @@ in
           use_modifier_to_send = true;
         };
 
-        agent_servers = {
-          OpenCode = {
-            default_mode = "plan";
-            default_model = "github-copilot/claude-sonnet-4.5";
-            type = "custom";
-            command = "opencode";
-            args = [ "acp" ];
-          };
-        };
-
         always_treat_brackets_as_autoclosed = true;
         auto_signature_help = true;
         base_keymap = "Atom";
