@@ -22,7 +22,7 @@
         plugin = [
           "opencode-gemini-auth@latest"
           "opencode-wakatime@latest"
-          "oh-my-opencode@v3.0.0-beta.16"
+          "oh-my-opencode@latest"
         ];
       };
     };
