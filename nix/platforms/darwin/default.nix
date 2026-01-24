@@ -13,7 +13,6 @@ in
     ../../modules/colima
     ../../modules/ghostty
     ../../modules/kubectl
-    ../../modules/mise
     ../../modules/nushell
     ../../modules/xonsh
     ../../modules/zed

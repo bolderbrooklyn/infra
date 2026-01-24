@@ -27,8 +27,9 @@ in
     ../../modules/fish
     ../../modules/gemini-cli
     ../../modules/git
-    ../../modules/opencode
+    ../../modules/mise
     ../../modules/nvim
+    ../../modules/opencode
     ../../modules/powershell
     ../../modules/starship
     ../../modules/superfile

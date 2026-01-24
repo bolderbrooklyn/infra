@@ -17,13 +17,6 @@
     ../../modules/unifi
   ];
 
-  services.cron = {
-    enable = true;
-    systemCronJobs = [
-      "0 2 * * 1 root /run/current-system/sw/bin/systemctl reboot"
-    ];
-  };
-
   age.secrets.romm.file = ./secrets/romm.age;
   age.secrets."gitea-actions-runner-forgejo".file = ./secrets/gitea-actions-runner-forgejo.age;
 
@@ -39,6 +32,13 @@
 
   services = {
     xserver.enable = true;
+
+    cron = {
+      enable = true;
+      systemCronJobs = [
+        "0 2 * * 1 root /run/current-system/sw/bin/systemctl reboot"
+      ];
+    };
 
     displayManager.sddm.enable = true;
     desktopManager.plasma6.enable = true;
