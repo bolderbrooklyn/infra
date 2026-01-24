@@ -12,9 +12,6 @@ in
     ../../modules/buku
     ../../modules/colima
     ../../modules/ghostty
-    ../../modules/kubectl
-    ../../modules/nushell
-    ../../modules/xonsh
     ../../modules/zed
   ];
 
