@@ -12,8 +12,8 @@
 
       settings = {
         autoupdate = false;
-        default_agent = "plan";
         theme = "catppuccin";
+        model = "google/gemini-3-pro-preview";
 
         keybinds = {
           input_submit = "super+return,return";
@@ -21,6 +21,8 @@
 
         plugin = [
           "opencode-gemini-auth@latest"
+          "opencode-wakatime@latest"
+          "oh-my-opencode@v3.0.0-beta.16"
         ];
       };
     };
