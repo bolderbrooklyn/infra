@@ -9,19 +9,29 @@ let
   ];
 in
 {
-  systemd.services.transmission.after = transmissionAfter;
-  systemd.services.prowlarr.after = servarrAfter;
-  systemd.services.radarr.after = servarrAfter;
-  systemd.services.sonarr.after = servarrAfter;
-  systemd.services.lidarr.after = servarrAfter;
-
-  systemd.services.transmission.requires = transmissionAfter;
-  systemd.services.prowlarr.requires = servarrAfter;
-  systemd.services.radarr.requires = servarrAfter;
-  systemd.services.sonarr.requires = servarrAfter;
-  systemd.services.lidarr.requires = servarrAfter;
-
-  systemd.services.transmission.serviceConfig.BindPaths = [ "/mnt/genesect/passport/Downloads" ];
+  systemd.services = {
+    transmission = {
+      after = transmissionAfter;
+      requires = transmissionAfter;
+      serviceConfig.BindPaths = [ "/mnt/genesect/passport/Downloads" ];
+    };
+    prowlarr = {
+      after = servarrAfter;
+      requires = servarrAfter;
+    };
+    radarr = {
+      after = servarrAfter;
+      requires = servarrAfter;
+    };
+    sonarr = {
+      after = servarrAfter;
+      requires = servarrAfter;
+    };
+    lidarr = {
+      after = servarrAfter;
+      requires = servarrAfter;
+    };
+  };
 
   services = {
     transmission = {
@@ -76,6 +86,12 @@ in
       openFirewall = true;
 
       settings.auth.method = "External";
+    };
+
+    ombi = {
+      enable = true;
+      group = "media";
+      openFirewall = true;
     };
   };
 }
