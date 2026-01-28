@@ -74,6 +74,15 @@
       url = "github:jbhannah/pkpw";
       flake = false;
     };
+
+    nix-moltbot = {
+      url = "github:moltbot/nix-moltbot";
+
+      inputs = {
+        nixpkgs.follows = "nixpkgs-unstable";
+        home-manager.follows = "home-manager-unstable";
+      };
+    };
   };
 
   outputs =
