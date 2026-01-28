@@ -39,6 +39,7 @@
         sqlite
         statix
         stylua
+        plantuml
         tree-sitter
         unzip
         wget
