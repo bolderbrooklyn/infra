@@ -26,8 +26,10 @@ in
         documents = ./documents;
         instances.default.enable = true;
 
-        firstParty.peekaboo.enable = false;
-        firstParty.summarize.enable = false;
+        firstParty = {
+          peekaboo.enable = false;
+          summarize.enable = false;
+        };
       };
     };
 }

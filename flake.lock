@@ -325,16 +325,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1769481403,
-        "narHash": "sha256-QvKRtICKNB/UZcEk1rX4DiD+RDo0MDLUb7XxTojKyYA=",
-        "owner": "moltbot",
-        "repo": "nix-moltbot",
-        "rev": "474ee3894509e0ad282ca7dc6959c234c412d5cb",
+        "lastModified": 1769277075,
+        "narHash": "sha256-ANk5u+FVP1dacn6ZGBPDtkkveQ59L+C7vQW+YQpkcqU=",
+        "owner": "das-monki",
+        "repo": "nix-clawdbot",
+        "rev": "9af2b85c7071379b77584582446c047a4bf7fd32",
         "type": "github"
       },
       "original": {
-        "owner": "moltbot",
-        "repo": "nix-moltbot",
+        "owner": "das-monki",
+        "ref": "nixos-aarch64-support",
+        "repo": "nix-clawdbot",
         "type": "github"
       }
     },

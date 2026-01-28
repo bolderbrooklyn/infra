@@ -76,7 +76,7 @@
     };
 
     nix-moltbot = {
-      url = "github:moltbot/nix-moltbot";
+      url = "github:das-monki/nix-clawdbot/nixos-aarch64-support";
 
       inputs = {
         nixpkgs.follows = "nixpkgs-unstable";
