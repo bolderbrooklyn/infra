@@ -10,6 +10,8 @@
       enable = true;
       package = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.opencode;
 
+      rules = ./config/AGENTS.md;
+
       settings = {
         autoupdate = false;
         theme = "catppuccin";
