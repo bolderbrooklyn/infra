@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ config, lib, ... }:
 let
   cfg = config.programs.git;
 
@@ -48,7 +43,6 @@ in
   };
 
   imports = [
-    ./aliases/gh.nix
     ./aliases/git.nix
   ];
 
@@ -98,10 +92,6 @@ in
           gh = {
             enable = true;
             gitCredentialHelper.enable = true;
-
-            extensions = with pkgs; [
-              gh-copilot
-            ];
           };
 
           lazygit = {
