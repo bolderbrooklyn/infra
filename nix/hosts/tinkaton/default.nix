@@ -22,7 +22,10 @@
   age.secrets."gitea-actions-runner-forgejo".file = ./secrets/gitea-actions-runner-forgejo.age;
 
   networking.hostName = "tinkaton";
-  networking.firewall.allowedTCPPorts = [ 443 ];
+  networking.firewall.allowedTCPPorts = [
+    443
+    4096
+  ];
 
   boot = {
     loader.systemd-boot.enable = true;

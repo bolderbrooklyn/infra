@@ -1,14 +1,18 @@
 {
   config,
   inputs,
+  lib,
   pkgs,
   ...
 }:
+let
+  opencodePackage = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.opencode;
+in
 {
   home-manager.users.${config.common.username} = {
     programs.opencode = {
       enable = true;
-      package = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.opencode;
+      package = opencodePackage;
 
       rules = ./config/AGENTS.md;
 
@@ -32,6 +36,23 @@
 
     xdg.configFile."opencode/oh-my-opencode.json" = {
       source = ./config/oh-my-opencode.json;
+    };
+  }
+  // lib.optionalAttrs pkgs.stdenv.isLinux {
+    systemd.user.services.opencode-web = {
+      Unit = {
+        Description = "OpenCode web service";
+        After = [ "network.target" ];
+      };
+
+      Service = {
+        ExecStart = "${opencodePackage}/bin/opencode serve --hostname 0.0.0.0 --port 4096";
+        Restart = "on-failure";
+      };
+
+      Install = {
+        WantedBy = [ "default.target" ];
+      };
     };
   };
 }
