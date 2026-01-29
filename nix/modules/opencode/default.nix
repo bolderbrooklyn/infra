@@ -22,6 +22,7 @@
         };
 
         plugin = [
+          "@tmegit/opencode-worktree-session@latest"
           "opencode-gemini-auth@latest"
           "opencode-wakatime@latest"
           "oh-my-opencode@latest"
