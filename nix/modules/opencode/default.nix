@@ -29,5 +29,9 @@
         ];
       };
     };
+
+    xdg.configFile."opencode/oh-my-opencode.json" = {
+      source = ./config/oh-my-opencode.json;
+    };
   };
 }
