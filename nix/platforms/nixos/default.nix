@@ -23,6 +23,8 @@ in
     dns = "systemd-resolved";
   };
 
+  networking.nftables.enable = true;
+
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
