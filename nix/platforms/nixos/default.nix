@@ -66,7 +66,7 @@ in
 
   system.autoUpgrade = {
     enable = true;
-    flake = "github:jbhannah/infra#${config.networking.hostName}";
+    flake = "git+https://codeberg.org/bolderbrooklyn/infra#${config.networking.hostName}";
     persistent = true;
     allowReboot = true;
     rebootWindow = {

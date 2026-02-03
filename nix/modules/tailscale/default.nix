@@ -1,8 +1,9 @@
 {
   services.tailscale = {
     enable = true;
-    useRoutingFeatures = "both";
     openFirewall = true;
+    useRoutingFeatures = "both";
+
     extraSetFlags = [
       "--exit-node-allow-lan-access=true"
     ];
