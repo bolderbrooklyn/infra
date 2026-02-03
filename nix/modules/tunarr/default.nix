@@ -31,7 +31,7 @@ in
     pull = "newer";
 
     ports = [
-      "${builtins.toString tunarr.webPort}:8000"
+      "${toString tunarr.webPort}:8000"
     ];
 
     devices = [

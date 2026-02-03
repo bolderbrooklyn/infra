@@ -15,6 +15,7 @@
     ../../modules/romm
     ../../modules/servarr
     ../../modules/syncthing
+    ../../modules/tunarr
     ../../modules/unifi
   ];
 
