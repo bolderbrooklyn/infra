@@ -18,51 +18,59 @@ in
     inputs.agenix.packages.${config.nixpkgs.hostPlatform.system}.default
   ];
 
-  networking.networkmanager = {
-    enable = true;
-    dns = "systemd-resolved";
+  networking = {
+    networkmanager = {
+      enable = true;
+      dns = "systemd-resolved";
+    };
+
+    nftables.enable = true;
   };
 
-  networking.nftables.enable = true;
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
 
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
+    extraLocaleSettings = {
+      LC_ADDRESS = "en_US.UTF-8";
+      LC_IDENTIFICATION = "en_US.UTF-8";
+      LC_MEASUREMENT = "en_US.UTF-8";
+      LC_MONETARY = "en_US.UTF-8";
+      LC_NAME = "en_US.UTF-8";
+      LC_NUMERIC = "en_US.UTF-8";
+      LC_PAPER = "en_US.UTF-8";
+      LC_TELEPHONE = "en_US.UTF-8";
+      LC_TIME = "en_US.UTF-8";
+    };
   };
 
-  users.mutableUsers = false;
+  users = {
+    mutableUsers = false;
 
-  users.users.${username} = {
-    uid = 1000;
-    isNormalUser = true;
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ];
+    users.${username} = {
+      uid = 1000;
+      isNormalUser = true;
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+      ];
+    };
   };
 
   programs.nix-ld.enable = true;
 
-  services.openssh = {
-    enable = true;
-    openFirewall = true;
+  services = {
+    openssh = {
+      enable = true;
+      openFirewall = true;
 
-    settings = {
-      PasswordAuthentication = false;
-      PermitRootLogin = "no";
+      settings = {
+        PasswordAuthentication = false;
+        PermitRootLogin = "no";
+      };
     };
-  };
 
-  services.resolved.enable = true;
+    resolved.enable = true;
+  };
 
   system.autoUpgrade = {
     enable = true;

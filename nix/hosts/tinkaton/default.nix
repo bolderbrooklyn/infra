@@ -19,18 +19,24 @@
     ../../modules/unifi
   ];
 
-  age.secrets.romm.file = ./secrets/romm.age;
-  age.secrets."gitea-actions-runner-forgejo".file = ./secrets/gitea-actions-runner-forgejo.age;
+  age.secrets = {
+    romm.file = ./secrets/romm.age;
+    "gitea-actions-runner-forgejo".file = ./secrets/gitea-actions-runner-forgejo.age;
+  };
 
-  networking.hostName = "tinkaton";
-  networking.firewall.allowedTCPPorts = [
-    443
-    4096
-  ];
+  networking = {
+    hostName = "tinkaton";
+    firewall.allowedTCPPorts = [
+      443
+      4096
+    ];
+  };
 
   boot = {
-    loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
 
     kernelPackages = pkgs.linuxPackages_latest;
   };
@@ -54,8 +60,8 @@
     };
 
     printing.enable = true;
-
     pulseaudio.enable = false;
+
     pipewire = {
       enable = true;
       alsa.enable = true;

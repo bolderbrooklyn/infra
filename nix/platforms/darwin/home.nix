@@ -10,15 +10,17 @@
   ];
 
   home-manager.users.${config.common.username} = {
-    home.packages = with pkgs; [
-      nil
-      nixd
-      nixfmt
-    ];
+    home = {
+      packages = with pkgs; [
+        nil
+        nixd
+        nixfmt
+      ];
 
-    home.shellAliases = {
-      pbc = "pbcopy";
-      pbp = "pbpaste";
+      shellAliases = {
+        pbc = "pbcopy";
+        pbp = "pbpaste";
+      };
     };
 
     services.macos-remap-keys = {

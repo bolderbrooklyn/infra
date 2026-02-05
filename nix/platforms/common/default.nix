@@ -69,12 +69,14 @@ in
       wget
     ];
 
-    programs.fish = {
-      enable = true;
-      defaultShell = true;
-    };
+    programs = {
+      fish = {
+        enable = true;
+        defaultShell = true;
+      };
 
-    programs.zsh.enable = true;
+      zsh.enable = true;
+    };
 
     users.users.${username} = {
       inherit home;

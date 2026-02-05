@@ -1,6 +1,6 @@
 { config, ... }:
 let
-  username = config.common.username;
+  inherit (config.common) username;
 in
 {
   imports = [
@@ -15,9 +15,11 @@ in
     ../../modules/zed
   ];
 
-  system.stateVersion = 6;
+  system = {
+    stateVersion = 6;
 
-  system.primaryUser = username;
+    primaryUser = username;
+  };
 
   security.pam.services.sudo_local = {
     enable = true;
