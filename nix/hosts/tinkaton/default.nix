@@ -8,7 +8,6 @@
     ../../modules/crafty
     ../../modules/forgejo
     ../../modules/ghostty
-    ../../modules/moltbot
     ../../modules/navidrome
     ../../modules/plex
     ../../modules/postgresql
