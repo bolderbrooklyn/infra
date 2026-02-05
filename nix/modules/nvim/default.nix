@@ -33,8 +33,6 @@
         nixfmt
         pkg-config
         python3
-        rubocop
-        ruby-lsp
         shfmt
         sqlite
         statix

@@ -16,10 +16,6 @@ return {
 						},
 					},
 				},
-				rubocop = {
-					mason = false,
-					cmd = { "bundle", "exec", "rubocop", "--lsp" },
-				},
 			})
 		end,
 	},
