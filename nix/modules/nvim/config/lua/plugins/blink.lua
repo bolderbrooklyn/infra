@@ -16,7 +16,6 @@ return {
 			["<Tab>"] = { "select_next", "fallback" },
 			["<S-Tab>"] = { "select_prev", "fallback" },
 			["<C-Space"] = { "show_documentation", "hide_documentation", "fallback" },
-			["<Esc>"] = { "cancel", "fallback" },
 		},
 	},
 }
