@@ -13,8 +13,10 @@ return {
 			},
 		},
 		keymap = {
-			["<Tab>"] = { "select_next" },
-			["<S-Tab>"] = { "select_prev" },
+			["<Tab>"] = { "select_next", "fallback" },
+			["<S-Tab>"] = { "select_prev", "fallback" },
+			["<C-Space"] = { "show_documentation", "hide_documentation", "fallback" },
+			["<Backspace>"] = { "cancel", "fallback" },
 		},
 	},
 }
