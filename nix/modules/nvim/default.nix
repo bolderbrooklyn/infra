@@ -33,6 +33,7 @@
         nixfmt
         pkg-config
         python3
+        rust-analyzer
         shfmt
         sqlite
         statix
