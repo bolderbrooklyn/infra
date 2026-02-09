@@ -16,6 +16,23 @@ return {
 						},
 					},
 				},
+				nixd = {
+					enabled = true,
+				},
+				tsgo = {
+					enabled = true,
+					filetypes = {
+						"javascript",
+						"javascript.jsx",
+						"javascriptreact",
+						"typescript",
+						"typescript.tsx",
+						"typescriptreact",
+					},
+				},
+				vtsls = {
+					enabled = false,
+				},
 			})
 		end,
 	},

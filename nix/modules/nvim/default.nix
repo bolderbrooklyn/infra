@@ -30,6 +30,7 @@
         markdownlint-cli2
         marksman
         nil
+        nixd
         nixfmt
         pkg-config
         python3

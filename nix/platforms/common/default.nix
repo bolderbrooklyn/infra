@@ -65,6 +65,7 @@ in
     time.timeZone = "America/Los_Angeles";
 
     environment.systemPackages = with pkgs; [
+      ruby
       vim
       wget
     ];
