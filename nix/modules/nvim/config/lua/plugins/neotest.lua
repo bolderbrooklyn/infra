@@ -1,15 +1,13 @@
 return {
-	{
-		"nvim-neotest/neotest",
-		lazy = true,
-		dependencies = {
-			"zidhuss/neotest-minitest",
-		},
-		opts = {
-			adapters = {
-				"neotest-minitest",
-				["neotest-rspec"] = false,
-			},
+	"nvim-neotest/neotest",
+	lazy = true,
+	dependencies = {
+		"zidhuss/neotest-minitest",
+	},
+	opts = {
+		adapters = {
+			"neotest-minitest",
+			["neotest-rspec"] = false,
 		},
 	},
 }
