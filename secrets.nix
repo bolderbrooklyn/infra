@@ -12,4 +12,9 @@ in
     tinkaton
     brooklyn
   ];
+
+  "nix/hosts/tinkaton/secrets/gitea-actions-runner-codeberg.age".publicKeys = [
+    tinkaton
+    brooklyn
+  ];
 }

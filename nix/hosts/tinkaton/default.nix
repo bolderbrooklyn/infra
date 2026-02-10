@@ -21,6 +21,7 @@
   age.secrets = {
     romm.file = ./secrets/romm.age;
     "gitea-actions-runner-forgejo".file = ./secrets/gitea-actions-runner-forgejo.age;
+    "gitea-actions-runner-codeberg".file = ./secrets/gitea-actions-runner-codeberg.age;
   };
 
   networking = {

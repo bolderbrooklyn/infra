@@ -48,6 +48,17 @@ in
       tokenFile = config.age.secrets."gitea-actions-runner-forgejo".path;
     };
 
+    instances.tinkaton-codeberg = {
+      enable = true;
+      name = "tinkaton-codeberg";
+      labels = [
+        "debian-latest:docker://node:lts-bullseye"
+        "ubuntu-latest:docker://node:lts-bullseye"
+      ];
+      url = "https://codeberg.org";
+      tokenFile = config.age.secrets."gitea-actions-runner-codeberg".path;
+    };
+
   };
 
   networking.firewall.allowedTCPPorts = [ forgejo.port ];
