@@ -1,5 +1,17 @@
 local pickerOptions = {
 	hidden = true,
+	ignored = true,
+	exclude = {
+		"**/.bundle",
+		"**/.direnv*",
+		"**/.devenv*",
+		"**/.git",
+		"**/.ruby-lsp",
+		"**/.yarn",
+		"**/__pycache__",
+		"**/*.pyc",
+		"**/node_modules",
+	},
 }
 
 return {
