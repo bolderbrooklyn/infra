@@ -41,8 +41,7 @@ in
       enable = true;
       name = "tinkaton";
       labels = [
-        "debian-latest:docker://node:lts-bullseye"
-        "ubuntu-latest:docker://node:lts-bullseye"
+        "ubuntu-latest:docker://ghcr.io/catthehacker/ubuntu:runner-latest"
       ];
       url = "http://localhost:3000";
       tokenFile = config.age.secrets."gitea-actions-runner-forgejo".path;
@@ -52,16 +51,21 @@ in
       enable = true;
       name = "tinkaton-codeberg";
       labels = [
-        "debian-latest:docker://node:lts-bullseye"
-        "ubuntu-latest:docker://node:lts-bullseye"
+        "ubuntu-latest:docker://ghcr.io/catthehacker/ubuntu:runner-latest"
       ];
+
+      settings.runner.capacity = 3;
+
       url = "https://codeberg.org";
       tokenFile = config.age.secrets."gitea-actions-runner-codeberg".path;
     };
 
   };
 
-  networking.firewall.allowedTCPPorts = [ forgejo.port ];
+  networking.firewall = {
+    allowedTCPPorts = [ forgejo.port ];
+    trustedInterfaces = [ "podman+" ]; # allow cache actions
+  };
 
   fileSystems."${forgejo.storageDir}" = {
     device = "genesect.home.local:/nfs/Forgejo";

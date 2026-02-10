@@ -1,11 +1,18 @@
 {
-  virtualisation.containers.enable = true;
+  virtualisation = {
+    containers.enable = true;
 
-  virtualisation.podman = {
-    enable = true;
-    dockerCompat = true;
-    defaultNetwork.settings.dns_enabled = true;
+    podman = {
+      enable = true;
+      dockerCompat = true;
+      defaultNetwork.settings.dns_enabled = true;
+    };
+
+    oci-containers.backend = "podman";
   };
 
-  virtualisation.oci-containers.backend = "podman";
+  networking.firewall.interfaces."podman*" = {
+    allowedUDPPorts = [ 53 ];
+    allowedTCPPorts = [ 53 ];
+  };
 }
