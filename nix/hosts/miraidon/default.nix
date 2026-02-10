@@ -4,8 +4,10 @@
     ./brew.nix
     ../../platforms/darwin
     ../../modules/gcloud-cli
+    ../../modules/gemini-cli
     ../../modules/kubectl
     ../../modules/nushell
+    ../../modules/opencode
     ../../modules/xonsh
   ];
 

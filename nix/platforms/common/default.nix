@@ -25,11 +25,9 @@ in
     ../../modules/direnv
     ../../modules/eza
     ../../modules/fish
-    ../../modules/gemini-cli
     ../../modules/git
     ../../modules/mise
     ../../modules/nvim
-    ../../modules/opencode
     ../../modules/powershell
     ../../modules/starship
     ../../modules/superfile
