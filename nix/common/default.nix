@@ -21,7 +21,6 @@ in
     ./home.nix
     ./modules/bat
     ./modules/catppuccin
-    ./modules/crush
     ./modules/direnv
     ./modules/eza
     ./modules/fish

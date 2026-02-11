@@ -6,6 +6,8 @@
     ../../../common/modules/alacritty
     ../../../common/modules/buku
     ../../../common/modules/calibre
+    ../../../common/modules/copilot-cli
+    ../../../common/modules/crush
     ../../../common/modules/gcloud-cli
     ../../../common/modules/gemini-cli
     ../../../common/modules/ghostty
