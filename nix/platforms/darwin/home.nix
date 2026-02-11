@@ -1,6 +1,7 @@
 {
   config,
   home-manager,
+  mac-app-util,
   pkgs,
   ...
 }:
@@ -10,6 +11,8 @@
   ];
 
   home-manager.users.${config.common.username} = {
+    imports = [ mac-app-util.homeManagerModules.default ];
+
     home = {
       packages = with pkgs; [
         nil

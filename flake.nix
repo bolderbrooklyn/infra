@@ -83,6 +83,8 @@
         home-manager.follows = "home-manager-unstable";
       };
     };
+
+    mac-app-util.url = "github:hraban/mac-app-util";
   };
 
   outputs =
@@ -92,6 +94,7 @@
       home-manager-unstable,
       agenix,
       catppuccin-unstable,
+      mac-app-util,
       ...
     }:
     {
@@ -112,7 +115,7 @@
       darwinConfigurations."Miraidon" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         specialArgs = {
-          inherit inputs;
+          inherit inputs mac-app-util;
           home-manager = home-manager-unstable;
           catppuccin = catppuccin-unstable;
         };

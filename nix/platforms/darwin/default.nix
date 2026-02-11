@@ -1,9 +1,10 @@
-{ config, ... }:
+{ config, mac-app-util, ... }:
 let
   inherit (config.common) username;
 in
 {
   imports = [
+    mac-app-util.darwinModules.default
     ./home.nix
     ../common
     ../../modules/1password
