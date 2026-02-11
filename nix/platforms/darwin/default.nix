@@ -12,6 +12,7 @@ in
     ../../modules/buku
     ../../modules/colima
     ../../modules/ghostty
+    ../../modules/kitty
     ../../modules/zed
   ];
 

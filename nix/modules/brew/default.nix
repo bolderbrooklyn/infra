@@ -46,7 +46,6 @@
       "ghostty"
       "google-chrome"
       "httpie-desktop"
-      "kitty"
       "pearcleaner"
       "stats"
       "the-unarchiver"
