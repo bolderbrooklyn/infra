@@ -1,6 +1,7 @@
 {
   config,
   inputs,
+  agenix,
   home-manager,
   ...
 }:
@@ -9,6 +10,7 @@ let
 in
 {
   imports = [
+    agenix.nixosModules.default
     home-manager.nixosModules.home-manager
     ./modules/tailscale
     ../common

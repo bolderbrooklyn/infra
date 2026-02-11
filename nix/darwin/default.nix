@@ -10,11 +10,6 @@ in
     ./modules/colima
     ../common
     ../common/modules/1password
-    ../common/modules/alacritty
-    ../common/modules/buku
-    ../common/modules/ghostty
-    ../common/modules/kitty
-    ../common/modules/zed
   ];
 
   system = {

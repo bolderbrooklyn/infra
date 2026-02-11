@@ -92,9 +92,7 @@
       nixpkgs-unstable,
       nix-darwin,
       home-manager-unstable,
-      agenix,
       catppuccin-unstable,
-      mac-app-util,
       ...
     }:
     {
@@ -102,20 +100,21 @@
         system = "x86_64-linux";
         specialArgs = {
           inherit inputs;
+          inherit (inputs) agenix;
           home-manager = home-manager-unstable;
           catppuccin = catppuccin-unstable;
         };
 
         modules = [
           ./nix/nixos/hosts/tinkaton
-          agenix.nixosModules.default
         ];
       };
 
       darwinConfigurations."Miraidon" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         specialArgs = {
-          inherit inputs mac-app-util;
+          inherit inputs;
+          inherit (inputs) mac-app-util;
           home-manager = home-manager-unstable;
           catppuccin = catppuccin-unstable;
         };
