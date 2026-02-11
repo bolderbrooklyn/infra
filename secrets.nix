@@ -3,17 +3,17 @@ let
   brooklyn = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINSrqkXtluHRGoNSDuwpPj2pZXlNZFxPFqsmwxjP1X0P";
 in
 {
-  "nix/hosts/tinkaton/secrets/romm.age".publicKeys = [
+  "nix/nixos/hosts/tinkaton/secrets/romm.age".publicKeys = [
     tinkaton
     brooklyn
   ];
 
-  "nix/hosts/tinkaton/secrets/gitea-actions-runner-forgejo.age".publicKeys = [
+  "nix/nixos/hosts/tinkaton/secrets/gitea-actions-runner-forgejo.age".publicKeys = [
     tinkaton
     brooklyn
   ];
 
-  "nix/hosts/tinkaton/secrets/gitea-actions-runner-codeberg.age".publicKeys = [
+  "nix/nixos/hosts/tinkaton/secrets/gitea-actions-runner-codeberg.age".publicKeys = [
     tinkaton
     brooklyn
   ];

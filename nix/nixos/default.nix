@@ -10,8 +10,8 @@ in
 {
   imports = [
     home-manager.nixosModules.home-manager
+    ./modules/tailscale
     ../common
-    ../../modules/tailscale
   ];
 
   environment.systemPackages = [

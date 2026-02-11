@@ -6,7 +6,7 @@
   ...
 }:
 let
-  username = config.common.username;
+  inherit (config.common) username;
 
   useCask = pkgs.stdenv.isDarwin;
 in
@@ -37,26 +37,28 @@ in
       home.sessionVariables = {
         SSH_AUTH_SOCK = _1password_ssh_agent_sock;
       };
+      programs = {
 
-      programs._1password-shell-plugins = {
-        enable = true;
-        plugins = lib.mkIf config.programs.gh.enable [
-          pkgs.gh
-        ];
-      };
+        _1password-shell-plugins = {
+          enable = true;
+          plugins = lib.mkIf config.programs.gh.enable [
+            pkgs.gh
+          ];
+        };
 
-      programs.git.settings = lib.mkIf config.programs.git.enable {
-        gpg.ssh.program = lib.mkIf pkgs.stdenv.isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
-      };
+        git.settings = lib.mkIf config.programs.git.enable {
+          gpg.ssh.program = lib.mkIf pkgs.stdenv.isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+        };
 
-      programs.jujutsu.settings = lib.mkIf config.programs.jujutsu.enable {
-        signing.program = lib.mkIf pkgs.stdenv.isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
-      };
+        jujutsu.settings = lib.mkIf config.programs.jujutsu.enable {
+          signing.program = lib.mkIf pkgs.stdenv.isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+        };
 
-      programs.ssh = {
-        matchBlocks."*" = {
-          forwardAgent = true;
-          identityAgent = ''"${_1password_ssh_agent_sock}"'';
+        ssh = {
+          matchBlocks."*" = {
+            forwardAgent = true;
+            identityAgent = ''"${_1password_ssh_agent_sock}"'';
+          };
         };
       };
     };

@@ -19,21 +19,21 @@ in
 
   imports = [
     ./home.nix
-    ../../modules/bat
-    ../../modules/catppuccin
-    ../../modules/crush
-    ../../modules/direnv
-    ../../modules/eza
-    ../../modules/fish
-    ../../modules/git
-    ../../modules/mise
-    ../../modules/nvim
-    ../../modules/powershell
-    ../../modules/starship
-    ../../modules/superfile
-    ../../modules/tmux
-    ../../modules/yazi
-    ../../modules/zsh
+    ./modules/bat
+    ./modules/catppuccin
+    ./modules/crush
+    ./modules/direnv
+    ./modules/eza
+    ./modules/fish
+    ./modules/git
+    ./modules/mise
+    ./modules/nvim
+    ./modules/powershell
+    ./modules/starship
+    ./modules/superfile
+    ./modules/tmux
+    ./modules/yazi
+    ./modules/zsh
   ];
 
   config = {

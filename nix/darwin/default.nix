@@ -6,15 +6,15 @@ in
   imports = [
     mac-app-util.darwinModules.default
     ./home.nix
+    ./modules/brew
+    ./modules/colima
     ../common
-    ../../modules/1password
-    ../../modules/alacritty
-    ../../modules/brew
-    ../../modules/buku
-    ../../modules/colima
-    ../../modules/ghostty
-    ../../modules/kitty
-    ../../modules/zed
+    ../common/modules/1password
+    ../common/modules/alacritty
+    ../common/modules/buku
+    ../common/modules/ghostty
+    ../common/modules/kitty
+    ../common/modules/zed
   ];
 
   system = {

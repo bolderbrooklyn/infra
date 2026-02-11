@@ -2,12 +2,10 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../platforms/nixos
+    ../..
     ../../modules/audiobookshelf
-    ../../modules/calibre
     ../../modules/crafty
     ../../modules/forgejo
-    ../../modules/ghostty
     ../../modules/navidrome
     ../../modules/plex
     ../../modules/postgresql
@@ -16,6 +14,8 @@
     ../../modules/syncthing
     ../../modules/tunarr
     ../../modules/unifi
+    ../../../common/modules/calibre
+    ../../../common/modules/ghostty
   ];
 
   age.secrets = {

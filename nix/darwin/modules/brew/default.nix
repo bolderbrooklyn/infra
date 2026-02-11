@@ -39,7 +39,6 @@
         name = "1password";
         args.appdir = "/Applications";
       }
-      "alacritty"
       "alt-tab"
       "arc"
       "dash"

@@ -1,27 +1,19 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
-let
-  useCask = pkgs.stdenv.isDarwin;
-in
+{ config, ... }:
 {
   imports = [ ../font ];
 
   home-manager.users.${config.common.username} = {
     programs.alacritty = {
       enable = true;
-      package = lib.mkIf useCask null;
 
       settings = {
         font = {
+          inherit (config.gui.font) size;
+
           normal = {
             family = config.gui.font.name;
             style = "Regular";
           };
-          size = config.gui.font.size;
           offset = {
             x = 0;
             y = 6;

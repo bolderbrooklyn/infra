@@ -18,17 +18,21 @@ in
 {
   imports = [ ../podman ];
 
-  systemd.tmpfiles.rules = [
-    "d ${romm.stateDir} 0755 0 0 - -"
-    "d ${romm.configDir} 0755 0 0 - -"
-    "d ${romm.dbDir} 0755 0 0 - -"
-    "d ${romm.resourcesDir} 0755 0 0 - -"
-    "d ${romm.redisDataDir} 0755 0 0 - -"
-    "f ${romm.configDir}/config.yml 0644 0 0 - -"
-  ];
+  systemd = {
+    tmpfiles.rules = [
+      "d ${romm.stateDir} 0755 0 0 - -"
+      "d ${romm.configDir} 0755 0 0 - -"
+      "d ${romm.dbDir} 0755 0 0 - -"
+      "d ${romm.resourcesDir} 0755 0 0 - -"
+      "d ${romm.redisDataDir} 0755 0 0 - -"
+      "f ${romm.configDir}/config.yml 0644 0 0 - -"
+    ];
 
-  systemd.services.podman-romm.after = [ "mnt-genesect-emulation.mount" ];
-  systemd.services.podman-romm.requires = [ "mnt-genesect-emulation.mount" ];
+    services.podman-romm = {
+      after = [ "mnt-genesect-emulation.mount" ];
+      requires = [ "mnt-genesect-emulation.mount" ];
+    };
+  };
 
   virtualisation.oci-containers.containers."${romm.name}" = {
     image = "rommapp/romm:latest";

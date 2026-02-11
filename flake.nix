@@ -107,7 +107,7 @@
         };
 
         modules = [
-          ./nix/hosts/tinkaton
+          ./nix/nixos/hosts/tinkaton
           agenix.nixosModules.default
         ];
       };
@@ -121,7 +121,7 @@
         };
 
         modules = [
-          ./nix/hosts/miraidon
+          ./nix/darwin/hosts/miraidon
         ];
       };
     };

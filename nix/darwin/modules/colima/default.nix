@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
   imports = [
-    ../docker
+    ../../../common/modules/docker
   ];
 
   home-manager.users.${config.common.username} =

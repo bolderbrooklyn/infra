@@ -2,13 +2,13 @@
 {
   imports = [
     ./brew.nix
-    ../../platforms/darwin
-    ../../modules/gcloud-cli
-    ../../modules/gemini-cli
-    ../../modules/kubectl
-    ../../modules/nushell
-    ../../modules/opencode
-    ../../modules/xonsh
+    ../..
+    ../../../common/modules/gcloud-cli
+    ../../../common/modules/gemini-cli
+    ../../../common/modules/kubectl
+    ../../../common/modules/nushell
+    ../../../common/modules/opencode
+    ../../../common/modules/xonsh
   ];
 
   networking.hostName = "Miraidon";
