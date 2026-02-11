@@ -3,21 +3,14 @@
   inputs,
   lib,
   pkgs,
+  isDarwin,
   ...
 }:
 let
   inherit (config.common) username;
-  inherit (pkgs.stdenv) isDarwin;
 in
 with lib;
 {
-  homebrew.casks = mkIf isDarwin [
-    {
-      name = "1password";
-      args.appdir = "/Applications";
-    }
-  ];
-
   programs._1password.enable = !isDarwin;
 
   programs._1password-gui = {
@@ -69,4 +62,12 @@ with lib;
         };
       };
     };
+}
+// optionalAttrs isDarwin {
+  homebrew.casks = [
+    {
+      name = "1password";
+      args.appdir = "/Applications";
+    }
+  ];
 }

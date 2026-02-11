@@ -97,6 +97,7 @@
         specialArgs = {
           inherit inputs;
           inherit (inputs) agenix;
+          isDarwin = false;
           home-manager = home-manager-unstable;
           catppuccin = catppuccin-unstable;
         };
@@ -111,6 +112,7 @@
         specialArgs = {
           inherit inputs;
           inherit (inputs) mac-app-util;
+          isDarwin = true;
           home-manager = home-manager-unstable;
           catppuccin = catppuccin-unstable;
         };

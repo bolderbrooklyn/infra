@@ -1,17 +1,14 @@
 {
   config,
   lib,
-  pkgs,
+  isDarwin,
   ...
 }:
 let
   inherit (config.common) username;
-  inherit (pkgs.stdenv) isDarwin;
 in
 with lib;
 {
-  homebrew.casks = mkIf isDarwin [ "calibre" ];
-
   home-manager.users.${username} = {
     programs.calibre = {
       enable = true;
@@ -19,4 +16,7 @@ with lib;
     };
 
   };
+}
+// optionalAttrs isDarwin {
+  homebrew.casks = [ "calibre" ];
 }

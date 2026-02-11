@@ -1,12 +1,11 @@
 {
   config,
   lib,
-  pkgs,
+  isDarwin,
   ...
 }:
 let
   inherit (config.common) username;
-  inherit (pkgs.stdenv) isDarwin;
 in
 with lib;
 {
@@ -15,8 +14,6 @@ with lib;
     ../catppuccin
     ../font
   ];
-
-  homebrew.casks = mkIf isDarwin [ "kitty" ];
 
   home-manager.users.${username} = {
     programs.kitty = {
@@ -37,4 +34,7 @@ with lib;
       };
     };
   };
+}
+// optionalAttrs isDarwin {
+  homebrew.casks = [ "kitty" ];
 }

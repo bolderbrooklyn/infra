@@ -2,17 +2,15 @@
   config,
   lib,
   pkgs,
+  isDarwin,
   ...
 }:
 let
   inherit (config.common) username;
-  inherit (pkgs.stdenv) isDarwin;
 in
 with lib;
 {
   imports = [ ../font ];
-
-  homebrew.casks = mkIf isDarwin [ "zed" ];
 
   home-manager.users.${username} = {
     home.shellAliases.zed = mkIf (!isDarwin) "zeditor";
@@ -193,4 +191,7 @@ with lib;
       ];
     };
   };
+}
+// optionalAttrs isDarwin {
+  homebrew.casks = [ "zed" ];
 }
