@@ -64,7 +64,6 @@ with lib;
         };
 
         diagnostics.inline.enabled = true;
-        features.edit_prediction_provider = "copilot";
 
         file_scan_exclusions = [
           "**/.devenv"
