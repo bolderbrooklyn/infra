@@ -1,7 +1,7 @@
 return {
 	"neovim/nvim-lspconfig",
-	opts = function(_, opts)
-		opts.servers = vim.tbl_deep_extend("force", opts.servers or {}, {
+	opts = {
+		servers = {
 			marksman = { mason = false },
 			nil_ls = {
 				mason = false,
@@ -32,6 +32,6 @@ return {
 			vtsls = {
 				enabled = false,
 			},
-		})
-	end,
+		},
+	},
 }

@@ -2,7 +2,6 @@
   config,
   home-manager,
   mac-app-util,
-  pkgs,
   ...
 }:
 {
@@ -14,12 +13,6 @@
     imports = [ mac-app-util.homeManagerModules.default ];
 
     home = {
-      packages = with pkgs; [
-        nil
-        nixd
-        nixfmt
-      ];
-
       shellAliases = {
         pbc = "pbcopy";
         pbp = "pbpaste";
