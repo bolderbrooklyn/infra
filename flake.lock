@@ -298,22 +298,6 @@
         "type": "github"
       }
     },
-    "homebrew-oven-sh-bun": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1770543178,
-        "narHash": "sha256-yus82ufs2UEBSpm27xHmZcHKLOO1QCcs3eWrBWaYZb0=",
-        "owner": "oven-sh",
-        "repo": "homebrew-bun",
-        "rev": "16a3f92bcbc2f9228f84568593bd0d3b908a4a5d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "oven-sh",
-        "repo": "homebrew-bun",
-        "type": "github"
-      }
-    },
     "homebrew-pkpw": {
       "flake": false,
       "locked": {
@@ -625,7 +609,6 @@
         "home-manager-unstable": "home-manager-unstable",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
-        "homebrew-oven-sh-bun": "homebrew-oven-sh-bun",
         "homebrew-pkpw": "homebrew-pkpw",
         "llm-agents": "llm-agents",
         "mac-app-util": "mac-app-util",

@@ -1,12 +1,6 @@
-{ inputs, ... }:
 {
-  nix-homebrew.taps = {
-    "oven-sh/bun" = inputs.homebrew-oven-sh-bun;
-  };
-
   homebrew = {
     brews = [
-      "bun"
       "imageoptim-cli"
       "sdl2"
       {
@@ -39,7 +33,6 @@
       "melonds"
       "mgba-app"
       "microsoft-edge"
-      "nordvpn"
       "notion"
       "notion-calendar"
       "notion-mail"
