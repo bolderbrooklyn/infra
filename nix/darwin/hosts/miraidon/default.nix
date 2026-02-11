@@ -5,6 +5,7 @@
     ../..
     ../../../common/modules/alacritty
     ../../../common/modules/buku
+    ../../../common/modules/calibre
     ../../../common/modules/gcloud-cli
     ../../../common/modules/gemini-cli
     ../../../common/modules/ghostty

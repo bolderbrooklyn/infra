@@ -5,19 +5,23 @@
   ...
 }:
 let
-  useCask = pkgs.stdenv.isDarwin;
+  inherit (config.common) username;
+  inherit (pkgs.stdenv) isDarwin;
 in
+with lib;
 {
   imports = [ ../font ];
 
-  home-manager.users.${config.common.username} = {
-    home.shellAliases.zed = lib.mkIf (!useCask) "zeditor";
+  homebrew.casks = mkIf isDarwin [ "zed" ];
+
+  home-manager.users.${username} = {
+    home.shellAliases.zed = mkIf (!isDarwin) "zeditor";
 
     programs.zed-editor = {
       enable = true;
-      package = lib.mkIf useCask null;
+      package = mkIf isDarwin null;
 
-      extraPackages = lib.mkIf (!useCask) (
+      extraPackages = mkIf (!isDarwin) (
         with pkgs;
         [
           nil
@@ -79,7 +83,7 @@ in
           "**/.settings"
         ];
 
-        icon_theme = lib.mkForce {
+        icon_theme = mkForce {
           mode = "system";
           dark = "Catppuccin Mocha";
           light = "Catppuccin Latte";
@@ -157,7 +161,7 @@ in
 
         terminal.line_height = "comfortable";
 
-        theme = lib.mkForce {
+        theme = mkForce {
           mode = "system";
           dark = "Catppuccin Mocha";
           light = "Catppuccin Latte";

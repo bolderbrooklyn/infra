@@ -1,4 +1,14 @@
-{ config, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  inherit (config.common) username;
+  inherit (pkgs.stdenv) isDarwin;
+in
+with lib;
 {
   imports = [
     ../bat
@@ -6,11 +16,14 @@
     ../font
   ];
 
-  home-manager.users.${config.common.username} = {
+  homebrew.casks = mkIf isDarwin [ "kitty" ];
+
+  home-manager.users.${username} = {
     programs.kitty = {
       inherit (config.gui) font;
 
       enable = true;
+      package = mkIf isDarwin null;
 
       settings = {
         "modify_font cell_height" = "130%";

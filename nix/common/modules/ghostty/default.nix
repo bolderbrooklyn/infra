@@ -5,16 +5,20 @@
   ...
 }:
 let
-  useCask = pkgs.stdenv.isDarwin;
+  inherit (config.common) username;
+  inherit (pkgs.stdenv) isDarwin;
 in
+with lib;
 {
   imports = [ ../font ];
 
-  home-manager.users.${config.common.username} = {
+  homebrew.casks = mkIf isDarwin [ "ghostty" ];
+
+  home-manager.users.${username} = {
     programs.ghostty = {
       enable = true;
-      package = lib.mkIf useCask null;
-      installVimSyntax = !useCask;
+      package = mkIf isDarwin null;
+      installVimSyntax = !isDarwin;
 
       settings = {
         adjust-cell-height = "28%";
@@ -22,7 +26,7 @@ in
         clipboard-write = "allow";
         font-family = config.gui.font.name;
         font-size = config.gui.font.size;
-        fullscreen = useCask;
+        fullscreen = isDarwin;
         window-inherit-working-directory = false;
       };
     };

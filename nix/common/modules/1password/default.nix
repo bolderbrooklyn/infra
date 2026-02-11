@@ -7,17 +7,24 @@
 }:
 let
   inherit (config.common) username;
-
-  useCask = pkgs.stdenv.isDarwin;
+  inherit (pkgs.stdenv) isDarwin;
 in
+with lib;
 {
-  programs._1password.enable = !useCask;
+  homebrew.casks = mkIf isDarwin [
+    {
+      name = "1password";
+      args.appdir = "/Applications";
+    }
+  ];
+
+  programs._1password.enable = !isDarwin;
 
   programs._1password-gui = {
-    enable = !useCask;
+    enable = !isDarwin;
   }
-  // lib.mkIf (!useCask) (
-    lib.optionalAttrs (builtins.hasAttr "polkitPolicyOwners" config.programs._1password-gui) {
+  // mkIf (!isDarwin) (
+    optionalAttrs (hasAttr "polkitPolicyOwners" config.programs._1password-gui) {
       polkitPolicyOwners = [ username ];
     }
   );
@@ -37,21 +44,21 @@ in
       home.sessionVariables = {
         SSH_AUTH_SOCK = _1password_ssh_agent_sock;
       };
-      programs = {
 
+      programs = {
         _1password-shell-plugins = {
           enable = true;
-          plugins = lib.mkIf config.programs.gh.enable [
+          plugins = mkIf config.programs.gh.enable [
             pkgs.gh
           ];
         };
 
-        git.settings = lib.mkIf config.programs.git.enable {
-          gpg.ssh.program = lib.mkIf pkgs.stdenv.isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+        git.settings = mkIf config.programs.git.enable {
+          gpg.ssh.program = mkIf isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
         };
 
-        jujutsu.settings = lib.mkIf config.programs.jujutsu.enable {
-          signing.program = lib.mkIf pkgs.stdenv.isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+        jujutsu.settings = mkIf config.programs.jujutsu.enable {
+          signing.program = mkIf isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
         };
 
         ssh = {
