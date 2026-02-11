@@ -21,7 +21,9 @@
       extraPackages = with pkgs; [
         ast-grep
         cargo
+        ghostscript
         go
+        grpcurl
         icu
         imagemagick
         lua5_1
@@ -29,19 +31,22 @@
         lynx
         markdownlint-cli2
         marksman
+        mermaid-cli
         nil
         nixd
         nixfmt
         pkg-config
+        plantuml
         python3
         rust-analyzer
         shfmt
         sqlite
         statix
         stylua
-        plantuml
+        tectonic
         tree-sitter
         unzip
+        websocat
         wget
 
         nodePackages.prettier
