@@ -44,7 +44,7 @@
 
       home.activation.colimaDefault = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
         run mkdir -p ${config.home.homeDirectory}/.colima/default && \
-            cp -n ${builtins.toPath ./config/default/colima.yaml} ${config.home.homeDirectory}/.colima/default/colima.yaml && \
+            cp -n ${./config/default/colima.yaml} ${config.home.homeDirectory}/.colima/default/colima.yaml && \
             chmod -R u+w ${config.home.homeDirectory}/.colima
       '';
     };

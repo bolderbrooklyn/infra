@@ -35,8 +35,9 @@ in
   };
 
   users.users.crafty = {
+    inherit (crafty) uid;
+
     isSystemUser = true;
-    uid = crafty.uid;
     group = crafty.name;
   };
 
@@ -81,21 +82,23 @@ in
     };
   };
 
-  networking.firewall.allowedTCPPorts = [
-    crafty.dynmapPort
-    crafty.craftyPort
-  ];
+  networking.firewall = {
+    allowedTCPPorts = [
+      crafty.dynmapPort
+      crafty.craftyPort
+    ];
 
-  networking.firewall.allowedTCPPortRanges = [
-    crafty.javaPorts
-  ];
+    allowedTCPPortRanges = [
+      crafty.javaPorts
+    ];
 
-  networking.firewall.allowedUDPPorts = [
-    crafty.bedrockPort
-  ];
+    allowedUDPPorts = [
+      crafty.bedrockPort
+    ];
 
-  networking.firewall.allowedUDPPortRanges = [
-    crafty.javaPorts
-    crafty.voicePorts
-  ];
+    allowedUDPPortRanges = [
+      crafty.javaPorts
+      crafty.voicePorts
+    ];
+  };
 }
