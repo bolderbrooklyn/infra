@@ -4,11 +4,14 @@
   pkgs,
   ...
 }:
+let
+  llmAgentsPkgs = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system};
+in
 {
   home-manager.users.${config.common.username} = {
     programs.gemini-cli = {
       enable = true;
-      package = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.gemini-cli;
+      package = llmAgentsPkgs.gemini-cli;
 
       settings = {
         general = {
