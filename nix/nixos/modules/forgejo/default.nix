@@ -41,7 +41,7 @@ in
       enable = true;
       name = "tinkaton";
       labels = [
-        "ubuntu-latest:docker://ghcr.io/catthehacker/ubuntu:runner-latest"
+        "ubuntu-latest:docker://ghcr.io/catthehacker/ubuntu:act-latest"
       ];
       url = "http://localhost:3000";
       tokenFile = config.age.secrets."gitea-actions-runner-forgejo".path;
@@ -51,7 +51,7 @@ in
       enable = true;
       name = "tinkaton-codeberg";
       labels = [
-        "ubuntu-latest:docker://ghcr.io/catthehacker/ubuntu:runner-latest"
+        "ubuntu-latest:docker://ghcr.io/catthehacker/ubuntu:act-latest"
       ];
 
       settings.runner.capacity = 3;
