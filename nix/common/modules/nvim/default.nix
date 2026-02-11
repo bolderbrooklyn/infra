@@ -60,6 +60,10 @@
         ":"
         "${lib.makeSearchPathOutput "dev" "lib/pkgconfig" [ pkgs.imagemagick.dev ]}"
       ];
+
+      initLua = ''
+        require("config.lazy")
+      '';
     };
 
     xdg.configFile.nvim = {
