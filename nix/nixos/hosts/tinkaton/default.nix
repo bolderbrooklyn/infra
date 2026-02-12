@@ -15,7 +15,7 @@
     ../../modules/tunarr
     ../../modules/unifi
     ../../../common/modules/calibre
-    ../../../common/modules/ghostty
+    ../../../common/modules/kitty
   ];
 
   age.secrets = {
@@ -28,7 +28,6 @@
     hostName = "tinkaton";
     firewall.allowedTCPPorts = [
       443
-      4096
     ];
   };
 
