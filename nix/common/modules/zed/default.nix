@@ -166,6 +166,7 @@ with lib;
 
         theme_overrides = {
           "Catppuccin Mocha (Blur)" = {
+            "border" = "#0000";
             "panel.overlay_background" = "#1e1e2ecc";
             "elevated_surface.background" = "#1e1e2ecc";
             "editor.active_line.background" = "#1e1e2ecc";
@@ -185,6 +186,7 @@ with lib;
           use_key_equivalents = true;
           bindings = {
             "cmd-ctrl-r" = "task::Spawn";
+            "ctrl-/" = "workspace::ToggleBottomDock";
           };
         }
         {
@@ -195,6 +197,16 @@ with lib;
               "vim::PushAddSurrounds"
               { }
             ];
+          };
+        }
+        {
+          context = "Dock || Terminal || Editor";
+          use_key_equivalents = true;
+          bindings = {
+            "ctrl-h" = "workspace::ActivatePaneLeft";
+            "ctrl-j" = "workspace::ActivatePaneDown";
+            "ctrl-k" = "workspace::ActivatePaneUp";
+            "ctrl-l" = "workspace::ActivatePaneRight";
           };
         }
       ];
