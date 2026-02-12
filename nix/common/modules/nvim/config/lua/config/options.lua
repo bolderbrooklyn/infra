@@ -17,3 +17,5 @@ vim.opt.listchars = {
 	nbsp = "+", -- Non-breaking spaces
 	tab = "> ", -- Tabs (e.g., a '>' followed by a space)
 }
+
+vim.opt.winborder = "rounded"

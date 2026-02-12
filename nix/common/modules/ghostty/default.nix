@@ -19,12 +19,21 @@ with lib;
 
       settings = {
         adjust-cell-height = "28%";
+        background-blur = 64;
+        background-opacity = 0.9;
+        background-opacity-cells = true;
         clipboard-read = "allow";
         clipboard-write = "allow";
         font-family = config.gui.font.name;
         font-size = config.gui.font.size;
         fullscreen = isDarwin;
+        macos-titlebar-style = "tabs";
+        quick-terminal-animation-duration = 0;
         window-inherit-working-directory = false;
+
+        keybind = [
+          "global:cmd+backquote=toggle_quick_terminal"
+        ];
       };
     };
   };
