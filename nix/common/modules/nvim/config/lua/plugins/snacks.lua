@@ -3,9 +3,11 @@ local pickerOptions = {
 	ignored = true,
 	exclude = {
 		"**/.bundle",
+		"**/.crush",
 		"**/.direnv*",
 		"**/.devenv*",
 		"**/.git",
+		"**/.opencode",
 		"**/.ruby-lsp",
 		"**/.yarn",
 		"**/__pycache__",
@@ -16,6 +18,16 @@ local pickerOptions = {
 
 return {
 	"folke/snacks.nvim",
+	keys = {
+		{ "<D-p>", LazyVim.pick(), desc = "Find Files (Root Dir)" },
+		{
+			"<D-S-p>",
+			function()
+				Snacks.picker.commands()
+			end,
+			desc = "Commands",
+		},
+	},
 	opts = function(_, opts)
 		opts.indent = { enabled = false }
 
