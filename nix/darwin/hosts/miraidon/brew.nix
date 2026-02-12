@@ -32,6 +32,7 @@
       "melonds"
       "mgba-app"
       "microsoft-edge"
+      "microsoft-remote-desktop"
       "notion"
       "notion-calendar"
       "notion-mail"
