@@ -40,7 +40,7 @@
       url = "github:ryantm/agenix";
 
       inputs = {
-        darwin.follows = "";
+        darwin.follows = "nix-darwin";
         home-manager.follows = "home-manager-unstable";
         nixpkgs.follows = "nixpkgs-unstable";
         systems.follows = "systems";
@@ -111,7 +111,7 @@
         system = "aarch64-darwin";
         specialArgs = {
           inherit inputs;
-          inherit (inputs) mac-app-util;
+          inherit (inputs) agenix mac-app-util;
           isDarwin = true;
           home-manager = home-manager-unstable;
           catppuccin = catppuccin-unstable;

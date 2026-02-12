@@ -2,22 +2,39 @@
   config,
   lib,
   pkgs,
+  agenix,
   ...
 }:
+let
+  inherit (config.common) username;
+in
 {
   home-manager = {
+    sharedModules = [
+      agenix.homeManagerModules.default
+    ];
+
     useGlobalPkgs = true;
     backupFileExtension = "backup";
 
-    users.${config.common.username} =
+    users.${username} =
       { config, ... }:
       {
+        age.identityPaths = [
+          "${config.home.homeDirectory}/.ssh/id_ed25519"
+        ];
+
         home.stateVersion = "25.05";
 
-        home.packages = with pkgs; [
-          httpie
-          pkg-config
-        ];
+        home.packages =
+          with pkgs;
+          [
+            httpie
+            pkg-config
+          ]
+          ++ [
+            agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
+          ];
 
         programs = {
           btop = {
