@@ -160,8 +160,8 @@ with lib;
 
         theme = mkForce {
           mode = "system";
-          dark = "Catppuccin Mocha";
-          light = "Catppuccin Latte";
+          dark = "Catppuccin Mocha (Blur)";
+          light = "Catppuccin Latte (Blur)";
         };
 
         use_smartcase_search = true;

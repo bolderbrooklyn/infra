@@ -6,6 +6,14 @@
     catppuccin = {
       enable = true;
       flavor = "mocha";
+
+      nvim.settings = {
+        transparent_background = true;
+
+        float = {
+          transparent = true;
+        };
+      };
     };
   };
 }
