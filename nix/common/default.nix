@@ -76,6 +76,12 @@ in
       zsh.enable = true;
     };
 
+    services = {
+      openssh = {
+        enable = true;
+      };
+    };
+
     users.users.${username} = {
       inherit home;
       openssh.authorizedKeys.keys = [

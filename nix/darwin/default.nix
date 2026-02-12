@@ -12,6 +12,11 @@ in
     ../common/modules/1password
   ];
 
+  services.openssh.extraConfig = ''
+    PasswordAuthentication no
+    PermitRootLogin no
+  '';
+
   system = {
     stateVersion = 6;
 
