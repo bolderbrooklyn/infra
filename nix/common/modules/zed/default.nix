@@ -164,6 +164,16 @@ with lib;
           light = "Catppuccin Latte (Blur)";
         };
 
+        theme_overrides = {
+          "Catppuccin Mocha (Blur)" = {
+            "panel.overlay_background" = "#1e1e2ecc";
+            "elevated_surface.background" = "#1e1e2ecc";
+            "editor.active_line.background" = "#1e1e2ecc";
+          };
+        };
+
+        title_bar.show_branch_icon = true;
+
         use_smartcase_search = true;
         vim.use_smartcase_find = true;
         vim_mode = true;
