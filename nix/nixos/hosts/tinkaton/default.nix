@@ -28,6 +28,7 @@
     hostName = "tinkaton";
     firewall.allowedTCPPorts = [
       443
+      3389
     ];
   };
 
