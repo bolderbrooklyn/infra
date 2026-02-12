@@ -17,4 +17,9 @@ in
     tinkaton
     brooklyn
   ];
+
+  "nix/nixos/hosts/tinkaton/secrets/password-brooklyn.age".publicKeys = [
+    tinkaton
+    brooklyn
+  ];
 }

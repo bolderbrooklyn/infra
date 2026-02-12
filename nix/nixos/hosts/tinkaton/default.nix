@@ -22,6 +22,7 @@
     romm.file = ./secrets/romm.age;
     "gitea-actions-runner-forgejo".file = ./secrets/gitea-actions-runner-forgejo.age;
     "gitea-actions-runner-codeberg".file = ./secrets/gitea-actions-runner-codeberg.age;
+    "password-brooklyn".file = ./secrets/password-brooklyn.age;
   };
 
   networking = {
@@ -77,7 +78,7 @@
   users.users.${config.common.username} = {
     isNormalUser = true;
     description = "Brooklyn Hannah";
-    hashedPassword = "$y$j9T$dXFtKCrUb27GthmYMAj/g0$6eOWmc92SNPNLadtqwC.g60JGua0HHoct7dmc/xulO/";
+    hashedPasswordFile = config.age.secrets."password-brooklyn".path;
   };
 
   home-manager.users.${config.common.username} = {
