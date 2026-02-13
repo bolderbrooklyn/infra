@@ -17,6 +17,11 @@ in
     ../common
   ];
 
+  catppuccin = {
+    enable = true;
+    flavor = "mocha";
+  };
+
   networking = {
     networkmanager = {
       enable = true;
