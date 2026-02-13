@@ -1,6 +1,7 @@
 {
   config,
   agenix,
+  catppuccin,
   home-manager,
   ...
 }:
@@ -10,6 +11,7 @@ in
 {
   imports = [
     agenix.nixosModules.default
+    catppuccin.nixosModules.catppuccin
     home-manager.nixosModules.home-manager
     ./modules/tailscale
     ../common
