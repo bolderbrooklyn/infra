@@ -7,12 +7,15 @@
       enable = true;
       flavor = "mocha";
 
-      nvim.settings = {
-        float = {
-          transparent = true;
-        };
+      nvim = {
+        enable = true;
+        settings = {
+          float = {
+            transparent = true;
+          };
 
-        transparent_background = true;
+          transparent_background = true;
+        };
       };
     };
   };

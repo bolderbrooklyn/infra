@@ -29,27 +29,20 @@
         lua5_1
         luarocks
         lynx
-        markdownlint-cli2
-        marksman
         mermaid-cli
-        nil
         nixd
         nixfmt
         pkg-config
         plantuml
         python3
-        rust-analyzer
         shfmt
         sqlite
         statix
-        stylua
         tectonic
         tree-sitter
         unzip
         websocat
         wget
-
-        nodePackages.prettier
 
         (lib.mkIf (!pkgs.stdenv.isDarwin) llvm)
       ];

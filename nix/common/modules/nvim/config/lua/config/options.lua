@@ -19,3 +19,6 @@ vim.opt.listchars = {
 }
 
 vim.opt.winborder = "rounded"
+
+vim.o.number = true
+vim.o.relativenumber = true
