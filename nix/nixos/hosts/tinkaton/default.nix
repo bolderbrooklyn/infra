@@ -6,6 +6,7 @@
     ../../modules/audiobookshelf
     ../../modules/crafty
     ../../modules/forgejo
+    ../../modules/jellyfin
     ../../modules/navidrome
     ../../modules/plex
     ../../modules/postgresql
