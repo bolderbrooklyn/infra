@@ -18,7 +18,7 @@ with lib;
       installVimSyntax = !isDarwin;
 
       settings = {
-        adjust-cell-height = "28%";
+        adjust-cell-height = "31%";
         background-blur = 64;
         background-opacity = 0.9;
         background-opacity-cells = true;
