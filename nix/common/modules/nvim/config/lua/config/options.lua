@@ -20,8 +20,8 @@ vim.opt.listchars = {
 
 vim.opt.winborder = "rounded"
 
-vim.o.number = true
-vim.o.relativenumber = true
+vim.opt.number = true
+vim.opt.relativenumber = true
 
 if vim.g.neovide then
 	vim.g.neovide_floating_blur_amount_x = 2.0

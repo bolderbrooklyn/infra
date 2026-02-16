@@ -14,7 +14,17 @@
             transparent = true;
           };
 
+          auto_integrations = true;
           transparent_background = true;
+
+          lsp_styles = {
+            underlines = {
+              errors = [ "undercurl" ];
+              hints = [ "undercurl" ];
+              warnings = [ "undercurl" ];
+              information = [ "undercurl" ];
+            };
+          };
         };
       };
     };
