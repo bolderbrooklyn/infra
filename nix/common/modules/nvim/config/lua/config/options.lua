@@ -19,15 +19,16 @@ vim.opt.listchars = {
 }
 
 vim.opt.winborder = "rounded"
+vim.opt.winblend = 50
+vim.opt.pumblend = 50
 
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.linespace = 9
 
-if vim.g.neovide then
-	vim.g.neovide_floating_blur_amount_x = 2.0
-	vim.g.neovide_floating_blur_amount_y = 2.0
-	vim.g.neovide_input_macos_option_key_is_meta = "only_left"
-	vim.g.neovide_normal_opacity = 0.9
-	vim.g.neovide_opacity = 0.9
-	vim.g.neovide_window_blurred = true
-end
+vim.g.neovide_floating_blur_amount_x = 2.0
+vim.g.neovide_floating_blur_amount_y = 2.0
+vim.g.neovide_input_macos_option_key_is_meta = "only_left"
+vim.g.neovide_normal_opacity = 0.9
+vim.g.neovide_opacity = 0.9
+vim.g.neovide_window_blurred = true
