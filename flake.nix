@@ -2,8 +2,7 @@
   description = "Infrastructure flake";
 
   inputs = {
-    nixpkgs-25-05.url = "github:NixOS/nixpkgs/nixos-25.05";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     nixpkgs-mongodb-7_0_21.url = "github:NixOS/nixpkgs/50d5614029a8afcbdff6dc1663dd428eafb752f4";
 
@@ -13,17 +12,12 @@
 
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    home-manager-25-05 = {
-      url = "github:nix-community/home-manager/release-25.05";
-      inputs.nixpkgs.follows = "nixpkgs-25-05";
-    };
-
-    home-manager-unstable = {
+    home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     _1password-shell-plugins = {
@@ -31,7 +25,7 @@
       url = "github:jbhannah/shell-plugins/trunk";
 
       inputs = {
-        nixpkgs.follows = "nixpkgs-unstable";
+        nixpkgs.follows = "nixpkgs";
         systems.follows = "systems";
       };
     };
@@ -41,20 +35,15 @@
 
       inputs = {
         darwin.follows = "nix-darwin";
-        home-manager.follows = "home-manager-unstable";
-        nixpkgs.follows = "nixpkgs-unstable";
+        home-manager.follows = "home-manager";
+        nixpkgs.follows = "nixpkgs";
         systems.follows = "systems";
       };
     };
 
-    catppuccin-25-05 = {
-      url = "github:catppuccin/nix/release-25.05";
-      inputs.nixpkgs.follows = "nixpkgs-25-05";
-    };
-
-    catppuccin-unstable = {
+    catppuccin = {
       url = "github:catppuccin/nix";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
@@ -75,29 +64,25 @@
       url = "github:das-monki/nix-clawdbot/nixos-aarch64-support";
 
       inputs = {
-        nixpkgs.follows = "nixpkgs-unstable";
-        home-manager.follows = "home-manager-unstable";
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
       };
     };
   };
 
   outputs =
     inputs@{
-      nixpkgs-unstable,
+      nixpkgs,
       nix-darwin,
-      home-manager-unstable,
-      catppuccin-unstable,
       ...
     }:
     {
-      nixosConfigurations.tinkaton = nixpkgs-unstable.lib.nixosSystem {
+      nixosConfigurations.tinkaton = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
           inherit inputs;
-          inherit (inputs) agenix;
+          inherit (inputs) agenix catppuccin home-manager;
           isDarwin = false;
-          home-manager = home-manager-unstable;
-          catppuccin = catppuccin-unstable;
         };
 
         modules = [
@@ -109,10 +94,8 @@
         system = "aarch64-darwin";
         specialArgs = {
           inherit inputs;
-          inherit (inputs) agenix;
+          inherit (inputs) agenix catppuccin home-manager;
           isDarwin = true;
-          home-manager = home-manager-unstable;
-          catppuccin = catppuccin-unstable;
         };
 
         modules = [

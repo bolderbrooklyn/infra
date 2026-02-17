@@ -10,7 +10,7 @@ in
 {
   home-manager.users.${config.common.username} =
     let
-      pkgs = import inputs.nixpkgs-unstable {
+      pkgs = import inputs.nixpkgs {
         inherit (pkgs-orig.stdenv.hostPlatform) system;
         overlays = [ inputs.nix-moltbot.overlays.default ];
       };
