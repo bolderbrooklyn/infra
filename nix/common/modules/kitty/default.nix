@@ -27,6 +27,7 @@ in
         macos_option_as_alt = "left";
         macos_colorspace = "default";
         macos_titlebar_color = "background";
+        macos_traditional_fullscreen = true;
         macos_show_window_title_in = "menubar";
         wayland_titlebar_color = "background";
       };

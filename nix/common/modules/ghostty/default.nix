@@ -28,12 +28,12 @@ with lib;
         font-family = font.name;
         font-size = font.size;
         fullscreen = isDarwin;
-        macos-titlebar-style = "tabs";
+        macos-non-native-fullscreen = true;
         quick-terminal-animation-duration = 0;
         window-inherit-working-directory = false;
 
         keybind = [
-          "global:cmd+backquote=toggle_quick_terminal"
+          "global:cmd+ctrl+backquote=toggle_quick_terminal"
         ];
       };
     };
