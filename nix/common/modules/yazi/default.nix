@@ -1,6 +1,9 @@
 { config, ... }:
 {
   home-manager.users.${config.common.username} = {
-    programs.yazi.enable = true;
+    programs.yazi = {
+      enable = true;
+      shellWrapperName = "y";
+    };
   };
 }
