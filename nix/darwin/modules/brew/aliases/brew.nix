@@ -1,4 +1,3 @@
-{ ... }:
 {
   home.shellAliases = {
     bb = "brew bundle";
