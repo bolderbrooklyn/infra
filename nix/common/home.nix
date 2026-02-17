@@ -24,7 +24,7 @@ in
           "${config.home.homeDirectory}/.ssh/id_ed25519"
         ];
 
-        home.stateVersion = "25.05";
+        home.stateVersion = "25.11";
 
         home.packages =
           with pkgs;
