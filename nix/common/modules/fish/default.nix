@@ -5,7 +5,7 @@
   ...
 }:
 let
-  fish = pkgs.fish;
+  inherit (pkgs) fish;
   cfg = config.programs.fish;
 in
 {
@@ -27,7 +27,7 @@ in
       home.packages = lib.mkIf pkgs.stdenv.isDarwin [ pkgs.fishPlugins.macos ];
 
       programs.fish = {
-        enable = cfg.enable;
+        inherit (cfg) enable;
 
         functions = {
           fish_greeting = "";
@@ -35,6 +35,10 @@ in
           fish_title = ''
             set -q argv[1]; or set argv fish
             echo (fish_prompt_pwd_dir_length=1 prompt_pwd): $argv;
+          '';
+
+          lw = ''
+            ls -alh (which $argv[1])
           '';
 
           take = ''

@@ -62,7 +62,8 @@ in
     time.timeZone = "America/Los_Angeles";
 
     environment.systemPackages = with pkgs; [
-      ruby
+      ruby_4_0
+      python314
       vim
       wget
     ];

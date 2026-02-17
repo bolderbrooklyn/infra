@@ -24,17 +24,23 @@ in
           "${config.home.homeDirectory}/.ssh/id_ed25519"
         ];
 
-        home.stateVersion = "26.05";
+        home = {
+          shellAliases = {
+            l = "ls -alh";
+          };
 
-        home.packages =
-          with pkgs;
-          [
-            httpie
-            pkg-config
-          ]
-          ++ [
-            agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
-          ];
+          stateVersion = "26.05";
+
+          packages =
+            with pkgs;
+            [
+              httpie
+              pkg-config
+            ]
+            ++ [
+              agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
+            ];
+        };
 
         programs = {
           btop = {
