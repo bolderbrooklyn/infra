@@ -103,6 +103,8 @@ in
                 "main"
                 "master"
               ];
+
+              gui.nerdFontsVersion = "3";
             };
           };
         };

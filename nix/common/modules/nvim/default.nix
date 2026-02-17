@@ -34,6 +34,7 @@
         nixfmt
         pkg-config
         plantuml
+        postgresql_18
         python3
         shfmt
         sqlite
