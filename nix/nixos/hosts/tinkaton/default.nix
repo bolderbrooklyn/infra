@@ -15,7 +15,6 @@
     ../../modules/syncthing
     ../../modules/tunarr
     ../../modules/unifi
-    ../../modules/unmanic
     ../../../common/modules/calibre
     ../../../common/modules/kitty
   ];
