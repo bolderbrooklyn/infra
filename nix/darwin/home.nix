@@ -49,6 +49,8 @@
       NSGlobalDomain = {
         AppleShowAllExtensions = true;
         AppleShowAllFiles = true;
+        InitialKeyRepeat = 25;
+        KeyRepeat = 2;
       };
     };
   };
