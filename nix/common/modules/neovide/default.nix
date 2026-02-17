@@ -6,6 +6,7 @@
 }:
 let
   inherit (config.common) username;
+  inherit (config.gui) font;
 in
 with lib;
 {
@@ -17,8 +18,8 @@ with lib;
       settings = {
         fork = true;
         font = {
-          normal = [ config.gui.font.name ];
-          size = 15.0;
+          inherit (font) size;
+          normal = [ font.name ];
         };
       };
     };

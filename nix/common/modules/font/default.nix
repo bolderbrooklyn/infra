@@ -8,12 +8,12 @@
   options.gui.font = {
     name = lib.mkOption {
       type = lib.types.str;
-      default = "Cascadia Code NF";
+      default = "CaskaydiaCove NF";
     };
 
     package = lib.mkOption {
       type = lib.types.package;
-      default = pkgs.cascadia-code;
+      default = pkgs.nerd-fonts.caskaydia-cove;
     };
 
     size = lib.mkOption {
