@@ -1,10 +1,9 @@
-{ config, mac-app-util, ... }:
+{ config, ... }:
 let
   inherit (config.common) username;
 in
 {
   imports = [
-    mac-app-util.darwinModules.default
     ./home.nix
     ./modules/brew
     ./modules/colima

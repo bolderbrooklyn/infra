@@ -1,17 +1,10 @@
-{
-  config,
-  home-manager,
-  mac-app-util,
-  ...
-}:
+{ config, home-manager, ... }:
 {
   imports = [
     home-manager.darwinModules.home-manager
   ];
 
   home-manager.users.${config.common.username} = {
-    imports = [ mac-app-util.homeManagerModules.default ];
-
     home = {
       shellAliases = {
         pbc = "pbcopy";

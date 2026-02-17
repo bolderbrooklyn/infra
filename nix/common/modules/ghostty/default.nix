@@ -6,6 +6,7 @@
 }:
 let
   inherit (config.common) username;
+  inherit (config.gui) font;
 in
 with lib;
 {
@@ -24,8 +25,8 @@ with lib;
         background-opacity-cells = true;
         clipboard-read = "allow";
         clipboard-write = "allow";
-        font-family = config.gui.font.name;
-        font-size = config.gui.font.size;
+        font-family = font.name;
+        font-size = font.size;
         fullscreen = isDarwin;
         macos-titlebar-style = "tabs";
         quick-terminal-animation-duration = 0;

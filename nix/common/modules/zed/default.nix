@@ -2,33 +2,29 @@
   config,
   lib,
   pkgs,
-  isDarwin,
   ...
 }:
 let
   inherit (config.common) username;
+  inherit (config.gui) font;
 in
 with lib;
 {
   imports = [ ../font ];
 
   home-manager.users.${username} = {
-    home.shellAliases.zed = mkIf (!isDarwin) "zeditor";
+    home.shellAliases.zed = "zeditor";
 
     programs.zed-editor = {
       enable = true;
-      package = mkIf isDarwin null;
 
-      extraPackages = mkIf (!isDarwin) (
-        with pkgs;
-        [
-          nil
-          nixd
-          nixfmt
-          nodejs
-          statix
-        ]
-      );
+      extraPackages = with pkgs; [
+        nil
+        nixd
+        nixfmt
+        nodejs
+        statix
+      ];
 
       userSettings = {
         agent = {
@@ -55,8 +51,8 @@ with lib;
         always_treat_brackets_as_autoclosed = true;
         auto_signature_help = true;
         base_keymap = "Atom";
-        buffer_font_family = config.gui.font.name;
-        buffer_font_size = config.gui.font.size;
+        buffer_font_family = font.name;
+        buffer_font_size = font.size;
 
         code_actions_on_format = {
           "source.fixAll" = true;
@@ -212,7 +208,4 @@ with lib;
       ];
     };
   };
-}
-// optionalAttrs isDarwin {
-  homebrew.casks = [ "zed" ];
 }

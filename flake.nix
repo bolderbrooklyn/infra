@@ -79,8 +79,6 @@
         home-manager.follows = "home-manager-unstable";
       };
     };
-
-    mac-app-util.url = "github:hraban/mac-app-util";
   };
 
   outputs =
@@ -111,7 +109,7 @@
         system = "aarch64-darwin";
         specialArgs = {
           inherit inputs;
-          inherit (inputs) agenix mac-app-util;
+          inherit (inputs) agenix;
           isDarwin = true;
           home-manager = home-manager-unstable;
           catppuccin = catppuccin-unstable;

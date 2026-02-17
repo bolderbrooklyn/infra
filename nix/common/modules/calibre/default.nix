@@ -14,7 +14,6 @@ with lib;
       enable = true;
       package = mkIf isDarwin null;
     };
-
   };
 }
 // optionalAttrs isDarwin {

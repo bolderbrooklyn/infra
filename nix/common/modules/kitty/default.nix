@@ -1,13 +1,7 @@
-{
-  config,
-  lib,
-  isDarwin,
-  ...
-}:
+{ config, ... }:
 let
   inherit (config.common) username;
 in
-with lib;
 {
   imports = [
     ../bat
@@ -20,7 +14,6 @@ with lib;
       inherit (config.gui) font;
 
       enable = true;
-      package = mkIf isDarwin null;
 
       settings = {
         "modify_font cell_height" = "130%";
@@ -39,7 +32,4 @@ with lib;
       };
     };
   };
-}
-// optionalAttrs isDarwin {
-  homebrew.casks = [ "kitty" ];
 }
