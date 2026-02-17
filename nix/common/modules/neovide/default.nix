@@ -16,11 +16,15 @@ with lib;
       package = mkIf isDarwin null;
 
       settings = {
-        fork = true;
         font = {
           inherit (font) size;
           normal = [ font.name ];
         };
+
+        fork = true;
+        frame = "transparent";
+        srgb = true;
+        title-hidden = true;
       };
     };
   };

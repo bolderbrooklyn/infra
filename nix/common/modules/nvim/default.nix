@@ -40,10 +40,14 @@
         sqlite
         statix
         tectonic
+        texliveBasic
         tree-sitter
         unzip
         websocat
         wget
+
+        texlivePackages.biber
+        texlivePackages.latexmk
 
         (lib.mkIf (!pkgs.stdenv.isDarwin) llvm)
       ];
