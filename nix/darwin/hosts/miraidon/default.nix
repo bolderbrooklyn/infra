@@ -16,7 +16,6 @@
     ../../../common/modules/nushell
     ../../../common/modules/opencode
     ../../../common/modules/xonsh
-    ../../../common/modules/zed
   ];
 
   networking.hostName = "Miraidon";
