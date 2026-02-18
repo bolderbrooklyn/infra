@@ -20,11 +20,15 @@ in
   imports = [
     ./home.nix
     ./modules/bat
+    ./modules/btop
     ./modules/catppuccin
     ./modules/direnv
     ./modules/eza
+    ./modules/fd
     ./modules/fish
+    ./modules/fzf
     ./modules/git
+    ./modules/gnupg
     ./modules/mise
     ./modules/nvim
     ./modules/powershell
