@@ -63,15 +63,7 @@ in
   programs.nix-ld.enable = true;
 
   services = {
-    openssh = {
-      openFirewall = true;
-
-      settings = {
-        PasswordAuthentication = false;
-        PermitRootLogin = "no";
-      };
-    };
-
+    openssh.openFirewall = true;
     resolved.enable = true;
   };
 
