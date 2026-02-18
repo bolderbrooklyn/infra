@@ -3,6 +3,7 @@
   imports = [
     ./hardware-configuration.nix
     ../..
+    ../../profiles/gui
     ../../modules/audiobookshelf
     ../../modules/crafty
     ../../modules/forgejo
@@ -16,7 +17,6 @@
     ../../modules/tunarr
     ../../modules/unifi
     ../../../common/modules/calibre
-    ../../../common/modules/kitty
   ];
 
   age.secrets = {
@@ -44,8 +44,6 @@
   };
 
   services = {
-    xserver.enable = true;
-
     cron = {
       enable = true;
       systemCronJobs = [
@@ -53,40 +51,14 @@
       ];
     };
 
-    displayManager.sddm.enable = true;
-    desktopManager.plasma6.enable = true;
-
-    xserver.xkb = {
-      layout = "us";
-      variant = "";
-    };
-
     printing.enable = true;
-    pulseaudio.enable = false;
-
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-    };
   };
 
   security.rtkit.enable = true;
 
-  gui.font.size = 13;
-
   users.users.${config.common.username} = {
     isNormalUser = true;
-    description = "Brooklyn Hannah";
     hashedPasswordFile = config.age.secrets."password-brooklyn".path;
-  };
-
-  home-manager.users.${config.common.username} = {
-    home.packages = with pkgs; [
-      kdePackages.kate
-      wayclip
-    ];
   };
 
   services.syncthing.settings.folders = {

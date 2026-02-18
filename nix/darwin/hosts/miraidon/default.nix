@@ -3,6 +3,7 @@
   imports = [
     ./brew.nix
     ../..
+    ../../../common/profiles/gui
     ../../../common/modules/alacritty
     ../../../common/modules/buku
     ../../../common/modules/calibre
@@ -11,9 +12,7 @@
     ../../../common/modules/gcloud-cli
     ../../../common/modules/gemini-cli
     ../../../common/modules/ghostty
-    ../../../common/modules/kitty
     ../../../common/modules/kubectl
-    ../../../common/modules/neovide
     ../../../common/modules/nushell
     ../../../common/modules/opencode
     ../../../common/modules/xonsh
