@@ -77,6 +77,15 @@
       ...
     }:
     {
+      nixpkgs.overlays = [
+        (final: prev: {
+          inherit (prev.lixPackageSets.stable)
+            lix
+            nix-direnv
+            ;
+        })
+      ];
+
       nixosConfigurations.tinkaton = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {

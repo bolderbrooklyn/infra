@@ -38,7 +38,9 @@ in
               pkg-config
             ]
             ++ [
-              agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
+              (agenix.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
+                nix = pkgs.lix;
+              })
             ];
         };
 
