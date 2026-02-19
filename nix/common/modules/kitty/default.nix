@@ -15,6 +15,10 @@ in
 
       enable = true;
 
+      quickAccessTerminalConfig = {
+        hide_on_focus_loss = true;
+      };
+
       settings = {
         "modify_font cell_height" = "130%";
         scrollback_pager = "bat";
