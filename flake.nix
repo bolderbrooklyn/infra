@@ -59,15 +59,6 @@
       url = "github:jbhannah/pkpw";
       flake = false;
     };
-
-    nix-moltbot = {
-      url = "github:das-monki/nix-clawdbot/nixos-aarch64-support";
-
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
-      };
-    };
   };
 
   outputs =
