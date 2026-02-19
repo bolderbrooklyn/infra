@@ -3,7 +3,9 @@
   imports = [
     ./brew.nix
     ../..
+    ../../modules/colima
     ../../../common/profiles/gui
+    ../../../common/modules/1password
     ../../../common/modules/alacritty
     ../../../common/modules/buku
     ../../../common/modules/calibre

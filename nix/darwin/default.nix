@@ -6,9 +6,7 @@ in
   imports = [
     ./home.nix
     ./modules/brew
-    ./modules/colima
     ../common
-    ../common/modules/1password
   ];
 
   services.openssh.extraConfig = ''
@@ -18,7 +16,6 @@ in
 
   system = {
     stateVersion = 6;
-
     primaryUser = username;
   };
 
