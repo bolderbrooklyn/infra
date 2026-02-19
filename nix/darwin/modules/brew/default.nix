@@ -27,7 +27,6 @@
     taps = builtins.attrNames config.nix-homebrew.taps;
 
     brews = [
-      "libyaml"
       "mas"
       "mole"
       "pkpw"
@@ -36,23 +35,12 @@
     caskArgs.appdir = "~/Applications";
     casks = [
       "alt-tab"
-      "arc"
-      "dash"
-      "google-chrome"
-      "httpie-desktop"
       "pearcleaner"
       "stats"
       "the-unarchiver"
-      "todoist-app"
-      "visual-studio-code"
-      "vlc"
-      "warp"
     ];
 
     masApps = {
-      "1Password for Safari" = 1569813296;
-      "Name Mangler 3" = 603637384;
-      "Pixelmator Pro" = 1289583905;
       "Xcode" = 497799835;
       "Yoink" = 457622435;
     };

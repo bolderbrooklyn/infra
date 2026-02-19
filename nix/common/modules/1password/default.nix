@@ -64,10 +64,18 @@ with lib;
     };
 }
 // optionalAttrs isDarwin {
-  homebrew.casks = [
-    {
-      name = "1password";
-      args.appdir = "/Applications";
-    }
-  ];
+  imports = [ ../../../darwin/modules/brew ];
+
+  homebrew = {
+    casks = [
+      {
+        name = "1password";
+        args.appdir = "/Applications";
+      }
+    ];
+
+    masApps = {
+      "1Password for Safari" = 1569813296;
+    };
+  };
 }

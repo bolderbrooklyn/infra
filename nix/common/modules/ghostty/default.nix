@@ -40,5 +40,7 @@ with lib;
   };
 }
 // optionalAttrs isDarwin {
+  imports = [ ../../../darwin/modules/brew ];
+
   homebrew.casks = [ "ghostty" ];
 }

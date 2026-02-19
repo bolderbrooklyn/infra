@@ -2,6 +2,7 @@
   homebrew = {
     brews = [
       "imageoptim-cli"
+      "libyaml"
       "sdl2"
       {
         name = "syncthing";
@@ -11,16 +12,20 @@
 
     casks = [
       "alfred"
+      "arc"
       "balenaetcher"
       "chatgpt"
       "chrome-remote-desktop-host"
       "claude"
+      "dash"
       "discord"
       "distroav"
       "dolphin"
       "firefox"
       "freetube"
+      "google-chrome"
       "google-drive"
+      "httpie-desktop"
       "iina"
       "imageoptim"
       "krita"
@@ -49,9 +54,13 @@
         args.appdir = "/Applications";
       }
       "telegram"
+      "todoist-app"
       "transmission"
       "virtualbox"
+      "visual-studio-code"
       "vivaldi"
+      "vlc"
+      "warp"
       "wave"
       "xquartz"
       "yaak"
@@ -64,6 +73,8 @@
       "Logic Pro" = 634148309;
       "Motion" = 434290957;
       "Numbers" = 409203825;
+      "Name Mangler 3" = 603637384;
+      "Pixelmator Pro" = 1289583905;
     };
   };
 }
