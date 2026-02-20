@@ -45,6 +45,7 @@ in
         blocklist-enabled = true;
         blocklist-url = "https://raw.githubusercontent.com/Naunter/BT_BlockLists/master/bt_blocklists.gz";
         download-dir = "/mnt/genesect/media/Downloads";
+        incomplete-dir-enabled = false;
         rpc-bind-address = "0.0.0.0";
         rpc-host-whitelist-enabled = false;
         rpc-whitelist-enabled = false;
