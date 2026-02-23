@@ -1,5 +1,9 @@
 { config, lib, ... }:
 {
+  imports = [
+    ../powershell
+  ];
+
   config = {
     programs.powershell.extraConfig = lib.mkIf config.programs.powershell.enable [
       "Invoke-Expression (&starship init powershell)"
