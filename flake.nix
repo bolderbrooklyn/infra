@@ -102,5 +102,18 @@
           ./nix/darwin/hosts/miraidon
         ];
       };
+
+      darwinConfigurations.comfey = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        specialArgs = {
+          inherit inputs;
+          inherit (inputs) agenix catppuccin home-manager;
+          isDarwin = true;
+        };
+
+        modules = [
+          ./nix/darwin/hosts/comfey
+        ];
+      };
     };
 }
