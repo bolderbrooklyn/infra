@@ -2,6 +2,7 @@
   imports = [
     ./brew.nix
     ../..
+    ../../modules/colima
     ../../../common/profiles/gui
     ../../../common/modules/1password
   ];
