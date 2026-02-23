@@ -1,6 +1,6 @@
 {
   imports = [
-    ../../modules/kitty
+    ../../modules/ghostty
     ../../modules/neovide
     ../../modules/zed
   ];

@@ -13,7 +13,6 @@
     ../../../common/modules/crush
     ../../../common/modules/gcloud-cli
     ../../../common/modules/gemini-cli
-    ../../../common/modules/ghostty
     ../../../common/modules/kubectl
     ../../../common/modules/nushell
     ../../../common/modules/opencode
