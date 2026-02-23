@@ -1,4 +1,9 @@
-{ config, home-manager, ... }:
+{
+  config,
+  pkgs,
+  home-manager,
+  ...
+}:
 {
   imports = [
     home-manager.darwinModules.home-manager
@@ -11,6 +16,8 @@
         pbp = "pbpaste";
       };
     };
+
+    programs.man.package = pkgs.man;
 
     services.macos-remap-keys = {
       enable = true;
