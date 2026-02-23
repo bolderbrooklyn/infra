@@ -73,9 +73,5 @@ with lib;
         args.appdir = "/Applications";
       }
     ];
-
-    masApps = {
-      "1Password for Safari" = 1569813296;
-    };
   };
 }

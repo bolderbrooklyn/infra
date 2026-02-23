@@ -68,6 +68,7 @@
     ];
 
     masApps = {
+      "1Password for Safari" = 1569813296;
       "Compressor" = 424390742;
       "Final Cut Pro" = 424389933;
       "Logic Pro" = 634148309;
@@ -75,6 +76,8 @@
       "Numbers" = 409203825;
       "Name Mangler 3" = 603637384;
       "Pixelmator Pro" = 1289583905;
+      "Xcode" = 497799835;
+      "Yoink" = 457622435;
     };
   };
 }

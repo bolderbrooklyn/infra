@@ -40,11 +40,6 @@
       "the-unarchiver"
     ];
 
-    masApps = {
-      "Xcode" = 497799835;
-      "Yoink" = 457622435;
-    };
-
     onActivation = {
       cleanup = "zap";
       upgrade = true;
