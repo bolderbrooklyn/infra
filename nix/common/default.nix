@@ -31,9 +31,7 @@ in
     ./modules/gnupg
     ./modules/mise
     ./modules/nvim
-    ./modules/powershell
     ./modules/starship
-    ./modules/superfile
     ./modules/tmux
     ./modules/yazi
     ./modules/zsh

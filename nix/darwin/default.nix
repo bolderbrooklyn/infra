@@ -9,11 +9,6 @@ in
     ../common
   ];
 
-  services.openssh.extraConfig = ''
-    PasswordAuthentication no
-    PermitRootLogin no
-  '';
-
   system = {
     stateVersion = 6;
     primaryUser = username;
