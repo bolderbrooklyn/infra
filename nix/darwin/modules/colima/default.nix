@@ -7,7 +7,7 @@
   home-manager.users.${config.common.username} =
     { config, lib, ... }:
     let
-      colimaLogPath = "${config.home.homeDirectory}/.colima/colima.log";
+      colimaLogPath = "${config.home.homeDirectory}/.config/colima/colima.log";
     in
     {
       home.packages = with pkgs; [
@@ -43,9 +43,9 @@
       };
 
       home.activation.colimaDefault = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        run mkdir -p ${config.home.homeDirectory}/.colima/default && \
-            cp -n ${./config/default/colima.yaml} ${config.home.homeDirectory}/.colima/default/colima.yaml && \
-            chmod -R u+w ${config.home.homeDirectory}/.colima
+        run mkdir -p ${config.home.homeDirectory}/.config/colima/default && \
+            cp -n ${./config/default/colima.yaml} ${config.home.homeDirectory}/.config/colima/default/colima.yaml && \
+            chmod -R u+w ${config.home.homeDirectory}/.config/colima
       '';
     };
 }
