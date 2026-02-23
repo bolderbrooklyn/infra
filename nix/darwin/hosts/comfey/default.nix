@@ -1,5 +1,6 @@
 {
   imports = [
+    ./brew.nix
     ../..
     ../../../common/profiles/gui
     ../../../common/modules/1password
