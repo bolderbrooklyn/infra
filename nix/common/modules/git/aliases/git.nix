@@ -256,8 +256,10 @@ in
       gwX = "git rm -rf";
     };
 
-    programs.bash.shellAliases = posixShellAliases;
-    programs.fish.shellAliases = lib.mkIf config.programs.fish.enable posixShellAliases;
-    programs.zsh.shellAliases = posixShellAliases;
+    programs = {
+      bash.shellAliases = posixShellAliases;
+      fish.shellAliases = lib.mkIf config.programs.fish.enable posixShellAliases;
+      zsh.shellAliases = posixShellAliases;
+    };
   };
 }
