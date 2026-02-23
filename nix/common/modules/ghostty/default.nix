@@ -28,7 +28,6 @@ with lib;
         font-family = font.name;
         font-size = font.size;
         fullscreen = isDarwin;
-        macos-non-native-fullscreen = true;
         quick-terminal-animation-duration = 0;
         window-inherit-working-directory = false;
 

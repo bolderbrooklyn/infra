@@ -4,6 +4,11 @@ let
   inherit (config.gui) font;
 in
 {
+  imports = [
+    ../font
+    ../nvim
+  ];
+
   home-manager.users.${username} = {
     programs.neovide = {
       enable = true;
@@ -15,7 +20,7 @@ in
         };
 
         fork = true;
-        frame = "none";
+        frame = "transparent";
         srgb = true;
         title-hidden = true;
       };

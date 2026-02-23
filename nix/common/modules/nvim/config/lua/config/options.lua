@@ -25,7 +25,6 @@ if vim.g.neovide then
 	vim.g.neovide_floating_blur_amount_y = 2.0
 	vim.g.neovide_highlight_matching_pair = true
 	vim.g.neovide_input_macos_option_key_is_meta = "only_left"
-	vim.g.neovide_macos_simple_fullscreen = true
 	vim.g.neovide_normal_opacity = 0.9
 	vim.g.neovide_opacity = 0.9
 	vim.g.neovide_underline_stroke_scale = 2.0
