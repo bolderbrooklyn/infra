@@ -16,6 +16,7 @@
     ../../../common/modules/kubectl
     ../../../common/modules/nushell
     ../../../common/modules/opencode
+    ../../../common/modules/openssh
     ../../../common/modules/xonsh
   ];
 

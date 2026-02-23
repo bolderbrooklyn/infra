@@ -79,17 +79,6 @@ in
       zsh.enable = true;
     };
 
-    services = {
-      openssh = {
-        enable = true;
-
-        extraConfig = ''
-          PasswordAuthentication no
-          PermitRootLogin no
-        '';
-      };
-    };
-
     users.users.${username} = {
       inherit home;
       description = "Brooklyn Hannah";

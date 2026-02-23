@@ -17,6 +17,7 @@
     ../../modules/tunarr
     ../../modules/unifi
     ../../../common/modules/calibre
+    ../../../common/modules/openssh
   ];
 
   age.secrets = {
