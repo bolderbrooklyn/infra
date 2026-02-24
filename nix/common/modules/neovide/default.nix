@@ -20,7 +20,7 @@ in
         };
 
         fork = true;
-        frame = "transparent";
+        frame = "none";
         srgb = true;
         title-hidden = true;
       };
