@@ -90,7 +90,7 @@
         ];
       };
 
-      darwinConfigurations."Miraidon" = nix-darwin.lib.darwinSystem {
+      darwinConfigurations.miraidon = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         specialArgs = {
           inherit inputs;

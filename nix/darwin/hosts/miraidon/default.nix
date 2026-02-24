@@ -34,9 +34,9 @@
       ffmpeg
     ];
 
-    xdg.configFile.nvim = {
-      source = ./config/nvim;
-      recursive = true;
+    xdg.configFile."config/nvim/lua/plugins/wakatime.lua" = {
+      source = ./config/nvim/lua/plugins/wakatime.lua;
+      force = true;
     };
   };
 }
