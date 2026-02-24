@@ -34,6 +34,9 @@
 
       "com.apple.dock" = {
         autohide = true;
+        minimize-to-application = true;
+        persistent-apps = [ ];
+        show-recents = false;
         size-immutable = true;
       };
 
