@@ -5,6 +5,8 @@
     ../../modules/colima
     ../../../common/profiles/gui
     ../../../common/modules/1password
+    ../../../common/modules/gcloud-cli
+    ../../../common/modules/opencode
   ];
 
   networking = {
