@@ -7,7 +7,10 @@
     ../../../common/modules/1password
   ];
 
-  networking.hostName = "comfey";
+  networking = {
+    computerName = "Brooke's MacBook Pro";
+    hostName = "comfey";
+  };
 
   programs.git = {
     signingKey = {

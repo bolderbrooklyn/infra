@@ -20,7 +20,10 @@
     ../../../common/modules/xonsh
   ];
 
-  networking.hostName = "Miraidon";
+  networking = {
+    computerName = "Miraidon";
+    hostName = "miraidon";
+  };
 
   programs.powershell.enable = true;
 
