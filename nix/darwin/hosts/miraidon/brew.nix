@@ -57,7 +57,6 @@
       "todoist-app"
       "transmission"
       "virtualbox"
-      "visual-studio-code"
       "vivaldi"
       "vlc"
       "warp"

@@ -17,6 +17,7 @@
     ../../../common/modules/nushell
     ../../../common/modules/opencode
     ../../../common/modules/openssh
+    ../../../common/modules/vscode
     ../../../common/modules/xonsh
   ];
 

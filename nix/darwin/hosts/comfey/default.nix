@@ -7,6 +7,7 @@
     ../../../common/modules/1password
     ../../../common/modules/gcloud-cli
     ../../../common/modules/opencode
+    ../../../common/modules/vscode
   ];
 
   networking = {
