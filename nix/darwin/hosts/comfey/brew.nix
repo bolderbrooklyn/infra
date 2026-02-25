@@ -2,6 +2,7 @@
   homebrew = {
     casks = [
       "chatgpt"
+      "cursor"
       "dash"
       {
         name = "google-chrome";
