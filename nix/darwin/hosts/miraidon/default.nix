@@ -35,6 +35,8 @@
       ffmpeg
     ];
 
+    programs.opencode.settings.plugin = [ "opencode-wakatime@latest" ];
+
     xdg.configFile."nvim/lua/plugins/wakatime.lua" = {
       source = ./config/nvim/lua/plugins/wakatime.lua;
       force = true;
