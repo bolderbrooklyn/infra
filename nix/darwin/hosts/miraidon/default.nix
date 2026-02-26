@@ -35,9 +35,13 @@
       ffmpeg
     ];
 
-    xdg.configFile."config/nvim/lua/plugins/wakatime.lua" = {
+    xdg.configFile."nvim/lua/plugins/wakatime.lua" = {
       source = ./config/nvim/lua/plugins/wakatime.lua;
       force = true;
+    };
+
+    xdg.configFile."opencode/oh-my-opencode.json" = {
+      source = ./config/opencode/oh-my-opencode.json;
     };
   };
 }

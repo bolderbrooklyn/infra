@@ -33,10 +33,6 @@ in
         ];
       };
     };
-
-    xdg.configFile."opencode/oh-my-opencode.json" = {
-      source = ./config/oh-my-opencode.json;
-    };
   }
   // lib.optionalAttrs pkgs.stdenv.isLinux {
     systemd.user.services.opencode-web = {
