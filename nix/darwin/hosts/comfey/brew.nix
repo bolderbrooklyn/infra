@@ -3,6 +3,9 @@
     casks = [
       "arc"
       "chatgpt"
+      "chatgpt-atlas"
+      "codex"
+      "codex-app"
       "cursor"
       "dash"
       {
