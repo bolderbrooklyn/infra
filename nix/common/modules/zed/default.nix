@@ -33,11 +33,6 @@ with lib;
 
       userSettings = {
         agent = {
-          always_allow_tool_actions = true;
-          default_model = {
-            model = "claude-sonnet-4.5";
-            provider = "copilot_chat";
-          };
           default_profile = "ask";
           play_sound_when_agent_done = true;
           use_modifier_to_send = true;
@@ -45,12 +40,6 @@ with lib;
 
         agent_servers = {
           gemini.ignore_system_version = false;
-
-          OpenCode = {
-            type = "custom";
-            command = "opencode";
-            args = [ "acp" ];
-          };
         };
 
         always_treat_brackets_as_autoclosed = true;
@@ -80,12 +69,6 @@ with lib;
           "**/.classpath"
           "**/.settings"
         ];
-
-        icon_theme = mkForce {
-          mode = "system";
-          dark = "Catppuccin Mocha";
-          light = "Catppuccin Latte";
-        };
 
         indent_guides.coloring = "indent_aware";
 
@@ -159,19 +142,8 @@ with lib;
 
         terminal.line_height = "comfortable";
 
-        theme = mkForce {
+        theme = {
           mode = "system";
-          dark = "Catppuccin Mocha (Blur)";
-          light = "Catppuccin Latte (Blur)";
-        };
-
-        theme_overrides = {
-          "Catppuccin Mocha (Blur)" = {
-            "border" = "#0000";
-            "panel.overlay_background" = "#1e1e2ecc";
-            "elevated_surface.background" = "#1e1e2ecc";
-            "editor.active_line.background" = "#1e1e2ecc";
-          };
         };
 
         title_bar.show_branch_icon = true;
@@ -188,6 +160,14 @@ with lib;
           bindings = {
             "cmd-ctrl-r" = "task::Spawn";
             "ctrl-/" = "workspace::ToggleBottomDock";
+          };
+        }
+        {
+          context = "vim_mode == normal";
+          use_key_equivalents = true;
+          bindings = {
+            "alt-j" = "editor::MoveLineDown";
+            "alt-k" = "editor::MoveLineUp";
           };
         }
         {

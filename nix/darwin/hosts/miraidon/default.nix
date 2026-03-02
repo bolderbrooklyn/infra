@@ -37,6 +37,11 @@
 
     programs.opencode.settings.plugin = [ "opencode-wakatime@latest" ];
 
+    programs.zed-editor.userSettings.agent.default_model = {
+      model = "claude-sonnet-4.5";
+      provider = "copilot_chat";
+    };
+
     xdg.configFile."nvim/lua/plugins/wakatime.lua" = {
       source = ./config/nvim/lua/plugins/wakatime.lua;
       force = true;

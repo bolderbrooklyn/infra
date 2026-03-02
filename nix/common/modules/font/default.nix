@@ -8,7 +8,7 @@
   options.gui.font = {
     name = lib.mkOption {
       type = lib.types.str;
-      default = "CaskaydiaCove NF";
+      default = "CaskaydiaCove Nerd Font";
     };
 
     package = lib.mkOption {
