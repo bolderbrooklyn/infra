@@ -24,14 +24,15 @@ in
           "editor.formatOnPaste" = true;
           "editor.formatOnSave" = true;
           "editor.formatOnType" = true;
+          "editor.lineHeight" = 1.618;
           "editor.lineNumbers" = "relative";
           "json.schemaDownload.trustedDomains" = {
-            "https://schemastore.azurewebsites.net/" = true;
-            "https://raw.githubusercontent.com/" = true;
-            "https://www.schemastore.org/" = true;
-            "https://json.schemastore.org/" = true;
-            "https://json-schema.org/" = true;
             "https://esm.sh" = true;
+            "https://json-schema.org/" = true;
+            "https://json.schemastore.org/" = true;
+            "https://raw.githubusercontent.com/" = true;
+            "https://schemastore.azurewebsites.net/" = true;
+            "https://www.schemastore.org/" = true;
           };
           "vim.hlsearch" = true;
           "vim.showMarksInGutter" = true;
