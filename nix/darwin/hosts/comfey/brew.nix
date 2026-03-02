@@ -6,7 +6,6 @@
       "chatgpt-atlas"
       "codex"
       "codex-app"
-      "cursor"
       "dash"
       {
         name = "google-chrome";

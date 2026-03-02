@@ -5,6 +5,7 @@
     ../../modules/colima
     ../../../common/profiles/gui
     ../../../common/modules/1password
+    ../../../common/modules/cursor
     ../../../common/modules/gcloud-cli
     ../../../common/modules/opencode
     ../../../common/modules/vscode
@@ -13,6 +14,11 @@
   networking = {
     computerName = "Brooke's MacBook Pro";
     hostName = "comfey";
+  };
+
+  programs.cursor = {
+    enable = true;
+    cli.enable = true;
   };
 
   programs.git = {
