@@ -10,6 +10,8 @@ in
   ];
 
   home-manager.users.${username} = {
+    home.shellAliases.nv = "neovide";
+
     programs.neovide = {
       enable = true;
 
