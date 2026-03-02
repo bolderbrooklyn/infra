@@ -6,3 +6,13 @@
 --
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+	desc = "Autoformat on save",
+	pattern = "*",
+	group = vim.api.nvim_create_augroup("FormatConfig", { clear = true }),
+	callback = function(ev)
+		local conform_opts = { bufnr = ev.buf, lsp_format = "fallback", timeout_ms = 2000 }
+		require("conform").format(conform_opts)
+	end,
+})
