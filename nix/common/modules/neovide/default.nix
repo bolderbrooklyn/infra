@@ -22,7 +22,6 @@ in
         };
 
         fork = true;
-        frame = "none";
         srgb = true;
         title-hidden = true;
       };
