@@ -1,3 +1,4 @@
+{ config, ... }:
 {
   imports = [
     ./brew.nix
@@ -5,6 +6,7 @@
     ../../modules/colima
     ../../../common/profiles/gui
     ../../../common/modules/1password
+    ../../../common/modules/codex
     ../../../common/modules/cursor
     ../../../common/modules/gcloud-cli
     ../../../common/modules/opencode
@@ -30,6 +32,13 @@
     user = {
       name = "brooke hannah";
       email = "bhannah@nclusion.com";
+    };
+  };
+
+  home-manager.users.${config.common.username} = {
+    xdg.configFile."nvim/lua/plugins/comfey.lua" = {
+      source = ./config/nvim/lua/plugins/comfey.lua;
+      force = true;
     };
   };
 }
