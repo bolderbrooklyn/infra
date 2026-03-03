@@ -59,6 +59,10 @@ in
           zoxide.enable = true;
         };
 
+        services.home-manager = {
+          autoExpire.enable = true;
+        };
+
         xdg.enable = true;
       };
   };
