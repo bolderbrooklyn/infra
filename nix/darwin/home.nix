@@ -56,10 +56,6 @@
         IncludeDevelopMenu = true;
       };
 
-      "com.microsoft.VSCode" = {
-        ApplePressAndHoldEnabled = false;
-      };
-
       NSGlobalDomain = {
         AppleICUForce24HourTime = true;
         AppleShowAllExtensions = true;
