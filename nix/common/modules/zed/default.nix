@@ -19,6 +19,11 @@ in
       enable = true;
       package = lib.mkIf isDarwin null;
 
+      mutableUserDebug = false;
+      mutableUserKeymaps = false;
+      mutableUserSettings = false;
+      mutableUserTasks = false;
+
       extraPackages = lib.mkIf (!isDarwin) (
         with pkgs;
         [
