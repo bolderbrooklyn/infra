@@ -13,7 +13,7 @@ vim.opt.winborder = "rounded"
 
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.linespace = 6
+vim.opt.linespace = 7
 
 vim.g.lazyvim_prettier_needs_config = true
 
