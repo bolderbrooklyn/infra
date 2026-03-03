@@ -8,14 +8,13 @@ let
   inherit (config.common) username;
   inherit (config.gui) font;
 in
-with lib;
 {
   imports = [ ../font ];
 
   home-manager.users.${username} = {
     programs.ghostty = {
       enable = true;
-      package = mkIf isDarwin null;
+      package = lib.mkIf isDarwin null;
       installVimSyntax = !isDarwin;
 
       settings = {
@@ -38,7 +37,7 @@ with lib;
     };
   };
 }
-// optionalAttrs isDarwin {
+// lib.optionalAttrs isDarwin {
   imports = [ ../../../darwin/modules/brew ];
 
   homebrew.casks = [ "ghostty" ];

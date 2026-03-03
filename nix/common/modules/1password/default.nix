@@ -9,15 +9,14 @@
 let
   inherit (config.common) username;
 in
-with lib;
 {
   programs._1password.enable = !isDarwin;
 
   programs._1password-gui = {
     enable = !isDarwin;
   }
-  // mkIf (!isDarwin) (
-    optionalAttrs (hasAttr "polkitPolicyOwners" config.programs._1password-gui) {
+  // lib.mkIf (!isDarwin) (
+    lib.optionalAttrs (lib.hasAttr "polkitPolicyOwners" config.programs._1password-gui) {
       polkitPolicyOwners = [ username ];
     }
   );
@@ -41,17 +40,17 @@ with lib;
       programs = {
         _1password-shell-plugins = {
           enable = true;
-          plugins = mkIf config.programs.gh.enable [
+          plugins = lib.mkIf config.programs.gh.enable [
             pkgs.gh
           ];
         };
 
-        git.settings = mkIf config.programs.git.enable {
-          gpg.ssh.program = mkIf isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+        git.settings = lib.mkIf config.programs.git.enable {
+          gpg.ssh.program = lib.mkIf isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
         };
 
-        jujutsu.settings = mkIf config.programs.jujutsu.enable {
-          signing.program = mkIf isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+        jujutsu.settings = lib.mkIf config.programs.jujutsu.enable {
+          signing.program = lib.mkIf isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
         };
 
         ssh = {
@@ -63,7 +62,7 @@ with lib;
       };
     };
 }
-// optionalAttrs isDarwin {
+// lib.optionalAttrs isDarwin {
   imports = [ ../../../darwin/modules/brew ];
 
   homebrew = {

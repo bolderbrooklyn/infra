@@ -9,18 +9,17 @@ let
   inherit (config.common) username;
   inherit (config.gui) font;
 in
-with lib;
 {
   imports = [ ../font ];
 
   home-manager.users.${username} = {
-    home.shellAliases.zed = mkIf (!isDarwin) "zeditor";
+    home.shellAliases.zed = lib.mkIf (!isDarwin) "zeditor";
 
     programs.zed-editor = {
       enable = true;
-      package = mkIf isDarwin null;
+      package = lib.mkIf isDarwin null;
 
-      extraPackages = mkIf (!isDarwin) (
+      extraPackages = lib.mkIf (!isDarwin) (
         with pkgs;
         [
           nil
@@ -194,7 +193,7 @@ with lib;
     };
   };
 }
-// optionalAttrs isDarwin {
+// lib.optionalAttrs isDarwin {
   imports = [ ../../../darwin/modules/brew ];
 
   homebrew.casks = [ "zed" ];
