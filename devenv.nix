@@ -5,5 +5,6 @@
     nil
     nixd
     nixfmt
+    statix
   ];
 }
