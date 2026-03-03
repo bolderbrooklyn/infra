@@ -36,7 +36,6 @@
     casks = [
       "alt-tab"
       "pearcleaner"
-      "stats"
       "the-unarchiver"
     ];
 
