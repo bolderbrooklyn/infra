@@ -14,6 +14,8 @@
     ../../../common/modules/vscode
   ];
 
+  system.stateVersion = 6;
+
   networking = {
     computerName = "Brooke's MacBook Pro";
     hostName = "comfey";

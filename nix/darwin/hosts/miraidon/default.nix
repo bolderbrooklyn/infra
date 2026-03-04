@@ -21,6 +21,8 @@
     ../../../common/modules/xonsh
   ];
 
+  system.stateVersion = 6;
+
   networking = {
     computerName = "Miraidon";
     hostName = "miraidon";

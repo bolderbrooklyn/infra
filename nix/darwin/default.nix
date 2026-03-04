@@ -10,10 +10,7 @@ in
     ../common
   ];
 
-  system = {
-    stateVersion = 6;
-    primaryUser = username;
-  };
+  system.primaryUser = username;
 
   security.pam.services.sudo_local = {
     enable = true;
