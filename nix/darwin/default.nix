@@ -10,11 +10,14 @@ in
     ../common
   ];
 
-  system.primaryUser = username;
-
   security.pam.services.sudo_local = {
     enable = true;
     reattach = true;
     touchIdAuth = true;
+  };
+
+  system = {
+    defaults.SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
+    primaryUser = username;
   };
 }

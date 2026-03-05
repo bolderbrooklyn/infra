@@ -35,9 +35,9 @@
       "com.apple.dock" = {
         autohide = true;
         minimize-to-application = true;
-        persistent-apps = [ ];
         show-recents = false;
         size-immutable = true;
+        static-only = true;
       };
 
       "com.apple.finder" = {
@@ -53,6 +53,8 @@
       };
 
       "com.apple.safari" = {
+        AutoFillCreditCardData = false;
+        AutoFillPasswords = false;
         IncludeDevelopMenu = true;
       };
 
