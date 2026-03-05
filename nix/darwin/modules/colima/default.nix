@@ -34,6 +34,7 @@
                 "/usr/local"
                 "/usr"
               ];
+            XDG_CONFIG_HOME = "${config.home.homeDirectory}/.config";
           };
           RunAtLoad = true;
           StandardOutPath = colimaLogPath;
