@@ -4,6 +4,7 @@
       "arc"
       "chatgpt"
       "chatgpt-atlas"
+      "claude"
       "codex-app"
       "dash"
       {
