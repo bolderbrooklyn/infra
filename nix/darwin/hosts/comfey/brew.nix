@@ -1,5 +1,9 @@
 {
   homebrew = {
+    brews = [
+      "krunkit"
+    ];
+
     casks = [
       "arc"
       "chatgpt"

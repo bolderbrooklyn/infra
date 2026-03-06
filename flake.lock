@@ -193,11 +193,11 @@
     "homebrew-cask": {
       "flake": false,
       "locked": {
-        "lastModified": 1772731779,
-        "narHash": "sha256-wW9c0S2NR4CQDMJJnXmBKIqOy7KQSlJflSkbie0bl98=",
+        "lastModified": 1772739567,
+        "narHash": "sha256-B7x5dlfKLidJyjgP/3+gil1uEp2NTRDEMMZ9VtKZBMA=",
         "owner": "Homebrew",
         "repo": "homebrew-cask",
-        "rev": "a1c24df9a74507241e0847575e3a756dbdbff833",
+        "rev": "cf9ffb7cc3c3f8ab77f9dcaff7aec5bed24fbc0a",
         "type": "github"
       },
       "original": {
@@ -209,16 +209,32 @@
     "homebrew-core": {
       "flake": false,
       "locked": {
-        "lastModified": 1772727736,
-        "narHash": "sha256-RzTaNd8U+SjMY7o27GcRL1l+CEmHzY+HjZVGkxOVb6w=",
+        "lastModified": 1772754895,
+        "narHash": "sha256-48HKAf41GkfSnh/yGAO7EanZvHWcuY87AwOkSYAcWvQ=",
         "owner": "Homebrew",
         "repo": "homebrew-core",
-        "rev": "50c51bbb1bccf6bb31596f5ca9c0c8ac291c7d96",
+        "rev": "aaad2785cf31a3005859ba66980cd16fde2bde2d",
         "type": "github"
       },
       "original": {
         "owner": "Homebrew",
         "repo": "homebrew-core",
+        "type": "github"
+      }
+    },
+    "homebrew-krunkit": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1708442160,
+        "narHash": "sha256-oY65f2mkGvw0J0dDKsXlrIHuCHgzJd3TK4/VPgLmR8g=",
+        "owner": "slp",
+        "repo": "krunkit",
+        "rev": "9ee8c18d1db07d5633260e60d120e5c036e251d9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "slp",
+        "repo": "krunkit",
         "type": "github"
       }
     },
@@ -263,11 +279,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1772722494,
-        "narHash": "sha256-H8a7ykDwume9z4Y1JueO+FTGlzKS/+xsJh+13V20wLA=",
+        "lastModified": 1772747788,
+        "narHash": "sha256-qJ9Ns9Fxgrm8QoTNnXH/KlUB0lL6PslK4t6+faJKLDg=",
         "owner": "numtide",
         "repo": "llm-agents.nix",
-        "rev": "fc8bf0ae9c6ac6835d01d04cc58e1f9ec717815c",
+        "rev": "490fbb8873278e5ce57935099240788b1bafaef5",
         "type": "github"
       },
       "original": {
@@ -371,6 +387,7 @@
         "home-manager": "home-manager",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
+        "homebrew-krunkit": "homebrew-krunkit",
         "homebrew-pkpw": "homebrew-pkpw",
         "llm-agents": "llm-agents",
         "nix-darwin": "nix-darwin",
