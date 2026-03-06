@@ -10,6 +10,8 @@
     ../../../common/modules/codex
     ../../../common/modules/cursor
     ../../../common/modules/gcloud-cli
+    ../../../common/modules/kubectl
+    ../../../common/modules/nushell
     ../../../common/modules/opencode
     ../../../common/modules/vscode
   ];
