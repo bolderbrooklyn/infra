@@ -1,9 +1,15 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
   ...
 }:
+let
+  nixpkgs-ast-grep-0_40_5 = import inputs.nixpkgs-ast-grep-0_40_5 {
+    inherit (pkgs.stdenv.hostPlatform) system;
+  };
+in
 {
   home-manager.users.${config.common.username} = {
     home.sessionVariables = {
@@ -19,7 +25,7 @@
       withNodeJs = true;
 
       extraPackages = with pkgs; [
-        ast-grep
+        nixpkgs-ast-grep-0_40_5.ast-grep
         cargo
         ghostscript
         go
@@ -36,6 +42,7 @@
         plantuml
         postgresql_18
         python3
+        rust-analyzer
         shfmt
         sqlite
         statix

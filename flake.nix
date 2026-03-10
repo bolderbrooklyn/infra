@@ -6,6 +6,8 @@
 
     nixpkgs-mongodb-7_0_21.url = "github:NixOS/nixpkgs/50d5614029a8afcbdff6dc1663dd428eafb752f4";
 
+    nixpkgs-ast-grep-0_40_5.url = "github:NixOS/nixpkgs/d30ac9c90216b3e5759b8bf79833def1811d0d3d";
+
     systems.url = "github:nix-systems/default";
 
     llm-agents.url = "github:numtide/llm-agents.nix";
