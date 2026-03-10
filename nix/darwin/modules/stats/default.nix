@@ -29,6 +29,7 @@
         "GPU_line_chart_box" = 0;
         "GPU_line_chart_frame" = 1;
         "GPU_line_chart_label" = 1;
+        "GPU_state" = 1;
         "GPU_widget" = "line_chart";
         LaunchAtLoginNext = 1;
         "NSStatusItem Preferred Position Battery_battery" = 177;

@@ -45,12 +45,13 @@ in
         persistent-others = [
           {
             tile-data = {
-              arrangement = 2;
+              arrangement = 2; # sort by date-added
               file-data = {
                 _CFURLString = "file:///Users/${username}/Downloads";
                 _CFURLStringType = 15;
               };
               file-label = "Downloads";
+              showas = 1; # display as fan
             };
             tile-type = "directory-tile";
           }
