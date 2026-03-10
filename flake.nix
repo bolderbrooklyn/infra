@@ -73,6 +73,12 @@
       nix-darwin,
       ...
     }:
+    let
+      specialArgs = {
+        inherit inputs;
+        inherit (inputs) agenix catppuccin home-manager;
+      };
+    in
     {
       nixpkgs.overlays = [
         (final: prev: {
@@ -84,42 +90,35 @@
       ];
 
       nixosConfigurations.tinkaton = nixpkgs.lib.nixosSystem {
+        inherit specialArgs;
+
         system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-          inherit (inputs) agenix catppuccin home-manager;
-          isDarwin = false;
-        };
 
         modules = [
           ./nix/nixos/hosts/tinkaton
         ];
       };
 
-      darwinConfigurations.miraidon = nix-darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        specialArgs = {
-          inherit inputs;
-          inherit (inputs) agenix catppuccin home-manager;
-          isDarwin = true;
+      darwinConfigurations =
+        let
+          system = "aarch64-darwin";
+        in
+        {
+          miraidon = nix-darwin.lib.darwinSystem {
+            inherit system specialArgs;
+
+            modules = [
+              ./nix/darwin/hosts/miraidon
+            ];
+          };
+
+          comfey = nix-darwin.lib.darwinSystem {
+            inherit system specialArgs;
+
+            modules = [
+              ./nix/darwin/hosts/comfey
+            ];
+          };
         };
-
-        modules = [
-          ./nix/darwin/hosts/miraidon
-        ];
-      };
-
-      darwinConfigurations.comfey = nix-darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        specialArgs = {
-          inherit inputs;
-          inherit (inputs) agenix catppuccin home-manager;
-          isDarwin = true;
-        };
-
-        modules = [
-          ./nix/darwin/hosts/comfey
-        ];
-      };
     };
 }
