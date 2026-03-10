@@ -1,7 +1,14 @@
 {
   homebrew = {
     brews = [
+      ### START krunkit dependencies
+      "dtc"
       "krunkit"
+      "libepoxy"
+      "molten-vk"
+      "slp/krunkit/libkrun-efi"
+      "slp/krunkit/virglrenderer"
+      ### END krunkit dependencies
     ];
 
     casks = [
