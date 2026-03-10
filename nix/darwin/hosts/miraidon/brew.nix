@@ -42,6 +42,7 @@
       "notion-calendar"
       "notion-mail"
       "obs"
+      "obsidian"
       "opera"
       "plex"
       "plexamp"
