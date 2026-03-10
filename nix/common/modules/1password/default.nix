@@ -3,19 +3,18 @@
   inputs,
   lib,
   pkgs,
-  isDarwin,
   ...
 }:
 let
   inherit (config.common) username;
 in
 {
-  programs._1password.enable = !isDarwin;
+  programs._1password.enable = !pkgs.stdenv.isDarwin;
 
   programs._1password-gui = {
-    enable = !isDarwin;
+    enable = !pkgs.stdenv.isDarwin;
   }
-  // lib.mkIf (!isDarwin) (
+  // lib.mkIf (!pkgs.stdenv.isDarwin) (
     lib.optionalAttrs (lib.hasAttr "polkitPolicyOwners" config.programs._1password-gui) {
       polkitPolicyOwners = [ username ];
     }
@@ -46,11 +45,11 @@ in
         };
 
         git.settings = lib.mkIf config.programs.git.enable {
-          gpg.ssh.program = lib.mkIf isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+          gpg.ssh.program = lib.mkIf pkgs.stdenv.isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
         };
 
         jujutsu.settings = lib.mkIf config.programs.jujutsu.enable {
-          signing.program = lib.mkIf isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+          signing.program = lib.mkIf pkgs.stdenv.isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
         };
 
         ssh = {
@@ -61,11 +60,8 @@ in
         };
       };
     };
-}
-// lib.optionalAttrs isDarwin {
-  imports = [ ../../../darwin/modules/brew ];
 
-  homebrew = {
+  homebrew = lib.optionalAttrs pkgs.stdenv.isDarwin {
     casks = [
       {
         name = "1password";

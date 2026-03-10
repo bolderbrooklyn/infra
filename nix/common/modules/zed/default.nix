@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  isDarwin,
   ...
 }:
 let
@@ -13,18 +12,18 @@ in
   imports = [ ../font ];
 
   home-manager.users.${username} = {
-    home.shellAliases.zed = lib.mkIf (!isDarwin) "zeditor";
+    home.shellAliases.zed = lib.mkIf (!pkgs.stdenv.isDarwin) "zeditor";
 
     programs.zed-editor = {
       enable = true;
-      package = lib.mkIf isDarwin null;
+      package = lib.mkIf pkgs.stdenv.isDarwin null;
 
       mutableUserDebug = false;
       mutableUserKeymaps = false;
       mutableUserSettings = false;
       mutableUserTasks = false;
 
-      extraPackages = lib.mkIf (!isDarwin) (
+      extraPackages = lib.mkIf (!pkgs.stdenv.isDarwin) (
         with pkgs;
         [
           nil
@@ -197,9 +196,8 @@ in
       ];
     };
   };
-}
-// lib.optionalAttrs isDarwin {
-  imports = [ ../../../darwin/modules/brew ];
 
-  homebrew.casks = [ "zed" ];
+  homebrew = lib.optionalAttrs pkgs.stdenv.isDarwin {
+    casks = [ "zed" ];
+  };
 }

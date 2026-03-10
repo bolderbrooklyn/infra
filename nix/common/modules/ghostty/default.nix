@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  isDarwin,
+  pkgs,
   ...
 }:
 let
@@ -14,8 +14,8 @@ in
   home-manager.users.${username} = {
     programs.ghostty = {
       enable = true;
-      package = lib.mkIf isDarwin null;
-      installVimSyntax = !isDarwin;
+      package = lib.mkIf pkgs.stdenv.isDarwin null;
+      installVimSyntax = !pkgs.stdenv.isDarwin;
 
       settings = {
         adjust-cell-height = "31%";
@@ -26,7 +26,7 @@ in
         clipboard-write = "allow";
         font-family = font.name;
         font-size = font.size;
-        fullscreen = isDarwin;
+        fullscreen = pkgs.stdenv.isDarwin;
         quick-terminal-animation-duration = 0;
         window-inherit-working-directory = false;
 
@@ -36,9 +36,8 @@ in
       };
     };
   };
-}
-// lib.optionalAttrs isDarwin {
-  imports = [ ../../../darwin/modules/brew ];
 
-  homebrew.casks = [ "ghostty" ];
+  homebrew = lib.optionalAttrs pkgs.stdenv.isDarwin {
+    casks = [ "ghostty" ];
+  };
 }

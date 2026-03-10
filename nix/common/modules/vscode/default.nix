@@ -1,10 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  isDarwin,
-  ...
-}:
+{ config, pkgs, ... }:
 let
   inherit (config.common) username;
   inherit (config.gui) font;
@@ -58,10 +52,7 @@ in
         };
       };
     };
-  };
-}
-// lib.optionalAttrs isDarwin {
-  home-manager.users.${username} = {
+
     targets.darwin.defaults = {
       "com.microsoft.VSCode" = {
         ApplePressAndHoldEnabled = false;
