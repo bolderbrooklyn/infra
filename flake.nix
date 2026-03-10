@@ -74,9 +74,10 @@
       ...
     }:
     let
-      specialArgs = {
+      baseSpecialArgs = {
         inherit inputs;
         inherit (inputs) agenix catppuccin home-manager;
+        isDarwin = false;
       };
     in
     {
@@ -89,19 +90,27 @@
         })
       ];
 
-      nixosConfigurations.tinkaton = nixpkgs.lib.nixosSystem {
-        inherit specialArgs;
+      nixosConfigurations.tinkaton =
+        let
+          specialArgs = baseSpecialArgs;
+        in
+        nixpkgs.lib.nixosSystem {
+          inherit specialArgs;
 
-        system = "x86_64-linux";
+          system = "x86_64-linux";
 
-        modules = [
-          ./nix/nixos/hosts/tinkaton
-        ];
-      };
+          modules = [
+            ./nix/nixos/hosts/tinkaton
+          ];
+        };
 
       darwinConfigurations =
         let
           system = "aarch64-darwin";
+
+          specialArgs = baseSpecialArgs // {
+            isDarwin = true;
+          };
         in
         {
           miraidon = nix-darwin.lib.darwinSystem {
