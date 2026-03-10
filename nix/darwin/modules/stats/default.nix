@@ -27,6 +27,7 @@
         Disk_widget = "label,bar_chart,network_chart";
         GPU_lineChart_position = 0;
         GPU_line_chart_box = 0;
+        GPU_line_chart_color = "utilization";
         GPU_line_chart_frame = 1;
         GPU_line_chart_label = 1;
         GPU_state = 1;
