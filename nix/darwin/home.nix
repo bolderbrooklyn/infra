@@ -37,7 +37,21 @@
         minimize-to-application = true;
         show-recents = false;
         size-immutable = true;
-        static-only = true;
+
+        persistent-apps = [ ];
+        persistent-others = [
+          {
+            tile-data = {
+              arrangement = 2;
+              file-data = {
+                _CFURLString = "file:///Users/${config.common.username}/Downloads";
+                _CFURLStringType = 15;
+              };
+              file-label = "Downloads";
+            };
+            tile-type = "directory-tile";
+          }
+        ];
       };
 
       "com.apple.finder" = {
