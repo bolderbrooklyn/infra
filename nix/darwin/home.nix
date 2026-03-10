@@ -4,12 +4,15 @@
   home-manager,
   ...
 }:
+let
+  inherit (config.common) username;
+in
 {
   imports = [
     home-manager.darwinModules.home-manager
   ];
 
-  home-manager.users.${config.common.username} = {
+  home-manager.users.${username} = {
     home = {
       shellAliases = {
         pbc = "pbcopy";
@@ -44,7 +47,7 @@
             tile-data = {
               arrangement = 2;
               file-data = {
-                _CFURLString = "file:///Users/${config.common.username}/Downloads";
+                _CFURLString = "file:///Users/${username}/Downloads";
                 _CFURLStringType = 15;
               };
               file-label = "Downloads";
