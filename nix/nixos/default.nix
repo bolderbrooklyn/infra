@@ -7,7 +7,7 @@
 }:
 let
   inherit (config.common) username;
-  defaultLocale = "en-US.UTF-8";
+  defaultLocale = "en_US.UTF-8";
 in
 {
   imports = [
