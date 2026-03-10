@@ -34,10 +34,10 @@
         LaunchAtLoginNext = 1;
         "NSStatusItem Preferred Position Battery_battery" = 177;
         "NSStatusItem Preferred Position CPU_line_chart" = 178;
-        "NSStatusItem Preferred Position Disk" = 181;
+        "NSStatusItem Preferred Position Disk" = 180;
         "NSStatusItem Preferred Position GPU_line_chart" = 179;
         "NSStatusItem Preferred Position Network_speed" = 182;
-        "NSStatusItem Preferred Position RAM_pie_chart" = 180;
+        "NSStatusItem Preferred Position RAM_pie_chart" = 181;
         "NSToolbar Configuration eu.exelban.Stats.Settings.Toolbar" = {
           "TB Display Mode" = 1;
           "TB Icon Size Mode" = 1;
