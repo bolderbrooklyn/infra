@@ -3,6 +3,7 @@
   inputs,
   lib,
   pkgs,
+  isDarwin,
   ...
 }:
 let
@@ -22,18 +23,19 @@ in
     };
   };
 
-  config = lib.mkIf cfg.enable {
-    home-manager.users.${config.common.username} = {
-      home.packages = lib.mkIf cfg.cli.enable (
-        with llmAgentsPkgs;
-        [
-          cursor-agent
-        ]
-      );
-    };
-
-    homebrew = lib.optionalAttrs pkgs.stdenv.isDarwin {
-      casks = [ "cursor" ];
-    };
-  };
+  config = lib.mkIf cfg.enable (
+    {
+      home-manager.users.${config.common.username} = {
+        home.packages = lib.mkIf cfg.cli.enable (
+          with llmAgentsPkgs;
+          [
+            cursor-agent
+          ]
+        );
+      };
+    }
+    // lib.optionalAttrs isDarwin {
+      homebrew.casks = [ "cursor" ];
+    }
+  );
 }

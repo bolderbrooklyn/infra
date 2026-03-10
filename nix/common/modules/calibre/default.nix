@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  pkgs,
+  isDarwin,
   ...
 }:
 let
@@ -11,11 +11,12 @@ in
   home-manager.users.${username} = {
     programs.calibre = {
       enable = true;
-      package = lib.mkIf pkgs.stdenv.isDarwin null;
+      package = lib.mkIf isDarwin null;
     };
   };
+}
+// lib.optionalAttrs isDarwin {
+  imports = [ ../../../darwin/modules/brew ];
 
-  homebrew = lib.optionalAttrs pkgs.stdenv.isDarwin {
-    casks = [ "calibre" ];
-  };
+  homebrew.casks = [ "calibre" ];
 }
