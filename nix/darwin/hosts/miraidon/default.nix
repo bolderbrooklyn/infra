@@ -28,7 +28,10 @@
     hostName = "miraidon";
   };
 
-  programs.powershell.enable = true;
+  programs = {
+    powershell.enable = true;
+    warp-terminal.enable = true;
+  };
 
   home-manager.users.${config.common.username} = {
     home.packages = with pkgs; [

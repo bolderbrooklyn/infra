@@ -60,7 +60,6 @@
       "virtualbox"
       "vivaldi"
       "vlc"
-      "warp"
       "wave"
       "xquartz"
       "yaak"

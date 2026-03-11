@@ -44,6 +44,8 @@
     kernelPackages = pkgs.linuxPackages_latest;
   };
 
+  programs.warp-terminal.enable = true;
+
   services = {
     cron = {
       enable = true;
