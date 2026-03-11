@@ -48,6 +48,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    catppuccin-warp = {
+      url = "github:catppuccin/warp";
+      flake = false;
+    };
+
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     homebrew-core = {
       url = "github:Homebrew/homebrew-core";

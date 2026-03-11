@@ -1,10 +1,14 @@
 {
+  inputs,
   config,
   lib,
   pkgs,
   isDarwin,
   ...
 }:
+let
+  inherit (config.common) username;
+in
 {
   options.programs.warp-terminal = {
     enable = lib.mkEnableOption "warp-terminal";
@@ -12,14 +16,24 @@
 
   config = lib.mkIf config.programs.warp-terminal.enable (
     {
-      home-manager.users.${config.common.username} = {
-        home.packages = lib.mkIf (!isDarwin) (
-          with pkgs;
-          [
-            warp-terminal
-          ]
-        );
-      };
+      home-manager.users.${username} =
+        { config, ... }:
+        let
+          warpDir = "${config.home.homeDirectory}/${if isDarwin then "." else ".config/"}warp";
+        in
+        {
+          home.packages = lib.mkIf (!isDarwin) (
+            with pkgs;
+            [
+              warp-terminal
+            ]
+          );
+
+          home.file."${warpDir}/themes" = lib.mkIf config.catppuccin.enable {
+            source = "${inputs.catppuccin-warp}/themes";
+            recursive = true;
+          };
+        };
     }
     // lib.optionalAttrs isDarwin {
       homebrew.casks = [ "warp" ];

@@ -149,6 +149,22 @@
         "type": "github"
       }
     },
+    "catppuccin-warp": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1741513803,
+        "narHash": "sha256-ypzSeSWT2XfdjfdeE/lLdiRgRmxewAqiWhGp6jjF7hE=",
+        "owner": "catppuccin",
+        "repo": "warp",
+        "rev": "b6891cc339b3a1bb70a5c3063add4bdbd0455603",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "warp",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -400,6 +416,7 @@
         "_1password-shell-plugins": "_1password-shell-plugins",
         "agenix": "agenix",
         "catppuccin": "catppuccin",
+        "catppuccin-warp": "catppuccin-warp",
         "home-manager": "home-manager",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
