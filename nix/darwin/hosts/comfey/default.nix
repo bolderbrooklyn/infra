@@ -23,21 +23,25 @@
     hostName = "comfey";
   };
 
-  programs.cursor = {
-    enable = true;
-    cli.enable = true;
-  };
-
-  programs.git = {
-    signingKey = {
-      type = "ssh";
-      key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBm6eRCvtgFqySgOnt3gi9IMfGx5S026tEOuHV3BUbls";
+  programs = {
+    cursor = {
+      enable = true;
+      cli.enable = true;
     };
 
-    user = {
-      name = "brooke hannah";
-      email = "bhannah@nclusion.com";
+    git = {
+      signingKey = {
+        type = "ssh";
+        key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBm6eRCvtgFqySgOnt3gi9IMfGx5S026tEOuHV3BUbls";
+      };
+
+      user = {
+        name = "brooke hannah";
+        email = "bhannah@nclusion.com";
+      };
     };
+
+    warp-terminal.enable = true;
   };
 
   home-manager.users.${config.common.username} = {
