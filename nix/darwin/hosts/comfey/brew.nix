@@ -18,6 +18,7 @@
       "claude"
       "codex-app"
       "dash"
+      "figma"
       {
         name = "google-chrome";
         args.appdir = "/Applications";
