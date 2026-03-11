@@ -30,6 +30,7 @@ in
     ./modules/git
     ./modules/gnupg
     ./modules/mise
+    ./modules/nushell
     ./modules/nvim
     ./modules/starship
     ./modules/tmux

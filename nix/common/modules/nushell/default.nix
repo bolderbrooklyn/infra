@@ -1,12 +1,15 @@
-{ config, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
-  nu = pkgs.nushell;
+  inherit (pkgs) nushell;
+  inherit (config.common) username;
+  inherit (config.home-manager.users.${username}.programs.nushell) enable;
 in
 {
-  environment.systemPackages = [ nu ];
-  environment.shells = [ nu ];
-
-  home-manager.users.${config.common.username} = {
-    programs.nushell.enable = true;
-  };
+  environment.systemPackages = lib.mkIf enable [ nushell ];
+  environment.shells = lib.mkIf enable [ nushell ];
 }

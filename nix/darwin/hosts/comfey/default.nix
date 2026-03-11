@@ -11,7 +11,6 @@
     ../../../common/modules/cursor
     ../../../common/modules/gcloud-cli
     ../../../common/modules/kubectl
-    ../../../common/modules/nushell
     ../../../common/modules/opencode
     ../../../common/modules/vscode
   ];
@@ -45,6 +44,8 @@
   };
 
   home-manager.users.${config.common.username} = {
+    programs.nushell.enable = true;
+
     xdg.configFile."nvim/lua/plugins/comfey.lua" = {
       source = ./config/nvim/lua/plugins/comfey.lua;
       force = true;

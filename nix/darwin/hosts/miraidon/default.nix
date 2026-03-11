@@ -14,7 +14,6 @@
     ../../../common/modules/gcloud-cli
     ../../../common/modules/gemini-cli
     ../../../common/modules/kubectl
-    ../../../common/modules/nushell
     ../../../common/modules/opencode
     ../../../common/modules/openssh
     ../../../common/modules/vscode
@@ -40,11 +39,15 @@
       ffmpeg
     ];
 
-    programs.opencode.settings.plugin = [ "opencode-wakatime@latest" ];
+    programs = {
+      nushell.enable = true;
 
-    programs.zed-editor.userSettings.agent.default_model = {
-      model = "claude-sonnet-4.5";
-      provider = "copilot_chat";
+      opencode.settings.plugin = [ "opencode-wakatime@latest" ];
+
+      zed-editor.userSettings.agent.default_model = {
+        model = "claude-sonnet-4.5";
+        provider = "copilot_chat";
+      };
     };
 
     xdg.configFile."nvim/lua/plugins/wakatime.lua" = {
