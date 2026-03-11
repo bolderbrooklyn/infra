@@ -36,7 +36,7 @@ in
         };
     }
     // lib.optionalAttrs isDarwin {
-      homebrew.casks = [ "warp" ];
+      homebrew.casks = [ "warp" ]; # installing nix package gives error about requiring hfs on macos
     }
   );
 }
