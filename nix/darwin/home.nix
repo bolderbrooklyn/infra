@@ -76,6 +76,10 @@ in
         IncludeDevelopMenu = true;
       };
 
+      "com.apple.screencapture" = {
+        disable-shadow = true;
+      };
+
       NSGlobalDomain = {
         AppleICUForce24HourTime = true;
         AppleShowAllExtensions = true;
