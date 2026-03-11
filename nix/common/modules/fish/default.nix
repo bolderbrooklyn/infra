@@ -6,14 +6,13 @@
 }:
 let
   inherit (pkgs) fish;
+  inherit (config.common) username;
+
   cfg = config.programs.fish;
 in
 {
   options.programs.fish = {
-    defaultShell = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-    };
+    defaultShell = lib.mkEnableOption "fish.defaultShell";
   };
 
   config = lib.mkIf cfg.enable {
@@ -21,9 +20,9 @@ in
 
     environment.shells = [ fish ];
 
-    users.users.${config.common.username}.shell = lib.mkIf cfg.defaultShell fish;
+    users.users.${username}.shell = lib.mkIf cfg.defaultShell fish;
 
-    home-manager.users.${config.common.username} = {
+    home-manager.users.${username} = {
       home.packages = lib.mkIf pkgs.stdenv.isDarwin [ pkgs.fishPlugins.macos ];
 
       programs.fish = {
