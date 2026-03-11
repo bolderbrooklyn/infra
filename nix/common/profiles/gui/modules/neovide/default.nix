@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 let
   inherit (config.common) username;
   inherit (config.gui) font;
@@ -6,24 +6,26 @@ in
 {
   imports = [
     ../font
-    ../nvim
+    ../../../../modules/nvim
   ];
 
-  home-manager.users.${username} = {
-    home.shellAliases.nv = "neovide";
+  options.brooklyn.programs.neovide.enable = lib.mkEnableOption "neovide";
 
-    programs.neovide = {
-      enable = true;
+  config = lib.mkIf config.brooklyn.programs.neovide.enable {
+    home-manager.users.${username} = {
+      home.shellAliases.nv = "neovide";
 
-      settings = {
-        font = {
-          inherit (font) size;
-          normal = [ font.name ];
+      programs.neovide = {
+        settings = {
+          font = {
+            inherit (font) size;
+            normal = [ font.name ];
+          };
+
+          fork = true;
+          srgb = true;
+          title-hidden = true;
         };
-
-        fork = true;
-        srgb = true;
-        title-hidden = true;
       };
     };
   };

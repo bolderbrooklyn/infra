@@ -29,7 +29,6 @@
 
   programs = {
     powershell.enable = true;
-    warp-terminal.enable = true;
   };
 
   home-manager.users.${config.common.username} = {

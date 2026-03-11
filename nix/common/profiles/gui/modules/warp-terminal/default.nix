@@ -10,11 +10,11 @@ let
   inherit (config.common) username;
 in
 {
-  options.programs.warp-terminal = {
+  options.brooklyn.programs.warp-terminal = {
     enable = lib.mkEnableOption "warp-terminal";
   };
 
-  config = lib.mkIf config.programs.warp-terminal.enable (
+  config = lib.mkIf config.brooklyn.programs.warp-terminal.enable (
     {
       home-manager.users.${username} =
         { config, ... }:

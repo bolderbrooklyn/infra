@@ -39,8 +39,6 @@
         email = "bhannah@nclusion.com";
       };
     };
-
-    warp-terminal.enable = true;
   };
 
   home-manager.users.${config.common.username} = {
