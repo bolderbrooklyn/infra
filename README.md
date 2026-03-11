@@ -18,5 +18,5 @@ make switch
 
 ## Copyright
 
-Copyright © 2025 Jesse Brooklyn Hannah. Licensed under the terms of the [MIT
+Copyright © 2026 Jesse Brooklyn Hannah. Licensed under the terms of the [MIT
 License](LICENSE.md).
