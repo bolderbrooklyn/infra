@@ -5,7 +5,7 @@
   ];
 
   config = {
-    programs.powershell.extraConfig = lib.mkIf config.programs.powershell.enable [
+    brooklyn.programs.powershell.extraConfig = lib.mkIf config.brooklyn.programs.powershell.enable [
       "Invoke-Expression (&starship init powershell)"
     ];
 

@@ -8,11 +8,8 @@ let
   pwsh = pkgs.powershell;
 in
 {
-  options.programs.powershell = {
-    enable = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-    };
+  options.brooklyn.programs.powershell = {
+    enable = lib.mkEnableOption "powershell";
 
     extraConfig = lib.mkOption {
       type = lib.types.listOf lib.types.str;
@@ -20,7 +17,7 @@ in
     };
   };
 
-  config = lib.mkIf config.programs.powershell.enable {
+  config = lib.mkIf config.brooklyn.programs.powershell.enable {
     environment.systemPackages = [ pwsh ];
     environment.shells = [ pwsh ];
 
@@ -28,7 +25,7 @@ in
       ''
         [System.Environment]::SetEnvironmentVariable('PATH', $('{0}/.nix-profile/bin:/etc/profiles/per-user/{1}/bin:/run/current-system/sw/bin:/nix/var/nix/profiles/default/bin:' -f $HOME, $env:USER + $env:PATH), [System.EnvironmentVariableTarget]::Process)
 
-        ${lib.concatStringsSep "\n" config.programs.powershell.extraConfig}
+        ${lib.concatStringsSep "\n" config.brooklyn.programs.powershell.extraConfig}
       '';
   };
 }

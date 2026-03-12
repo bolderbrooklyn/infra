@@ -56,7 +56,7 @@
     };
   };
 
-  programs.powershell.extraConfig = lib.mkIf config.programs.powershell.enable [
+  brooklyn.programs.powershell.extraConfig = lib.mkIf config.brooklyn.programs.powershell.enable [
     "$(/opt/homebrew/bin/brew shellenv) | Invoke-Expression"
   ];
 }
