@@ -8,7 +8,6 @@
     ../../../common/modules/1password
     ../../../common/modules/claude-code
     ../../../common/modules/codex
-    ../../../common/modules/cursor
     ../../../common/modules/gcloud-cli
     ../../../common/modules/kubectl
     ../../../common/modules/opencode
@@ -21,22 +20,22 @@
     hostName = "comfey";
   };
 
-  programs = {
+  brooklyn.programs = {
     cursor = {
       enable = true;
       cli.enable = true;
     };
+  };
 
-    git = {
-      signingKey = {
-        type = "ssh";
-        key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBm6eRCvtgFqySgOnt3gi9IMfGx5S026tEOuHV3BUbls";
-      };
+  programs.git = {
+    signingKey = {
+      type = "ssh";
+      key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBm6eRCvtgFqySgOnt3gi9IMfGx5S026tEOuHV3BUbls";
+    };
 
-      user = {
-        name = "brooke hannah";
-        email = "bhannah@nclusion.com";
-      };
+    user = {
+      name = "brooke hannah";
+      email = "bhannah@nclusion.com";
     };
   };
 

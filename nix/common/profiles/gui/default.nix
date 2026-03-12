@@ -6,6 +6,7 @@ in
   imports = [
     ./modules/alacritty
     ./modules/calibre
+    ./modules/cursor
     ./modules/ghostty
     ./modules/kitty
     ./modules/neovide
