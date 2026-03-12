@@ -3,7 +3,6 @@
   imports = [
     ./brew.nix
     ../..
-    ../../modules/colima
     ../../../common/modules/1password
     ../../../common/modules/claude-code
     ../../../common/modules/codex
@@ -20,6 +19,8 @@
   };
 
   brooklyn.programs = {
+    colima.enable = true;
+
     cursor = {
       enable = true;
       cli.enable = true;

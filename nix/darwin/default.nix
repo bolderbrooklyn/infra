@@ -6,6 +6,7 @@ in
   imports = [
     ./home.nix
     ./modules/brew
+    ./modules/colima
     ./modules/stats
     ../common
     ../common/profiles/gui
