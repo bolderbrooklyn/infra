@@ -3,7 +3,6 @@
   imports = [
     ./brew.nix
     ../..
-    ../../../common/modules/1password
     ../../../common/modules/claude-code
     ../../../common/modules/codex
     ../../../common/modules/gcloud-cli
@@ -19,6 +18,7 @@
   };
 
   brooklyn.programs = {
+    _1password.enable = true;
     colima.enable = true;
 
     cursor = {

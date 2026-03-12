@@ -3,7 +3,6 @@
   imports = [
     ./brew.nix
     ../..
-    ../../../common/modules/1password
     ../../../common/modules/buku
     ../../../common/modules/copilot-cli
     ../../../common/modules/crush
@@ -22,6 +21,7 @@
   };
 
   brooklyn.programs = {
+    _1password.enable = true;
     calibre.enable = true;
     colima.enable = true;
     powershell.enable = true;
