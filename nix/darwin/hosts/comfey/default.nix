@@ -4,7 +4,6 @@
     ./brew.nix
     ../..
     ../../modules/colima
-    ../../../common/profiles/gui
     ../../../common/modules/1password
     ../../../common/modules/claude-code
     ../../../common/modules/codex

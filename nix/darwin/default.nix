@@ -8,6 +8,7 @@ in
     ./modules/brew
     ./modules/stats
     ../common
+    ../common/profiles/gui
   ];
 
   security.pam.services.sudo_local = {
