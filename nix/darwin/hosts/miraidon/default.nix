@@ -6,7 +6,6 @@
     ../../modules/colima
     ../../../common/profiles/gui
     ../../../common/modules/1password
-    ../../../common/modules/alacritty
     ../../../common/modules/buku
     ../../../common/modules/copilot-cli
     ../../../common/modules/crush
