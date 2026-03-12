@@ -16,6 +16,8 @@ in
       home.shellAliases.nv = "neovide";
 
       programs.neovide = {
+        inherit (config.brooklyn.programs.neovide) enable;
+
         settings = {
           font = {
             inherit (font) size;

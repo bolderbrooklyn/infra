@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  isDarwin,
   ...
 }:
 let
@@ -10,9 +9,16 @@ let
   inherit (config.gui) font;
 in
 {
-  home-manager.users.${username} = {
+  imports = [
+    ../font
+    ../../../../modules/catppuccin
+  ];
+
+  options.brooklyn.programs.vscode.enable = lib.mkEnableOption "vscode";
+
+  config.home-manager.users.${username} = {
     programs.vscode = {
-      enable = true;
+      inherit (config.brooklyn.programs.vscode) enable;
 
       profiles.default = {
         enableExtensionUpdateCheck = false;
@@ -58,10 +64,7 @@ in
         };
       };
     };
-  };
-}
-// lib.optionalAttrs isDarwin {
-  home-manager.users.${username} = {
+
     targets.darwin.defaults = {
       "com.microsoft.VSCode" = {
         ApplePressAndHoldEnabled = false;

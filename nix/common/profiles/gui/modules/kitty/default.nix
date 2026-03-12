@@ -1,19 +1,20 @@
-{ config, ... }:
+{ config, lib, ... }:
 let
   inherit (config.common) username;
 in
 {
   imports = [
-    ../bat
-    ../catppuccin
     ../font
+    ../../../../modules/bat
+    ../../../../modules/catppuccin
   ];
 
-  home-manager.users.${username} = {
-    programs.kitty = {
-      inherit (config.gui) font;
+  options.brooklyn.programs.kitty.enable = lib.mkEnableOption "kitty";
 
-      enable = true;
+  config.home-manager.users.${username} = {
+    programs.kitty = {
+      inherit (config.brooklyn.programs.kitty) enable;
+      inherit (config.gui) font;
 
       quickAccessTerminalConfig = {
         hide_on_focus_loss = true;

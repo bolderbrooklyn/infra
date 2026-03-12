@@ -16,9 +16,10 @@
     ../../modules/syncthing
     ../../modules/tunarr
     ../../modules/unifi
-    ../../../common/modules/calibre
     ../../../common/modules/openssh
   ];
+
+  brooklyn.programs.calibre.enable = true;
 
   age.secrets = {
     romm.file = ./secrets/romm.age;

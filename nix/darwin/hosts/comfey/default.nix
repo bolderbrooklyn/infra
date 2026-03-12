@@ -12,7 +12,6 @@
     ../../../common/modules/gcloud-cli
     ../../../common/modules/kubectl
     ../../../common/modules/opencode
-    ../../../common/modules/vscode
   ];
 
   system.stateVersion = 6;

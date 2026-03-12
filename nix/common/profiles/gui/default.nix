@@ -4,15 +4,19 @@ let
 in
 {
   imports = [
+    ./modules/alacritty
+    ./modules/calibre
     ./modules/ghostty
+    ./modules/kitty
     ./modules/neovide
+    ./modules/vscode
     ./modules/warp-terminal
     ./modules/zed
   ];
 
   brooklyn.programs = {
-    ghostty.enable = true;
     neovide.enable = true;
+    vscode.enable = true;
     warp-terminal.enable = true;
     zed-editor.enable = true;
   };

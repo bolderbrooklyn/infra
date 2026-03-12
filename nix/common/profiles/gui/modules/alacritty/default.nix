@@ -1,10 +1,12 @@
-{ config, ... }:
+{ config, lib, ... }:
 {
   imports = [ ../font ];
 
-  home-manager.users.${config.common.username} = {
+  options.brooklyn.programs.alacritty.enable = lib.mkEnableOption "alcritty";
+
+  config.home-manager.users.${config.common.username} = {
     programs.alacritty = {
-      enable = true;
+      inherit (config.brooklyn.programs.alacritty) enable;
 
       settings = {
         font = {
