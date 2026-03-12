@@ -32,6 +32,7 @@ in
     ./modules/mise
     ./modules/nushell
     ./modules/nvim
+    ./modules/openssh
     ./modules/starship
     ./modules/tmux
     ./modules/yazi

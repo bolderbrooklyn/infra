@@ -13,7 +13,6 @@
     ../../../common/modules/gemini-cli
     ../../../common/modules/kubectl
     ../../../common/modules/opencode
-    ../../../common/modules/openssh
     ../../../common/modules/xonsh
   ];
 
@@ -24,11 +23,12 @@
     hostName = "miraidon";
   };
 
-  programs = {
+  brooklyn.programs = {
+    calibre.enable = true;
     powershell.enable = true;
   };
 
-  brooklyn.programs.calibre.enable = true;
+  services.openssh.enable = true;
 
   home-manager.users.${config.common.username} = {
     home.packages = with pkgs; [
