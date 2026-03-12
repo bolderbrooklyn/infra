@@ -2,6 +2,7 @@ return {
 	{
 		"ramilito/winbar.nvim",
 		event = "BufReadPre",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			require("winbar").setup({
 				-- your configuration comes here, for example:
@@ -20,6 +21,7 @@ return {
 					icons = true, -- whether to dim the icons
 					name = true, -- whether to dim the name
 				},
+				dir_levels = 2,
 				exclude_if = nil,
 				-- define a function that returns a boolean to exclude winbar in specific circumstances.
 				-- the function should return true when you want to exclude the winbar, false otherwise.
@@ -27,6 +29,7 @@ return {
 				-- exclude_if = function()
 				--   return vim.w.magenta == true
 				-- end
+				filetype_exclude = { "OverseerList", "OverseerOutput" },
 			})
 		end,
 	},
