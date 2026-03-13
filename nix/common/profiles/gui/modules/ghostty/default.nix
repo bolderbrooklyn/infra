@@ -31,6 +31,10 @@ in
             font-family = font.name;
             font-size = font.size;
             fullscreen = isDarwin;
+            macos-icon = "custom-style";
+            macos-icon-frame = "plastic";
+            macos-icon-ghost-color = "#f5c2e7";
+            macos-icon-screen-color = "#cba6f7,#f2cdcd";
             quick-terminal-animation-duration = 0;
             window-inherit-working-directory = false;
 
