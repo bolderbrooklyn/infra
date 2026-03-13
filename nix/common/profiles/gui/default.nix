@@ -16,9 +16,9 @@ in
   ];
 
   brooklyn.programs = {
+    ghostty.enable = true;
     neovide.enable = true;
     vscode.enable = true;
-    warp-terminal.enable = true;
     zed-editor.enable = true;
   };
 
