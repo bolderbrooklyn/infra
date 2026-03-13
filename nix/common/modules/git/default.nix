@@ -77,8 +77,8 @@ in
             ];
 
             settings = {
-              user.email = cfg.user.email;
-              user.name = cfg.user.name;
+              inherit (cfg) user;
+
               fetch.prune = true;
               gpg.ssh.allowedSignersFile = "${config.xdg.configHome}/git/allowed_signers";
               init.defaultBranch = "trunk";
