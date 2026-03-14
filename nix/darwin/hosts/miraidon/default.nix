@@ -40,20 +40,11 @@
       nushell.enable = true;
 
       opencode.settings.plugin = [ "opencode-wakatime@latest" ];
-
-      zed-editor.userSettings.agent.default_model = {
-        model = "claude-sonnet-4.5";
-        provider = "copilot_chat";
-      };
     };
 
     xdg.configFile."nvim/lua/plugins/wakatime.lua" = {
       source = ./config/nvim/lua/plugins/wakatime.lua;
       force = true;
-    };
-
-    xdg.configFile."opencode/oh-my-opencode.json" = {
-      source = ./config/opencode/oh-my-opencode.json;
     };
   };
 }
