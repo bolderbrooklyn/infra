@@ -1,17 +1,7 @@
-{
-  config,
-  inputs,
-  pkgs,
-  ...
-}:
-let
-  nixpkgs-25_11 = import inputs.nixpkgs-25_11 {
-    inherit (pkgs.stdenv.hostPlatform) system;
-  };
-in
+{ config, pkgs, ... }:
 {
   home-manager.users.${config.common.username} = {
-    home.packages = [ nixpkgs-25_11.devenv ];
+    home.packages = [ pkgs.devenv ];
 
     programs.direnv = {
       enable = true;
