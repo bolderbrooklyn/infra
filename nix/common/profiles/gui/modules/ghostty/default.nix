@@ -35,7 +35,10 @@ in
             macos-icon-frame = "plastic";
             macos-icon-ghost-color = "#f5c2e7";
             macos-icon-screen-color = "#cba6f7,#f2cdcd";
+            split-inherit-working-directory = true;
+            tab-inherit-working-directory = false;
             quick-terminal-animation-duration = 0;
+            window-colorspace = "display-p3";
             window-inherit-working-directory = false;
 
             keybind = lib.mkIf isDarwin [
