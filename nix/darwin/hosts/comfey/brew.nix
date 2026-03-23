@@ -1,10 +1,7 @@
 {
   homebrew.casks = [
     "arc"
-    "chatgpt"
-    "chatgpt-atlas"
     "claude"
-    "codex-app"
     "dash"
     "figma"
     {
