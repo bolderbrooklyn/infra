@@ -1,15 +1,9 @@
 {
   config,
-  inputs,
   lib,
   pkgs,
   ...
 }:
-let
-  nixpkgs-ast-grep-0_40_5 = import inputs.nixpkgs-ast-grep-0_40_5 {
-    inherit (pkgs.stdenv.hostPlatform) system;
-  };
-in
 {
   home-manager.users.${config.common.username} = {
     home.sessionVariables = {
@@ -25,7 +19,7 @@ in
       withNodeJs = true;
 
       extraPackages = with pkgs; [
-        nixpkgs-ast-grep-0_40_5.ast-grep
+        ast-grep
         cargo
         ghostscript
         go

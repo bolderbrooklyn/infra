@@ -379,22 +379,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-ast-grep-0_40_5": {
-      "locked": {
-        "lastModified": 1772792056,
-        "narHash": "sha256-79nDCKOBvZ1kj6utukibXRol5GmHaj5081yU2zjCRso=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "d30ac9c90216b3e5759b8bf79833def1811d0d3d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "d30ac9c90216b3e5759b8bf79833def1811d0d3d",
-        "type": "github"
-      }
-    },
     "nixpkgs-mongodb-7_0_21": {
       "locked": {
         "lastModified": 1754766485,
@@ -443,7 +427,6 @@
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-25_11": "nixpkgs-25_11",
-        "nixpkgs-ast-grep-0_40_5": "nixpkgs-ast-grep-0_40_5",
         "nixpkgs-mongodb-7_0_21": "nixpkgs-mongodb-7_0_21",
         "systems": "systems_2"
       }
