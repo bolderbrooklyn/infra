@@ -13,13 +13,12 @@
     enable = true;
     enableRosetta = false;
     user = config.common.username;
-    mutableTaps = true;
+    mutableTaps = false;
 
     taps = {
       "homebrew/homebrew-core" = inputs.homebrew-core;
       "homebrew/homebrew-cask" = inputs.homebrew-cask;
       "jbhannah/homebrew-pkpw" = inputs.homebrew-pkpw;
-      "slp/krunkit" = inputs.homebrew-krunkit;
     };
   };
 

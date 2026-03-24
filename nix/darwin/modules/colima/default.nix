@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
   ...
@@ -14,13 +15,17 @@
   };
 
   config = lib.mkIf config.brooklyn.programs.colima.enable {
+    nix-homebrew.taps = {
+      "slp/homebrew-krunkit" = inputs.homebrew-krunkit;
+    };
+
     homebrew.brews = [
       "dtc"
       "krunkit"
       "libepoxy"
       "molten-vk"
-      "slp/krunkit/libkrun-efi"
-      "slp/krunkit/virglrenderer"
+      "libkrun-efi"
+      "virglrenderer"
     ];
 
     home-manager.users.${config.common.username} =
