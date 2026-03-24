@@ -2,6 +2,7 @@
   homebrew.casks = [
     "arc"
     "claude"
+    "conductor"
     "dash"
     "figma"
     {
@@ -17,6 +18,7 @@
     "notion"
     "notion-calendar"
     "notion-mail"
+    "plexamp"
     {
       name = "slack";
       args.appdir = "/Applications";
