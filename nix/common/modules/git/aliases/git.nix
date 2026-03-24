@@ -238,7 +238,7 @@ in
       gSx = "git-submodule-remove";
 
       # Tag (t)
-      gt = "git tag";
+      gtt = "git tag";
       gtl = "git tag -l";
       gts = "git tag -s";
       gtv = "git verify-tag";
