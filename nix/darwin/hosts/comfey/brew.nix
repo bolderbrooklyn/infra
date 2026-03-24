@@ -8,6 +8,7 @@
     brews = [ "graphite" ];
 
     casks = [
+      "android-studio"
       "arc"
       "claude"
       "conductor"
