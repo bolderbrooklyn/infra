@@ -70,6 +70,10 @@
       url = "github:jbhannah/pkpw";
       flake = false;
     };
+    homebrew-withgraphite = {
+      url = "github:withgraphite/homebrew-tap";
+      flake = false;
+    };
   };
 
   outputs =
