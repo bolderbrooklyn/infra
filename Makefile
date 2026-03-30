@@ -15,7 +15,10 @@ $(ACTIONS):
 $(SUDO_ACTIONS):
 	$(SUDO_REBUILD_CMD) $(REBUILD_ARGS)
 
+devenv:
+	devenv update
+
 update:
 	nix flake update
 
-up: update switch
+up: update switch devenv 
