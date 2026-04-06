@@ -4,6 +4,7 @@
     ./brew.nix
     ../..
     ../../../common/modules/claude-code
+    ../../../common/modules/codex
     ../../../common/modules/gcloud-cli
     ../../../common/modules/kubectl
     ../../../common/modules/opencode

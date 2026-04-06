@@ -11,6 +11,7 @@
       "android-studio"
       "arc"
       "claude"
+      "codex-app"
       "conductor"
       "dash"
       "figma"
@@ -27,6 +28,7 @@
       "notion"
       "notion-calendar"
       "notion-mail"
+      "opencode-desktop"
       "plexamp"
       {
         name = "slack";
