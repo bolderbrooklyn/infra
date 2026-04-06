@@ -46,10 +46,6 @@ in
               use_modifier_to_send = true;
             };
 
-            agent_servers = {
-              gemini.ignore_system_version = false;
-            };
-
             always_treat_brackets_as_autoclosed = true;
             auto_signature_help = true;
             base_keymap = "Atom";
