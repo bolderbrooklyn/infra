@@ -21,15 +21,18 @@ in
       settings = {
         autoupdate = false;
 
-        keybinds = {
-          input_submit = "super+return,return";
-        };
-
         plugin = [
           "@tmegit/opencode-worktree-session@latest"
           "opencode-gemini-auth@latest"
           "oh-my-opencode@latest"
         ];
+      };
+
+      tui = {
+        theme = "catppuccin";
+        keybinds = {
+          input_submit = "super+return,return";
+        };
       };
     };
   }
