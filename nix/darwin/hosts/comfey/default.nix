@@ -40,7 +40,19 @@
   };
 
   home-manager.users.${config.common.username} = {
-    programs.nushell.enable = true;
+    programs = {
+      mcp = {
+        enable = true;
+        servers = {
+          linear.url = "https://mcp.linear.app/mcp";
+          notion.url = "https://mcp.notion.com/mcp";
+        };
+      };
+
+      nushell.enable = true;
+
+      opencode.settings.plugin = [ "opencode-claude-auth" ];
+    };
 
     xdg.configFile."nvim/lua/plugins/comfey.lua" = {
       source = ./config/nvim/lua/plugins/comfey.lua;
