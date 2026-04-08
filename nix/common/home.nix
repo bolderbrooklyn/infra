@@ -15,7 +15,7 @@ in
     ];
 
     useGlobalPkgs = true;
-    backupFileExtension = "backup";
+    backupFileExtension = "hm-backup";
 
     users.${username} =
       { config, ... }:
