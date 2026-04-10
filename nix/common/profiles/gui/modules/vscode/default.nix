@@ -64,7 +64,8 @@ in
         };
       };
     };
-
+  }
+  // lib.mkIf pkgs.stdenv.isDarwin {
     targets.darwin.defaults = {
       "com.microsoft.VSCode" = {
         ApplePressAndHoldEnabled = false;
