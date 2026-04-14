@@ -8,6 +8,7 @@
     ../../modules/crafty
     ../../modules/forgejo
     ../../modules/jellyfin
+    ../../modules/lazylibrarian
     ../../modules/navidrome
     ../../modules/plex
     ../../modules/postgresql
