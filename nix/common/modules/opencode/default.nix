@@ -9,7 +9,10 @@ let
   opencodePackage = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.opencode;
 in
 {
-  imports = [ ../catppuccin ];
+  imports = [
+    ../catppuccin
+    ../../profiles/gui/modules/warp-terminal
+  ];
 
   home-manager.users.${config.common.username} = {
     programs.opencode = {
@@ -25,7 +28,10 @@ in
           "@tmegit/opencode-worktree-session@latest"
           "opencode-gemini-auth@latest"
           "oh-my-opencode@latest"
-        ];
+        ]
+        ++ (lib.lists.optionals config.brooklyn.programs.warp-terminal.enable [
+          "@warp-dot-dev/opencode-warp"
+        ]);
       };
 
       tui = {
