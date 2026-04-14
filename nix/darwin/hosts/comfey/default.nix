@@ -25,6 +25,8 @@
       enable = true;
       cli.enable = true;
     };
+
+    warp-terminal.enable = true;
   };
 
   programs.git = {
