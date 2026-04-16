@@ -74,6 +74,9 @@ in
 
             ignores = [
               ".DS_Store"
+              ".omc"
+              ".opencode"
+              ".sisyphus"
             ];
 
             settings = {
