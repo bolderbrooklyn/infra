@@ -41,24 +41,29 @@
     };
   };
 
-  home-manager.users.${config.common.username} = {
-    programs = {
-      mcp = {
-        enable = true;
-        servers = {
-          linear.url = "https://mcp.linear.app/mcp";
-          notion.url = "https://mcp.notion.com/mcp";
+  home-manager.users.${config.common.username} =
+    { config, ... }:
+    {
+      home.sessionPath = [ "${config.home.homeDirectory}/.npm/bin" ];
+
+      programs = {
+        mcp = {
+          enable = true;
+          servers = {
+            linear.url = "https://mcp.linear.app/mcp";
+            notion.url = "https://mcp.notion.com/mcp";
+          };
         };
+
+        npm.enable = true;
+        nushell.enable = true;
+
+        opencode.settings.plugin = [ "opencode-claude-auth" ];
       };
 
-      nushell.enable = true;
-
-      opencode.settings.plugin = [ "opencode-claude-auth" ];
+      xdg.configFile."nvim/lua/plugins/comfey.lua" = {
+        source = ./config/nvim/lua/plugins/comfey.lua;
+        force = true;
+      };
     };
-
-    xdg.configFile."nvim/lua/plugins/comfey.lua" = {
-      source = ./config/nvim/lua/plugins/comfey.lua;
-      force = true;
-    };
-  };
 }
