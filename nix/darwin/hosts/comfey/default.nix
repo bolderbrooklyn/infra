@@ -57,7 +57,6 @@
         };
 
         npm.enable = true;
-        nushell.enable = true;
 
         opencode.settings.plugin = [ "opencode-claude-auth" ];
       };
