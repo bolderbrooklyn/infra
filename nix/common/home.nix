@@ -25,6 +25,8 @@ in
         ];
 
         home = {
+          sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];
+
           shellAliases = {
             l = "ls -alh";
           };
