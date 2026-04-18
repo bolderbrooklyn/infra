@@ -50,7 +50,7 @@ in
       };
 
       Service = {
-        ExecStart = "${opencodePackage}/bin/opencode serve --hostname 0.0.0.0 --port 4096";
+        ExecStart = "${opencodePackage}/bin/opencode serve --hostname 0.0.0.0 --port 4096 --cors https://opencode.anteater-wall.ts.net";
         Restart = "on-failure";
       };
 

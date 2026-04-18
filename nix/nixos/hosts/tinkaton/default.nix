@@ -7,16 +7,17 @@
     ../../modules/audiobookshelf
     ../../modules/crafty
     ../../modules/forgejo
-    ../../modules/jellyfin
+    # ../../modules/jellyfin
     ../../modules/lazylibrarian
-    ../../modules/navidrome
+    # ../../modules/navidrome
     ../../modules/plex
     ../../modules/postgresql
     ../../modules/romm
     ../../modules/servarr
     ../../modules/syncthing
-    ../../modules/tunarr
+    # ../../modules/tunarr
     ../../modules/unifi
+    ../../../common/modules/opencode
     ../../../common/modules/openssh
   ];
 
