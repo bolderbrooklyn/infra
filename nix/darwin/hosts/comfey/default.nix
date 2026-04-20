@@ -31,24 +31,19 @@
     warp-terminal.enable = true;
   };
 
-  programs.git = {
-    signingKey = {
-      type = "ssh";
-      key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBm6eRCvtgFqySgOnt3gi9IMfGx5S026tEOuHV3BUbls";
-    };
-
-    user = {
-      name = "brooke hannah";
-      email = "bhannah@nclusion.com";
-    };
-  };
-
   home-manager.users.${config.common.username} =
     { config, ... }:
     {
       home.sessionPath = [ "${config.home.homeDirectory}/.npm/bin" ];
 
       programs = {
+        git.includes = [
+          {
+            path = ./config/git/nclusion.conf;
+            condition = "gitdir:${config.home.homeDirectory}/Developer/Repositories/github.com/nclusion/";
+          }
+        ];
+
         mcp = {
           enable = true;
           servers = {
