@@ -27,18 +27,12 @@ in
         plugin = [
           "@tmegit/opencode-worktree-session@latest"
           "opencode-gemini-auth@latest"
-          "oh-my-opencode@latest"
-        ]
-        ++ (lib.lists.optionals config.brooklyn.programs.warp-terminal.enable [
-          "@warp-dot-dev/opencode-warp"
-        ]);
+          "oh-my-openagent@latest"
+        ];
       };
 
       tui = {
-        theme = "catppuccin";
-        keybinds = {
-          input_submit = "super+return,return";
-        };
+        theme = lib.mkForce "catppuccin-mocha";
       };
     };
   }
