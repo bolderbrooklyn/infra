@@ -64,6 +64,7 @@ in
           git = {
             enable = true;
             lfs.enable = true;
+            maintenance.enable = true;
 
             signing = {
               inherit (cfg.signingKey) key;
