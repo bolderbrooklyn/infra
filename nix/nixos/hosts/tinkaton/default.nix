@@ -17,12 +17,16 @@
     ../../modules/syncthing
     # ../../modules/tunarr
     ../../modules/unifi
+    ../../../common/modules/gemini-cli
     ../../../common/modules/opencode
     ../../../common/modules/openssh
   ];
 
-  brooklyn.programs.calibre.enable = true;
-  brooklyn.programs.openclaw.enable = true;
+  brooklyn.programs = {
+    calibre.enable = true;
+    gemini-cli.enable = true;
+    openclaw.enable = false;
+  };
 
   age.secrets = {
     romm.file = ./secrets/romm.age;
