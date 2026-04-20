@@ -1,4 +1,17 @@
 { config, ... }:
+let
+  nclusionGit.contents = {
+    signingKey = {
+      type = "ssh";
+      key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBm6eRCvtgFqySgOnt3gi9IMfGx5S026tEOuHV3BUbls";
+    };
+
+    user = {
+      name = "brooke hannah";
+      email = "bhannah@nclusion.com";
+    };
+  };
+in
 {
   imports = [
     ./brew.nix
@@ -39,7 +52,7 @@
       programs = {
         git.includes = [
           {
-            path = ./config/git/nclusion.conf;
+            inherit (nclusionGit) contents;
             condition = "gitdir:${config.home.homeDirectory}/Developer/Repositories/github.com/nclusion/";
           }
         ];
