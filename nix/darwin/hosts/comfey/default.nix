@@ -6,6 +6,7 @@
     ../../../common/modules/claude-code
     ../../../common/modules/codex
     ../../../common/modules/gcloud-cli
+    ../../../common/modules/gemini-cli
     ../../../common/modules/kubectl
     ../../../common/modules/opencode
   ];
@@ -26,6 +27,7 @@
       cli.enable = true;
     };
 
+    gemini-cli.enable = true;
     warp-terminal.enable = true;
   };
 
