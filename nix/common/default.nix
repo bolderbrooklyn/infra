@@ -33,6 +33,7 @@ in
     ./modules/mise
     ./modules/nushell
     ./modules/nvim
+    ./modules/openclaw
     ./modules/openssh
     ./modules/starship
     ./modules/tmux

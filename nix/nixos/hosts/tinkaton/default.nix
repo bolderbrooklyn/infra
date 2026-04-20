@@ -22,6 +22,7 @@
   ];
 
   brooklyn.programs.calibre.enable = true;
+  brooklyn.programs.openclaw.enable = true;
 
   age.secrets = {
     romm.file = ./secrets/romm.age;
