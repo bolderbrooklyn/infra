@@ -60,15 +60,13 @@ in
         mcp = {
           enable = true;
           servers = {
-            figma.url = "http://127.0.0.1:3845/mcp";
             linear.url = "https://mcp.linear.app/mcp";
             notion.url = "https://mcp.notion.com/mcp";
           };
         };
 
-        npm.enable = true;
-
         opencode.settings.plugin = [ "opencode-claude-auth" ];
+        qutebrowser.enable = true;
       };
 
       xdg.configFile."nvim/lua/plugins/comfey.lua" = {

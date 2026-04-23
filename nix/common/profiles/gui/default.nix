@@ -10,6 +10,7 @@ in
     ./modules/ghostty
     ./modules/kitty
     ./modules/neovide
+    ./modules/qutebrowser
     ./modules/vscode
     ./modules/warp-terminal
     ./modules/zed
