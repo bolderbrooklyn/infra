@@ -1,7 +1,3 @@
-{ config, ... }:
-let
-  inherit (config.common) username;
-in
 {
   imports = [
     ./modules/alacritty
@@ -21,11 +17,5 @@ in
     neovide.enable = true;
     vscode.enable = true;
     zed-editor.enable = true;
-  };
-
-  home-manager.users.${username} = {
-    programs = {
-      zathura.enable = true;
-    };
   };
 }

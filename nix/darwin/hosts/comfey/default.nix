@@ -66,7 +66,6 @@ in
         };
 
         opencode.settings.plugin = [ "opencode-claude-auth" ];
-        qutebrowser.enable = true;
       };
 
       xdg.configFile."nvim/lua/plugins/comfey.lua" = {
