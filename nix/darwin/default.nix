@@ -12,18 +12,6 @@ in
     ../common/profiles/gui
   ];
 
-  nixpkgs = {
-    overlays = [
-      (_final: prev: {
-        direnv = prev.direnv.overrideAttrs (_: {
-          postPatch = ''
-            substituteInPlace GNUmakefile --replace-fail " -linkmode=external" ""
-          '';
-        });
-      })
-    ];
-  };
-
   security.pam.services.sudo_local = {
     enable = true;
     reattach = true;
