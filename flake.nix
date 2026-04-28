@@ -101,6 +101,9 @@
             lix
             nix-direnv
             ;
+          direnv = prev.direnv.overrideAttrs (_: {
+            doCheck = false;
+          });
         })
       ];
 
