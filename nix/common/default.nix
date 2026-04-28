@@ -63,7 +63,17 @@ in
       };
     };
 
-    nixpkgs.config.allowUnfree = true;
+    nixpkgs = {
+      overlays = [
+        (final: prev: {
+          direnv = prev.direnv.overrideAttrs (_: {
+            doCheck = false;
+          });
+        })
+      ];
+
+      config.allowUnfree = true;
+    };
 
     time.timeZone = "America/Los_Angeles";
 
