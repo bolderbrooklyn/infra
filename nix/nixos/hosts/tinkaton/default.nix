@@ -25,7 +25,7 @@
   brooklyn.programs = {
     calibre.enable = true;
     gemini-cli.enable = true;
-    openclaw.enable = false;
+    openclaw.enable = true;
   };
 
   age.secrets = {

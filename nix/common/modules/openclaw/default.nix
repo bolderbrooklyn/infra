@@ -13,6 +13,10 @@ in
   };
 
   config = lib.mkIf config.brooklyn.programs.openclaw.enable {
+    nixpkgs.overlays = [
+      inputs.nix-openclaw.overlays.default
+    ];
+
     home-manager.users.${username} =
       { ... }:
       {

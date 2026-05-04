@@ -48,7 +48,6 @@ in
 
         programs = {
           home-manager.enable = true;
-
           ripgrep.enable = true;
 
           ssh = {
