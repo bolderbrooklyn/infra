@@ -33,7 +33,7 @@ in
 
   brooklyn.programs = {
     _1password.enable = true;
-    colima.enable = true;
+    colima.enable = false;
 
     cursor = {
       enable = true;

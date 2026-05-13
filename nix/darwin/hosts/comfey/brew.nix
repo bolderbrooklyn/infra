@@ -19,7 +19,7 @@
         name = "google-chrome";
         args.appdir = "/Applications";
       }
-      "linear-linear"
+      "linear"
       {
         name = "lm-studio";
         args.appdir = "/Applications";
