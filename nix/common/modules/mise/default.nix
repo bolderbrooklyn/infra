@@ -6,7 +6,9 @@
         enable = true;
 
         globalConfig.settings = {
+          node.compile = false;
           ruby.compile = false;
+
           idiomatic_version_file_enable_tools = [
             "node"
             "ruby"
