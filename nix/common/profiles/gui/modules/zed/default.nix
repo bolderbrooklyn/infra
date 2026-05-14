@@ -42,7 +42,7 @@ in
           userSettings = {
             agent = {
               default_profile = "ask";
-              play_sound_when_agent_done = true;
+              play_sound_when_agent_done = "when_hidden";
               use_modifier_to_send = true;
             };
 
@@ -150,7 +150,7 @@ in
               mode = "system";
             };
 
-            title_bar.show_branch_icon = true;
+            title_bar.show_branch_status_icon = true;
 
             use_smartcase_search = true;
             vim.use_smartcase_find = true;
