@@ -1,14 +1,10 @@
 { config, ... }:
 let
   nclusionGit.contents = {
-    signingKey = {
-      type = "ssh";
-      key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBm6eRCvtgFqySgOnt3gi9IMfGx5S026tEOuHV3BUbls";
-    };
-
     user = {
       name = "brooke hannah";
       email = "bhannah@nclusion.com";
+      signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBm6eRCvtgFqySgOnt3gi9IMfGx5S026tEOuHV3BUbls";
     };
   };
 in
