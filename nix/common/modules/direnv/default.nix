@@ -1,8 +1,6 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 {
   home-manager.users.${config.common.username} = {
-    home.packages = [ pkgs.devenv ];
-
     programs.direnv = {
       enable = true;
       nix-direnv.enable = true;

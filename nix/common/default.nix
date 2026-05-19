@@ -23,7 +23,7 @@ in
     ./modules/bat
     ./modules/btop
     ./modules/catppuccin
-    ./modules/direnv
+    ./modules/devenv
     ./modules/eza
     ./modules/fd
     ./modules/fish
