@@ -64,6 +64,10 @@ in
         opencode.settings.plugin = [ "opencode-claude-auth" ];
       };
 
+      xdg.configFile."git/allowed_signers".text = ''
+        ${nclusionGit.contents.user.email} ${nclusionGit.contents.user.signingKey}
+      '';
+
       xdg.configFile."nvim/lua/plugins/comfey.lua" = {
         source = ./config/nvim/lua/plugins/comfey.lua;
         force = true;
