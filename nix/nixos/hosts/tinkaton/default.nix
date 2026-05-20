@@ -16,7 +16,7 @@
     ../../modules/servarr
     ../../modules/syncthing
     # ../../modules/tunarr
-    ../../modules/unifi
+    # ../../modules/unifi
     ../../../common/modules/gemini-cli
     ../../../common/modules/opencode
     ../../../common/modules/openssh

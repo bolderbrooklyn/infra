@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+# { pkgs, ... }:
 let
   media = {
     name = "media";
@@ -6,15 +6,15 @@ let
   };
 in
 {
-  environment.systemPackages = with pkgs; [ xteve ];
-
-  systemd.services.xteve = {
-    requires = [ "network.target" ];
-    script = "${pkgs.xteve}/bin/xteve -port 34400";
-    wantedBy = [ "multi-user.target" ];
-  };
-
-  networking.firewall.allowedTCPPorts = [ 34400 ];
+  # environment.systemPackages = with pkgs; [ xteve ];
+  #
+  # systemd.services.xteve = {
+  #   requires = [ "network.target" ];
+  #   script = "${pkgs.xteve}/bin/xteve -port 34400";
+  #   wantedBy = [ "multi-user.target" ];
+  # };
+  #
+  # networking.firewall.allowedTCPPorts = [ 34400 ];
 
   systemd.services.plex.requires = [ "mnt-genesect-media.mount" ];
 
