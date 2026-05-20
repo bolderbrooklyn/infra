@@ -31,7 +31,6 @@ in
           extraPackages = lib.mkIf (!isDarwin) (
             with pkgs;
             [
-              nil
               nixd
               nixfmt
               nodejs
@@ -115,12 +114,6 @@ in
             };
 
             line_indicator_format = "short";
-
-            lsp = {
-              nil.settings = {
-                nix.flake.autoArchive = true;
-              };
-            };
 
             minimap = {
               display_in = "all_editors";
