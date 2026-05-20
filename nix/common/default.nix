@@ -30,7 +30,6 @@ in
     ./modules/fzf
     ./modules/git
     ./modules/gnupg
-    ./modules/mise
     ./modules/nushell
     ./modules/nvim
     ./modules/openclaw
