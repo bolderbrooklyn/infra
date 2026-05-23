@@ -2,6 +2,7 @@
   config,
   inputs,
   lib,
+  pkgs,
   ...
 }: {
   options.brooklyn.programs.openclaw = {
@@ -26,25 +27,31 @@
           inputs.nix-openclaw.homeManagerModules.openclaw
         ];
 
-        programs.openclaw = {
-          enable = true;
-          documents = ./config;
-
-          config = {
-            gateway.mode = "local";
-
-            # Placeholder configuration
-            # channels.telegram = {
-            #   tokenFile = "/path/to/telegram-token";
-            #   allowFrom = [ 12345678 ];
-            # };
-          };
-
-          bundledPlugins = {
-            summarize.enable = true;
-            peekaboo.enable = false; # Currently broken for x86_64-linux upstream
-          };
-        };
+         programs.openclaw = {
+           enable = true;
+           package = lib.mkForce (pkgs.openclaw.override {
+             openclaw-gateway = pkgs.openclaw-gateway.override {
+               pnpmDepsHash = "sha256-Um+4ed0nxHnznwdHODYg5hMaV8ADHtr3TFe2VoJ32ew=";
+             };
+           });
+           documents = ./documents;
+           bundledPlugins = {
+             # All plugins must be explicitly disabled due to hardcoded revs in nix-openclaw
+             # that have mutable path locks Lix rejects. goplaces has defaultEnable = true.
+             goplaces.enable = lib.mkForce false;
+             summarize.enable = lib.mkForce false;
+             discrawl.enable = lib.mkForce false;
+             wacrawl.enable = lib.mkForce false;
+             peekaboo.enable = lib.mkForce false;
+             poltergeist.enable = lib.mkForce false;
+             sag.enable = lib.mkForce false;
+             camsnap.enable = lib.mkForce false;
+             gogcli.enable = lib.mkForce false;
+             qmd.enable = lib.mkForce false;
+             sonoscli.enable = lib.mkForce false;
+             imsg.enable = lib.mkForce false;
+           };
+         };
       };
   };
 }
