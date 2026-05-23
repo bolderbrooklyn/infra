@@ -3,13 +3,15 @@
   inputs,
   lib,
   ...
-}:
-let
-  inherit (config.common) username;
-in
-{
+}: {
   options.brooklyn.programs.openclaw = {
     enable = lib.mkEnableOption "openclaw";
+
+    user = lib.mkOption {
+      type = lib.types.str;
+      default = config.common.username;
+      description = "User account to enable openclaw for";
+    };
   };
 
   config = lib.mkIf config.brooklyn.programs.openclaw.enable {
@@ -17,7 +19,7 @@ in
       inputs.nix-openclaw.overlays.default
     ];
 
-    home-manager.users.${username} =
+    home-manager.users.${config.brooklyn.programs.openclaw.user} =
       { ... }:
       {
         imports = [

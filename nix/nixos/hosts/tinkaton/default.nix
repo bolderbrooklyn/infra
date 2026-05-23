@@ -25,7 +25,11 @@
   brooklyn.programs = {
     calibre.enable = true;
     gemini-cli.enable = true;
-    openclaw.enable = false;
+  };
+
+  brooklyn.programs.openclaw = {
+    enable = true;
+    user = "kalmiya";
   };
 
   age.secrets = {
@@ -69,6 +73,15 @@
   users.users.${config.common.username} = {
     isNormalUser = true;
     hashedPasswordFile = config.age.secrets."password-brooklyn".path;
+  };
+
+  users.users.kalmiya = {
+    isNormalUser = true;
+    home = "/home/kalmiya";
+    description = "Kalmiya";
+    group = "users";
+    # Intentionally no wheel/sudo group — no administrative privileges.
+    # Restricted to her home directory only.
   };
 
   services.syncthing.settings.folders = {
