@@ -32,6 +32,7 @@ in
           };
 
           stateVersion = "26.05";
+          enableNixpkgsReleaseCheck = false;
 
           packages =
             with pkgs;

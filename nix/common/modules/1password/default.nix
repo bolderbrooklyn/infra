@@ -60,9 +60,11 @@ in
             };
 
             ssh = {
-              matchBlocks."*" = {
-                forwardAgent = true;
-                identityAgent = ''"${_1password_ssh_agent_sock}"'';
+              settings = {
+                "*" = {
+                  ForwardAgent = true;
+                  IdentityAgent = ''"${_1password_ssh_agent_sock}"'';
+                };
               };
             };
           };
