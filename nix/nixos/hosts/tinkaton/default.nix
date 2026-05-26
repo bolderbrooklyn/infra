@@ -14,6 +14,7 @@
     ../../modules/postgresql
     ../../modules/romm
     ../../modules/servarr
+    ../../modules/kalmiya
     ../../modules/syncthing
     # ../../modules/tunarr
     # ../../modules/unifi
@@ -26,11 +27,6 @@
     calibre.enable = true;
     antigravity-cli.enable = true;
   };
-
-  # brooklyn.programs.openclaw = {
-  #   enable = true;
-  #   user = "kalmiya";
-  # };
 
   age.secrets = {
     romm.file = ./secrets/romm.age;
@@ -74,15 +70,6 @@
     isNormalUser = true;
     hashedPasswordFile = config.age.secrets."password-brooklyn".path;
   };
-
-  # users.users.kalmiya = {
-  #   isNormalUser = true;
-  #   home = "/home/kalmiya";
-  #   description = "Kalmiya";
-  #   group = "users";
-  #   # Intentionally no wheel/sudo group — no administrative privileges.
-  #   # Restricted to her home directory only.
-  # };
 
   services.syncthing.settings.folders = {
     "/mnt/genesect/emulation/library" = {
