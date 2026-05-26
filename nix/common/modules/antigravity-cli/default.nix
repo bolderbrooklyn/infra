@@ -18,10 +18,12 @@ let
         "command(make build)"
         "command(git diff)"
         "command(antigravity)"
+        "command(git commit)"
       ];
     };
     trustedWorkspaces = [
       "/home/brooklyn/Developer/Repositories/codeberg.org/bolderbrooklyn/infra"
+      "/Users/brooklyn/Developer/Repositories/codeberg.org/bolderbrooklyn/infra"
     ];
   };
 in
