@@ -22,8 +22,7 @@
     };
 
     _1password-shell-plugins = {
-      # url = "github:1Password/shell-plugins";
-      url = "github:jbhannah/shell-plugins/trunk";
+      url = "github:1Password/shell-plugins";
 
       inputs = {
         nixpkgs.follows = "nixpkgs";
