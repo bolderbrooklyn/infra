@@ -7,7 +7,7 @@
     ../../../common/modules/copilot-cli
     ../../../common/modules/crush
     ../../../common/modules/gcloud-cli
-    ../../../common/modules/gemini-cli
+    ../../../common/modules/antigravity-cli
     ../../../common/modules/kubectl
     ../../../common/modules/opencode
     ../../../common/modules/xonsh

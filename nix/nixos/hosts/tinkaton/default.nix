@@ -17,14 +17,14 @@
     ../../modules/syncthing
     # ../../modules/tunarr
     # ../../modules/unifi
-    ../../../common/modules/gemini-cli
+    ../../../common/modules/antigravity-cli
     ../../../common/modules/opencode
     ../../../common/modules/openssh
   ];
 
   brooklyn.programs = {
     calibre.enable = true;
-    gemini-cli.enable = true;
+    antigravity-cli.enable = true;
   };
 
   brooklyn.programs.openclaw = {

@@ -15,7 +15,7 @@ in
     ../../../common/modules/claude-code
     ../../../common/modules/codex
     ../../../common/modules/gcloud-cli
-    ../../../common/modules/gemini-cli
+    ../../../common/modules/antigravity-cli
     ../../../common/modules/kubectl
     ../../../common/modules/opencode
   ];
@@ -36,7 +36,7 @@ in
       cli.enable = true;
     };
 
-    gemini-cli.enable = true;
+    antigravity-cli.enable = true;
     warp-terminal.enable = true;
   };
 
