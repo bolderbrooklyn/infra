@@ -75,6 +75,7 @@ in
 
             ignores = [
               ".DS_Store"
+              ".antigravitycli"
               ".omc"
               ".opencode"
               ".sisyphus"

@@ -9,25 +9,20 @@ let
   llmAgentsPkgs = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system};
 
   settings = {
-    general = {
-      enableAutoUpdate = false;
-      enablePromptCompletion = true;
-      preferredEditor = "nvim";
-      previewFeatures = true;
-      vimMode = true;
+    enableTelemetry = false;
+    permissions = {
+      allow = [
+        "command(cat)"
+        "command(git status)"
+        "command(git log)"
+        "command(make build)"
+        "command(git diff)"
+        "command(antigravity)"
+      ];
     };
-    ide = {
-      enabled = true;
-      hasSeenNudge = false;
-    };
-    security = {
-      auth = {
-        selectedType = "oauth-personal";
-      };
-    };
-    experimental = {
-      skills = true;
-    };
+    trustedWorkspaces = [
+      "/home/brooklyn/Developer/Repositories/codeberg.org/bolderbrooklyn/infra"
+    ];
   };
 in
 {
@@ -36,13 +31,21 @@ in
   };
 
   config = lib.mkIf config.brooklyn.programs.antigravity-cli.enable {
-    home-manager.users.${config.common.username} = {
-      home.packages = with llmAgentsPkgs; [
-        antigravity
-      ];
+    home-manager.users.${config.common.username} =
+      { config, lib, ... }:
+      let
+        settingsFile = pkgs.writeText "antigravity-settings.json" (builtins.toJSON settings);
+      in
+      {
+        home.packages = with llmAgentsPkgs; [
+          antigravity
+        ];
 
-      home.file.".gemini/antigravity-cli/settings.json".text =
-        builtins.toJSON settings;
-    };
+        home.activation.antigravitySettings = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+          run mkdir -p ${config.home.homeDirectory}/.gemini/antigravity-cli
+          run cp -f ${settingsFile} ${config.home.homeDirectory}/.gemini/antigravity-cli/settings.json
+          run chmod u+w ${config.home.homeDirectory}/.gemini/antigravity-cli/settings.json
+        '';
+      };
   };
 }
