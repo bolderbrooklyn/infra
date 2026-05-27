@@ -32,7 +32,6 @@ in
     ./modules/gnupg
     ./modules/nushell
     ./modules/nvim
-    ./modules/openclaw
     ./modules/openssh
     ./modules/starship
     ./modules/tmux

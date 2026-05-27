@@ -53,17 +53,6 @@
 
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
-    nix-openclaw = {
-      url = "github:openclaw/nix-openclaw";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nix-openclaw-tools.follows = "nix-openclaw-tools";
-    };
-
-    nix-openclaw-tools = {
-      url = "github:openclaw/nix-openclaw-tools";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     homebrew-core = {
       url = "github:Homebrew/homebrew-core";
       flake = false;
