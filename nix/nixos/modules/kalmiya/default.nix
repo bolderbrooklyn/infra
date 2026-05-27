@@ -25,7 +25,10 @@ in
 
         packages = with pkgs; [
           _1password-cli
+          fd
           ffmpeg-headless
+          mcporter
+          sqlite-vec
         ];
 
         stateVersion = "26.05";
@@ -39,6 +42,7 @@ in
         chromium.enable = true;
         git.enable = true;
         jq.enable = true;
+        neovim.enable = true;
         ripgrep.enable = true;
         tmux.enable = true;
 
