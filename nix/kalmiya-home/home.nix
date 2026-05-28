@@ -5,6 +5,8 @@ let
   npmPrefix = "${homeDir}/.npm-global";
 in
 {
+  nixpkgs.config.allowUnfree = true;
+
   home = {
     username = user;
     homeDirectory = homeDir;
