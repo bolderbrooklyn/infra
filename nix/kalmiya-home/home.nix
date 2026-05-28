@@ -1,7 +1,7 @@
 {
   config,
+  lib,
   pkgs,
-  agenix,
   ...
 }:
 let
@@ -10,18 +10,8 @@ let
   npmPrefix = "${homeDir}/.npm-global";
 in
 {
-  imports = [
-    agenix.homeManagerModules.default
-  ];
-
-  nixpkgs.config.allowUnfree = true;
-
-  age.identityPaths = [
-    "${config.home.homeDirectory}/.ssh/id_ed25519"
-  ];
-
-  age.secrets."op-service-account-token" = {
-    file = ./secrets/op-service-account-token.age;
+  age.secrets.openclaw-env = {
+    file = ./secrets/openclaw-env.age;
   };
 
   home = {
@@ -44,11 +34,10 @@ in
     enableNixpkgsReleaseCheck = false;
   };
 
-  home.file.".openclaw/.env" = {
-    source = ''
-      OP_SERVICE_ACCOUNT_TOKEN=$(cat ${config.age.secrets.op-service-account-token.path})
-    '';
-  };
+  home.activation.createOpenclawEnv = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    mkdir -p "${config.home.homeDirectory}/.openclaw"
+    ln -sf "${config.age.secrets.openclaw-env.path}" "${config.home.homeDirectory}/.openclaw/.env"
+  '';
 
   programs = {
     home-manager.enable = true;

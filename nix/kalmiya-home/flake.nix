@@ -27,12 +27,10 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
 
         modules = [
+          agenix.homeManagerModules.default
           ./home.nix
+          { nixpkgs.config.allowUnfree = true; }
         ];
-
-        extraSpecialArgs = {
-          inherit agenix;
-        };
       };
     };
 }
