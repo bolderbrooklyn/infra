@@ -27,6 +27,7 @@ in
     ./modules/eza
     ./modules/fd
     ./modules/fish
+    ./modules/rg
     ./modules/fzf
     ./modules/git
     ./modules/gnupg

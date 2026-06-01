@@ -4,6 +4,10 @@ let
 in
 {
   home-manager.users.${username} = {
+    home.shellAliases = {
+      find = "fd";
+    };
+
     programs.fd = {
       enable = true;
       hidden = true;
