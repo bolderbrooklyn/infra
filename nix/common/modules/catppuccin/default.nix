@@ -6,6 +6,7 @@
     catppuccin = {
       enable = true;
       flavor = "mocha";
+      autoEnable = true;
 
       nvim.enable = false;
     };
