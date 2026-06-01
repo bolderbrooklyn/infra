@@ -19,6 +19,7 @@ in
     homeDirectory = homeDir;
 
     sessionPath = [
+      "${homeDir}/.local/bin"
       "${npmPrefix}/bin"
     ];
 
