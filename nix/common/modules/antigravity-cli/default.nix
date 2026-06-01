@@ -40,7 +40,7 @@ in
       in
       {
         home.packages = with llmAgentsPkgs; [
-          antigravity
+          antigravity-cli
         ];
 
         home.activation.antigravitySettings = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
