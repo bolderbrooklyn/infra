@@ -25,8 +25,6 @@ in
         ];
 
         home = {
-          sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];
-
           shellAliases = {
             l = "ls -alh";
           };
@@ -64,7 +62,10 @@ in
           autoExpire.enable = true;
         };
 
-        xdg.enable = true;
+        xdg = {
+          enable = true;
+          localBinInPath = true;
+        };
       };
   };
 }
