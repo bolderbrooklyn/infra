@@ -16,7 +16,6 @@
   brooklyn.programs = {
     ghostty.enable = true;
     neovide.enable = true;
-    rio.enable = true;
     vscode.enable = true;
     zed-editor.enable = true;
   };
