@@ -56,6 +56,7 @@ in
         mcp = {
           enable = true;
           servers = {
+            figma.url = "http://127.0.0.1:3845/mcp";
             linear.url = "https://mcp.linear.app/mcp";
             notion.url = "https://mcp.notion.com/mcp";
           };
