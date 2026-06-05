@@ -23,6 +23,7 @@ in
       gnumake
       opus
       python311
+      python311Packages.numpy
       sqlite-vec
       uv
       yq
