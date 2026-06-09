@@ -132,6 +132,14 @@
             ];
           };
 
+          xerneas = nix-darwin.lib.darwinSystem {
+            inherit system specialArgs;
+
+            modules = [
+              ./nix/darwin/hosts/xerneas
+            ];
+          };
+
           comfey = nix-darwin.lib.darwinSystem {
             inherit system specialArgs;
 
