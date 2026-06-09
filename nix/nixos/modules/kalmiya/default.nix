@@ -1,4 +1,3 @@
-{ ... }:
 let
   user = "kalmiya";
   home = "/home/${user}";
@@ -15,5 +14,5 @@ in
     openssh.authorizedKeys.keys = [ ];
   };
 
-  home-manager.users.${user} = import ../../../kalmiya-home/home.nix;
+  home-manager.users.${user} = import ../../../users/kalmiya/home.nix;
 }
