@@ -12,14 +12,22 @@
       "discord"
       "dolphin"
       "google-drive"
+      "libndi"
+      {
+        name = "lm-studio";
+        args.appdir = "/Applications";
+      }
       "melonds"
       "mgba-app"
+      "obs"
+      "plex"
       "plexamp"
       "steam"
       {
         name = "tailscale-app";
         args.appdir = "/Applications";
       }
+      "todoist-app"
     ];
 
     masApps = {
