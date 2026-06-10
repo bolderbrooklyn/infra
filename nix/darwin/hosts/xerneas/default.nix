@@ -7,10 +7,7 @@
 
   system.stateVersion = 6;
 
-  networking = {
-    computerName = "Xerneas";
-    hostName = "xerneas";
-  };
+  networking.computerName = "Xerneas";
 
   brooklyn.programs = {
     _1password.enable = true;

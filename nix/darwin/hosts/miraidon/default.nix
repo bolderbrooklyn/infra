@@ -15,10 +15,7 @@
 
   system.stateVersion = 6;
 
-  networking = {
-    computerName = "Miraidon";
-    hostName = "miraidon";
-  };
+  networking.computerName = "Miraidon";
 
   brooklyn.programs = {
     _1password.enable = true;

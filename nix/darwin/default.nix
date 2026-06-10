@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 let
   inherit (config.common) username;
 in
@@ -11,6 +11,8 @@ in
     ../common
     ../common/profiles/gui
   ];
+
+  networking.hostName = lib.mkDefault (lib.strings.toLower config.networking.computerName);
 
   security.pam.services.sudo_local = {
     enable = true;
