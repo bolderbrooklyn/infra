@@ -18,7 +18,6 @@
   networking.computerName = "Miraidon";
 
   brooklyn.programs = {
-    _1password.enable = true;
     calibre.enable = true;
     colima.enable = true;
     powershell.enable = true;

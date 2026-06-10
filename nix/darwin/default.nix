@@ -12,6 +12,8 @@ in
     ../common/profiles/gui
   ];
 
+  brooklyn.programs._1password.enable = lib.mkDefault true;
+
   networking.hostName = lib.mkDefault (lib.strings.toLower config.networking.computerName);
 
   security.pam.services.sudo_local = {

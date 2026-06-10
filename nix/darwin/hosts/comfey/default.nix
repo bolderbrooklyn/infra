@@ -28,7 +28,6 @@ in
   };
 
   brooklyn.programs = {
-    _1password.enable = true;
     colima.enable = false;
 
     cursor = {
