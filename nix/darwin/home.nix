@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  home-manager,
-  ...
-}:
+{ config, home-manager, ... }:
 let
   inherit (config.common) username;
 in
@@ -12,82 +7,84 @@ in
     home-manager.darwinModules.home-manager
   ];
 
-  home-manager.users.${username} = {
-    home = {
-      shellAliases = {
-        pbc = "pbcopy";
-        pbp = "pbpaste";
-      };
-    };
-
-    programs.man.package = pkgs.man;
-
-    services.macos-remap-keys = {
-      enable = true;
-      keyboard = {
-        Capslock = "Control";
-      };
-    };
-
-    targets.darwin.defaults = {
-      "com.apple.desktopservices" = {
-        DSDontWriteNetworkStores = true;
-        DSDontWriteUSBStores = true;
+  home-manager.users.${username} =
+    { config, pkgs, ... }:
+    {
+      home = {
+        shellAliases = {
+          pbc = "pbcopy";
+          pbp = "pbpaste";
+        };
       };
 
-      "com.apple.dock" = {
-        autohide = true;
-        minimize-to-application = true;
-        show-recents = false;
-        size-immutable = true;
+      programs.man.package = pkgs.man;
 
-        persistent-apps = [ ];
-        persistent-others = [
-          {
-            tile-data = {
-              arrangement = 2; # sort by date-added
-              file-data = {
-                _CFURLString = "file:///Users/${username}/Downloads";
-                _CFURLStringType = 15;
+      services.macos-remap-keys = {
+        enable = true;
+        keyboard = {
+          Capslock = "Control";
+        };
+      };
+
+      targets.darwin.defaults = {
+        "com.apple.desktopservices" = {
+          DSDontWriteNetworkStores = true;
+          DSDontWriteUSBStores = true;
+        };
+
+        "com.apple.dock" = {
+          autohide = true;
+          minimize-to-application = true;
+          show-recents = false;
+          size-immutable = true;
+
+          persistent-apps = [ ];
+          persistent-others = [
+            {
+              tile-data = {
+                arrangement = 2; # sort by date-added
+                file-data = {
+                  _CFURLString = "file://${config.home.homeDirectory}/Downloads";
+                  _CFURLStringType = 15;
+                };
+                file-label = "Downloads";
+                showas = 1; # display as fan
               };
-              file-label = "Downloads";
-              showas = 1; # display as fan
-            };
-            tile-type = "directory-tile";
-          }
-        ];
-      };
+              tile-type = "directory-tile";
+            }
+          ];
+        };
 
-      "com.apple.finder" = {
-        _FXSortFoldersFirst = true;
-        _FXSortFoldersFirstOnDesktop = true;
-        ShowStatusBar = true;
-      };
+        "com.apple.finder" = {
+          _FXSortFoldersFirst = true;
+          _FXSortFoldersFirstOnDesktop = true;
+          ShowStatusBar = true;
+        };
 
-      "com.apple.menuextra.clock" = {
-        Show24Hour = true;
-        ShowAMPM = false;
-        ShowDate = 0;
-      };
+        "com.apple.menuextra.clock" = {
+          Show24Hour = true;
+          ShowAMPM = false;
+          ShowDate = 0;
+        };
 
-      "com.apple.safari" = {
-        AutoFillCreditCardData = false;
-        AutoFillPasswords = false;
-        IncludeDevelopMenu = true;
-      };
+        "com.apple.safari" = {
+          AutoFillCreditCardData = false;
+          AutoFillPasswords = false;
+          IncludeDevelopMenu = true;
+        };
 
-      "com.apple.screencapture" = {
-        disable-shadow = true;
-      };
+        "com.apple.screencapture" = {
+          disable-shadow = true;
+        };
 
-      NSGlobalDomain = {
-        AppleICUForce24HourTime = true;
-        AppleShowAllExtensions = true;
-        AppleShowAllFiles = true;
-        AppleShowScrollBars = "WhenScrolling";
-        InitialKeyRepeat = 25;
-        KeyRepeat = 2;
+        NSGlobalDomain = {
+          AppleICUForce24HourTime = true;
+          AppleShowAllExtensions = true;
+          AppleShowAllFiles = true;
+          AppleShowScrollBars = "WhenScrolling";
+          InitialKeyRepeat = 25;
+          KeyRepeat = 2;
+        };
       };
     };
-  };
 }
