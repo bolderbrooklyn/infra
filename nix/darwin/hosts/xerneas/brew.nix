@@ -8,7 +8,6 @@
     ];
 
     casks = [
-      "arc"
       "discord"
       "dolphin"
       "google-drive"

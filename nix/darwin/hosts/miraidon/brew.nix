@@ -12,7 +12,6 @@
 
     casks = [
       "alfred"
-      "arc"
       "balenaetcher"
       "chatgpt"
       "chrome-remote-desktop-host"

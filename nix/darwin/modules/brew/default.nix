@@ -35,8 +35,10 @@
     caskArgs.appdir = "~/Applications";
     casks = [
       "alt-tab"
+      "arc"
       "pearcleaner"
       "the-unarchiver"
+      "thebrowsercompany-dia"
     ];
 
     onActivation = {

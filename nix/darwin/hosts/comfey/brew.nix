@@ -9,7 +9,6 @@
 
     casks = [
       "android-studio"
-      "arc"
       "claude"
       "codex-app"
       "conductor"
