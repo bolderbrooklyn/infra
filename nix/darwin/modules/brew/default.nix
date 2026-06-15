@@ -20,6 +20,8 @@
       "homebrew/homebrew-cask" = inputs.homebrew-cask;
       "jbhannah/homebrew-pkpw" = inputs.homebrew-pkpw;
     };
+
+    trust.taps = builtins.attrNames config.nix-homebrew.taps;
   };
 
   homebrew = {
@@ -41,10 +43,7 @@
       "thebrowsercompany-dia"
     ];
 
-    onActivation = {
-      cleanup = "zap";
-      upgrade = true;
-    };
+    onActivation.upgrade = true;
   };
 
   home-manager.users.${config.common.username} = {
