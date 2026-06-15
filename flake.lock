@@ -266,6 +266,22 @@
         "type": "github"
       }
     },
+    "homebrew-sikarugir": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1781129674,
+        "narHash": "sha256-2MnGlm1ug4sTdIBhnASYdYwwdTMwNmoWrtp+DPEskzc=",
+        "owner": "Sikarugir-App",
+        "repo": "homebrew-sikarugir",
+        "rev": "3de9f256205b7961ec45dcfed740f280beb5d0b8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Sikarugir-App",
+        "repo": "homebrew-sikarugir",
+        "type": "github"
+      }
+    },
     "homebrew-withgraphite": {
       "flake": false,
       "locked": {
@@ -432,6 +448,7 @@
         "homebrew-core": "homebrew-core",
         "homebrew-krunkit": "homebrew-krunkit",
         "homebrew-pkpw": "homebrew-pkpw",
+        "homebrew-sikarugir": "homebrew-sikarugir",
         "homebrew-withgraphite": "homebrew-withgraphite",
         "llm-agents": "llm-agents",
         "nix-darwin": "nix-darwin",

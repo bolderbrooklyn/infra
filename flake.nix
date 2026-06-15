@@ -70,6 +70,10 @@
       url = "github:withgraphite/homebrew-tap";
       flake = false;
     };
+    homebrew-sikarugir = {
+      url = "github:Sikarugir-App/homebrew-sikarugir";
+      flake = false;
+    };
   };
 
   outputs =

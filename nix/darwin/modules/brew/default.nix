@@ -21,7 +21,9 @@
       "jbhannah/homebrew-pkpw" = inputs.homebrew-pkpw;
     };
 
-    trust.taps = builtins.attrNames config.nix-homebrew.taps;
+    trust.taps = [
+      "jbhannah/pkpw"
+    ];
   };
 
   homebrew = {

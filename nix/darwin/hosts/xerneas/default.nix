@@ -2,6 +2,7 @@
   imports = [
     ./brew.nix
     ../..
+    ../../modules/sikarugir
     ../../../common/modules/opencode
   ];
 
