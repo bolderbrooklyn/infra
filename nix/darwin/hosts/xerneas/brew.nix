@@ -21,6 +21,7 @@
       "obs"
       "plex"
       "plexamp"
+      "pokemon-tcg-live"
       "steam"
       {
         name = "tailscale-app";
