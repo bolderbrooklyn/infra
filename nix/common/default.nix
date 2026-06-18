@@ -62,7 +62,17 @@ in
       };
     };
 
-    nixpkgs.config.allowUnfree = true;
+    nixpkgs = {
+      config.allowUnfree = true;
+      overlays = [
+        (final: prev: {
+          inherit (prev.lixPackageSets.stable)
+            lix
+            ;
+        })
+        inputs.llm-agents.overlays.default
+      ];
+    };
 
     time.timeZone = "America/Los_Angeles";
 

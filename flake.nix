@@ -90,18 +90,6 @@
       };
     in
     {
-      nixpkgs.overlays = [
-        (final: prev: {
-          inherit (prev.lixPackageSets.stable)
-            lix
-            nix-direnv
-            ;
-          direnv = prev.direnv.overrideAttrs (_: {
-            doCheck = false;
-          });
-        })
-      ];
-
       nixosConfigurations.tinkaton =
         let
           specialArgs = baseSpecialArgs;

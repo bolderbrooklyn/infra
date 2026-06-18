@@ -1,12 +1,11 @@
 {
   config,
-  inputs,
   lib,
   pkgs,
   ...
 }:
 let
-  opencodePackage = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.opencode;
+  opencodePackage = pkgs.llm-agents.opencode;
 in
 {
   imports = [

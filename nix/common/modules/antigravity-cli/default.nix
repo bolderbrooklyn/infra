@@ -1,13 +1,10 @@
 {
   config,
-  inputs,
   lib,
   pkgs,
   ...
 }:
 let
-  llmAgentsPkgs = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system};
-
   settings = {
     enableTelemetry = false;
     permissions = {
@@ -39,7 +36,7 @@ in
         settingsFile = pkgs.writeText "antigravity-settings.json" (builtins.toJSON settings);
       in
       {
-        home.packages = with llmAgentsPkgs; [
+        home.packages = with pkgs.llm-agents; [
           antigravity-cli
         ];
 
