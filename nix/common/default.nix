@@ -44,7 +44,7 @@ in
     system.configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
 
     nix = {
-      package = pkgs.lixPackageSets.stable.lix;
+      package = pkgs.lixPackageSets.latest.lix;
 
       gc.automatic = true;
       optimise.automatic = true;
@@ -66,7 +66,7 @@ in
       config.allowUnfree = true;
       overlays = [
         (final: prev: {
-          inherit (prev.lixPackageSets.stable)
+          inherit (prev.lixPackageSets.latest)
             lix
             ;
         })
