@@ -25,7 +25,6 @@ in
         autoupdate = false;
 
         plugin = [
-          "@tmegit/opencode-worktree-session@latest"
           "opencode-gemini-auth@latest"
           "oh-my-openagent@latest"
         ];
