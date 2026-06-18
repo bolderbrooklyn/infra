@@ -18,7 +18,6 @@ in
     programs.opencode = {
       enable = true;
       package = opencodePackage;
-      context = ./config/AGENTS.md;
       enableMcpIntegration = true;
 
       settings = {
