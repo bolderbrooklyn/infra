@@ -9,4 +9,8 @@
   system.stateVersion = 6;
 
   networking.computerName = "Xerneas";
+
+  brooklyn.programs = {
+    crush.enable = true;
+  };
 }

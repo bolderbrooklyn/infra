@@ -5,7 +5,6 @@
     ../..
     ../../../common/modules/buku
     ../../../common/modules/copilot-cli
-    ../../../common/modules/crush
     ../../../common/modules/gcloud-cli
     ../../../common/modules/antigravity-cli
     ../../../common/modules/kubectl
@@ -20,6 +19,7 @@
   brooklyn.programs = {
     calibre.enable = true;
     colima.enable = true;
+    crush.enable = true;
     powershell.enable = true;
   };
 

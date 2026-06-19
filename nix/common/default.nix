@@ -23,6 +23,7 @@ in
     ./modules/bat
     ./modules/btop
     ./modules/catppuccin
+    ./modules/crush
     ./modules/devenv
     ./modules/eza
     ./modules/fd
