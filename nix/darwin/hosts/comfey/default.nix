@@ -29,6 +29,7 @@ in
 
   brooklyn.programs = {
     colima.enable = false;
+    crush.enable = true;
 
     cursor = {
       enable = true;
