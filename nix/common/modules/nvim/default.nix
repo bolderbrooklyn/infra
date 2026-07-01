@@ -39,7 +39,6 @@
         rust-analyzer
         shfmt
         sqlite
-        statix
         tectonic
         texliveBasic
         tree-sitter
