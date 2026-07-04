@@ -15,6 +15,8 @@ in
     username = user;
     homeDirectory = homeDir;
 
+    sessionPath = [ "${homeDir}/.npm/bin" ];
+
     packages = with pkgs; [
       _1password-cli
       fd
