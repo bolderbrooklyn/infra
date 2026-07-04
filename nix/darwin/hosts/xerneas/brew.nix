@@ -22,6 +22,7 @@
       "plex"
       "plexamp"
       "pokemon-tcg-live"
+      "prismlauncher"
       "steam"
       {
         name = "tailscale-app";
