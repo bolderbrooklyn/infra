@@ -25,7 +25,7 @@
 
   brooklyn.programs = {
     calibre.enable = true;
-    antigravity-cli.enable = true;
+    crush.enable = true;
   };
 
   age.secrets = {
