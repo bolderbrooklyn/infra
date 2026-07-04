@@ -10,7 +10,7 @@ in
       enable = true;
 
       defaultCommand = "${pkgs.fd}/bin/fd --type f --hidden";
-      changeDirWidgetCommand = "${pkgs.fd}/bin/fd --type d --hidden";
+      changeDirWidget.command = "${pkgs.fd}/bin/fd --type d --hidden";
     };
   };
 }
