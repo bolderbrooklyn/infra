@@ -37,6 +37,7 @@ in
           macos-icon-ghost-color = "#f5c2e7";
           macos-icon-screen-color = "#cba6f7,#f2cdcd";
           macos-option-as-alt = "left";
+          shell-integration-features = "ssh-terminfo";
           split-inherit-working-directory = true;
           tab-inherit-working-directory = false;
           quick-terminal-animation-duration = 0;
