@@ -28,6 +28,7 @@
         name = "tailscale-app";
         args.appdir = "/Applications";
       }
+      "telegram-desktop"
       "todoist-app"
     ];
 
