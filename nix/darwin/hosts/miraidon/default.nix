@@ -6,7 +6,6 @@
     ../../../common/modules/buku
     ../../../common/modules/copilot-cli
     ../../../common/modules/gcloud-cli
-    ../../../common/modules/antigravity-cli
     ../../../common/modules/kubectl
     ../../../common/modules/opencode
     ../../../common/modules/xonsh

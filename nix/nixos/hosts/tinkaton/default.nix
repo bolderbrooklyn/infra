@@ -18,7 +18,6 @@
     ../../modules/syncthing
     # ../../modules/tunarr
     # ../../modules/unifi
-    ../../../common/modules/antigravity-cli
     ../../../common/modules/opencode
     ../../../common/modules/openssh
   ];

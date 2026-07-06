@@ -13,6 +13,7 @@ hosts/<name>/
 ```
 
 All hosts:
+
 - Import `../..` (darwin base → common/ → shared modules)
 - Set `system.stateVersion = 6`
 - Import a selection of common modules (e.g., `antigravity-cli`, `opencode`, `gcloud-cli`)
@@ -24,7 +25,7 @@ All hosts:
 ### miraidon (Daily Driver MacBook)
 
 | Aspect | Detail |
-|---|---|
+| --- | --- |
 | **computerName** | `Miraidon` |
 | **Togglable modules** | `calibre`, `colima`, `crush`, `powershell` |
 | **Common modules** | `buku`, `copilot-cli`, `gcloud-cli`, `antigravity-cli`, `kubectl`, `opencode`, `xonsh` |
@@ -37,11 +38,11 @@ All hosts:
 ### comfey (Work Laptop — nclusion)
 
 | Aspect | Detail |
-|---|---|
+| --- | --- |
 | **computerName** | `Brooke's MacBook Pro` |
 | **hostName** | `comfey` |
 | **Togglable modules** | `colima.enable = false`, `crush`, `cursor`, `antigravity-cli`, `warp-terminal` |
-| **Common modules** | `claude-code`, `codex`, `gcloud-cli`, `antigravity-cli`, `kubectl`, `opencode` |
+| **Common modules** | `claude-code`, `gcloud-cli`, `kubectl`, `opencode` |
 | **brew.taps** | `withgraphite/homebrew-tap` |
 | **brew.brews** | graphite |
 | **brew.casks** | android-studio, claude, codex-app, conductor, dash, figma, google-chrome, linear, lm-studio, logi-options+, notion, notion-calendar, notion-mail, opencode-desktop, plexamp, slack, tailscale-app |
@@ -52,7 +53,7 @@ All hosts:
 ### xerneas (Secondary/Desktop Mac)
 
 | Aspect | Detail |
-|---|---|
+| --- | --- |
 | **computerName** | `Xerneas` |
 | **Togglable modules** | `crush` |
 | **Common modules** | `opencode` |

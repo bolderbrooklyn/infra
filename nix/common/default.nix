@@ -21,6 +21,7 @@ in
     ./home.nix
     ./modules/1password
     ./modules/agent-instructions
+    ./modules/antigravity-cli
     ./modules/bat
     ./modules/btop
     ./modules/catppuccin
