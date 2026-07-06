@@ -19,6 +19,7 @@
       "melonds"
       "mgba-app"
       "obs"
+      "openclaw"
       "plex"
       "plexamp"
       "pokemon-tcg-live"

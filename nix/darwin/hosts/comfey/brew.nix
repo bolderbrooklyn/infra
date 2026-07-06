@@ -27,6 +27,7 @@
       "notion"
       "notion-calendar"
       "notion-mail"
+      "openclaw"
       "opencode-desktop"
       "plexamp"
       {
