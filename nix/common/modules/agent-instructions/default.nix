@@ -11,7 +11,8 @@ let
     opencode
     ;
 
-  antigravityEnabled = lib.hasAttrByPath [ "brooklyn" "programs" "antigravity-cli" "enable" ] config
+  antigravityEnabled =
+    lib.hasAttrByPath [ "brooklyn" "programs" "antigravity-cli" "enable" ] config
     && config.brooklyn.programs.antigravity-cli.enable;
 
   instructions = ''
@@ -33,10 +34,13 @@ let
     ## Version control
 
     - Never push to any remote unless the user explicitly says "push".
-    - Never create commits unless the user explicitly says "commit".
+    - For small changes, never create commits unless the user explicitly says
+      "commit".
+    - Perform major multi-step work on a separate worktree, making incremental
+      commits as you progress.
     - Follow this repository's commit format: 1-2 sentence message under 72
       characters focused on why, body only when needed, wrapped at 72 chars,
-      and the Crush attribution footer when applicable.
+      and the agent attribution footer when applicable.
     - Run `git status` and `git diff` before any commit so the user can see
       exactly what is staged.
     - Never amend, force-push, rebase published branches, or rewrite history
@@ -101,9 +105,11 @@ in
 
   config = {
     home-manager.users.${config.common.username} = {
-      programs.claude-code.context = lib.mkIf claude-code.enable instructions;
-      programs.codex.context = lib.mkIf codex.enable instructions;
-      programs.opencode.context = lib.mkIf opencode.enable instructions;
+      programs = {
+        claude-code.context = lib.mkIf claude-code.enable instructions;
+        codex.context = lib.mkIf codex.enable instructions;
+        opencode.context = lib.mkIf opencode.enable instructions;
+      };
 
       xdg.configFile = {
         "crush/CRUSH.md" = lib.mkIf config.brooklyn.programs.crush.enable {
@@ -121,3 +127,4 @@ in
     };
   };
 }
+
