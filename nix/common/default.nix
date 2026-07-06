@@ -20,6 +20,7 @@ in
   imports = [
     ./home.nix
     ./modules/1password
+    ./modules/agent-instructions
     ./modules/bat
     ./modules/btop
     ./modules/catppuccin

@@ -38,6 +38,7 @@ These modules are always active for every host:
 
 | Module | What It Does |
 |---|---|
+| `agent-instructions` | Writes a shared "prefer `fd` over `find`, `rg` over `grep`" instruction to every enabled agent's global instruction file (claude-code `CLAUDE.md`, codex/opencode `AGENTS.md`, crush `CRUSH.md`, copilot-cli `copilot-instructions.md`, antigravity `GEMINI.md`) |
 | `bat` | `bat` as `cat` replacement with config |
 | `btop` | System monitor |
 | `catppuccin` | Catppuccin theming (system-wide with `autoEnable = true`) |
