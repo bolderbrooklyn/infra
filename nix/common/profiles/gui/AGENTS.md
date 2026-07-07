@@ -46,7 +46,7 @@ The NixOS GUI profile overrides `gui.font.size = 13`.
 
 GUI modules use `pkgs.stdenv.isDarwin` for platform-conditional logic:
 
-- **Ghostty**: uses `ghostty-bin` on Darwin (from Homebrew), source build on NixOS; fullscreen mode conditional
+- **Ghostty**: uses `ghostty-bin` on Darwin (from Homebrew), source build on NixOS; fullscreen mode conditional; `shell-integration-features = "ssh-terminfo"` for remote-host terminfo sync
 - **Neovide**: wraps Neovim in a native GUI window
 - Most other modules are unconditional (same package on both platforms)
 

@@ -36,13 +36,14 @@ Key symbols and where they're defined:
 
 | Symbol | Type | Defined In | Refs | Role |
 |---|---|---|---|---|
-| `brooklyn.programs.*.enable` | Option pattern | `nix/common/modules/*/default.nix` | 12+ modules | Feature toggle convention |
+| `brooklyn.programs.*.enable` | Option pattern | `nix/common/modules/*/default.nix` | 15 modules | Feature toggle convention |
 | `isDarwin` | specialArg | `flake.nix:86-90` | 5+ modules | Platform conditional |
 | `config.common.username` | Option | `nix/common/default.nix:13` | 50+ refs | Default user "brooklyn" |
 | `age.secrets.<name>` | Agenix pattern | `secrets.nix` | 4 secrets | Decrypt at activation |
 | `nix-homebrew` | Flake input | `flake.nix:48` | darwin hosts | Declarative brew with locked taps |
 | `targets.darwin.defaults` | nix-darwin module | `nix/darwin/home.nix` | all darwin | macOS `defaults write` |
 | `mnt-genesect-*.mount` | Systemd mount unit | `nix/nixos/modules/plex/default.nix` | 5+ services | NFS dependency ordering |
+| `agent-instructions` | Common module | `nix/common/modules/agent-instructions/default.nix` | always-on | Writes shared guardrails to every enabled agent's global instruction file (claude-code, codex, opencode, crush, copilot-cli, antigravity) |
 
 ## Directory Map & Quick Task Reference
 
@@ -99,7 +100,7 @@ Uses `cachix/install-nix-action@v31` on `ubuntu-latest`.
 
 These are documented problem areas an agent should be aware of — not to perpetuate, but to recognize when working in the codebase.
 
-- **Orphaned modules**: `mise` and `superfile` in `nix/common/modules/` are registered in `nix/common/default.nix` but no host enables them (no `brooklyn.programs.{mise,superfile}.enable = true` anywhere)
+- **Orphaned modules**: none — every `brooklyn.programs.*` toggle in `nix/common/modules/` is used by at least one host
 - **`k8s/traefik.yml` is orphaned**: Not referenced by any Nix config. It's a Kubernetes HelmChartConfig living alongside Nix config. May be dead or managed out-of-band.
 - **No build validation in CI**: Workflows only update dependencies (`nix flake update` / `devenv update`) — never run `nix flake check`, `nix build`, or `nix eval`. Config breakage only caught at activation time.
 - **Codeberg/GitHub mismatch**: CI workflows target GitHub Actions (`cachix/install-nix-action`, `peter-evans/create-pull-request`, `gh pr merge`) but the repo lives on Codeberg. Workflows may never run.
@@ -114,4 +115,5 @@ Non-standard patterns that differ from typical Nix/NixOS conventions:
 - **Cross-layer callbacks**: The darwin `brew` module reads `brooklyn.programs.powershell.extraConfig` and injects homebrew shellenv into PowerShell config. Modules can reach across layers.
 - **Commented imports as toggles**: The NixOS host uses `# ../../modules/jellyfin` to disable services rather than a boolean toggle. Comment/uncomment to enable/disable.
 - **Standalone flake in monorepo**: `nix/users/kalmiya/flake.nix` has its own inputs, lock file, secrets, and nixpkgs pin — completely independent of the root flake but lives in the same repo.
-- **Two-tier GUI profile**: Common GUI (13 modules for terminals/editors) is wrapped inside NixOS GUI (KDE Plasma 6, SDDM, PipeWire) for the Linux host. Darwin skips the NixOS wrapper.
+- **Two-tier GUI profile**: Common GUI (12 modules for terminals/editors) is wrapped inside NixOS GUI (KDE Plasma 6, SDDM, PipeWire) for the Linux host. Darwin skips the NixOS wrapper.
+- **Shared agent guardrails**: The `agent-instructions` module writes a single set of workspace, secrets, and shell-and-network rules to every enabled agent's global instruction file. Adding a new agent means adding a one-line `xdg.configFile` entry, not duplicating the prose.

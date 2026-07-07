@@ -20,7 +20,7 @@ The NixOS base is loaded when `flake.nix` matches the NixOS host. It imports `..
 | Concern | Detail |
 |---|---|
 | **Agents** | `agenix.nixosModules.default` |
-| **Theming** | `catppuccin.nixosModules.catppuccin` — mocha flavor |
+| **Theming** | `catppuccin.nixosModules.catppuccin` — mocha flavor, with `autoEnable = true` to suppress a NixOS evaluation warning |
 | **Home Manager** | `home-manager.nixosModules.home-manager` |
 | **Networking** | `networkmanager` with `systemd-resolved` DNS |
 | **Firewall** | `nftables.enable = true` (not iptables) |

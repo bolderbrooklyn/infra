@@ -34,11 +34,12 @@ secrets, and nixpkgs pin.
 | Category | Packages/Programs |
 |---|---|
 | **Languages** | python311, uv, gcc, gnumake |
-| **Tools** | `_1password-cli`, `fd`, `ripgrep`, `jq`, `git`, `tmux`, `bash`, `yq` |
+| **Tools** | `_1password-cli`, `fd`, `ripgrep`, `jq`, `git`, `tmux`, `bash`, `yq`, `npm` |
 | **Media** | `ffmpeg-headless`, `opus` |
 | **Database** | `sqlite-vec` |
 | **Browser** | `chromium.enable = true` |
 | **Secrets** | `age.secrets.openclaw-env` |
+| **PATH** | `home.sessionPath` prepends `~/.npm/bin` so globally-installed npm packages are on `PATH` |
 
 ---
 

@@ -17,7 +17,7 @@ The sole NixOS host — home server.
 ## What `default.nix` Configures
 
 - **Imports** NixOS base (`../..`), GUI profile, and all service modules
-- **Enables** `calibre` and `antigravity-cli` via `brooklyn.programs.*.enable`
+- **Enables** `calibre` and `crush` via `brooklyn.programs.*.enable`
 - **Defines** all `age.secrets` paths
 - **Sets** `hostName = "tinkaton"`, `stateVersion = "25.05"`
 - **Opens** TCP ports 443 (HTTPS) and 3389 (RDP)

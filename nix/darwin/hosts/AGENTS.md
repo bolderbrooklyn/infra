@@ -16,7 +16,10 @@ All hosts:
 
 - Import `../..` (darwin base → common/ → shared modules)
 - Set `system.stateVersion = 6`
-- Import a selection of common modules (e.g., `antigravity-cli`, `opencode`, `gcloud-cli`)
+- Import a selection of common modules (e.g., `opencode`, `gcloud-cli`)
+
+The `agent-instructions` module is always active and wires shared guardrails into any agent
+the host enables (claude-code, codex, opencode, crush, copilot-cli, antigravity).
 
 ---
 
@@ -28,7 +31,7 @@ All hosts:
 | --- | --- |
 | **computerName** | `Miraidon` |
 | **Togglable modules** | `calibre`, `colima`, `crush`, `powershell` |
-| **Common modules** | `buku`, `copilot-cli`, `gcloud-cli`, `antigravity-cli`, `kubectl`, `opencode`, `xonsh` |
+| **Common modules** | `buku`, `copilot-cli`, `gcloud-cli`, `kubectl`, `opencode`, `xonsh` |
 | **brew.masApps** | 1Password Safari, Compressor, Final Cut Pro, Logic Pro, Motion, Name Mangler 3, Pixelmator Pro, Xcode, Yoink |
 | **brew.casks** | alfred, balenaetcher, chatgpt, claude, dash, discord, distroav, dolphin, firefox, freetube, google-chrome, google-drive, httpie-desktop, iina, imageoptim, krita, libndi, lm-studio, melonds, mgba-app, microsoft-edge, microsoft-remote-desktop, notion, notion-calendar, notion-mail, obs, obsidian, opera, plex, plexamp, pokemon-tcg-live, prismlauncher, slack, steam, tailscale-app, telegram, todoist-app, transmission, virtualbox, vivaldi, vlc, wave, xquartz, yaak, zen |
 | **brew.brews** | imageoptim-cli, libyaml, sdl2, syncthing (restart_service) |
@@ -41,7 +44,7 @@ All hosts:
 | --- | --- |
 | **computerName** | `Brooke's MacBook Pro` |
 | **hostName** | `comfey` |
-| **Togglable modules** | `colima.enable = false`, `crush`, `cursor`, `antigravity-cli`, `warp-terminal` |
+| **Togglable modules** | `colima.enable = false`, `crush`, `cursor`, `warp-terminal` |
 | **Common modules** | `claude-code`, `gcloud-cli`, `kubectl`, `opencode` |
 | **brew.taps** | `withgraphite/homebrew-tap` |
 | **brew.brews** | graphite |
@@ -58,7 +61,7 @@ All hosts:
 | **Togglable modules** | `crush` |
 | **Common modules** | `opencode` |
 | **Darwin module** | `sikarugir` |
-| **brew.casks** | discord, dolphin, google-drive, libndi, lm-studio, melonds, mgba-app, obs, plex, plexamp, pokemon-tcg-live, steam, tailscale-app, todoist-app |
+| **brew.casks** | discord, dolphin, google-drive, libndi, lm-studio, melonds, mgba-app, obs, plex, plexamp, pokemon-tcg-live, prismlauncher, steam, tailscale-app, telegram-desktop, todoist-app |
 | **brew.brews** | syncthing (restart_service) |
 | **brew.masApps** | Same as miraidon (1Password Safari, Compressor, Final Cut Pro, Logic Pro, Motion, Name Mangler 3, Pixelmator Pro, Xcode, Yoink) |
 
