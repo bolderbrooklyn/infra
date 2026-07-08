@@ -1,3 +1,4 @@
+{ config, pkgs, ... }:
 {
   imports = [
     ./brew.nix
@@ -12,5 +13,12 @@
 
   brooklyn.programs = {
     crush.enable = true;
+  };
+
+  home-manager.users.${config.common.username} = {
+    xdg.configFile."opencode/oh-my-openagent.jsonc" = {
+      source = ./config/opencode/oh-my-openagent.jsonc;
+      force = true;
+    };
   };
 }

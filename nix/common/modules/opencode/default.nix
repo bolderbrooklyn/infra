@@ -32,6 +32,8 @@ in
         theme = lib.mkForce "catppuccin-mocha";
       };
     };
+
+    xdg.configFile."opencode/tui.json".force = true;
   }
   // lib.optionalAttrs pkgs.stdenv.isLinux {
     systemd.user.services.opencode-web = {

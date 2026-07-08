@@ -1,0 +1,154 @@
+{
+  "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/dev/assets/oh-my-opencode.schema.json",
+  "agents": {
+    "sisyphus": {
+      "model": "minimax-coding-plan/MiniMax-M3",
+      "fallback_models": [
+        "minimax-coding-plan/MiniMax-M2.7"
+      ]
+    },
+    "prometheus": {
+      "model": "minimax-coding-plan/MiniMax-M3"
+    },
+    "hephaestus": {
+      "model": "minimax-coding-plan/MiniMax-M3",
+      "fallback_models": [
+        "minimax-coding-plan/MiniMax-M2.7"
+      ]
+    },
+    "oracle": {
+      "model": "minimax-coding-plan/MiniMax-M3",
+      "fallback_models": [
+        "minimax-coding-plan/MiniMax-M2.7"
+      ]
+    },
+    "librarian": {
+      "model": "minimax-coding-plan/MiniMax-M2.7",
+      "fallback_models": [
+        "minimax-coding-plan/MiniMax-M3"
+      ]
+    },
+    "explore": {
+      "model": "minimax-coding-plan/MiniMax-M2.7",
+      "fallback_models": [
+        "minimax-coding-plan/MiniMax-M3"
+      ]
+    },
+    "multimodal-looker": {
+      "model": "minimax-coding-plan/MiniMax-M3",
+      "fallback_models": [
+        "minimax-coding-plan/MiniMax-M2.7"
+      ]
+    },
+    "metis": {
+      "model": "minimax-coding-plan/MiniMax-M2.7",
+      "fallback_models": [
+        "minimax-coding-plan/MiniMax-M3"
+      ]
+    },
+    "momus": {
+      "model": "minimax-coding-plan/MiniMax-M2.7",
+      "fallback_models": [
+        "minimax-coding-plan/MiniMax-M3"
+      ]
+    },
+    "atlas": {
+      "model": "minimax-coding-plan/MiniMax-M3",
+      "fallback_models": [
+        "minimax-coding-plan/MiniMax-M2.7"
+      ]
+    },
+    "sisyphus-junior": {
+      "model": "minimax-coding-plan/MiniMax-M2.7",
+      "fallback_models": [
+        "minimax-coding-plan/MiniMax-M3"
+      ]
+    }
+  },
+  "categories": {
+    "visual-engineering": {
+      "model": "minimax-coding-plan/MiniMax-M3",
+      "fallback_models": [
+        "minimax-coding-plan/MiniMax-M2.7"
+      ]
+    },
+    "ultrabrain": {
+      "model": "minimax-coding-plan/MiniMax-M3",
+      "fallback_models": [
+        "minimax-coding-plan/MiniMax-M2.7"
+      ]
+    },
+    "deep": {
+      "model": "minimax-coding-plan/MiniMax-M3",
+      "fallback_models": [
+        "minimax-coding-plan/MiniMax-M2.7"
+      ]
+    },
+    "artistry": {
+      "model": "minimax-coding-plan/MiniMax-M3",
+      "fallback_models": [
+        "minimax-coding-plan/MiniMax-M2.7"
+      ]
+    },
+    "quick": {
+      "model": "minimax-coding-plan/MiniMax-M2.7",
+      "fallback_models": [
+        "minimax-coding-plan/MiniMax-M3"
+      ]
+    },
+    "unspecified-low": {
+      "model": "minimax-coding-plan/MiniMax-M2.7",
+      "fallback_models": [
+        "minimax-coding-plan/MiniMax-M3"
+      ]
+    },
+    "unspecified-high": {
+      "model": "minimax-coding-plan/MiniMax-M3",
+      "fallback_models": [
+        "minimax-coding-plan/MiniMax-M2.7"
+      ]
+    },
+    "writing": {
+      "model": "minimax-coding-plan/MiniMax-M2.7",
+      "fallback_models": [
+        "minimax-coding-plan/MiniMax-M3"
+      ]
+    }
+  },
+  "background_task": {
+    "defaultConcurrency": 4,
+    "providerConcurrency": {
+      "minimax-coding-plan": 6
+    },
+    "modelConcurrency": {
+      "minimax-coding-plan/MiniMax-M3": 4,
+      "minimax-coding-plan/MiniMax-M2.7": 6
+    }
+  },
+  "runtime_fallback": {
+    "enabled": true,
+    "retry_on_errors": [
+      400,
+      401,
+      403,
+      404,
+      429,
+      500,
+      502,
+      503,
+      504
+    ],
+    "max_fallback_attempts": 5,
+    "cooldown_seconds": 10,
+    "timeout_seconds": 20,
+    "notify_on_fallback": true
+  },
+  "experimental": {
+    "aggressive_truncation": true,
+    "task_system": true,
+    "auto_resume": true
+  },
+  "tmux": {
+    "enabled": false
+  }
+}
