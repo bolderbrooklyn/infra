@@ -25,7 +25,7 @@ the host enables (claude-code, codex, opencode, crush, copilot-cli, antigravity)
 
 ## Host Comparison
 
-### miraidon (Daily Driver MacBook)
+### miraidon (Secondary/Desktop Mac)
 
 | Aspect | Detail |
 | --- | --- |
@@ -53,7 +53,7 @@ the host enables (claude-code, codex, opencode, crush, copilot-cli, antigravity)
 | **MCP servers** | figma, linear, notion |
 | **Extra config** | `home.sessionPath` includes `~/.npm/bin` |
 
-### xerneas (Secondary/Desktop Mac)
+### xerneas (Daily Driver MacBook)
 
 | Aspect | Detail |
 | --- | --- |

@@ -10,9 +10,9 @@ Uses **Nix Flakes** + **Lix** across **NixOS (Linux)** and **nix-darwin (macOS)*
 | Host | Platform | Arch | Role |
 |---|---|---|---|
 | `tinkaton` | NixOS | x86_64-linux | Home server: Plex, *arr, Forgejo, k3s, Syncthing |
-| `miraidon` | nix-darwin | aarch64-darwin | Daily driver MacBook |
+| `miraidon` | nix-darwin | aarch64-darwin | Secondary/desktop Mac |
 | `comfey` | nix-darwin | aarch64-darwin | Work laptop (nclusion) |
-| `xerneas` | nix-darwin | aarch64-darwin | Secondary/desktop Mac |
+| `xerneas` | nix-darwin | aarch64-darwin | Daily driver MacBook |
 | `kalmiya` | NixOS + standalone HM | x86_64-linux | Service user on tinkaton |
 
 ---

@@ -82,7 +82,7 @@ Hosts set `networking.computerName` explicitly; `hostName` derives from it autom
 
 ## Hosts
 
-Three darwin hosts: `miraidon` (daily driver), `comfey` (work), `xerneas` (secondary).
+Three darwin hosts: `xerneas` (daily driver), `comfey` (work), `miraidon` (secondary).
 See [hosts/AGENTS.md](hosts/AGENTS.md) for per-host differences.
 
 ```bash
