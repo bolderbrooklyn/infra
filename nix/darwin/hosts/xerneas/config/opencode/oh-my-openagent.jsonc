@@ -145,10 +145,7 @@
   },
   "experimental": {
     "aggressive_truncation": true,
-    "task_system": true,
-    "auto_resume": true
+    "task_system": true
   },
-  "tmux": {
-    "enabled": false
-  }
+  "disabled_mcps": ["lsp"]
 }

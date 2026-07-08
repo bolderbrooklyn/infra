@@ -19,11 +19,17 @@ in
       package = opencodePackage;
       enableMcpIntegration = true;
 
+      extraPackages = with pkgs; [
+        bun
+        nodejs-slim
+      ];
+
       settings = {
         autoupdate = false;
+        formatter = { };
+        lsp = { };
 
         plugin = [
-          "opencode-gemini-auth@latest"
           "oh-my-openagent@latest"
         ];
       };
@@ -34,22 +40,5 @@ in
     };
 
     xdg.configFile."opencode/tui.json".force = true;
-  }
-  // lib.optionalAttrs pkgs.stdenv.isLinux {
-    systemd.user.services.opencode-web = {
-      Unit = {
-        Description = "OpenCode web service";
-        After = [ "network.target" ];
-      };
-
-      Service = {
-        ExecStart = "${opencodePackage}/bin/opencode serve --hostname 0.0.0.0 --port 4096 --cors https://opencode.anteater-wall.ts.net";
-        Restart = "on-failure";
-      };
-
-      Install = {
-        WantedBy = [ "default.target" ];
-      };
-    };
   };
 }
