@@ -1,4 +1,7 @@
 { config, pkgs, ... }:
+let
+  omoOverrides = builtins.fromJSON (builtins.readFile ./config/opencode/oh-my-openagent.jsonc);
+in
 {
   imports = [
     ./brew.nix
@@ -13,12 +16,6 @@
 
   brooklyn.programs = {
     crush.enable = true;
-  };
-
-  home-manager.users.${config.common.username} = {
-    xdg.configFile."opencode/oh-my-openagent.jsonc" = {
-      source = ./config/opencode/oh-my-openagent.jsonc;
-      force = true;
-    };
+    opencode.ohMyOpenAgentOverrides = omoOverrides;
   };
 }

@@ -1,5 +1,4 @@
 {
-  "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/dev/assets/oh-my-opencode.schema.json",
   "agents": {
     "sisyphus": {
       "model": "minimax-coding-plan/MiniMax-M3",
@@ -146,6 +145,5 @@
   "experimental": {
     "aggressive_truncation": true,
     "task_system": true
-  },
-  "disabled_mcps": ["lsp"]
+  }
 }

@@ -6,6 +6,7 @@
 }:
 let
   opencodePackage = pkgs.llm-agents.opencode;
+  baseOhMyOpenAgent = builtins.fromJSON (builtins.readFile ./oh-my-openagent.base.jsonc);
 in
 {
   imports = [
@@ -13,32 +14,44 @@ in
     ../../profiles/gui/modules/warp-terminal
   ];
 
-  home-manager.users.${config.common.username} = {
-    programs.opencode = {
-      enable = true;
-      package = opencodePackage;
-      enableMcpIntegration = true;
+  options.brooklyn.programs.opencode.ohMyOpenAgentOverrides = lib.mkOption {
+    type = lib.types.attrs;
+    default = { };
+    description = "Per-host overrides deep-merged into oh-my-openagent.jsonc on top of oh-my-openagent.base.jsonc.";
+  };
 
-      extraPackages = with pkgs; [
-        bun
-        nodejs-slim
-      ];
+  config = {
+    home-manager.users.${config.common.username} = {
+      programs.opencode = {
+        enable = true;
+        package = opencodePackage;
+        enableMcpIntegration = true;
 
-      settings = {
-        autoupdate = false;
-        formatter = { };
-        lsp = { };
-
-        plugin = [
-          "oh-my-openagent@latest"
+        extraPackages = with pkgs; [
+          bun
+          nodejs-slim
         ];
+
+        settings = {
+          autoupdate = false;
+          formatter = { };
+          lsp = { };
+
+          plugin = [
+            "oh-my-openagent@latest"
+          ];
+        };
+
+        tui = {
+          theme = lib.mkForce "catppuccin-mocha";
+        };
       };
 
-      tui = {
-        theme = lib.mkForce "catppuccin-mocha";
-      };
+      xdg.configFile."opencode/tui.json".force = true;
+
+      xdg.configFile."opencode/oh-my-openagent.jsonc".text = builtins.toJSON (
+        lib.recursiveUpdate baseOhMyOpenAgent config.brooklyn.programs.opencode.ohMyOpenAgentOverrides
+      );
     };
-
-    xdg.configFile."opencode/tui.json".force = true;
   };
 }
