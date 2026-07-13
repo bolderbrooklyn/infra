@@ -27,6 +27,7 @@ in
   };
 
   brooklyn.programs = {
+    claude-code.enable = true;
     colima.enable = false;
     crush.enable = true;
     pi-coding-agent.enable = true;
