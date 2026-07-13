@@ -36,8 +36,12 @@
           theme = "dark";
 
           packages = [
+            "npm:@hypabolic/pi-hypa"
             "npm:context-mode"
+            "npm:pi-lens"
             "npm:pi-mcp-adapter"
+            "npm:pi-subagents"
+            "npm:pi-web-access"
           ];
         };
       };
