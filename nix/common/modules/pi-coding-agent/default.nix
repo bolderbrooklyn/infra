@@ -8,7 +8,15 @@
   options.brooklyn.programs.pi-coding-agent.enable = lib.mkEnableOption "pi-coding-agent";
 
   config = lib.mkIf config.brooklyn.programs.pi-coding-agent.enable {
-    home-manager.users.${config.common.username} = {
+    home-manager.users.${config.common.username} = { config, ... }: {
+      home.file."${config.programs.pi-coding-agent.configDir}/mcp.json".text = builtins.toJSON {
+        mcpServers = {
+          context-mode = {
+            command = "context-mode";
+          };
+        };
+      };
+
       programs.pi-coding-agent = {
         enable = true;
         package = pkgs.llm-agents.pi;
@@ -17,6 +25,21 @@
           nodejs
           bun
         ];
+
+        settings = {
+          collapseChangelog = true;
+          defaultModel = "MiniMax-M3";
+          defaultProvider = "minimax";
+          defaultThinkingLevel = "high";
+          quietStartup = true;
+          terminal.showTermainlProgress = true;
+          theme = "dark";
+
+          packages = [
+            "npm:context-mode"
+            "npm:pi-mcp-adapter"
+          ];
+        };
       };
     };
   };
