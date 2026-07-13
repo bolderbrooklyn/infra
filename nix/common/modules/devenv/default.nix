@@ -1,10 +1,21 @@
-{ config, pkgs, ... }:
 {
-  home-manager.users.${config.common.username} = {
-    home.packages = [ pkgs.devenv ];
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  options.brooklyn.programs.devenv.enable = lib.mkEnableOption "devenv" // {
+    default = true;
+  };
 
-    programs.fish.interactiveShellInit = ''
-      devenv hook fish | source
-    '';
+  config = lib.mkIf config.brooklyn.programs.devenv.enable {
+    home-manager.users.${config.common.username} = {
+      home.packages = [ pkgs.devenv ];
+
+      programs.fish.interactiveShellInit = ''
+        devenv hook fish | source
+      '';
+    };
   };
 }

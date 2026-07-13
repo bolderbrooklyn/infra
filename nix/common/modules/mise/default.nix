@@ -1,6 +1,14 @@
-{ config, ... }:
 {
-  config = {
+  config,
+  lib,
+  ...
+}:
+{
+  options.brooklyn.programs.mise.enable = lib.mkEnableOption "mise" // {
+    default = true;
+  };
+
+  config = lib.mkIf config.brooklyn.programs.mise.enable {
     home-manager.users.${config.common.username} = {
       programs.mise = {
         enable = true;

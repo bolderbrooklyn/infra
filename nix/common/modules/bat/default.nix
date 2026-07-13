@@ -1,16 +1,26 @@
-{ config, ... }:
 {
-  home-manager.users.${config.common.username} = {
-    home.shellAliases = {
-      cat = "bat";
-    };
+  config,
+  lib,
+  ...
+}:
+{
+  options.brooklyn.programs.bat.enable = lib.mkEnableOption "bat" // {
+    default = true;
+  };
 
-    programs.bat = {
-      enable = true;
+  config = lib.mkIf config.brooklyn.programs.bat.enable {
+    home-manager.users.${config.common.username} = {
+      home.shellAliases = {
+        cat = "bat";
+      };
 
-      config = {
-        # fix mouse scrolling inside tmux
-        pager = "less --RAW-CONTROL-CHARS --quit-if-one-screen --mouse";
+      programs.bat = {
+        enable = true;
+
+        config = {
+          # fix mouse scrolling inside tmux
+          pager = "less --RAW-CONTROL-CHARS --quit-if-one-screen --mouse";
+        };
       };
     };
   };

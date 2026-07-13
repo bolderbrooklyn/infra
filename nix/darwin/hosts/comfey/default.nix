@@ -29,6 +29,9 @@ in
     claude-code.enable = true;
     colima.enable = false;
     crush.enable = true;
+    gcloud-cli.enable = true;
+    kubectl.enable = true;
+    opencode.enable = true;
     pi-coding-agent.enable = true;
 
     cursor = {

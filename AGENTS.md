@@ -8,7 +8,7 @@ Uses **Nix Flakes** + **Lix** across **NixOS (Linux)** and **nix-darwin (macOS)*
 ## Hosts
 
 | Host | Platform | Arch | Role |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `tinkaton` | NixOS | x86_64-linux | Home server: Plex, *arr, Forgejo, k3s, Syncthing |
 | `miraidon` | nix-darwin | aarch64-darwin | Secondary/desktop Mac |
 | `comfey` | nix-darwin | aarch64-darwin | Work laptop (nclusion) |
@@ -35,20 +35,20 @@ direnv allow       # Activate devenv shell
 Key symbols and where they're defined:
 
 | Symbol | Type | Defined In | Refs | Role |
-|---|---|---|---|---|
-| `brooklyn.programs.*.enable` | Option pattern | `nix/{common/modules,common/profiles/gui/modules,darwin/modules}/*/default.nix` | 7 + 10 + 1 = 18 modules | Feature toggle convention; 7 in common modules, 10 in GUI profile, 1 in darwin |
+| --- | --- | --- | --- | --- |
+| `brooklyn.programs.*.enable` | Option pattern | `nix/{common/modules,common/profiles/gui/modules,darwin/modules}/*/default.nix` | 27 + 10 + 2 = 39 modules | Feature toggle convention; 27 in common modules (all of them), 10 in GUI profile, 2 in darwin |
 | `isDarwin` | specialArg | `flake.nix:86-90` | 11 files | Platform conditional |
 | `config.common.username` | Option | `nix/common/default.nix:13` | 50+ refs | Default user "brooklyn" |
 | `age.secrets.<name>` | Agenix pattern | `secrets.nix` | 4 secrets | Decrypt at activation |
 | `nix-homebrew` | Flake input | `flake.nix:48` | darwin hosts | Declarative brew with locked taps |
 | `targets.darwin.defaults` | nix-darwin module | `nix/darwin/home.nix` | all darwin | macOS `defaults write` |
 | `mnt-genesect-*.mount` | Systemd mount unit | `nix/nixos/modules/plex/default.nix` | 5+ services | NFS dependency ordering |
-| `agent-instructions` | Common module | `nix/common/modules/agent-instructions/default.nix` | always-on | Writes shared guardrails to every enabled agent's global instruction file (claude-code, codex, opencode, pi-coding-agent, crush, copilot-cli, antigravity) |
+| `agent-instructions` | Common module | `nix/common/modules/agent-instructions/default.nix` | `brooklyn.programs.agent-instructions.enable` (default `true`) | Writes shared guardrails to every enabled agent's global instruction file (claude-code, codex, opencode, pi-coding-agent, crush, copilot-cli, antigravity) |
 
 ## Directory Map & Quick Task Reference
 
 | Task | Path | Doc |
-|---|---|---|
+| --- | --- | --- |
 | **Add cross-platform tool** | `nix/common/modules/` | [→](nix/common/modules/AGENTS.md) |
 | **Add GUI editor/terminal** | `nix/common/profiles/gui/modules/` | [→](nix/common/profiles/gui/AGENTS.md) |
 | **Add NixOS service** | `nix/nixos/modules/` | [→](nix/nixos/modules/AGENTS.md) |

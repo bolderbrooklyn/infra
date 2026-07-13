@@ -1,14 +1,25 @@
-{ catppuccin, config, ... }:
 {
-  home-manager.users.${config.common.username} = {
-    imports = [ catppuccin.homeModules.catppuccin ];
+  catppuccin,
+  config,
+  lib,
+  ...
+}:
+{
+  options.brooklyn.programs.catppuccin.enable = lib.mkEnableOption "catppuccin" // {
+    default = true;
+  };
 
-    catppuccin = {
-      enable = true;
-      autoEnable = true;
-      flavor = "mocha";
+  config = lib.mkIf config.brooklyn.programs.catppuccin.enable {
+    home-manager.users.${config.common.username} = {
+      imports = [ catppuccin.homeModules.catppuccin ];
 
-      nvim.enable = false;
+      catppuccin = {
+        enable = true;
+        autoEnable = true;
+        flavor = "mocha";
+
+        nvim.enable = false;
+      };
     };
   };
 }

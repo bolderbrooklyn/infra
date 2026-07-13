@@ -12,9 +12,19 @@ let
     pi-coding-agent
     ;
 
+  username = config.common.username;
+
   antigravityEnabled =
     lib.hasAttrByPath [ "brooklyn" "programs" "antigravity-cli" "enable" ] config
     && config.brooklyn.programs.antigravity-cli.enable;
+
+  copilotCliEnabled =
+    lib.hasAttrByPath [ "brooklyn" "programs" "copilot-cli" "enable" ] config
+    && config.brooklyn.programs.copilot-cli.enable;
+
+  crushEnabled =
+    lib.hasAttrByPath [ "brooklyn" "programs" "crush" "enable" ] config
+    && config.brooklyn.programs.crush.enable;
 
   instructions = ''
     Prefer modern CLI replacements when they are available on this system:
@@ -77,8 +87,8 @@ let
       explain *why*, not *what*.
     - Match the surrounding code's formatting, indentation, and naming —
       do not reformat unrelated code.
-    - Don't fix unrelated bugs or break unrelated tests. Mention them in
-      the final message instead.
+    - Don't fix unrelated bugs or break unrelated tests. Mention them in the
+      final message instead.
     - Do not introduce new dependencies, linters, formatters, or test
       frameworks into a codebase that does not already use them.
 
@@ -98,14 +108,12 @@ let
   instructionsFile = pkgs.writeText "agent-instructions.md" instructions;
 in
 {
-  options.brooklyn.programs.copilot-cli = {
-    enable = lib.mkEnableOption "copilot-cli" // {
-      default = true;
-    };
+  options.brooklyn.programs.agent-instructions.enable = lib.mkEnableOption "agent-instructions" // {
+    default = true;
   };
 
-  config = {
-    home-manager.users.${config.common.username} = {
+  config = lib.mkIf config.brooklyn.programs.agent-instructions.enable {
+    home-manager.users.${username} = {
       programs = {
         claude-code.context = lib.mkIf claude-code.enable instructions;
         codex.context = lib.mkIf codex.enable instructions;
@@ -114,11 +122,11 @@ in
       };
 
       xdg.configFile = {
-        "crush/CRUSH.md" = lib.mkIf config.brooklyn.programs.crush.enable {
+        "crush/CRUSH.md" = lib.mkIf crushEnabled {
           source = instructionsFile;
         };
 
-        "copilot/copilot-instructions.md" = lib.mkIf config.brooklyn.programs.copilot-cli.enable {
+        "copilot/copilot-instructions.md" = lib.mkIf copilotCliEnabled {
           source = instructionsFile;
         };
 

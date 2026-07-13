@@ -25,6 +25,7 @@
   brooklyn.programs = {
     calibre.enable = true;
     crush.enable = true;
+    opencode.enable = true;
   };
 
   age.secrets = {

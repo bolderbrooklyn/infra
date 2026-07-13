@@ -4,16 +4,19 @@
   pkgs,
   ...
 }:
-let
-  inherit (config.common) username;
-in
 {
-  home-manager.users.${username} = {
-    programs.gpg.enable = true;
+  options.brooklyn.programs.gnupg.enable = lib.mkEnableOption "gnupg" // {
+    default = true;
+  };
 
-    services.gpg-agent = {
-      enable = true;
-      pinentry.package = lib.mkIf pkgs.stdenv.isDarwin pkgs.pinentry_mac;
+  config = lib.mkIf config.brooklyn.programs.gnupg.enable {
+    home-manager.users.${config.common.username} = {
+      programs.gpg.enable = true;
+
+      services.gpg-agent = {
+        enable = true;
+        pinentry.package = lib.mkIf pkgs.stdenv.isDarwin pkgs.pinentry_mac;
+      };
     };
   };
 }

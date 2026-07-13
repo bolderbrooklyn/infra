@@ -1,8 +1,14 @@
-{ pkgs, ... }:
-let
-  xonsh = pkgs.xonsh;
-in
 {
-  environment.systemPackages = [ xonsh ];
-  environment.shells = [ xonsh ];
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  options.brooklyn.programs.xonsh.enable = lib.mkEnableOption "xonsh";
+
+  config = lib.mkIf config.brooklyn.programs.xonsh.enable {
+    environment.systemPackages = [ pkgs.xonsh ];
+    environment.shells = [ pkgs.xonsh ];
+  };
 }

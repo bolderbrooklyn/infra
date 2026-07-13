@@ -15,7 +15,9 @@ in
 
   brooklyn.programs = {
     crush.enable = true;
+    opencode.enable = true;
     opencode.ohMyOpenAgentOverrides = omoOverrides;
     pi-coding-agent.enable = true;
+    sikarugir.enable = true;
   };
 }

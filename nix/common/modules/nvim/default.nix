@@ -5,73 +5,79 @@
   ...
 }:
 {
-  home-manager.users.${config.common.username} = {
-    home.sessionVariables = {
-      DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = 1;
-    };
+  options.brooklyn.programs.nvim.enable = lib.mkEnableOption "nvim" // {
+    default = true;
+  };
 
-    programs.neovim = {
-      enable = true;
-      defaultEditor = true;
-      viAlias = true;
-      vimAlias = true;
-      vimdiffAlias = true;
-      withNodeJs = true;
+  config = lib.mkIf config.brooklyn.programs.nvim.enable {
+    home-manager.users.${config.common.username} = {
+      home.sessionVariables = {
+        DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = 1;
+      };
 
-      extraPackages = with pkgs; [
-        ast-grep
-        cargo
-        ghostscript
-        go
-        grpcurl
-        icu
-        imagemagick
-        lua5_1
-        luarocks
-        lynx
-        mermaid-cli
-        nixd
-        nixfmt
-        pkg-config
-        plantuml
-        postgresql_18
-        python3
-        rust-analyzer
-        shfmt
-        sqlite
-        tectonic
-        texliveBasic
-        tree-sitter
-        unzip
-        websocat
-        wget
+      programs.neovim = {
+        enable = true;
+        defaultEditor = true;
+        viAlias = true;
+        vimAlias = true;
+        vimdiffAlias = true;
+        withNodeJs = true;
 
-        texlivePackages.biber
-        texlivePackages.latexmk
+        extraPackages = with pkgs; [
+          ast-grep
+          cargo
+          ghostscript
+          go
+          grpcurl
+          icu
+          imagemagick
+          lua5_1
+          luarocks
+          lynx
+          mermaid-cli
+          nixd
+          nixfmt
+          pkg-config
+          plantuml
+          postgresql_18
+          python3
+          rust-analyzer
+          shfmt
+          sqlite
+          tectonic
+          texliveBasic
+          tree-sitter
+          unzip
+          websocat
+          wget
 
-        (lib.mkIf (!pkgs.stdenv.isDarwin) llvm)
-      ];
+          texlivePackages.biber
+          texlivePackages.latexmk
 
-      extraLuaPackages =
-        ps: with ps; [
-          tiktoken_core
+          (lib.mkIf (!pkgs.stdenv.isDarwin) llvm)
         ];
 
-      extraWrapperArgs = [
-        "--suffix"
-        "PKG_CONFIG_PATH"
-        ":"
-        "${lib.makeSearchPathOutput "dev" "lib/pkgconfig" [ pkgs.imagemagick.dev ]}"
-      ];
+        extraLuaPackages =
+          ps: with ps; [
+            tiktoken_core
+          ];
 
-      initLua = ''
-        require("config.lazy")
-      '';
-    };
+        extraWrapperArgs = [
+          "--suffix"
+          "PKG_CONFIG_PATH"
+          ":"
+          "${lib.makeSearchPathOutput "dev" "lib/pkgconfig" [ pkgs.imagemagick.dev ]}"
+        ];
 
-    xdg.configFile.nvim = {
-      source = ./config;
-      recursive = true;
+        initLua = ''
+          require("config.lazy")
+        '';
+      };
+
+      xdg.configFile.nvim = {
+        source = ./config;
+        recursive = true;
+      };
     };
   };
 }

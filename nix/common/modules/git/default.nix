@@ -1,4 +1,8 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  ...
+}:
 let
   cfg = config.programs.git;
 
@@ -13,6 +17,10 @@ let
   };
 in
 {
+  options.brooklyn.programs.git.enable = lib.mkEnableOption "git" // {
+    default = true;
+  };
+
   options.programs.git = {
     signingKey = {
       type = lib.mkOption {
@@ -46,7 +54,7 @@ in
     ./aliases/git.nix
   ];
 
-  config = {
+  config = lib.mkIf config.brooklyn.programs.git.enable {
     home-manager.users.${config.common.username} =
       { config, ... }:
       {

@@ -1,16 +1,25 @@
-{ config, pkgs, ... }:
 {
-  home-manager.users.${config.common.username} = {
-    home.packages = with pkgs; [
-      kubectl
-      kubernetes-helm
-    ];
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  options.brooklyn.programs.kubectl.enable = lib.mkEnableOption "kubectl";
 
-    programs.k9s.enable = true;
+  config = lib.mkIf config.brooklyn.programs.kubectl.enable {
+    home-manager.users.${config.common.username} = {
+      home.packages = with pkgs; [
+        kubectl
+        kubernetes-helm
+      ];
 
-    programs.kubecolor = {
-      enable = true;
-      enableAlias = true;
+      programs.k9s.enable = true;
+
+      programs.kubecolor = {
+        enable = true;
+        enableAlias = true;
+      };
     };
   };
 }

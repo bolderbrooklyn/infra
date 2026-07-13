@@ -1,16 +1,25 @@
-{ inputs, ... }:
+{
+  config,
+  inputs,
+  lib,
+  ...
+}:
 {
   imports = [
     ../brew
   ];
 
-  nix-homebrew = {
-    taps = {
-      "Sikarugir-App/homebrew-sikarugir" = inputs.homebrew-sikarugir;
+  options.brooklyn.programs.sikarugir.enable = lib.mkEnableOption "sikarugir";
+
+  config = lib.mkIf config.brooklyn.programs.sikarugir.enable {
+    nix-homebrew = {
+      taps = {
+        "Sikarugir-App/homebrew-sikarugir" = inputs.homebrew-sikarugir;
+      };
+
+      trust.taps = [ "Sikarugir-App/sikarugir" ];
     };
 
-    trust.taps = [ "Sikarugir-App/sikarugir" ];
+    homebrew.casks = [ "sikarugir" ];
   };
-
-  homebrew.casks = [ "sikarugir" ];
 }

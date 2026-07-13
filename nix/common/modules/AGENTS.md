@@ -2,8 +2,9 @@
 
 This directory contains 35 modules for cross-platform tools and applications.
 All are **imported at compile time** by `nix/common/default.nix` (or selectively by
-hosts); some toggle on/off via `brooklyn.programs.<name>.enable`, others are always
-active.
+hosts); every module now follows the `brooklyn.programs.<name>.enable` toggle pattern.
+Modules default to **on** when globally imported (preserving prior behavior) and **off**
+when imported by individual hosts.
 
 ---
 
@@ -11,67 +12,50 @@ active.
 
 ### Togglable (`brooklyn.programs.<name>.enable`)
 
-These modules only activate when a host enables them. Seven modules in this directory
-define this pattern:
+All modules in this directory define this pattern. Default behavior depends on where the
+module is imported from:
 
-| Module | Option Path | Notes |
-|---|---|---|
-| `1password` | `brooklyn.programs._1password.enable` | Uses `isDarwin` special arg; SSH agent socket path differs per platform. `mkDefault true` on darwin hosts |
-| `crush` | `brooklyn.programs.crush.enable` | Installs `llm-agents.crush`; inlines `crush.json` (just a `$schema` reference) into `xdg.configFile` |
-| `antigravity-cli` | `brooklyn.programs.antigravity-cli.enable` | Writes a pre-baked `settings.json` (telemetry off, trusted workspace, scoped permissions) via HM activation to `~/.gemini/antigravity-cli/settings.json`. **Currently never enabled** — toggle is dead code, only the package import runs |
-| `claude-code` | `brooklyn.programs.claude-code.enable` | — |
-| `copilot-cli` | `brooklyn.programs.copilot-cli.enable` | Defined in `agent-instructions`; default `true`; writes shared instructions to `copilot-instructions.md` |
-| `pi-coding-agent` | `brooklyn.programs.pi-coding-agent.enable` | Installs `llm-agents.pi` + `nodejs`/`bun` extra packages |
-| `powershell` | `brooklyn.programs.powershell.enable` | `extraConfig` sub-option lets other modules (brew, starship) inject shellenv into PowerShell config |
+- **Globally imported** (in `nix/common/default.nix`) — `default = true`, so behavior is
+  preserved unless a host overrides.
+- **Per-host imported** (in a host's `default.nix`) — `default = false`; the importing
+  host sets `brooklyn.programs.<name>.enable = true` explicitly.
 
-### Per-Host Imports (no `brooklyn.programs.X.enable` toggle)
-
-These modules are imported by individual hosts via their `imports` list and unconditionally
-enable their HM program:
-
-| Module | Imported By | Notes |
-|---|---|---|
-| `buku` | miraidon | — |
-| `codex` | (none yet) | Orphan candidate — module exists but no host imports it |
-| `docker` | (none yet) | Orphan candidate — module exists but no host imports it |
-| `gcloud-cli` | miraidon, comfey | — |
-| `kubectl` | miraidon, comfey | — |
-| `opencode` | miraidon, xerneas, comfey, tinkaton | Has `brooklyn.programs.opencode.ohMyOpenAgentOverrides` (not an enable toggle) |
-| `xonsh` | miraidon | — |
-
-### Always-On (no toggle, globally imported)
-
-Imported in `nix/common/default.nix` and active for every host.
-
-**Unconditional** (always does something when imported):
-
-| Module | What It Does |
-|---|---|
-| `agent-instructions` | Renders a single shared instructions string (fd/rg preference, workspace boundaries, secrets policy, network restrictions, commit format, etc.) into every enabled agent's global instruction file — `programs.<agent>.context` for `claude-code` / `codex` / `opencode` / `pi-coding-agent`, plus `xdg.configFile."<agent>/..."` for `crush` (`CRUSH.md`), `copilot-cli` (`copilot-instructions.md`), and `antigravity` (`GEMINI.md`, only when `antigravity-cli.enable` is true) |
-| `bat` | `bat` as `cat` replacement with config |
-| `btop` | System monitor |
-| `catppuccin` | Catppuccin theming (system-wide with `autoEnable = true`; the NixOS base also sets `catppuccin.autoEnable` to suppress a warning) |
-| `devenv` | Adds `pkgs.devenv` to home packages and a fish shell-init hook (`devenv hook fish \| source`) |
-| `eza` | Modern `ls` replacement |
-| `fd` | `find` replacement |
-| `fzf` | Fuzzy finder; uses `${pkgs.fd}/bin/fd` for `defaultCommand` and `changeDirWidget.command` |
-| `git` | Git + delta + gh + lazygit — SSH-signed commits, `trunk` default branch, `zdiff3` merge style |
-| `mise` | `mise` with `node.compile = false` and `ruby.compile = false`, idiomatic-version-file for node + ruby |
-| `nvim` | **Full Neovim config tree** (Lua files for lazy.nvim, LSP, treesitter, etc.) — `initLua` entry point |
-| `openssh` | SSH client config |
-| `rg` | ripgrep |
-| `tmux` | tmux config (config/tmux/) |
-| `yazi` | File manager |
-| `zsh` | Zsh shell (enabled, not default) |
-
-**Internally gated** (active only when an internal condition is true):
-
-| Module | Gate | Notes |
-|---|---|---|
-| `fish` | `config.programs.fish.enable` | Set to `true` in `nix/common/default.nix` (default shell). With custom functions and vi key bindings |
-| `gnupg` | `config.programs.gpg.enable` | Set to `true` inside the module itself |
-| `nushell` | `config.programs.nushell.enable` | Set to `true` by miraidon. Module adds `nushell` to system `environment.systemPackages` and `environment.shells` |
-| `starship` | `config.programs.starship.enable` | Set to `true` by HM. Also writes to `brooklyn.programs.powershell.extraConfig` when `powershell.enable` |
+| Module | Option Path | Default | Imported From | Notes |
+| --- | --- | --- | --- | --- |
+| `1password` | `brooklyn.programs._1password.enable` | `false` | `nix/darwin/default.nix` (`lib.mkDefault true`) | Uses `isDarwin` special arg; SSH agent socket path differs per platform |
+| `agent-instructions` | `brooklyn.programs.agent-instructions.enable` | `true` | global | Renders shared instructions into every enabled agent's context file (claude-code, codex, opencode, pi-coding-agent) plus `crush/CRUSH.md`, `copilot/copilot-instructions.md`, `gemini/GEMINI.md` |
+| `antigravity-cli` | `brooklyn.programs.antigravity-cli.enable` | `false` | global | Writes `settings.json` (telemetry off, trusted workspace) to `~/.gemini/antigravity-cli/`. **Currently never enabled** — toggle is dead code, only the package import runs |
+| `bat` | `brooklyn.programs.bat.enable` | `true` | global | `bat` as `cat` replacement |
+| `btop` | `brooklyn.programs.btop.enable` | `true` | global | System monitor |
+| `buku` | `brooklyn.programs.buku.enable` | `false` | miraidon | Bookmark manager |
+| `catppuccin` | `brooklyn.programs.catppuccin.enable` | `true` | global | Catppuccin theming (system-wide with `autoEnable = true`) |
+| `claude-code` | `brooklyn.programs.claude-code.enable` | `false` | comfey | Installs `llm-agents.claude-code` with MCP integration |
+| `codex` | `brooklyn.programs.codex.enable` | `false` | (orphan) | No host currently imports it |
+| `copilot-cli` | `brooklyn.programs.copilot-cli.enable` | `true` | miraidon | Installs `llm-agents.copilot-cli`. Option only defined when module is imported |
+| `crush` | `brooklyn.programs.crush.enable` | `false` | miraidon, xerneas, comfey, tinkaton | Installs `llm-agents.crush` |
+| `devenv` | `brooklyn.programs.devenv.enable` | `true` | global | `pkgs.devenv` + fish shell-init hook |
+| `docker` | `brooklyn.programs.docker.enable` | `true` | colima (darwin-only) | Docker packages for home-manager. Auto-enabled because colima imports it on every darwin host |
+| `eza` | `brooklyn.programs.eza.enable` | `true` | global | Modern `ls` replacement |
+| `fd` | `brooklyn.programs.fd.enable` | `true` | global | `find` replacement (also imported by `fzf`) |
+| `fish` | `brooklyn.programs.fish.enable` | `true` | global | Custom functions, vi key bindings; `programs.fish.defaultShell = true` makes it the default shell |
+| `fzf` | `brooklyn.programs.fzf.enable` | `true` | global | Uses `${pkgs.fd}/bin/fd` for `defaultCommand` and `changeDirWidget.command` |
+| `gcloud-cli` | `brooklyn.programs.gcloud-cli.enable` | `false` | miraidon, comfey | Google Cloud SDK + SQL proxy |
+| `git` | `brooklyn.programs.git.enable` | `true` | global | Git + delta + gh + lazygit. Defines `programs.git.signingKey` and `programs.git.user` sub-options |
+| `gnupg` | `brooklyn.programs.gnupg.enable` | `true` | global | GPG agent with `pinentry_mac` on darwin |
+| `kubectl` | `brooklyn.programs.kubectl.enable` | `false` | miraidon, comfey | kubectl + helm + k9s + kubecolor |
+| `mise` | `brooklyn.programs.mise.enable` | `true` | (orphan) | Module exists but is not imported anywhere. **Pre-existing inconsistency**: AGENTS.md says always-on but the imports list omits it. Also blocked by an HM option rename (`programs.mise.settings` → `programs.mise.globalConfig.settings`) |
+| `nvim` | `brooklyn.programs.nvim.enable` | `true` | global | **Full Neovim config tree** (Lua files for lazy.nvim, LSP, treesitter, etc.) — `initLua` entry point |
+| `nushell` | (none) | n/a | miraidon | Reads `programs.nushell.enable`; not following the `brooklyn.programs.*` toggle convention (gated by HM's `programs.nushell.enable`) |
+| `opencode` | `brooklyn.programs.opencode.enable` | `false` | miraidon, xerneas, comfey, tinkaton | Has `brooklyn.programs.opencode.ohMyOpenAgentOverrides` sub-option for per-host agent config |
+| `openssh` | `brooklyn.programs.openssh.enable` | `true` | global | Adds `services.openssh.extraConfig` (`PasswordAuthentication no`, `PermitRootLogin no`) |
+| `pi-coding-agent` | `brooklyn.programs.pi-coding-agent.enable` | `false` | comfey, xerneas | Installs `llm-agents.pi` + `nodejs`/`bun` extra packages |
+| `powershell` | `brooklyn.programs.powershell.enable` | `false` | miraidon | `extraConfig` sub-option lets other modules (brew, starship) inject shellenv into PowerShell config |
+| `ripgrep` | `brooklyn.programs.ripgrep.enable` | `true` | global | ripgrep (`rg`); renames `grep` shell alias |
+| `starship` | `brooklyn.programs.starship.enable` | `true` | global | Cross-shell prompt. Writes starship init to `powershell.extraConfig` when powershell is enabled |
+| `tmux` | `brooklyn.programs.tmux.enable` | `true` | global | tmux + tmux-powerline config |
+| `xonsh` | `brooklyn.programs.xonsh.enable` | `false` | miraidon | Adds xonsh to `environment.systemPackages` and `environment.shells` |
+| `yazi` | `brooklyn.programs.yazi.enable` | `true` | global | File manager |
+| `zsh` | `brooklyn.programs.zsh.enable` | `true` | global | Zsh shell (enabled, not default) |
 
 ### Orphan
 
@@ -85,7 +69,9 @@ any host. Its `programs.superfile.enable = true` runs only if explicitly importe
 ```nix
 { config, lib, pkgs, ... }:
 {
-  options.brooklyn.programs.<name>.enable = lib.mkEnableOption "<name>";
+  options.brooklyn.programs.<name>.enable = lib.mkEnableOption "<name>" // {
+    default = true; # false if per-host imported
+  };
 
   config = lib.mkIf config.brooklyn.programs.<name>.enable {
     home-manager.users.${config.common.username} = {
@@ -98,6 +84,7 @@ any host. Its `programs.superfile.enable = true` runs only if explicitly importe
 ```
 
 Key patterns used in modules:
+
 - `home-manager.users.${config.common.username}` — wraps all user-level config
 - `xdg.configFile.<name>` — copies config directories
 - `home.sessionVariables` — sets environment variables
@@ -113,7 +100,7 @@ Some modules (like `1password`) use the `isDarwin` special arg or `inputs` for f
 ## Adding a New Module
 
 1. Create `nix/common/modules/<name>/default.nix`
-2. Follow the template above
-3. Add `./modules/<name>` to the `imports` list in `nix/common/default.nix`
-4. Enable it with `brooklyn.programs.<name>.enable = true` in the host's `default.nix`
-5. If it doesn't need a toggle, just put config directly in the module (no `lib.mkIf`)
+2. Follow the template above (with `default = false` if it should be per-host)
+3. Add `./modules/<name>` to the `imports` list in `nix/common/default.nix` (for globally imported) or to the host's `default.nix` (for per-host)
+4. If globally imported with `default = true`, no further action — it just works
+5. If per-host imported, enable it with `brooklyn.programs.<name>.enable = true` in the host's `default.nix`

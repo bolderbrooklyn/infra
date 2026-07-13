@@ -1,14 +1,21 @@
-{ config, ... }:
-let
-  inherit (config.common) username;
-in
 {
-  home-manager.users.${username} = {
-    programs.btop = {
-      enable = true;
+  config,
+  lib,
+  ...
+}:
+{
+  options.brooklyn.programs.btop.enable = lib.mkEnableOption "btop" // {
+    default = true;
+  };
 
-      settings = {
-        vim_keys = true;
+  config = lib.mkIf config.brooklyn.programs.btop.enable {
+    home-manager.users.${config.common.username} = {
+      programs.btop = {
+        enable = true;
+
+        settings = {
+          vim_keys = true;
+        };
       };
     };
   };

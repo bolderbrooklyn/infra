@@ -1,28 +1,39 @@
-{ config, pkgs, ... }:
 {
-  programs.zsh.enable = true;
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  options.brooklyn.programs.zsh.enable = lib.mkEnableOption "zsh" // {
+    default = true;
+  };
 
-  environment.shells = [ pkgs.zsh ];
+  config = lib.mkIf config.brooklyn.programs.zsh.enable {
+    programs.zsh.enable = true;
 
-  home-manager.users.${config.common.username} =
-    { config, ... }:
-    {
-      programs.zsh = {
-        enable = true;
+    environment.shells = [ pkgs.zsh ];
 
-        autocd = true;
-        defaultKeymap = "viins";
-        dotDir = "${config.xdg.configHome}/zsh";
-
-        history = {
-          append = true;
-          extended = true;
-          ignoreAllDups = true;
-        };
-
-        syntaxHighlighting = {
+    home-manager.users.${config.common.username} =
+      { config, ... }:
+      {
+        programs.zsh = {
           enable = true;
+
+          autocd = true;
+          defaultKeymap = "viins";
+          dotDir = "${config.xdg.configHome}/zsh";
+
+          history = {
+            append = true;
+            extended = true;
+            ignoreAllDups = true;
+          };
+
+          syntaxHighlighting = {
+            enable = true;
+          };
         };
       };
-    };
+  };
 }

@@ -88,12 +88,7 @@ in
     ];
 
     programs = {
-      fish = {
-        enable = true;
-        defaultShell = true;
-      };
-
-      zsh.enable = true;
+      fish.defaultShell = true;
     };
 
     users.users.${username} = {

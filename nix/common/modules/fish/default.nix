@@ -15,7 +15,13 @@ in
     defaultShell = lib.mkEnableOption "fish.defaultShell";
   };
 
-  config = lib.mkIf cfg.enable {
+  options.brooklyn.programs.fish.enable = lib.mkEnableOption "fish" // {
+    default = true;
+  };
+
+  config = lib.mkIf config.brooklyn.programs.fish.enable {
+    programs.fish.enable = true;
+
     programs.fish.useBabelfish = true;
 
     environment.shells = [ fish ];
@@ -26,7 +32,7 @@ in
       home.packages = lib.mkIf pkgs.stdenv.isDarwin [ pkgs.fishPlugins.macos ];
 
       programs.fish = {
-        inherit (cfg) enable;
+        enable = true;
 
         functions = {
           fish_greeting = "";

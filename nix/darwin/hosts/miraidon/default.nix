@@ -16,10 +16,16 @@
   networking.computerName = "Miraidon";
 
   brooklyn.programs = {
+    buku.enable = true;
     calibre.enable = true;
     colima.enable = true;
+    copilot-cli.enable = true;
     crush.enable = true;
+    gcloud-cli.enable = true;
+    kubectl.enable = true;
+    opencode.enable = true;
     powershell.enable = true;
+    xonsh.enable = true;
   };
 
   services.openssh.enable = true;
