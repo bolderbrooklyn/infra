@@ -8,7 +8,7 @@ Every host loads this through its platform base (`nix/nixos/default.nix` or `nix
 ## Entry Points
 
 | File | Purpose |
-|---|---|
+| --- | --- |
 | `default.nix` | Shared system config: Nix daemon, pkgs, users, timezone, imports most common modules |
 | `home.nix` | Shared Home Manager config: SSH, zoxide, agenix HM module, shell aliases |
 
@@ -19,12 +19,12 @@ The common base is imported by the platform base via `../common` (e.g., `nix/nix
 ## What `default.nix` Configures
 
 | Concern | Detail |
-|---|---|
+| --- | --- |
 | **Nix package** | `pkgs.lixPackageSets.latest.lix` (Lix, not standard Nix) |
 | **Experimental features** | `flakes`, `nix-command` |
 | **Trusted users** | `config.common.username` |
 | **Allow unfree** | `true` |
-| **Overlays** | `llm-agents.overlays.default` |
+| **Overlays** | `llm-agents.overlays.shared-nixpkgs` |
 | **Timezone** | `America/Los_Angeles` |
 | **System packages** | `ruby_4_0`, `python314`, `vim`, `wget` |
 | **Fish** | default shell (always on) |
