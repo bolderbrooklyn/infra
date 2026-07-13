@@ -36,14 +36,14 @@ Key symbols and where they're defined:
 
 | Symbol | Type | Defined In | Refs | Role |
 |---|---|---|---|---|
-| `brooklyn.programs.*.enable` | Option pattern | `nix/common/modules/*/default.nix` | 15 modules | Feature toggle convention |
-| `isDarwin` | specialArg | `flake.nix:86-90` | 5+ modules | Platform conditional |
+| `brooklyn.programs.*.enable` | Option pattern | `nix/{common/modules,common/profiles/gui/modules,darwin/modules}/*/default.nix` | 7 + 10 + 1 = 18 modules | Feature toggle convention; 7 in common modules, 10 in GUI profile, 1 in darwin |
+| `isDarwin` | specialArg | `flake.nix:86-90` | 11 files | Platform conditional |
 | `config.common.username` | Option | `nix/common/default.nix:13` | 50+ refs | Default user "brooklyn" |
 | `age.secrets.<name>` | Agenix pattern | `secrets.nix` | 4 secrets | Decrypt at activation |
 | `nix-homebrew` | Flake input | `flake.nix:48` | darwin hosts | Declarative brew with locked taps |
 | `targets.darwin.defaults` | nix-darwin module | `nix/darwin/home.nix` | all darwin | macOS `defaults write` |
 | `mnt-genesect-*.mount` | Systemd mount unit | `nix/nixos/modules/plex/default.nix` | 5+ services | NFS dependency ordering |
-| `agent-instructions` | Common module | `nix/common/modules/agent-instructions/default.nix` | always-on | Writes shared guardrails to every enabled agent's global instruction file (claude-code, codex, opencode, crush, copilot-cli, antigravity) |
+| `agent-instructions` | Common module | `nix/common/modules/agent-instructions/default.nix` | always-on | Writes shared guardrails to every enabled agent's global instruction file (claude-code, codex, opencode, pi-coding-agent, crush, copilot-cli, antigravity) |
 
 ## Directory Map & Quick Task Reference
 
@@ -100,7 +100,8 @@ Uses `cachix/install-nix-action@v31` on `ubuntu-latest`.
 
 These are documented problem areas an agent should be aware of — not to perpetuate, but to recognize when working in the codebase.
 
-- **Orphaned modules**: none — every `brooklyn.programs.*` toggle in `nix/common/modules/` is used by at least one host
+- **Orphaned toggle**: `brooklyn.programs.antigravity-cli.enable` exists in `nix/common/modules/antigravity-cli/` but no host ever sets it to true. The `agent-instructions` module's `antigravityEnabled` check is therefore also dead. The module is still globally imported, so the package is installed but the `lib.mkIf enable` block never executes
+- **Orphan module**: `nix/common/modules/superfile/` defines `programs.superfile.enable = true` but is not imported anywhere (not in `nix/common/default.nix`, not by any host)
 - **`k8s/traefik.yml` is orphaned**: Not referenced by any Nix config. It's a Kubernetes HelmChartConfig living alongside Nix config. May be dead or managed out-of-band.
 - **No build validation in CI**: Workflows only update dependencies (`nix flake update` / `devenv update`) — never run `nix flake check`, `nix build`, or `nix eval`. Config breakage only caught at activation time.
 - **Codeberg/GitHub mismatch**: CI workflows target GitHub Actions (`cachix/install-nix-action`, `peter-evans/create-pull-request`, `gh pr merge`) but the repo lives on Codeberg. Workflows may never run.

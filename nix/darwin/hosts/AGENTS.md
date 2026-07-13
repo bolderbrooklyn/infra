@@ -19,7 +19,7 @@ All hosts:
 - Import a selection of common modules (e.g., `opencode`, `gcloud-cli`)
 
 The `agent-instructions` module is always active and wires shared guardrails into any agent
-the host enables (claude-code, codex, opencode, crush, copilot-cli, antigravity).
+the host enables (claude-code, codex, opencode, pi-coding-agent, crush, copilot-cli, antigravity).
 
 ---
 
@@ -45,7 +45,7 @@ the host enables (claude-code, codex, opencode, crush, copilot-cli, antigravity)
 | **computerName** | `Brooke's MacBook Pro` |
 | **hostName** | `comfey` |
 | **Togglable modules** | `colima.enable = false`, `crush`, `cursor`, `warp-terminal` |
-| **Common modules** | `claude-code`, `gcloud-cli`, `kubectl`, `opencode` |
+| **Common modules** | `claude-code`, `gcloud-cli`, `kubectl`, `opencode`, `pi-coding-agent` |
 | **brew.taps** | `withgraphite/homebrew-tap` |
 | **brew.brews** | graphite |
 | **brew.casks** | android-studio, claude, codex-app, conductor, dash, figma, google-chrome, linear, lm-studio, logi-options+, notion, notion-calendar, notion-mail, opencode-desktop, plexamp, slack, tailscale-app |
