@@ -1,4 +1,3 @@
-{ config, pkgs, ... }:
 let
   omoOverrides = builtins.fromJSON (builtins.readFile ./config/opencode/oh-my-openagent.jsonc);
 in
@@ -17,5 +16,6 @@ in
   brooklyn.programs = {
     crush.enable = true;
     opencode.ohMyOpenAgentOverrides = omoOverrides;
+    pi-coding-agent.enable = true;
   };
 }
