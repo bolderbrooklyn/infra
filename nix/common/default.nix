@@ -37,6 +37,7 @@ in
     ./modules/nushell
     ./modules/nvim
     ./modules/openssh
+    ./modules/pi-coding-agent
     ./modules/starship
     ./modules/tmux
     ./modules/yazi

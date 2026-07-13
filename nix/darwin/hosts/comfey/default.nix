@@ -16,7 +16,6 @@ in
     ../../../common/modules/gcloud-cli
     ../../../common/modules/kubectl
     ../../../common/modules/opencode
-    ../../../common/modules/pi-coding-agent
   ];
 
   system.stateVersion = 6;
