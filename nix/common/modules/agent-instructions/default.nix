@@ -9,6 +9,7 @@ let
     claude-code
     codex
     opencode
+    pi-coding-agent
     ;
 
   antigravityEnabled =
@@ -109,6 +110,7 @@ in
         claude-code.context = lib.mkIf claude-code.enable instructions;
         codex.context = lib.mkIf codex.enable instructions;
         opencode.context = lib.mkIf opencode.enable instructions;
+        pi-coding-agent.context = lib.mkIf pi-coding-agent.enable instructions;
       };
 
       xdg.configFile = {
@@ -127,4 +129,3 @@ in
     };
   };
 }
-

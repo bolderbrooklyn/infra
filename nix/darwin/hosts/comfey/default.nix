@@ -16,6 +16,7 @@ in
     ../../../common/modules/gcloud-cli
     ../../../common/modules/kubectl
     ../../../common/modules/opencode
+    ../../../common/modules/pi-coding-agent
   ];
 
   system.stateVersion = 6;
@@ -28,6 +29,7 @@ in
   brooklyn.programs = {
     colima.enable = false;
     crush.enable = true;
+    pi-coding-agent.enable = true;
 
     cursor = {
       enable = true;
