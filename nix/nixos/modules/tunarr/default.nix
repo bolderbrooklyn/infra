@@ -1,4 +1,8 @@
-{ config, ... }:
+{
+  config,
+  lib,
+  ...
+}:
 let
   tunarr = {
     name = "tunarr";
@@ -9,47 +13,51 @@ let
   };
 in
 {
-  imports = [ ../podman ];
-
-  users.groups.tunarr = {
-    gid = tunarr.uid;
+  options.brooklyn.programs.tunarr.enable = lib.mkEnableOption "tunarr" // {
+    default = true;
   };
 
-  users.users.tunarr = {
-    inherit (tunarr) uid;
-    isSystemUser = true;
-    group = tunarr.name;
-  };
-
-  systemd.tmpfiles.rules = [
-    "d ${tunarr.baseDir} 0755 0 0 - -"
-  ];
-
-  virtualisation.oci-containers.containers.tunarr = {
-    image = "chrisbenincasa/tunarr:latest";
-    autoStart = true;
-    pull = "newer";
-
-    ports = [
-      "${toString tunarr.webPort}:8000"
-    ];
-
-    devices = [
-      "/dev/dri"
-    ];
-
-    volumes = [
-      "${tunarr.baseDir}:/config/tunarr"
-    ];
-
-    environment = {
-      TUNARR_DATABASE_PATH = "/config/tunarr";
-      TUNARR_SERVER_TRUST_PROXY = "TRUE";
-      TZ = config.time.timeZone;
+  config = lib.mkIf config.brooklyn.programs.tunarr.enable {
+    users.groups.tunarr = {
+      gid = tunarr.uid;
     };
-  };
 
-  networking.firewall.allowedTCPPorts = [
-    tunarr.webPort
-  ];
+    users.users.tunarr = {
+      inherit (tunarr) uid;
+      isSystemUser = true;
+      group = tunarr.name;
+    };
+
+    systemd.tmpfiles.rules = [
+      "d ${tunarr.baseDir} 0755 0 0 - -"
+    ];
+
+    virtualisation.oci-containers.containers.tunarr = {
+      image = "chrisbenincasa/tunarr:latest";
+      autoStart = true;
+      pull = "newer";
+
+      ports = [
+        "${toString tunarr.webPort}:8000"
+      ];
+
+      devices = [
+        "/dev/dri"
+      ];
+
+      volumes = [
+        "${tunarr.baseDir}:/config/tunarr"
+      ];
+
+      environment = {
+        TUNARR_DATABASE_PATH = "/config/tunarr";
+        TUNARR_SERVER_TRUST_PROXY = "TRUE";
+        TZ = config.time.timeZone;
+      };
+    };
+
+    networking.firewall.allowedTCPPorts = [
+      tunarr.webPort
+    ];
+  };
 }

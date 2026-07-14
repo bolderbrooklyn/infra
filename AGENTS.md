@@ -37,13 +37,13 @@ Key symbols and where they're defined:
 
 | Symbol | Type | Defined In | Refs | Role |
 | --- | --- | --- | --- | --- |
-| `brooklyn.programs.*.enable` | Option pattern | `nix/{common/modules,common/profiles/gui/modules,darwin/modules}/*/default.nix` | 27 + 10 + 2 = 39 modules | Feature toggle convention; 27 in common modules (all of them), 10 in GUI profile, 2 in darwin |
+| `brooklyn.programs.*.enable` | Option pattern | `nix/{common/modules,common/profiles/gui/modules,darwin/modules,nixos/modules}/*/default.nix` | 34 + 11 + 4 + 19 = 68 modules | Feature toggle convention; every module exposes a `brooklyn.programs.<name>.enable` toggle and is imported globally at the root of its grouping. Hosts opt in or out via the toggle. |
 | `isDarwin` | specialArg | `flake.nix:86-90` | 11 files | Platform conditional |
 | `config.common.username` | Option | `nix/common/default.nix:13` | 50+ refs | Default user "brooklyn" |
 | `age.secrets.<name>` | Agenix pattern | `secrets.nix` | 4 secrets | Decrypt at activation |
 | `nix-homebrew` | Flake input | `flake.nix:48` | darwin hosts | Declarative brew with locked taps |
 | `targets.darwin.defaults` | nix-darwin module | `nix/darwin/home.nix` | all darwin | macOS `defaults write` |
-| `mnt-genesect-*.mount` | Systemd mount unit | `nix/nixos/modules/plex/default.nix` | 5+ services | NFS dependency ordering |
+| `mnt-genesect-media.mount` | Systemd mount unit | `nix/nixos/modules/media/default.nix` | 5+ services | Shared NFS mount dependency; declared by `media` module, depended on by audiobookshelf/jellyfin/navidrome/plex/servarr |
 | `agent-instructions` | Common module | `nix/common/modules/agent-instructions/default.nix` | `brooklyn.programs.agent-instructions.enable` (default `true`) | Writes shared guardrails to every enabled agent's global instruction file (claude-code, codex, opencode, pi-coding-agent, crush, copilot-cli, antigravity) |
 
 ## Directory Map & Quick Task Reference
@@ -112,9 +112,6 @@ perpetuate, but to recognize when working in the codebase.
   true. The `agent-instructions` module's `antigravityEnabled` check is
   therefore also dead. The module is still globally imported, so the
   package is installed but the `lib.mkIf enable` block never executes.
-- **Orphan module**: `nix/common/modules/superfile/` defines
-  `programs.superfile.enable = true` but is not imported anywhere (not
-  in `nix/common/default.nix`, not by any host).
 - **`k8s/traefik.yml` is orphaned**: Not referenced by any Nix config.
   It's a Kubernetes HelmChartConfig living alongside Nix config. May be
   dead or managed out-of-band.
@@ -138,18 +135,16 @@ perpetuate, but to recognize when working in the codebase.
 Non-standard patterns that differ from typical Nix/NixOS conventions:
 
 - **Custom toggle namespace**: `brooklyn.programs.*.enable` — not
-  standard `programs.*` or `services.*`. This is a project-specific
-  convention used across all common modules.
+  standard `programs.*` or `services.*`. Every module in `nix/common/modules/`,
+  `nix/common/profiles/gui/modules/`, `nix/darwin/modules/`, and
+  `nix/nixos/modules/` exposes a toggle at this namespace.
 - **Cross-layer callbacks**: The darwin `brew` module reads
   `brooklyn.programs.powershell.extraConfig` and injects homebrew
   shellenv into PowerShell config. Modules can reach across layers.
-- **Commented imports as toggles**: The NixOS host uses
-  `# ../../modules/jellyfin` to disable services rather than a boolean
-  toggle. Comment/uncomment to enable/disable.
 - **Standalone flake in monorepo**: `nix/users/kalmiya/flake.nix` has
   its own inputs, lock file, secrets, and nixpkgs pin — completely
   independent of the root flake but lives in the same repo.
-- **Two-tier GUI profile**: Common GUI (12 modules for terminals/editors)
+- **Two-tier GUI profile**: Common GUI (11 modules for terminals/editors)
   is wrapped inside NixOS GUI (KDE Plasma 6, SDDM, PipeWire) for the
   Linux host. Darwin skips the NixOS wrapper.
 - **Shared agent guardrails**: The `agent-instructions` module writes

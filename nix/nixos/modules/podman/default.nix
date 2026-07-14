@@ -1,18 +1,29 @@
 {
-  virtualisation = {
-    containers.enable = true;
-
-    podman = {
-      enable = true;
-      dockerCompat = true;
-      defaultNetwork.settings.dns_enabled = true;
-    };
-
-    oci-containers.backend = "podman";
+  config,
+  lib,
+  ...
+}:
+{
+  options.brooklyn.programs.podman.enable = lib.mkEnableOption "podman" // {
+    default = true;
   };
 
-  networking.firewall.interfaces."podman*" = {
-    allowedUDPPorts = [ 53 ];
-    allowedTCPPorts = [ 53 ];
+  config = lib.mkIf config.brooklyn.programs.podman.enable {
+    virtualisation = {
+      containers.enable = true;
+
+      podman = {
+        enable = true;
+        dockerCompat = true;
+        defaultNetwork.settings.dns_enabled = true;
+      };
+
+      oci-containers.backend = "podman";
+    };
+
+    networking.firewall.interfaces."podman*" = {
+      allowedUDPPorts = [ 53 ];
+      allowedTCPPorts = [ 53 ];
+    };
   };
 }

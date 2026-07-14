@@ -1,12 +1,23 @@
-{ pkgs, ... }:
 {
-  services.postgresql = {
-    enable = true;
-    package = pkgs.postgresql_18;
-    enableTCPIP = true;
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  options.brooklyn.programs.postgresql.enable = lib.mkEnableOption "postgresql" // {
+    default = true;
   };
 
-  networking.firewall.allowedTCPPorts = [
-    5432
-  ];
+  config = lib.mkIf config.brooklyn.programs.postgresql.enable {
+    services.postgresql = {
+      enable = true;
+      package = pkgs.postgresql_18;
+      enableTCPIP = true;
+    };
+
+    networking.firewall.allowedTCPPorts = [
+      5432
+    ];
+  };
 }

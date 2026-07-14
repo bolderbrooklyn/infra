@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   crafty = {
     name = "crafty";
@@ -24,81 +29,85 @@ let
   };
 in
 {
-  imports = [ ../podman ];
-
-  environment.systemPackages = with pkgs; [
-    ferium
-  ];
-
-  users.groups.crafty = {
-    gid = crafty.uid;
+  options.brooklyn.programs.crafty.enable = lib.mkEnableOption "crafty" // {
+    default = true;
   };
 
-  users.users.crafty = {
-    inherit (crafty) uid;
-
-    isSystemUser = true;
-    group = crafty.name;
-  };
-
-  systemd.tmpfiles.rules = [
-    # "d ${crafty.baseDir} 0755 ${crafty.name} ${crafty.name} - -"
-    # "d ${crafty.backupsDir} 0755 ${crafty.name} ${crafty.name} - -"
-    # "d ${crafty.logsDir} 0755 ${crafty.name} ${crafty.name} - -"
-    # "d ${crafty.serversDir} 0755 ${crafty.name} ${crafty.name} - -"
-    # "d ${crafty.configDir} 0755 ${crafty.name} ${crafty.name} - -"
-    # "d ${crafty.importDir} 0755 ${crafty.name} ${crafty.name} - -"
-    "d ${crafty.baseDir} 0755 1000 0 - -"
-    "d ${crafty.backupsDir} 0755 1000 0 - -"
-    "d ${crafty.logsDir} 0755 1000 0 - -"
-    "d ${crafty.serversDir} 0755 1000 0 - -"
-    "d ${crafty.configDir} 0755 1000 0 - -"
-    "d ${crafty.importDir} 0755 1000 0 - -"
-  ];
-
-  virtualisation.oci-containers.containers.crafty = {
-    image = "arcadiatechnology/crafty-4:latest";
-    autoStart = true;
-    pull = "newer";
-
-    ports = [
-      "${toString crafty.dynmapPort}:${toString crafty.dynmapPort}/tcp" # dynmap
-      "${toString crafty.craftyPort}:8443/tcp" # crafty
-      "${toString crafty.bedrockPort}:${toString crafty.bedrockPort}/udp" # bedrock
-      "${toString crafty.javaPorts.from}-${toString crafty.javaPorts.to}:${toString crafty.javaPorts.from}-${toString crafty.javaPorts.to}" # java
-      "${toString crafty.voicePorts.from}-${toString crafty.voicePorts.to}:${toString crafty.voicePorts.from}-${toString crafty.voicePorts.to}/udp" # voice
+  config = lib.mkIf config.brooklyn.programs.crafty.enable {
+    environment.systemPackages = with pkgs; [
+      ferium
     ];
 
-    volumes = [
-      "${crafty.backupsDir}:/crafty/backups"
-      "${crafty.logsDir}:/crafty/logs"
-      "${crafty.serversDir}:/crafty/servers"
-      "${crafty.configDir}:/crafty/app/config"
-      "${crafty.importDir}:/crafty/import"
-    ];
-
-    environment = {
-      TZ = config.time.timeZone;
+    users.groups.crafty = {
+      gid = crafty.uid;
     };
-  };
 
-  networking.firewall = {
-    allowedTCPPorts = [
-      crafty.dynmapPort
-      crafty.craftyPort
+    users.users.crafty = {
+      inherit (crafty) uid;
+
+      isSystemUser = true;
+      group = crafty.name;
+    };
+
+    systemd.tmpfiles.rules = [
+      # "d ${crafty.baseDir} 0755 ${crafty.name} ${crafty.name} - -"
+      # "d ${crafty.backupsDir} 0755 ${crafty.name} ${crafty.name} - -"
+      # "d ${crafty.logsDir} 0755 ${crafty.name} ${crafty.name} - -"
+      # "d ${crafty.serversDir} 0755 ${crafty.name} ${crafty.name} - -"
+      # "d ${crafty.configDir} 0755 ${crafty.name} ${crafty.name} - -"
+      # "d ${crafty.importDir} 0755 ${crafty.name} ${crafty.name} - -"
+      "d ${crafty.baseDir} 0755 1000 0 - -"
+      "d ${crafty.backupsDir} 0755 1000 0 - -"
+      "d ${crafty.logsDir} 0755 1000 0 - -"
+      "d ${crafty.serversDir} 0755 1000 0 - -"
+      "d ${crafty.configDir} 0755 1000 0 - -"
+      "d ${crafty.importDir} 0755 1000 0 - -"
     ];
 
-    allowedTCPPortRanges = [
-      crafty.javaPorts
-    ];
+    virtualisation.oci-containers.containers.crafty = {
+      image = "arcadiatechnology/crafty-4:latest";
+      autoStart = true;
+      pull = "newer";
 
-    allowedUDPPorts = [
-      crafty.bedrockPort
-    ];
+      ports = [
+        "${toString crafty.dynmapPort}:${toString crafty.dynmapPort}/tcp" # dynmap
+        "${toString crafty.craftyPort}:8443/tcp" # crafty
+        "${toString crafty.bedrockPort}:${toString crafty.bedrockPort}/udp" # bedrock
+        "${toString crafty.javaPorts.from}-${toString crafty.javaPorts.to}:${toString crafty.javaPorts.from}-${toString crafty.javaPorts.to}" # java
+        "${toString crafty.voicePorts.from}-${toString crafty.voicePorts.to}:${toString crafty.voicePorts.from}-${toString crafty.voicePorts.to}/udp" # voice
+      ];
 
-    allowedUDPPortRanges = [
-      crafty.javaPorts
-      crafty.voicePorts
-    ];
+      volumes = [
+        "${crafty.backupsDir}:/crafty/backups"
+        "${crafty.logsDir}:/crafty/logs"
+        "${crafty.serversDir}:/crafty/servers"
+        "${crafty.configDir}:/crafty/app/config"
+        "${crafty.importDir}:/crafty/import"
+      ];
+
+      environment = {
+        TZ = config.time.timeZone;
+      };
+    };
+
+    networking.firewall = {
+      allowedTCPPorts = [
+        crafty.dynmapPort
+        crafty.craftyPort
+      ];
+
+      allowedTCPPortRanges = [
+        crafty.javaPorts
+      ];
+
+      allowedUDPPorts = [
+        crafty.bedrockPort
+      ];
+
+      allowedUDPPortRanges = [
+        crafty.javaPorts
+        crafty.voicePorts
+      ];
+    };
   };
 }

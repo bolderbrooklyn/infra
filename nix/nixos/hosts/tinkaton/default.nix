@@ -4,28 +4,19 @@
     ./hardware-configuration.nix
     ../..
     ../../profiles/gui
-    ../../modules/audiobookshelf
-    ../../modules/crafty
-    ../../modules/forgejo
-    # ../../modules/jellyfin
-    ../../modules/lazylibrarian
-    # ../../modules/navidrome
-    ../../modules/plex
-    ../../modules/postgresql
-    ../../modules/romm
-    ../../modules/servarr
-    ../../modules/kalmiya
-    ../../modules/syncthing
-    # ../../modules/tunarr
-    # ../../modules/unifi
-    ../../../common/modules/opencode
-    ../../../common/modules/openssh
   ];
 
   brooklyn.programs = {
     calibre.enable = true;
     crush.enable = true;
     opencode.enable = true;
+
+    jellyfin.enable = false;
+    k3s.enable = false;
+    navidrome.enable = false;
+    tunarr.enable = false;
+    unifi.enable = false;
+    unmanic.enable = false;
   };
 
   age.secrets = {

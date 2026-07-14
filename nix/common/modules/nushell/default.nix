@@ -4,12 +4,11 @@
   pkgs,
   ...
 }:
-let
-  inherit (pkgs) nushell;
-  inherit (config.common) username;
-  inherit (config.home-manager.users.${username}.programs.nushell) enable;
-in
-lib.mkIf enable {
-  environment.systemPackages = [ nushell ];
-  environment.shells = [ nushell ];
+{
+  options.brooklyn.programs.nushell.enable = lib.mkEnableOption "nushell";
+
+  config = lib.mkIf config.brooklyn.programs.nushell.enable {
+    environment.systemPackages = [ pkgs.nushell ];
+    environment.shells = [ pkgs.nushell ];
+  };
 }
