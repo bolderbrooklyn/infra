@@ -30,7 +30,7 @@ The NixOS base is loaded when `flake.nix` matches the NixOS host. It imports `..
 | **Nix-ld** | Enabled (for running unpatched binaries) |
 | **SSH** | `openssh.openFirewall = true` |
 | **Resolved** | `services.resolved.enable = true` |
-| **Module** | `tailscale` imported directly |
+| **Module** | All `nix/nixos/modules/*` loaded globally via `imports` in `nix/nixos/default.nix`; each module exposes `brooklyn.programs.<name>.enable` (default `true`) |
 
 ---
 
