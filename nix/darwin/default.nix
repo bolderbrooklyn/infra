@@ -7,6 +7,7 @@ in
     ./home.nix
     ./modules/brew
     ./modules/colima
+    ./modules/sikarugir
     ./modules/stats
     ../common
     ../common/profiles/gui

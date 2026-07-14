@@ -12,10 +12,6 @@ in
   imports = [
     ./brew.nix
     ../..
-    ../../../common/modules/claude-code
-    ../../../common/modules/gcloud-cli
-    ../../../common/modules/kubectl
-    ../../../common/modules/opencode
   ];
 
   system.stateVersion = 6;
