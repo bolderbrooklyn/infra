@@ -24,22 +24,33 @@ in
     ./modules/antigravity-cli
     ./modules/bat
     ./modules/btop
+    ./modules/buku
     ./modules/catppuccin
+    ./modules/claude-code
+    ./modules/codex
+    ./modules/copilot-cli
     ./modules/crush
     ./modules/devenv
+    ./modules/docker
     ./modules/eza
     ./modules/fd
     ./modules/fish
     ./modules/rg
     ./modules/fzf
+    ./modules/gcloud-cli
     ./modules/git
     ./modules/gnupg
+    ./modules/kubectl
+    ./modules/mise
     ./modules/nushell
     ./modules/nvim
+    ./modules/opencode
     ./modules/openssh
     ./modules/pi-coding-agent
+    ./modules/powershell
     ./modules/starship
     ./modules/tmux
+    ./modules/xonsh
     ./modules/yazi
     ./modules/zsh
   ];
