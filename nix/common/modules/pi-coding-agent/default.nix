@@ -36,6 +36,7 @@
           theme = "dark";
 
           packages = [
+            "npm:bigpowers"
             "npm:@hypabolic/pi-hypa"
             "npm:context-mode"
             "npm:pi-lens"
