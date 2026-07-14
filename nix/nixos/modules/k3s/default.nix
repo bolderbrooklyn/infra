@@ -1,47 +1,56 @@
 {
-  networking.firewall.allowedTCPPorts = [
-    6443
-  ];
+  config,
+  lib,
+  ...
+}:
+{
+  options.brooklyn.programs.k3s.enable = lib.mkEnableOption "k3s";
 
-  services.k3s = {
-    enable = true;
-    role = "server";
+  config = lib.mkIf config.brooklyn.programs.k3s.enable {
+    networking.firewall.allowedTCPPorts = [
+      6443
+    ];
 
-    manifests = {
-      postgresql.content = [
-        {
-          apiVersion = "v1";
-          kind = "Service";
-          metadata.name = "postgresql";
-          spec = {
-            clusterIP = "None";
-            ports = [
-              {
-                port = 5432;
-              }
-            ];
-          };
-        }
-        {
-          apiVersion = "v1";
-          kind = "Endpoints";
-          metadata.name = "postgresql";
-          subsets = [
-            {
-              addresses = [
-                {
-                  ip = "172.25.1.185";
-                }
-              ];
+    services.k3s = {
+      enable = true;
+      role = "server";
+
+      manifests = {
+        postgresql.content = [
+          {
+            apiVersion = "v1";
+            kind = "Service";
+            metadata.name = "postgresql";
+            spec = {
+              clusterIP = "None";
               ports = [
                 {
                   port = 5432;
                 }
               ];
-            }
-          ];
-        }
-      ];
+            };
+          }
+          {
+            apiVersion = "v1";
+            kind = "Endpoints";
+            metadata.name = "postgresql";
+            subsets = [
+              {
+                addresses = [
+                  {
+                    ip = "172.25.1.185";
+                  }
+                ];
+                ports = [
+                  {
+                    port = 5432;
+                  }
+                ];
+              }
+            ];
+          }
+        ];
+      };
     };
   };
 }

@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   transmissionAfter = [
     "mnt-genesect-media.mount"
@@ -9,89 +14,95 @@ let
   ];
 in
 {
-  systemd.services = {
-    transmission = {
-      after = transmissionAfter;
-      requires = transmissionAfter;
-      serviceConfig.BindPaths = [ "/mnt/genesect/passport/Downloads" ];
-    };
-    prowlarr = {
-      after = servarrAfter;
-      requires = servarrAfter;
-    };
-    radarr = {
-      after = servarrAfter;
-      requires = servarrAfter;
-    };
-    sonarr = {
-      after = servarrAfter;
-      requires = servarrAfter;
-    };
-    lidarr = {
-      after = servarrAfter;
-      requires = servarrAfter;
-    };
-  };
+  imports = [ ../media ];
 
-  services = {
-    transmission = {
-      enable = true;
-      package = pkgs.transmission_4;
-      group = "media";
-      openRPCPort = true;
-      openPeerPorts = true;
+  options.brooklyn.programs.servarr.enable = lib.mkEnableOption "servarr";
 
-      settings = {
-        blocklist-enabled = true;
-        blocklist-url = "https://raw.githubusercontent.com/Naunter/BT_BlockLists/master/bt_blocklists.gz";
-        download-dir = "/mnt/genesect/media/Downloads";
-        incomplete-dir-enabled = false;
-        rpc-bind-address = "0.0.0.0";
-        rpc-host-whitelist-enabled = false;
-        rpc-whitelist-enabled = false;
-        umask = 0;
+  config = lib.mkIf config.brooklyn.programs.servarr.enable {
+    systemd.services = {
+      transmission = {
+        after = transmissionAfter;
+        requires = transmissionAfter;
+        serviceConfig.BindPaths = [ "/mnt/genesect/passport/Downloads" ];
+      };
+      prowlarr = {
+        after = servarrAfter;
+        requires = servarrAfter;
+      };
+      radarr = {
+        after = servarrAfter;
+        requires = servarrAfter;
+      };
+      sonarr = {
+        after = servarrAfter;
+        requires = servarrAfter;
+      };
+      lidarr = {
+        after = servarrAfter;
+        requires = servarrAfter;
       };
     };
 
-    flaresolverr = {
-      enable = true;
-    };
+    services = {
+      transmission = {
+        enable = true;
+        package = pkgs.transmission_4;
+        group = "media";
+        openRPCPort = true;
+        openPeerPorts = true;
 
-    prowlarr = {
-      enable = true;
-      openFirewall = true;
+        settings = {
+          blocklist-enabled = true;
+          blocklist-url = "https://raw.githubusercontent.com/Naunter/BT_BlockLists/master/bt_blocklists.gz";
+          download-dir = "/mnt/genesect/media/Downloads";
+          incomplete-dir-enabled = false;
+          rpc-bind-address = "0.0.0.0";
+          rpc-host-whitelist-enabled = false;
+          rpc-whitelist-enabled = false;
+          umask = 0;
+        };
+      };
 
-      settings.auth.method = "External";
-    };
+      flaresolverr = {
+        enable = true;
+      };
 
-    radarr = {
-      enable = true;
-      group = "media";
-      openFirewall = true;
+      prowlarr = {
+        enable = true;
+        openFirewall = true;
 
-      settings.auth.method = "External";
-    };
+        settings.auth.method = "External";
+      };
 
-    sonarr = {
-      enable = true;
-      group = "media";
-      openFirewall = true;
+      radarr = {
+        enable = true;
+        group = "media";
+        openFirewall = true;
 
-      settings.auth.method = "External";
-    };
+        settings.auth.method = "External";
+      };
 
-    lidarr = {
-      enable = true;
-      group = "media";
-      openFirewall = true;
+      sonarr = {
+        enable = true;
+        group = "media";
+        openFirewall = true;
 
-      settings.auth.method = "External";
-    };
+        settings.auth.method = "External";
+      };
 
-    ombi = {
-      enable = true;
-      group = "media";
-      openFirewall = true;
+      lidarr = {
+        enable = true;
+        group = "media";
+        openFirewall = true;
+
+        settings.auth.method = "External";
+      };
+
+      ombi = {
+        enable = true;
+        group = "media";
+        openFirewall = true;
+      };
     };
   };
 }
