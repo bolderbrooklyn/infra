@@ -14,8 +14,26 @@ in
     agenix.nixosModules.default
     catppuccin.nixosModules.catppuccin
     home-manager.nixosModules.home-manager
-    ./modules/tailscale
     ../common
+    ./modules/audiobookshelf
+    ./modules/crafty
+    ./modules/forgejo
+    ./modules/jellyfin
+    ./modules/k3s
+    ./modules/kalmiya
+    ./modules/lazylibrarian
+    ./modules/media
+    ./modules/navidrome
+    ./modules/plex
+    ./modules/podman
+    ./modules/postgresql
+    ./modules/romm
+    ./modules/servarr
+    ./modules/syncthing
+    ./modules/tailscale
+    ./modules/tunarr
+    ./modules/unifi
+    ./modules/unmanic
   ];
 
   catppuccin = {
