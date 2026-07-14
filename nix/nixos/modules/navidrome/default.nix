@@ -6,7 +6,9 @@
 {
   imports = [ ../media ];
 
-  options.brooklyn.programs.navidrome.enable = lib.mkEnableOption "navidrome";
+  options.brooklyn.programs.navidrome.enable = lib.mkEnableOption "navidrome" // {
+    default = true;
+  };
 
   config = lib.mkIf config.brooklyn.programs.navidrome.enable {
     services.navidrome = {

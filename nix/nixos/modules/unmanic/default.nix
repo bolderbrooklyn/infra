@@ -11,7 +11,9 @@ let
   };
 in
 {
-  options.brooklyn.programs.unmanic.enable = lib.mkEnableOption "unmanic";
+  options.brooklyn.programs.unmanic.enable = lib.mkEnableOption "unmanic" // {
+    default = true;
+  };
 
   config = lib.mkIf config.brooklyn.programs.unmanic.enable {
     users.groups.${unmanic.name} = {

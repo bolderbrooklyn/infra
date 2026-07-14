@@ -10,7 +10,9 @@ let
   };
 in
 {
-  options.brooklyn.programs.media.enable = lib.mkEnableOption "shared media user, group, and NFS mount";
+  options.brooklyn.programs.media.enable = lib.mkEnableOption "shared media user, group, and NFS mount" // {
+    default = true;
+  };
 
   config = lib.mkIf config.brooklyn.programs.media.enable {
     users.groups.media = {

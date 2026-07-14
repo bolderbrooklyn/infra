@@ -29,7 +29,9 @@ let
   };
 in
 {
-  options.brooklyn.programs.crafty.enable = lib.mkEnableOption "crafty";
+  options.brooklyn.programs.crafty.enable = lib.mkEnableOption "crafty" // {
+    default = true;
+  };
 
   config = lib.mkIf config.brooklyn.programs.crafty.enable {
     environment.systemPackages = with pkgs; [

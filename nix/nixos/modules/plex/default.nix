@@ -6,7 +6,9 @@
 {
   imports = [ ../media ];
 
-  options.brooklyn.programs.plex.enable = lib.mkEnableOption "plex";
+  options.brooklyn.programs.plex.enable = lib.mkEnableOption "plex" // {
+    default = true;
+  };
 
   config = lib.mkIf config.brooklyn.programs.plex.enable {
     systemd.services.plex.requires = [ "mnt-genesect-media.mount" ];

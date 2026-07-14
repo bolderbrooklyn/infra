@@ -14,7 +14,9 @@ let
   };
 in
 {
-  options.brooklyn.programs.unifi.enable = lib.mkEnableOption "unifi";
+  options.brooklyn.programs.unifi.enable = lib.mkEnableOption "unifi" // {
+    default = true;
+  };
 
   config = lib.mkIf config.brooklyn.programs.unifi.enable {
     services.unifi = {

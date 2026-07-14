@@ -4,7 +4,9 @@
   ...
 }:
 {
-  options.brooklyn.programs.tailscale.enable = lib.mkEnableOption "tailscale";
+  options.brooklyn.programs.tailscale.enable = lib.mkEnableOption "tailscale" // {
+    default = true;
+  };
 
   config = lib.mkIf config.brooklyn.programs.tailscale.enable {
     services.tailscale = {

@@ -4,7 +4,9 @@
   ...
 }:
 {
-  options.brooklyn.programs.k3s.enable = lib.mkEnableOption "k3s";
+  options.brooklyn.programs.k3s.enable = lib.mkEnableOption "k3s" // {
+    default = true;
+  };
 
   config = lib.mkIf config.brooklyn.programs.k3s.enable {
     networking.firewall.allowedTCPPorts = [

@@ -16,7 +16,9 @@ in
 {
   imports = [ ../media ];
 
-  options.brooklyn.programs.servarr.enable = lib.mkEnableOption "servarr";
+  options.brooklyn.programs.servarr.enable = lib.mkEnableOption "servarr" // {
+    default = true;
+  };
 
   config = lib.mkIf config.brooklyn.programs.servarr.enable {
     systemd.services = {

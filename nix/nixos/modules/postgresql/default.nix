@@ -5,7 +5,9 @@
   ...
 }:
 {
-  options.brooklyn.programs.postgresql.enable = lib.mkEnableOption "postgresql";
+  options.brooklyn.programs.postgresql.enable = lib.mkEnableOption "postgresql" // {
+    default = true;
+  };
 
   config = lib.mkIf config.brooklyn.programs.postgresql.enable {
     services.postgresql = {

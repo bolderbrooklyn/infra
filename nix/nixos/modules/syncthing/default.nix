@@ -16,7 +16,9 @@ let
   };
 in
 {
-  options.brooklyn.programs.syncthing.enable = lib.mkEnableOption "syncthing";
+  options.brooklyn.programs.syncthing.enable = lib.mkEnableOption "syncthing" // {
+    default = true;
+  };
 
   config = lib.mkIf config.brooklyn.programs.syncthing.enable {
     services.syncthing = {

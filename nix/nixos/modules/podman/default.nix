@@ -4,7 +4,9 @@
   ...
 }:
 {
-  options.brooklyn.programs.podman.enable = lib.mkEnableOption "podman";
+  options.brooklyn.programs.podman.enable = lib.mkEnableOption "podman" // {
+    default = true;
+  };
 
   config = lib.mkIf config.brooklyn.programs.podman.enable {
     virtualisation = {

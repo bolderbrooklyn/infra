@@ -20,7 +20,9 @@ let
   };
 in
 {
-  options.brooklyn.programs.romm.enable = lib.mkEnableOption "romm";
+  options.brooklyn.programs.romm.enable = lib.mkEnableOption "romm" // {
+    default = true;
+  };
 
   config = lib.mkIf config.brooklyn.programs.romm.enable {
     systemd = {

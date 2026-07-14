@@ -6,7 +6,9 @@
 {
   imports = [ ../media ];
 
-  options.brooklyn.programs.jellyfin.enable = lib.mkEnableOption "jellyfin";
+  options.brooklyn.programs.jellyfin.enable = lib.mkEnableOption "jellyfin" // {
+    default = true;
+  };
 
   config = lib.mkIf config.brooklyn.programs.jellyfin.enable {
     systemd.services.jellyfin.requires = [ "mnt-genesect-media.mount" ];

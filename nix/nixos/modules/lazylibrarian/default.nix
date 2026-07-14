@@ -13,7 +13,9 @@ let
   };
 in
 {
-  options.brooklyn.programs.lazylibrarian.enable = lib.mkEnableOption "lazylibrarian";
+  options.brooklyn.programs.lazylibrarian.enable = lib.mkEnableOption "lazylibrarian" // {
+    default = true;
+  };
 
   config = lib.mkIf config.brooklyn.programs.lazylibrarian.enable {
     users.groups.${lazylibrarian.name} = {

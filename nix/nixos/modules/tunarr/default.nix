@@ -13,7 +13,9 @@ let
   };
 in
 {
-  options.brooklyn.programs.tunarr.enable = lib.mkEnableOption "tunarr";
+  options.brooklyn.programs.tunarr.enable = lib.mkEnableOption "tunarr" // {
+    default = true;
+  };
 
   config = lib.mkIf config.brooklyn.programs.tunarr.enable {
     users.groups.tunarr = {

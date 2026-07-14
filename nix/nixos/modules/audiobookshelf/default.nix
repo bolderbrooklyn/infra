@@ -6,7 +6,9 @@
 {
   imports = [ ../media ];
 
-  options.brooklyn.programs.audiobookshelf.enable = lib.mkEnableOption "audiobookshelf";
+  options.brooklyn.programs.audiobookshelf.enable = lib.mkEnableOption "audiobookshelf" // {
+    default = true;
+  };
 
   config = lib.mkIf config.brooklyn.programs.audiobookshelf.enable {
     services.audiobookshelf = {

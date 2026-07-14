@@ -12,7 +12,9 @@ let
   };
 in
 {
-  options.brooklyn.programs.forgejo.enable = lib.mkEnableOption "forgejo";
+  options.brooklyn.programs.forgejo.enable = lib.mkEnableOption "forgejo" // {
+    default = true;
+  };
 
   config = lib.mkIf config.brooklyn.programs.forgejo.enable {
     services.forgejo = {
