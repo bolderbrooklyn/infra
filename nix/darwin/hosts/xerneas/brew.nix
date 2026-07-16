@@ -19,6 +19,7 @@
       "melonds"
       "mgba-app"
       "obs"
+      "obsidian"
       "openclaw"
       "plex"
       "plexamp"
