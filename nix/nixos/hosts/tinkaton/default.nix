@@ -72,6 +72,7 @@
         "archaludon"
         "frosmoth"
         "miraidon"
+        "xerneas"
       ];
     };
 
