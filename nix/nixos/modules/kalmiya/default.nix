@@ -8,9 +8,7 @@ let
   home = "/home/${user}";
 in
 {
-  options.brooklyn.programs.kalmiya.enable = lib.mkEnableOption "kalmiya service user" // {
-    default = true;
-  };
+  options.brooklyn.programs.kalmiya.enable = lib.mkEnableOption "kalmiya service user";
 
   config = lib.mkIf config.brooklyn.programs.kalmiya.enable {
     users.users.${user} = {
