@@ -39,6 +39,10 @@ in
         after = [ "mnt-genesect-emulation.mount" ];
         requires = [ "mnt-genesect-emulation.mount" ];
       };
+
+      services."podman-${romm.dbName}".serviceConfig.ExecStartPre = [
+        "-${romm.dbDir}/tc.log"
+      ];
     };
 
     virtualisation.oci-containers.containers."${romm.name}" = {
