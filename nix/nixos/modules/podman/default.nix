@@ -11,6 +11,7 @@
   config = lib.mkIf config.brooklyn.programs.podman.enable {
     virtualisation = {
       containers.enable = true;
+      containers.containersConf.settings.engine.num_locks = 8192;
 
       podman = {
         enable = true;
