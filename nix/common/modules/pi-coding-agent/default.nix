@@ -32,7 +32,7 @@
           defaultProvider = "minimax";
           defaultThinkingLevel = "high";
           quietStartup = true;
-          terminal.showTermainlProgress = true;
+          terminal.showTerminalProgress = true;
           theme = "dark";
 
           packages = [
