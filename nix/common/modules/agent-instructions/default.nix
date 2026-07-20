@@ -31,6 +31,12 @@ let
 
     - Use `fd` instead of `find`. If `fd` is unavailable, fall back to `find`.
     - Use `rg` (ripgrep) instead of `grep`. If `rg` is unavailable, fall back to `grep`.
+    - **Never run `find /`** (or any root-scoped recursive walk). Always
+      scope `fd`/`find` to a specific directory (e.g. `fd … /nix/store/<hash>`,
+      `fd … ~/.config`, `fd … ./project`). A root-scoped walk produces
+      permission-denied noise, takes minutes, and burns context on output
+      you almost never need. If you don't know where the target lives, ask
+      the user or check a known index first.
 
     ## Workspace
 
