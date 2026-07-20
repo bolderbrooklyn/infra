@@ -16,6 +16,7 @@
         name = "lm-studio";
         args.appdir = "/Applications";
       }
+      "logi-options+"
       "melonds"
       "mgba-app"
       "obs"
