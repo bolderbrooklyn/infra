@@ -38,7 +38,6 @@
           packages = [
             "npm:@gotgenes/pi-permission-system"
             "npm:@hypabolic/pi-hypa"
-            "npm:@narumitw/pi-lsp"
             "npm:@plannotator/pi-extension"
             "npm:bigpowers"
             "npm:context-mode"
