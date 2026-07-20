@@ -36,13 +36,20 @@
           theme = "dark";
 
           packages = [
-            "npm:bigpowers"
+            "npm:@gotgenes/pi-permission-system"
             "npm:@hypabolic/pi-hypa"
+            "npm:@narumitw/pi-lsp"
+            "npm:@plannotator/pi-extension"
+            "npm:bigpowers"
             "npm:context-mode"
+            "npm:pi-hashline-edit-pro"
+            "npm:pi-hermes-memory"
             "npm:pi-lens"
             "npm:pi-mcp-adapter"
+            "npm:pi-simplify"
             "npm:pi-subagents"
             "npm:pi-web-access"
+            "npm:pi-workflow-engine"
           ];
         };
       };
