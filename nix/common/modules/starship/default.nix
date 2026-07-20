@@ -26,7 +26,7 @@
           settings = {
             direnv.disabled = !config.programs.direnv.enable;
             gcloud.disabled = true;
-            nix_shell.symbol = " ";
+            nix_shell.symbol = "󱄅 ";
             scala.detect_folders = [ ];
             shell.disabled = false;
           };
