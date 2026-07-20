@@ -3,10 +3,13 @@ local pickerOptions = {
 	ignored = true,
 	exclude = {
 		"**/.bundle",
+		"**/.claude",
 		"**/.crush",
 		"**/.direnv*",
 		"**/.devenv*",
 		"**/.git",
+		"**/.omc",
+		"**/.omo",
 		"**/.opencode",
 		"**/.ruby-lsp",
 		"**/.yarn",
@@ -23,7 +26,22 @@ return {
 
 		opts.picker = vim.tbl_deep_extend("force", opts.picker or {}, {
 			sources = {
-				explorer = pickerOptions,
+				explorer = vim.tbl_deep_extend("force", pickerOptions, {
+					win = {
+						input = {
+							keys = {
+								["<C-j>"] = false,
+								["<C-k>"] = false,
+							},
+						},
+						list = {
+							keys = {
+								["<C-j>"] = false,
+								["<C-k>"] = false,
+							},
+						},
+					},
+				}),
 				files = pickerOptions,
 			},
 		})
