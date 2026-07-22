@@ -23,7 +23,7 @@ in
 
   brooklyn.programs = {
     claude-code.enable = true;
-    colima.enable = false;
+    colima.enable = true;
     crush.enable = true;
     gcloud-cli.enable = true;
     kubectl.enable = true;

@@ -209,22 +209,6 @@
         "type": "github"
       }
     },
-    "homebrew-krunkit": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1708442160,
-        "narHash": "sha256-oY65f2mkGvw0J0dDKsXlrIHuCHgzJd3TK4/VPgLmR8g=",
-        "owner": "slp",
-        "repo": "krunkit",
-        "rev": "9ee8c18d1db07d5633260e60d120e5c036e251d9",
-        "type": "github"
-      },
-      "original": {
-        "owner": "slp",
-        "repo": "krunkit",
-        "type": "github"
-      }
-    },
     "homebrew-pkpw": {
       "flake": false,
       "locked": {
@@ -408,7 +392,6 @@
         "home-manager": "home-manager",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
-        "homebrew-krunkit": "homebrew-krunkit",
         "homebrew-pkpw": "homebrew-pkpw",
         "homebrew-sikarugir": "homebrew-sikarugir",
         "homebrew-withgraphite": "homebrew-withgraphite",

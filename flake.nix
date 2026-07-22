@@ -65,10 +65,6 @@
       url = "github:Homebrew/homebrew-cask";
       flake = false;
     };
-    homebrew-krunkit = {
-      url = "github:slp/krunkit";
-      flake = false;
-    };
     homebrew-pkpw = {
       url = "github:jbhannah/pkpw";
       flake = false;

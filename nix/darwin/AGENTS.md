@@ -22,7 +22,7 @@ for shared config.
 | Module | Path | What It Does |
 |---|---|---|
 | **brew** | `modules/brew/` | nix-homebrew setup, Homebrew taps (as locked flake inputs), casks/brews, 1password shell plugins |
-| **colima** | `modules/colima/` | Docker VM via Colima + launchd agent + krunkit/libkrun-efi for fast VM |
+| **colima** | `modules/colima/` | Docker VM via Colima, installed and started through Homebrew `brew services` |
 | **stats** | `modules/stats/` | Stats menu bar app + macOS defaults for all widget preferences |
 
 ---

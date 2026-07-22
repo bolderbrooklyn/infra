@@ -159,7 +159,7 @@ docker: {}
 #
 # NOTE: value cannot be changed after virtual machine is created.
 # Default: qemu
-vmType: krunkit
+vmType: vz
 
 # Port forwarder for the virtual machine (ssh, grpc, none).
 # ssh is more stable but supports only TCP.
