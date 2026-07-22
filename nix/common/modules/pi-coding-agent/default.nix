@@ -36,7 +36,6 @@
           theme = "dark";
 
           packages = [
-            "npm:@gotgenes/pi-permission-system"
             "npm:@hypabolic/pi-hypa"
             "npm:@plannotator/pi-extension"
             "npm:bigpowers"
