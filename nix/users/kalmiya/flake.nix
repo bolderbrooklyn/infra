@@ -8,29 +8,15 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs = {
-        darwin.follows = "";
-        home-manager.follows = "home-manager";
-        nixpkgs.follows = "nixpkgs";
-        systems.follows = "";
-      };
-    };
   };
 
   outputs =
-    { nixpkgs, home-manager, agenix, ... }:
+    { nixpkgs, home-manager, ... }:
     {
       homeConfigurations.kalmiya = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
 
-        modules = [
-          agenix.homeManagerModules.default
-          ./home.nix
-          { nixpkgs.config.allowUnfree = true; }
-        ];
+        modules = [ ./home.nix ];
       };
     };
 }
