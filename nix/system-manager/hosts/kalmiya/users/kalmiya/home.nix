@@ -6,7 +6,10 @@
       fd
       ffmpeg
       git
+      gnumake
       jq
+      libffi
+      llvm
       nodejs
       python3
       ripgrep
