@@ -9,6 +9,11 @@
 
     systems.url = "github:nix-systems/default";
 
+    system-manager = {
+      url = "github:numtide/system-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     llm-agents = {
       url = "github:numtide/llm-agents.nix";
 
@@ -83,6 +88,7 @@
     inputs@{
       nixpkgs,
       nix-darwin,
+      system-manager,
       ...
     }:
     let
@@ -104,6 +110,20 @@
 
           modules = [
             ./nix/nixos/hosts/tinkaton
+          ];
+        };
+
+      systemConfigs.kalmiya =
+        let
+          specialArgs = baseSpecialArgs;
+        in
+        system-manager.lib.makeSystemConfig {
+          inherit specialArgs;
+
+          system = "x86_64-linux";
+
+          modules = [
+            ./nix/system-manager/hosts/kalmiya
           ];
         };
 

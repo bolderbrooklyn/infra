@@ -4,7 +4,13 @@
     username = "kalmiya";
     homeDirectory = "/home/kalmiya";
 
-    packages = [ pkgs.llm-agents.hermes-agent ];
+    packages = with pkgs; [
+      git
+      nodejs
+      python
+      uv
+      llm-agents.hermes-agent
+    ];
 
     stateVersion = "26.05";
   };
