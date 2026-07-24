@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
 {
   imports = [
     ../..
@@ -15,4 +15,8 @@
       inputs.llm-agents.overlays.shared-nixpkgs
     ];
   };
+
+  environment.systemPackages = with pkgs; [
+    system-manager
+  ];
 }
