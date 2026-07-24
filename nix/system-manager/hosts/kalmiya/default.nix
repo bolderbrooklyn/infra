@@ -10,14 +10,9 @@
   nix.settings.trusted-users = [ "debian" ];
 
   nixpkgs = {
-      config.allowUnfree = true;
-      overlays = [
-        (final: prev: {
-          inherit (prev.lixPackageSets.latest)
-            lix
-            ;
-        })
-        inputs.llm-agents.overlays.shared-nixpkgs
-      ];
-    };
+    config.allowUnfree = true;
+    overlays = [
+      inputs.llm-agents.overlays.shared-nixpkgs
+    ];
+  };
 }

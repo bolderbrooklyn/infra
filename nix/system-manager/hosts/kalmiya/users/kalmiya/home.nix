@@ -4,7 +4,7 @@
     packages = with pkgs; [
       git
       nodejs
-      python
+      python3
       uv
       llm-agents.hermes-agent
     ];
