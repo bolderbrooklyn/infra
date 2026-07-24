@@ -6,7 +6,6 @@
       nodejs
       python3
       uv
-      llm-agents.hermes-agent
     ];
 
     stateVersion = "26.05";
