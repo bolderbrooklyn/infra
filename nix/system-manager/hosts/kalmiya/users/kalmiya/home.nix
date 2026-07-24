@@ -2,6 +2,7 @@
 {
   home-manager.users.kalmiya.home = {
     packages = with pkgs; [
+      _1password-cli
       git
       nodejs
       python3
