@@ -1,9 +1,6 @@
 { pkgs, ... }:
 {
-  home = {
-    username = "kalmiya";
-    homeDirectory = "/home/kalmiya";
-
+  home-manager.users.kalmiya.home = {
     packages = with pkgs; [
       git
       nodejs

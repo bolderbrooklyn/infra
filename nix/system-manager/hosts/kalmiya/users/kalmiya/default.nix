@@ -1,6 +1,6 @@
 {
   imports = [
-    ./home
+    ./home.nix
   ];
 
   users.users.kalmiya = {

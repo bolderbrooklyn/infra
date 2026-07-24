@@ -120,8 +120,6 @@
         system-manager.lib.makeSystemConfig {
           inherit specialArgs;
 
-          system = "x86_64-linux";
-
           modules = [
             ./nix/system-manager/hosts/kalmiya
           ];
