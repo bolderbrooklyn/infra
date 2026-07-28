@@ -5,7 +5,10 @@
   };
 
   homebrew = {
-    brews = [ "graphite" ];
+    brews = [
+      "graphite"
+      "openssl@3"
+    ];
 
     casks = [
       "android-studio"
