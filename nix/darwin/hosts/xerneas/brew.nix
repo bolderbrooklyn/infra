@@ -11,6 +11,7 @@
       "discord"
       "dolphin"
       "google-drive"
+      "helium-browser"
       "libndi"
       {
         name = "lm-studio";
