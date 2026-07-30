@@ -40,7 +40,6 @@
             "npm:@plannotator/pi-extension"
             "npm:bigpowers"
             "npm:context-mode"
-            "npm:pi-hashline-edit-pro"
             "npm:pi-lens"
             "npm:pi-mcp-adapter"
             "npm:pi-simplify"

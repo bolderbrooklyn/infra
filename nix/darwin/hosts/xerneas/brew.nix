@@ -20,7 +20,7 @@
       "logi-options+"
       "melonds"
       "mgba-app"
-      "obs"
+      # "obs"
       "obsidian"
       "openclaw"
       "plex"
