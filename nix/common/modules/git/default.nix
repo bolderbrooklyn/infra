@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 let
@@ -105,6 +106,10 @@ in
           gh = {
             enable = true;
             gitCredentialHelper.enable = true;
+
+            extensions = with pkgs; [
+              gh-stack
+            ];
           };
 
           lazygit = {
