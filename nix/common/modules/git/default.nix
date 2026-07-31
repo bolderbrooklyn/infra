@@ -112,6 +112,16 @@ in
             ];
           };
 
+          gh-dash = {
+            enable = true;
+
+            settings = {
+              repoPaths = {
+                ":owner/:repo" = "${config.home.homeDirectory}/Developer/Repositories/github.com/:owner/:repo";
+              };
+            };
+          };
+
           lazygit = {
             enable = true;
 
