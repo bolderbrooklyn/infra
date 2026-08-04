@@ -12,8 +12,8 @@
 
     casks = [
       "android-studio"
+      "chatgpt"
       "claude"
-      "codex-app"
       "conductor"
       "dash"
       "figma"

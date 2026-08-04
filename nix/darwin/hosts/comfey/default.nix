@@ -23,6 +23,7 @@ in
 
   brooklyn.programs = {
     claude-code.enable = true;
+    codex.enable = true;
     colima.enable = true;
     crush.enable = true;
     gcloud-cli.enable = true;
