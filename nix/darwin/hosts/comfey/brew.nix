@@ -21,6 +21,7 @@
         name = "google-chrome";
         args.appdir = "/Applications";
       }
+      "helium-browser"
       "linear"
       {
         name = "lm-studio";
@@ -38,6 +39,7 @@
         name = "slack";
         args.appdir = "/Applications";
       }
+      "t3-code"
       {
         name = "tailscale-app";
         args.appdir = "/Applications";
