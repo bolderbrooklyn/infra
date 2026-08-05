@@ -28,6 +28,7 @@
       "pokemon-tcg-live"
       "prismlauncher"
       "steam"
+      "t3-code"
       {
         name = "tailscale-app";
         args.appdir = "/Applications";
