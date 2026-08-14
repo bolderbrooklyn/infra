@@ -6,6 +6,7 @@
     ./modules/ghostty
     ./modules/kitty
     ./modules/neovide
+    ./modules/obsidian
     ./modules/qutebrowser
     ./modules/rio
     ./modules/vscode
@@ -16,5 +17,6 @@
   brooklyn.programs = {
     ghostty.enable = true;
     neovide.enable = true;
+    obsidian.enable = true;
   };
 }

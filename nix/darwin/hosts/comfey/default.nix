@@ -61,6 +61,8 @@ in
           };
         };
 
+        obsidian.vaults.Nclusion.target = "${config.home.homeDirectory}/Documents/Obsidian/Nclusion";
+
         opencode.settings.plugin = [ "opencode-claude-auth" ];
       };
 

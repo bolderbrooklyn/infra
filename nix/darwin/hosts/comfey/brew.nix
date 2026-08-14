@@ -31,7 +31,6 @@
       "notion"
       "notion-calendar"
       "notion-mail"
-      "obsidian"
       "openclaw"
       "opencode-desktop"
       "plexamp"
