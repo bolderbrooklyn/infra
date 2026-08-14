@@ -94,6 +94,7 @@
       nixpkgs,
       nix-darwin,
       system-manager,
+      home-manager,
       ...
     }:
     let
@@ -163,5 +164,17 @@
             ];
           };
         };
+
+      homeConfigurations.archaludon = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+
+        extraSpecialArgs = {
+          inherit (inputs) agenix catppuccin;
+        };
+
+        modules = [
+          ./nix/home/hosts/archaludon
+        ];
+      };
     };
 }
