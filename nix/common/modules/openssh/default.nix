@@ -15,5 +15,7 @@
         PermitRootLogin no
       '';
     };
+
+    home-manager.sharedModules = [ ./hm.nix ];
   };
 }

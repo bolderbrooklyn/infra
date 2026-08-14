@@ -8,20 +8,5 @@ in
 
   options.brooklyn.programs.rio.enable = lib.mkEnableOption "rio";
 
-  config = lib.mkIf config.brooklyn.programs.rio.enable {
-    home-manager.users.${username} = {
-      programs.rio = {
-        enable = true;
-
-        settings = {
-          fonts = {
-            inherit (font) size;
-            family = font.name;
-            use-drawable-chars = true;
-          };
-          line-height = 1.3;
-        };
-      };
-    };
-  };
+  config.home-manager.sharedModules = [ ./hm.nix ];
 }

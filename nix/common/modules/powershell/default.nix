@@ -21,11 +21,6 @@ in
     environment.systemPackages = [ pwsh ];
     environment.shells = [ pwsh ];
 
-    home-manager.users.${config.common.username}.xdg.configFile."powershell/Microsoft.PowerShell_profile.ps1".text =
-      ''
-        [System.Environment]::SetEnvironmentVariable('PATH', $('{0}/.nix-profile/bin:/etc/profiles/per-user/{1}/bin:/run/current-system/sw/bin:/nix/var/nix/profiles/default/bin:' -f $HOME, $env:USER + $env:PATH), [System.EnvironmentVariableTarget]::Process)
-
-        ${lib.concatStringsSep "\n" config.brooklyn.programs.powershell.extraConfig}
-      '';
+    home-manager.sharedModules = [ ./hm.nix ];
   };
 }

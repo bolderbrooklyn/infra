@@ -4,10 +4,6 @@
   pkgs,
   ...
 }:
-let
-  opencodePackage = pkgs.llm-agents.opencode;
-  baseOhMyOpenAgent = builtins.fromJSON (builtins.readFile ./oh-my-openagent.base.jsonc);
-in
 {
   imports = [
     ../catppuccin
@@ -24,38 +20,5 @@ in
     };
   };
 
-  config = lib.mkIf config.brooklyn.programs.opencode.enable {
-    home-manager.users.${config.common.username} = {
-      programs.opencode = {
-        enable = true;
-        package = opencodePackage;
-        enableMcpIntegration = true;
-
-        extraPackages = with pkgs; [
-          bun
-          nodejs-slim
-        ];
-
-        settings = {
-          autoupdate = false;
-          formatter = { };
-          lsp = { };
-
-          plugin = [
-            "oh-my-openagent@latest"
-          ];
-        };
-
-        tui = {
-          theme = lib.mkForce "catppuccin-mocha";
-        };
-      };
-
-      xdg.configFile."opencode/tui.json".force = true;
-
-      xdg.configFile."opencode/oh-my-openagent.jsonc".text = builtins.toJSON (
-        lib.recursiveUpdate baseOhMyOpenAgent config.brooklyn.programs.opencode.ohMyOpenAgentOverrides
-      );
-    };
-  };
+  config.home-manager.sharedModules = [ ./hm.nix ];
 }

@@ -1,6 +1,8 @@
-{ config, ... }:
+{ config, lib, ... }:
 {
-  home-manager.users.${config.common.username} = {
-    programs.qutebrowser = { };
+  options.brooklyn.programs.qutebrowser.enable = lib.mkEnableOption "qutebrowser" // {
+    default = false;
   };
+
+  config.home-manager.sharedModules = [ ./hm.nix ];
 }

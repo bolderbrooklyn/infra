@@ -10,5 +10,7 @@
   config = lib.mkIf config.brooklyn.programs.nushell.enable {
     environment.systemPackages = [ pkgs.nushell ];
     environment.shells = [ pkgs.nushell ];
+
+    home-manager.sharedModules = [ ./hm.nix ];
   };
 }

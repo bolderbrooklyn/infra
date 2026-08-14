@@ -8,9 +8,5 @@
     default = true;
   };
 
-  config = lib.mkIf config.brooklyn.programs.yazi.enable {
-    home-manager.users.${config.common.username} = {
-      programs.yazi.enable = true;
-    };
-  };
+  config.home-manager.sharedModules = [ ./hm.nix ];
 }

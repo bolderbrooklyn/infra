@@ -12,13 +12,7 @@ in
 
   config = lib.mkIf config.brooklyn.programs.calibre.enable (
     {
-      home-manager.users.${username} = {
-        programs.calibre = {
-          inherit (config.brooklyn.programs.calibre) enable;
-
-          package = lib.mkIf isDarwin null;
-        };
-      };
+      home-manager.sharedModules = [ ./hm.nix ];
     }
     // lib.optionalAttrs isDarwin {
       homebrew.casks = [ "calibre" ];

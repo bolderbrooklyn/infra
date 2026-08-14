@@ -9,17 +9,5 @@
     default = true;
   };
 
-  config = lib.mkIf config.brooklyn.programs.catppuccin.enable {
-    home-manager.users.${config.common.username} = {
-      imports = [ catppuccin.homeModules.catppuccin ];
-
-      catppuccin = {
-        enable = true;
-        autoEnable = true;
-        flavor = "mocha";
-
-        nvim.enable = false;
-      };
-    };
-  };
+  config.home-manager.sharedModules = [ ./hm.nix ];
 }
