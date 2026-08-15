@@ -1,8 +1,5 @@
-# Home Manager-only aggregator. Each module's HM portion lives next to its
-# NixOS-level default.nix as `hm.nix`; standalone HM hosts import this file.
 {
-  agenix,
-  catppuccin,
+  inputs,
   lib,
   ...
 }:
@@ -62,5 +59,18 @@
       type = lib.types.str;
       default = "brooklyn";
     };
+  };
+
+  config.nixpkgs = {
+    config.allowUnfree = true;
+    overlays = [
+      (final: prev: {
+        inherit (prev.lixPackageSets.latest)
+          lix
+          ;
+      })
+      inputs.llm-agents.overlays.shared-nixpkgs
+      inputs.nix-obsidian-extensions.overlays.default
+    ];
   };
 }
