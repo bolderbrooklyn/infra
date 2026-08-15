@@ -34,6 +34,9 @@
   programs = {
     home-manager.enable = true;
 
+    git.settings.gpg.ssh.program =
+      "/mnt/c/Users/jesse/AppData/Local/Microsoft/WindowsApps/op-ssh-sign-wsl.exe";
+
     ssh = {
       enable = true;
     };
