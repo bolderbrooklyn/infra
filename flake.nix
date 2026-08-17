@@ -168,8 +168,8 @@
       homeConfigurations.archaludon = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
 
-        extraSpecialArgs = baseSpecialArgs // {
-          isDarwin = false;
+        extraSpecialArgs = {
+          inherit (inputs) agenix catppuccin;
         };
 
         modules = [
