@@ -38,11 +38,8 @@
   programs = {
     home-manager.enable = true;
 
-    git.settings = {
-      core.sshCommand = "/mnt/c/Windows/System32/OpenSSH/ssh.exe";
-      gpg.ssh.program =
-        "/mnt/c/Users/jesse/AppData/Local/Microsoft/WindowsApps/op-ssh-sign-wsl.exe";
-    };
+    git.settings.gpg.ssh.program =
+      "/mnt/c/Users/jesse/AppData/Local/Microsoft/WindowsApps/op-ssh-sign-wsl.exe";
 
     ssh = {
       enable = true;
