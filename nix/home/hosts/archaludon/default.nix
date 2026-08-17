@@ -12,10 +12,6 @@
 
   common.username = "brooklyn";
 
-  brooklyn.programs = {
-    pi-coding-agent.enable = true;
-  };
-
   home = {
     username = "brooklyn";
     homeDirectory = "/home/brooklyn";
