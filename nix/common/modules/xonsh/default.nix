@@ -10,7 +10,5 @@
   config = lib.mkIf config.brooklyn.programs.xonsh.enable {
     environment.systemPackages = [ pkgs.xonsh ];
     environment.shells = [ pkgs.xonsh ];
-
-    home-manager.sharedModules = [ ./hm.nix ];
   };
 }

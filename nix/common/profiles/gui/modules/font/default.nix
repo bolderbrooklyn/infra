@@ -23,5 +23,7 @@ with lib;
     };
   };
 
-  config.home-manager.sharedModules = [ ./hm.nix ];
+  config = {
+    fonts.packages = [ config.gui.font.package ];
+  };
 }

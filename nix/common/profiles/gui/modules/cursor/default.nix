@@ -24,7 +24,14 @@ with lib;
 
   config = mkIf cfg.enable (
     {
-      home-manager.sharedModules = [ ./hm.nix ];
+      home-manager.users.${config.common.username} = {
+        home.packages = mkIf cfg.cli.enable (
+          with pkgs.llm-agents;
+          [
+            cursor-agent
+          ]
+        );
+      };
     }
     // optionalAttrs isDarwin {
       homebrew.casks = [ "cursor" ];

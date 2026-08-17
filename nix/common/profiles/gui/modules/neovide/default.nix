@@ -11,5 +11,24 @@ in
 
   options.brooklyn.programs.neovide.enable = lib.mkEnableOption "neovide";
 
-  config.home-manager.sharedModules = [ ./hm.nix ];
+  config = lib.mkIf config.brooklyn.programs.neovide.enable {
+    home-manager.users.${username} = {
+      home.shellAliases.nv = "neovide --reuse-instance --new-window";
+
+      programs.neovide = {
+        inherit (config.brooklyn.programs.neovide) enable;
+
+        settings = {
+          font = {
+            inherit (font) size;
+            normal = [ font.name ];
+          };
+
+          fork = true;
+          srgb = true;
+          title-hidden = true;
+        };
+      };
+    };
+  };
 }
