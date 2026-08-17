@@ -25,7 +25,6 @@
       extraPackages = with pkgs; [
         ast-grep
         cargo
-        clang
         ghostscript
         go
         grpcurl
