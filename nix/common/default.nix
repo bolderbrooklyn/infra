@@ -44,7 +44,6 @@ in
     ./modules/opencode
     ./modules/openssh
     ./modules/powershell
-    ./modules/starship
     ./modules/tmux
     ./modules/xonsh
     ./modules/yazi

@@ -5,5 +5,6 @@
     ./git
     ./nvim
     ./pi-coding-agent
+    ./starship
   ];
 }

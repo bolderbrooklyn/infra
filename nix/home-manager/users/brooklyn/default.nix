@@ -12,6 +12,7 @@
       git.enable = true;
       nvim.enable = true;
       pi-coding-agent.enable = true;
+      starship.enable = true;
     };
   };
 }
