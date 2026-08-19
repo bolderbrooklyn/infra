@@ -13,6 +13,7 @@
   };
 
   imports = [
+    ./modules/catppuccin
     ./modules/git
   ];
 
