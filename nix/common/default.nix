@@ -31,10 +31,8 @@ in
     ./modules/devenv
     ./modules/docker
     ./modules/eza
-    ./modules/fd
     ./modules/fish
     ./modules/rg
-    ./modules/fzf
     ./modules/gcloud-cli
     ./modules/git
     ./modules/gnupg
