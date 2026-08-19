@@ -5,19 +5,25 @@
   ...
 }:
 {
-  options.brooklyn.catppuccin.enable = lib.mkEnableOption "catppuccin" // {
-    default = true;
+  options.brooklyn.catppuccin = {
+    enable = lib.mkEnableOption "catppuccin";
+
+    flavor = lib.mkOption {
+      type = lib.types.str;
+      default = "mocha";
+    };
   };
 
   imports = [ catppuccin.homeModules.catppuccin ];
 
-  config = lib.mkIf config.brooklyn.catppuccin.enable {
-    catppuccin = {
-      enable = true;
-      autoEnable = true;
-      flavor = "mocha";
-
-      nvim.enable = false;
-    };
+  config = {
+    catppuccin =
+      let
+        inherit (config.brooklyn.catppuccin) enable flavor;
+      in
+      {
+        inherit enable flavor;
+        autoEnable = enable;
+      };
   };
 }

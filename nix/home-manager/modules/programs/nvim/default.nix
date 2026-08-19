@@ -5,9 +5,7 @@
   ...
 }:
 {
-  options.brooklyn.programs.nvim.enable = lib.mkEnableOption "nvim" // {
-    default = true;
-  };
+  options.brooklyn.programs.nvim.enable = lib.mkEnableOption "nvim";
 
   config = lib.mkIf config.brooklyn.programs.nvim.enable {
     home.sessionVariables = {

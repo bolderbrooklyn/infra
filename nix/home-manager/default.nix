@@ -19,10 +19,7 @@
 
   imports = [
     ./modules/catppuccin
-    ./modules/fish
-    ./modules/git
-    ./modules/nvim
-    ./modules/pi-coding-agent
+    ./modules/programs
   ];
 
   config = {

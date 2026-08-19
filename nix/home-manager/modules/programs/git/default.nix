@@ -18,9 +18,7 @@ let
   };
 in
 {
-  options.brooklyn.programs.git.enable = lib.mkEnableOption "git" // {
-    default = true;
-  };
+  options.brooklyn.programs.git.enable = lib.mkEnableOption "git";
 
   options.programs.git = {
     signingKey = {

@@ -1,7 +1,5 @@
 { lib, pkgs, ... }: {
-  options.brooklyn.programs.fish.enable = lib.mkEnableOption "fish" // {
-    default = true;
-  };
+  options.brooklyn.programs.fish.enable = lib.mkEnableOption "fish";
 
   config = {
     home.packages = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin [ pkgs.fishPlugins.macos ];
