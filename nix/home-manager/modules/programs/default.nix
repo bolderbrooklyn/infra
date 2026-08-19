@@ -1,5 +1,6 @@
 {
   imports = [
+    ./btop
     ./fish
     ./git
     ./nvim

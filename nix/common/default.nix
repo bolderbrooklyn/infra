@@ -23,7 +23,6 @@ in
     ./modules/agent-instructions
     ./modules/antigravity-cli
     ./modules/bat
-    ./modules/btop
     ./modules/buku
     ./modules/claude-code
     ./modules/codex
