@@ -1,5 +1,6 @@
 {
   imports = [
+    ./bat
     ./btop
     ./fd
     ./fish
@@ -9,5 +10,6 @@
     ./pi-coding-agent
     ./ripgrep
     ./starship
+    ./tmux
   ];
 }

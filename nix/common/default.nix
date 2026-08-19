@@ -22,7 +22,6 @@ in
     ./modules/1password
     ./modules/agent-instructions
     ./modules/antigravity-cli
-    ./modules/bat
     ./modules/buku
     ./modules/claude-code
     ./modules/codex
@@ -40,7 +39,6 @@ in
     ./modules/opencode
     ./modules/openssh
     ./modules/powershell
-    ./modules/tmux
     ./modules/xonsh
     ./modules/yazi
     ./modules/zsh
