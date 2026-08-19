@@ -16,6 +16,7 @@
     ./modules/catppuccin
     ./modules/fish
     ./modules/git
+    ./modules/nvim
   ];
 
   config = {
