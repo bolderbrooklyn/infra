@@ -14,6 +14,7 @@
 
   imports = [
     ./modules/catppuccin
+    ./modules/fish
     ./modules/git
   ];
 

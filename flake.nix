@@ -105,8 +105,6 @@
       };
     in
     {
-      home-manager.backupFileExtension = "hm-backup";
-
       homeConfigurations."archaludon.brooklyn" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = { inherit (inputs) agenix catppuccin; };
