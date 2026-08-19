@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  llm-agents,
+  ...
+}:
 {
   options.brooklyn = {
     username = lib.mkOption {
@@ -17,6 +22,7 @@
     ./modules/fish
     ./modules/git
     ./modules/nvim
+    ./modules/pi-coding-agent
   ];
 
   config = {
@@ -26,6 +32,10 @@
       stateVersion = "26.11";
       enableNixpkgsReleaseCheck = false;
     };
+
+    nixpkgs.overlays = [
+      llm-agents.overlays.shared-nixpkgs
+    ];
 
     programs.home-manager.enable = true;
 

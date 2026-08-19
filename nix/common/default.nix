@@ -25,7 +25,6 @@ in
     ./modules/bat
     ./modules/btop
     ./modules/buku
-    ./modules/catppuccin
     ./modules/claude-code
     ./modules/codex
     ./modules/copilot-cli
@@ -43,10 +42,8 @@ in
     ./modules/kubectl
     ./modules/mise
     ./modules/nushell
-    ./modules/nvim
     ./modules/opencode
     ./modules/openssh
-    ./modules/pi-coding-agent
     ./modules/powershell
     ./modules/starship
     ./modules/tmux
