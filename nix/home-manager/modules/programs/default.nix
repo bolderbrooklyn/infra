@@ -7,6 +7,7 @@
     ./git
     ./nvim
     ./pi-coding-agent
+    ./ripgrep
     ./starship
   ];
 }

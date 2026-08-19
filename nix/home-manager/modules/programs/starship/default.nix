@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}:
-{
+{ config, lib, ... }: {
   options.brooklyn.programs.starship.enable = lib.mkEnableOption "starship";
 
   imports = [

@@ -32,9 +32,7 @@ in
     ./modules/docker
     ./modules/eza
     ./modules/fish
-    ./modules/rg
     ./modules/gcloud-cli
-    ./modules/git
     ./modules/gnupg
     ./modules/kubectl
     ./modules/mise

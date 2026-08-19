@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}:
-{
+{ config, lib, ... }: {
   options.brooklyn.programs.fd.enable = lib.mkEnableOption "fd";
 
   config = lib.mkIf config.brooklyn.programs.fd.enable {
