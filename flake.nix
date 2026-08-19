@@ -93,6 +93,7 @@
     inputs@{
       nixpkgs,
       nix-darwin,
+      home-manager,
       system-manager,
       ...
     }:
@@ -104,6 +105,20 @@
       };
     in
     {
+      home-manager.backupFileExtension = "hm-backup";
+
+      homeConfigurations."archaludon.brooklyn" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        extraSpecialArgs = { inherit (inputs) agenix catppuccin; };
+
+        modules = [
+          ./nix/home-manager/users/brooklyn
+          {
+            programs.git.settings.gpg.ssh.program = "/opt/1Password/op-ssh-sign";
+          }
+        ];
+      };
+
       nixosConfigurations.tinkaton =
         let
           specialArgs = baseSpecialArgs;
