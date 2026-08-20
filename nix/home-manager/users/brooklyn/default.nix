@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 let
   guiEnable = config.brooklyn.gui.enable;
 in
@@ -37,5 +37,16 @@ in
     devenv.enable = true;
     yazi.enable = true;
     zoxide.enable = true;
+  };
+
+  home = {
+    packages = with pkgs; [
+      httpie
+      yq
+    ];
+
+    shellAliases = {
+      l = "ls -alh";
+    };
   };
 }
