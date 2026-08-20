@@ -27,7 +27,6 @@ in
     ./modules/codex
     ./modules/copilot-cli
     ./modules/crush
-    ./modules/devenv
     ./modules/docker
     ./modules/eza
     ./modules/fish
