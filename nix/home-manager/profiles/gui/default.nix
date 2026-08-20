@@ -1,7 +1,6 @@
 { lib, ... }: {
   imports = [
-    ./modules/ghostty
-    ./modules/neovide
+    ./modules/programs
   ];
 
   options.brooklyn.gui.enable = lib.mkEnableOption "gui";
