@@ -32,9 +32,13 @@
       enableNixpkgsReleaseCheck = false;
     };
 
-    nixpkgs.overlays = [
-      llm-agents.overlays.shared-nixpkgs
-    ];
+    nixpkgs = {
+      config.allowUnfree = true;
+
+      overlays = [
+        llm-agents.overlays.shared-nixpkgs
+      ];
+    };
 
     programs.home-manager.enable = true;
 

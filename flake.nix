@@ -113,7 +113,20 @@
           ./nix/home-manager/users/brooklyn
           {
             brooklyn.gui.enable = true;
+
             programs.git.settings.gpg.ssh.program = "/opt/1Password/op-ssh-sign";
+
+            nixpkgs.config.nvidia.acceptLicense = true;
+
+            targets.genericLinux = {
+              enable = true;
+
+              gpu.nvidia = {
+                enable = true;
+                sha256 = "sha256-suk1xmuDuwDAyFe8jg7g/VLekoa0DJzB7sKafOfrEW0=";
+                version = "610.57.04";
+              };
+            };
           }
         ];
       };
