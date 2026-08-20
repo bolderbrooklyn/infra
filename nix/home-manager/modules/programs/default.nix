@@ -5,6 +5,7 @@
     ./buku
     ./claude-code
     ./codex
+    ./crush
     ./docker
     ./eza
     ./fd

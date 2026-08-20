@@ -13,6 +13,7 @@ in
     programs = {
       bat.enable = true;
       btop.enable = true;
+      crush.enable = true;
       eza.enable = true;
       fd.enable = true;
       fish.enable = true;
@@ -33,7 +34,6 @@ in
   };
 
   programs = {
-    crush.enable = true;
     devenv.enable = true;
     yazi.enable = true;
     zoxide.enable = true;
