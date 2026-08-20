@@ -18,6 +18,7 @@ in
       fzf.enable = true;
       ghostty.enable = guiEnable;
       git.enable = true;
+      neovide.enable = guiEnable;
       nvim.enable = true;
       pi-coding-agent.enable = true;
       ripgrep.enable = true;
