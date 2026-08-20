@@ -1,4 +1,5 @@
 HOSTNAME := $(shell hostname -s)
+USERNAME := $(shell whoami)
 ACTIONS := build
 SUDO_ACTIONS := boot check
 REBUILD_CMD = $(if $(shell test -f /etc/NIXOS && echo true),nixos-rebuild,darwin-rebuild) $@
@@ -29,3 +30,6 @@ update:
 	nix flake update
 
 up: update switch devenv 
+
+home:
+	home-manager switch --flake .\#$(HOSTNAME).$(USERNAME) -b hm-backup
