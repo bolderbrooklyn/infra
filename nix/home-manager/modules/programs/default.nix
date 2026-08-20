@@ -2,6 +2,7 @@
   imports = [
     ./bat
     ./btop
+    ./eza
     ./fd
     ./fish
     ./fzf

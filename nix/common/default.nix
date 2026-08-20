@@ -28,7 +28,6 @@ in
     ./modules/copilot-cli
     ./modules/crush
     ./modules/docker
-    ./modules/eza
     ./modules/fish
     ./modules/gcloud-cli
     ./modules/gnupg
