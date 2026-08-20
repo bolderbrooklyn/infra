@@ -2,6 +2,7 @@
   config,
   lib,
   llm-agents,
+  pkgs,
   ...
 }:
 {
@@ -31,6 +32,8 @@
       stateVersion = "26.11";
       enableNixpkgsReleaseCheck = false;
     };
+
+    nix.package = pkgs.lix;
 
     nixpkgs = {
       config.allowUnfree = true;

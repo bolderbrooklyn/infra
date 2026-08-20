@@ -24,6 +24,8 @@
       {
         inherit enable flavor;
         autoEnable = enable;
+
+        cache.enable = true;
       };
   };
 }
