@@ -34,6 +34,7 @@ in
   programs = {
     crush.enable = true;
     devenv.enable = true;
+    yazi.enable = true;
     zoxide.enable = true;
   };
 }

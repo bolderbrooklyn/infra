@@ -20,17 +20,11 @@ in
   imports = [
     ./home.nix
     ./modules/1password
-    ./modules/buku
-    ./modules/docker
     ./modules/fish
-    ./modules/gcloud-cli
-    ./modules/kubectl
-    ./modules/mise
     ./modules/nushell
     ./modules/openssh
     ./modules/powershell
     ./modules/xonsh
-    ./modules/yazi
     ./modules/zsh
   ];
 

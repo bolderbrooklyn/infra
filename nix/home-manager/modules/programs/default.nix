@@ -2,14 +2,19 @@
   imports = [
     ./bat
     ./btop
+    ./buku
     ./claude-code
     ./codex
+    ./docker
     ./eza
     ./fd
     ./fish
     ./fzf
+    ./gcloud-cli
     ./git
     ./gnupg
+    ./kubectl
+    ./mise
     ./nvim
     ./opencode
     ./pi-coding-agent
