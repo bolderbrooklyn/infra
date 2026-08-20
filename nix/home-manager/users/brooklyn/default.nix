@@ -27,6 +27,7 @@ in
       pi-coding-agent.enable = true;
       ripgrep.enable = true;
       starship.enable = true;
+      television.enable = true;
       tmux.enable = true;
     };
   };

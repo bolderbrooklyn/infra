@@ -20,6 +20,7 @@
     ./pi-coding-agent
     ./ripgrep
     ./starship
+    ./television
     ./tmux
   ];
 }
