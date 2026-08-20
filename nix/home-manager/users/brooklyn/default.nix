@@ -20,6 +20,7 @@ in
       git.enable = true;
       neovide.enable = guiEnable;
       nvim.enable = true;
+      obsidian.enable = guiEnable;
       pi-coding-agent.enable = true;
       ripgrep.enable = true;
       starship.enable = true;
