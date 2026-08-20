@@ -9,6 +9,7 @@
     ./fish
     ./fzf
     ./git
+    ./gnupg
     ./nvim
     ./opencode
     ./pi-coding-agent

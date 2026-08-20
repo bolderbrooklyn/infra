@@ -24,7 +24,6 @@ in
     ./modules/docker
     ./modules/fish
     ./modules/gcloud-cli
-    ./modules/gnupg
     ./modules/kubectl
     ./modules/mise
     ./modules/nushell

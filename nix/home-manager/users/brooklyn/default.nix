@@ -19,6 +19,7 @@ in
       fzf.enable = true;
       ghostty.enable = guiEnable;
       git.enable = true;
+      gnupg.enable = true;
       neovide.enable = guiEnable;
       nvim.enable = true;
       obsidian.enable = guiEnable;
