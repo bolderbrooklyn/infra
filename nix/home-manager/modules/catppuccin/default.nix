@@ -26,6 +26,7 @@
         autoEnable = enable;
 
         cache.enable = true;
+        nvim.enable = false;
       };
   };
 }
