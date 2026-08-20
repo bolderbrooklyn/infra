@@ -1,3 +1,7 @@
+{ config, ... }:
+let
+  guiEnable = config.brooklyn.gui.enable;
+in
 {
   imports = [
     ../..
@@ -12,6 +16,7 @@
       fd.enable = true;
       fish.enable = true;
       fzf.enable = true;
+      ghostty.enable = guiEnable;
       git.enable = true;
       nvim.enable = true;
       pi-coding-agent.enable = true;

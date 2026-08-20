@@ -112,6 +112,7 @@
         modules = [
           ./nix/home-manager/users/brooklyn
           {
+            brooklyn.gui.enable = true;
             programs.git.settings.gpg.ssh.program = "/opt/1Password/op-ssh-sign";
           }
         ];

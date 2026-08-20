@@ -19,7 +19,9 @@
 
   imports = [
     ./modules/catppuccin
+    ./modules/font
     ./modules/programs
+    ./profiles/gui
   ];
 
   config = {
