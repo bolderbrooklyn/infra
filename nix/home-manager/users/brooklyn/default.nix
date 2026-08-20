@@ -26,5 +26,8 @@ in
     };
   };
 
-  programs.zoxide.enable = true;
+  programs = {
+    devenv.enable = true;
+    zoxide.enable = true;
+  };
 }
