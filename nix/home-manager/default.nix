@@ -19,6 +19,7 @@
   };
 
   imports = [
+    ./modules/agent-instructions
     ./modules/catppuccin
     ./modules/font
     ./modules/programs

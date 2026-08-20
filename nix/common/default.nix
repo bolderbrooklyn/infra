@@ -20,13 +20,7 @@ in
   imports = [
     ./home.nix
     ./modules/1password
-    ./modules/agent-instructions
-    ./modules/antigravity-cli
     ./modules/buku
-    ./modules/claude-code
-    ./modules/codex
-    ./modules/copilot-cli
-    ./modules/crush
     ./modules/docker
     ./modules/fish
     ./modules/gcloud-cli
@@ -34,7 +28,6 @@ in
     ./modules/kubectl
     ./modules/mise
     ./modules/nushell
-    ./modules/opencode
     ./modules/openssh
     ./modules/powershell
     ./modules/xonsh

@@ -2,12 +2,15 @@
   imports = [
     ./bat
     ./btop
+    ./claude-code
+    ./codex
     ./eza
     ./fd
     ./fish
     ./fzf
     ./git
     ./nvim
+    ./opencode
     ./pi-coding-agent
     ./ripgrep
     ./starship

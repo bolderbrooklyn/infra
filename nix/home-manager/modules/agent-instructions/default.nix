@@ -5,26 +5,16 @@
   ...
 }:
 let
-  inherit (config.home-manager.users.${config.common.username}.programs)
+  inherit (config.programs)
     claude-code
     codex
+    crush
     opencode
     pi-coding-agent
     ;
 
-  username = config.common.username;
-
-  antigravityEnabled =
-    lib.hasAttrByPath [ "brooklyn" "programs" "antigravity-cli" "enable" ] config
-    && config.brooklyn.programs.antigravity-cli.enable;
-
-  copilotCliEnabled =
-    lib.hasAttrByPath [ "brooklyn" "programs" "copilot-cli" "enable" ] config
-    && config.brooklyn.programs.copilot-cli.enable;
-
-  crushEnabled =
-    lib.hasAttrByPath [ "brooklyn" "programs" "crush" "enable" ] config
-    && config.brooklyn.programs.crush.enable;
+  anyAgentEnabled =
+    claude-code.enable || codex.enable || opencode.enable || pi-coding-agent.enable || crush.enable;
 
   instructions = ''
     Prefer modern CLI replacements when they are available on this system:
@@ -114,31 +104,17 @@ let
   instructionsFile = pkgs.writeText "agent-instructions.md" instructions;
 in
 {
-  options.brooklyn.programs.agent-instructions.enable = lib.mkEnableOption "agent-instructions" // {
-    default = true;
-  };
+  config = lib.mkIf anyAgentEnabled {
+    programs = {
+      claude-code.context = lib.mkIf claude-code.enable instructions;
+      codex.context = lib.mkIf codex.enable instructions;
+      opencode.context = lib.mkIf opencode.enable instructions;
+      pi-coding-agent.context = lib.mkIf pi-coding-agent.enable instructions;
+    };
 
-  config = lib.mkIf config.brooklyn.programs.agent-instructions.enable {
-    home-manager.users.${username} = {
-      programs = {
-        claude-code.context = lib.mkIf claude-code.enable instructions;
-        codex.context = lib.mkIf codex.enable instructions;
-        opencode.context = lib.mkIf opencode.enable instructions;
-        pi-coding-agent.context = lib.mkIf pi-coding-agent.enable instructions;
-      };
-
-      xdg.configFile = {
-        "crush/CRUSH.md" = lib.mkIf crushEnabled {
-          source = instructionsFile;
-        };
-
-        "copilot/copilot-instructions.md" = lib.mkIf copilotCliEnabled {
-          source = instructionsFile;
-        };
-
-        "gemini/GEMINI.md" = lib.mkIf antigravityEnabled {
-          source = instructionsFile;
-        };
+    xdg.configFile = {
+      "crush/CRUSH.md" = lib.mkIf crush.enable {
+        source = instructionsFile;
       };
     };
   };

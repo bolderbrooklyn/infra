@@ -22,6 +22,7 @@ in
       neovide.enable = guiEnable;
       nvim.enable = true;
       obsidian.enable = guiEnable;
+      opencode.enable = true;
       pi-coding-agent.enable = true;
       ripgrep.enable = true;
       starship.enable = true;
@@ -30,6 +31,7 @@ in
   };
 
   programs = {
+    crush.enable = true;
     devenv.enable = true;
     zoxide.enable = true;
   };

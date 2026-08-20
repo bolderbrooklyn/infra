@@ -44,7 +44,7 @@ Key symbols and where they're defined:
 | `nix-homebrew` | Flake input | `flake.nix:48` | darwin hosts | Declarative brew with locked taps |
 | `targets.darwin.defaults` | nix-darwin module | `nix/darwin/home.nix` | all darwin | macOS `defaults write` |
 | `mnt-genesect-media.mount` | Systemd mount unit | `nix/nixos/modules/media/default.nix` | 5+ services | Shared NFS mount dependency; declared by `media` module, depended on by audiobookshelf/jellyfin/navidrome/plex/servarr |
-| `agent-instructions` | Common module | `nix/common/modules/agent-instructions/default.nix` | `brooklyn.programs.agent-instructions.enable` (default `true`) | Writes shared guardrails to every enabled agent's global instruction file (claude-code, codex, opencode, pi-coding-agent, crush, copilot-cli, antigravity) |
+| `agent-instructions` | Home-manager module | `nix/home-manager/modules/agent-instructions/default.nix` | *(no toggle — activates when any agent module is enabled)* | Writes shared guardrails to every enabled agent's global instruction file (claude-code, codex, opencode, pi-coding-agent, crush, copilot-cli, antigravity) |
 
 ## Directory Map & Quick Task Reference
 
@@ -108,7 +108,7 @@ These are documented problem areas an agent should be aware of — not to
 perpetuate, but to recognize when working in the codebase.
 
 - **Orphaned toggle**: `brooklyn.programs.antigravity-cli.enable` exists
-  in `nix/common/modules/antigravity-cli/` but no host ever sets it to
+  in `nix/home-manager/modules/programs/antigravity-cli/` but no host ever sets it to
   true. The `agent-instructions` module's `antigravityEnabled` check is
   therefore also dead. The module is still globally imported, so the
   package is installed but the `lib.mkIf enable` block never executes.
