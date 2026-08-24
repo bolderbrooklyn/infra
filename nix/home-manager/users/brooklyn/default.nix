@@ -7,6 +7,17 @@ in
     ../..
   ];
 
+  home = {
+    packages = with pkgs; [
+      httpie
+      yq
+    ];
+
+    shellAliases = {
+      l = "ls -alh";
+    };
+  };
+
   brooklyn = {
     catppuccin.enable = true;
 
@@ -39,14 +50,10 @@ in
     zoxide.enable = true;
   };
 
-  home = {
-    packages = with pkgs; [
-      httpie
-      yq
-    ];
-
-    shellAliases = {
-      l = "ls -alh";
+  services = {
+    syncthing = {
+      enable = true;
+      tray.enable = true;
     };
   };
 }

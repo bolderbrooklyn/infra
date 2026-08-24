@@ -23,6 +23,7 @@
     ./modules/catppuccin
     ./modules/font
     ./modules/programs
+    ./modules/services
     ./profiles/gui
   ];
 
