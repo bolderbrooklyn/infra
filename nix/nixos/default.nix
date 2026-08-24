@@ -3,6 +3,7 @@
   agenix,
   catppuccin,
   home-manager,
+  inputs,
   ...
 }:
 let
@@ -40,6 +41,10 @@ in
     enable = true;
     autoEnable = true;
     flavor = "mocha";
+  };
+
+  home-manager.extraSpecialArgs = {
+    inherit (inputs) catppuccin agenix llm-agents;
   };
 
   networking = {

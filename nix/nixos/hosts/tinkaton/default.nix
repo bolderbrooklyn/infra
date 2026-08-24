@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   imports = [
     ./hardware-configuration.nix
@@ -8,9 +13,6 @@
 
   brooklyn.programs = {
     calibre.enable = true;
-    crush.enable = true;
-    opencode.enable = true;
-
     jellyfin.enable = false;
     k3s.enable = false;
     navidrome.enable = false;
@@ -61,6 +63,20 @@
     isNormalUser = true;
     hashedPasswordFile = config.age.secrets."password-brooklyn".path;
   };
+
+  home-manager.users.${config.common.username} = {
+    imports = [
+      ../../../home-manager/users/brooklyn
+    ];
+
+    brooklyn.gui.enable = true;
+
+    home.stateVersion = lib.mkForce "26.05";
+    nix.package = lib.mkForce pkgs.lix;
+    services.syncthing.enable = lib.mkForce false;
+  };
+
+  home-manager.useGlobalPkgs = lib.mkForce false;
 
   services.syncthing.settings.folders = {
     "/mnt/genesect/emulation/library" = {

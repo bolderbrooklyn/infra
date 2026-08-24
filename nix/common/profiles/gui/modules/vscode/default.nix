@@ -12,7 +12,6 @@ in
 {
   imports = [
     ../font
-    ../../../../modules/catppuccin
   ];
 
   options.brooklyn.programs.vscode.enable = lib.mkEnableOption "vscode";
