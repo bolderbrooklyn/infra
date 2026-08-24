@@ -30,7 +30,7 @@
   config.services.syncthing = {
     inherit (config.brooklyn.services.syncthing) enable;
 
-    guiAddress = "0.0.0.0:${toString config.brooklyn.services.syncthing.guiPort}";
+    guiAddress = "127.0.0.1:${toString config.brooklyn.services.syncthing.guiPort}";
 
     settings.devices = builtins.mapAttrs (name: id: {
       inherit id;
