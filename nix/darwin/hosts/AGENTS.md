@@ -19,7 +19,8 @@ All hosts:
 - Import a selection of common modules (e.g., `opencode`, `gcloud-cli`)
 
 The `agent-instructions` module is always active and wires shared guardrails into any agent
-the host enables (claude-code, codex, opencode, pi-coding-agent, crush, copilot-cli, antigravity).
+the host enables (claude-code, codex, opencode, pi-coding-agent, crush, copilot-cli). The
+`antigravity-cli` branch is dead code — see root AGENTS.md Anti-Patterns.
 
 ---
 
@@ -33,7 +34,7 @@ the host enables (claude-code, codex, opencode, pi-coding-agent, crush, copilot-
 | **Togglable modules** | `calibre`, `colima`, `crush`, `powershell` |
 | **Common modules** | `buku`, `copilot-cli`, `gcloud-cli`, `kubectl`, `opencode`, `xonsh` |
 | **brew.masApps** | 1Password Safari, Compressor, Final Cut Pro, Logic Pro, Motion, Name Mangler 3, Pixelmator Pro, Xcode, Yoink |
-| **brew.casks** | alfred, balenaetcher, chatgpt, claude, dash, discord, distroav, dolphin, firefox, freetube, google-chrome, google-drive, httpie-desktop, iina, imageoptim, krita, libndi, lm-studio, melonds, mgba-app, microsoft-edge, microsoft-remote-desktop, notion, notion-calendar, notion-mail, obs, obsidian, opera, plex, plexamp, pokemon-tcg-live, prismlauncher, slack, steam, tailscale-app, telegram, todoist-app, transmission, virtualbox, vivaldi, vlc, wave, xquartz, yaak, zen |
+| **brew.casks** | alfred, balenaetcher, chatgpt, chrome-remote-desktop-host, claude, dash, discord, distroav, dolphin, firefox, freetube, google-chrome, google-drive, httpie-desktop, iina, imageoptim, krita, libndi, lm-studio (`appdir=/Applications`), melonds, mgba-app, microsoft-edge, microsoft-remote-desktop, notion, notion-calendar, notion-mail, obs, obsidian, opera, plex, plexamp, pokemon-tcg-live, prismlauncher, slack, steam, tailscale-app, telegram, todoist-app, transmission, virtualbox, vivaldi, vlc, wave, xquartz, yaak, zen |
 | **brew.brews** | imageoptim-cli, libyaml, sdl2, syncthing (restart_service) |
 | **Extra packages** | cmake, chromedriver, ffmpeg |
 | **Extra config** | nvim wakatime plugin overlay via `xdg.configFile` |
@@ -58,9 +59,9 @@ the host enables (claude-code, codex, opencode, pi-coding-agent, crush, copilot-
 | Aspect | Detail |
 | --- | --- |
 | **computerName** | `Xerneas` |
-| **Togglable modules** | `crush` |
-| **Common modules** | `opencode` |
+| **Togglable modules** | `crush`, `opencode`, `pi-coding-agent`, `sikarugir` |
 | **Darwin module** | `sikarugir` |
+| **oh-my-openagent** | `ohMyOpenAgentOverrides` loaded from `config/opencode/oh-my-openagent.jsonc` |
 | **brew.casks** | discord, dolphin, google-drive, libndi, lm-studio, melonds, mgba-app, obs, plex, plexamp, pokemon-tcg-live, prismlauncher, steam, tailscale-app, telegram-desktop, todoist-app |
 | **brew.brews** | syncthing (restart_service) |
 | **brew.masApps** | Same as miraidon (1Password Safari, Compressor, Final Cut Pro, Logic Pro, Motion, Name Mangler 3, Pixelmator Pro, Xcode, Yoink) |

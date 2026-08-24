@@ -5,12 +5,17 @@ globally by `nix/nixos/default.nix` and exposes a `brooklyn.programs.<name>.enab
 toggle (default `true`). Hosts opt in or out via the toggle — no per-host imports,
 no commented imports.
 
+> The `kalmiya` module here is **broken**: its import path
+> `../../../users/kalmiya/home.nix` does not resolve. kalmiya is actually
+> provisioned by the standalone system-manager flake at
+> `nix/system-manager/hosts/kalmiya/`. See the root AGENTS.md Anti-Patterns.
+
 ---
 
 ## Module Inventory
 
 | Module | What It Does | Default | NFS Dep? | Systemd Svc? | Firewall Ports |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | `audiobookshelf` | Audiobook server | true | yes (media) | yes | — |
 | `crafty` | Minecraft server manager | true | — | — | — |
 | `forgejo` | Git server + Gitea Actions runners (Forgejo + Codeberg) | true | yes (forgejo) | yes | 3000 |
@@ -25,7 +30,7 @@ no commented imports.
 | `postgresql` | PostgreSQL 18 database server | true | — | yes | 5432 |
 | `romm` | ROM manager | true | — | — | — |
 | `servarr` | Transmission, Prowlarr, Radarr, Sonarr, Lidarr, Flaresolverr, Ombi | true | yes (media + passport) | all | (openFirewall) |
-| `syncthing` | Syncthing with 4 devices, Tailscale QUIC addresses | true | — | yes | 8384 (GUI) |
+| `syncthing` | Syncthing with 6 devices, Tailscale QUIC addresses | true | — | yes | 8384 (GUI) |
 | `tailscale` | Tailscale exit node + subnet router | true | — | — | (internal) |
 | `tunarr` | TV channel streaming | true (off on tinkaton) | — | — | — |
 | `unifi` | UniFi controller | true (off on tinkaton) | — | — | — |

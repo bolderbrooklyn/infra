@@ -7,7 +7,7 @@ The sole NixOS host — home server.
 ## Files
 
 | File | Purpose |
-|---|---|
+| --- | --- |
 | `default.nix` | Host config: imports all NixOS modules, sets secrets, NFS, boot, firewall, services |
 | `hardware-configuration.nix` | **Auto-generated** by `nixos-generate-config` — do not edit manually |
 | `secrets/` | Agenix-encrypted `.age` files (4 secrets) |
@@ -17,12 +17,12 @@ The sole NixOS host — home server.
 ## What `default.nix` Configures
 
 - **Imports** NixOS base (`../..`), GUI profile, and all service modules
-- **Enables** `calibre` and `crush` via `brooklyn.programs.*.enable`
+- **Enables** `calibre` via `brooklyn.programs.calibre.enable` (disables `jellyfin`, `k3s`, `navidrome`, `tunarr`, `unifi`, `unmanic`; `syncthing` is overridden to `false` via `lib.mkForce` so the per-user HM `syncthing` service owns it)
 - **Defines** all `age.secrets` paths
 - **Sets** `hostName = "tinkaton"`, `stateVersion = "25.05"`
 - **Opens** TCP ports 443 (HTTPS) and 3389 (RDP)
 - **Configures** `boot.loader.systemd-boot`, `boot.kernelPackages = linuxPackages_latest`
-- **Defines** NFS mounts for `/mnt/genesect/{sync,passport}` and Syncthing folder config
+- **Defines** NFS mounts for `/mnt/genesect/{sync,passport}` and Syncthing folder config (folder ownership + folder paths; actual service is managed via the home-manager `syncthing` module on `archaludon`)
 - **Enables** `openssh`, `printing`, `security.rtkit`
 - **Schedules** weekly cron reboot: `0 2 * * 1` (Monday 2 AM, complements autoUpgrade at 1-5 AM)
 - **Sets** user `brooklyn` password from agenix secret
@@ -32,7 +32,7 @@ The sole NixOS host — home server.
 ## Secrets
 
 | Secret Name | File | Used By |
-|---|---|---|
+| --- | --- | --- |
 | `romm` | `secrets/romm.age` | ROM manager |
 | `gitea-actions-runner-forgejo` | `secrets/gitea-actions-runner-forgejo.age` | Forgejo CI runner |
 | `gitea-actions-runner-codeberg` | `secrets/gitea-actions-runner-codeberg.age` | Codeberg CI runner |
@@ -45,7 +45,7 @@ All secrets encrypted with `brooklyn` + `tinkaton` SSH keys.
 ## Boot
 
 | Aspect | Value |
-|---|---|
+| --- | --- |
 | **Loader** | `systemd-boot` |
 | **EFI** | `canTouchEfiVariables = true` |
 | **Kernel** | `linuxPackages_latest` (tracks latest) |
@@ -65,7 +65,7 @@ All secrets encrypted with `brooklyn` + `tinkaton` SSH keys.
 ## NFS Mounts
 
 | Mount | Purpose |
-|---|---|
+| --- | --- |
 | `/mnt/genesect/sync` | Syncthing sync folder |
 | `/mnt/genesect/passport` | Transmission downloads |
 

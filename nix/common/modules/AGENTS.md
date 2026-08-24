@@ -1,13 +1,17 @@
-# `nix/common/modules/` — Shared Module Inventory
+# `nix/common/modules/` — Cross-Platform Shared Modules
 
-This directory contains cross-platform tools and applications. **Every module is
-imported globally by `nix/common/default.nix`** and exposes a
-`brooklyn.programs.<name>.enable` toggle. Hosts opt in or out via the toggle —
-no per-host module imports, no commented imports.
+Cross-platform tools and applications that affect **both** NixOS and nix-darwin
+hosts. Every module here is imported globally by `nix/common/default.nix` and
+exposes a `brooklyn.programs.<name>.enable` toggle. Hosts opt in or out via
+the toggle — no per-host module imports, no commented imports.
+
+> For **home-manager-only** programs (`bat`, `git`, `fish`, `fd`, `nvim`, …),
+> see [`nix/home-manager/AGENTS.md`](../../home-manager/AGENTS.md). Those modules
+> do not live here.
 
 The default for each toggle reflects whether the tool is useful for every host
 in the grouping: `true` for lightweight universal tools, `false` for heavyweight
-or niche ones (agent CLIs, SDKs, alternative shells).
+or niche ones (alternative shells, agent CLIs, SDKs).
 
 ---
 
@@ -16,19 +20,16 @@ or niche ones (agent CLIs, SDKs, alternative shells).
 | Module | Option Path | Default | Notes |
 | --- | --- | --- | --- |
 | `1password` | `brooklyn.programs._1password.enable` | `false` | Uses `isDarwin` special arg; SSH agent socket path differs per platform. `nix/darwin/default.nix` sets `lib.mkDefault true` so every darwin host gets it. |
-| `buku` | `brooklyn.programs.buku.enable` | `false` | Bookmark manager |
-| `docker` | `brooklyn.programs.docker.enable` | `true` | Docker packages for home-manager |
-| `fish` | `brooklyn.programs.fish.enable` | `true` | Custom functions, vi key bindings; `programs.fish.defaultShell = true` makes it the default shell |
-| `gcloud-cli` | `brooklyn.programs.gcloud-cli.enable` | `false` | Google Cloud SDK + SQL proxy |
-| `gnupg` | `brooklyn.programs.gnupg.enable` | `true` | GPG agent with `pinentry_mac` on darwin |
-| `kubectl` | `brooklyn.programs.kubectl.enable` | `false` | kubectl + helm + k9s + kubecolor |
-| `mise` | `brooklyn.programs.mise.enable` | `true` | Version manager. Note: blocked by an HM option rename (`programs.mise.settings` → `programs.mise.globalConfig.settings`) |
+| `fish` | `brooklyn.programs.fish.enable` | `true` | Always-on; `programs.fish.defaultShell = true` (set in `nix/common/default.nix`) makes it the default shell |
 | `nushell` | `brooklyn.programs.nushell.enable` | `false` | Adds nushell to `environment.systemPackages` and `environment.shells` |
 | `openssh` | `brooklyn.programs.openssh.enable` | `true` | Adds `services.openssh.extraConfig` (`PasswordAuthentication no`, `PermitRootLogin no`) |
-| `powershell` | `brooklyn.programs.powershell.enable` | `false` | `extraConfig` sub-option lets other modules (brew, starship) inject shellenv into PowerShell config |
+| `powershell` | `brooklyn.programs.powershell.enable` | `false` | `extraConfig` sub-option lets other modules (`brew`, `starship`) inject shellenv into PowerShell config |
 | `xonsh` | `brooklyn.programs.xonsh.enable` | `false` | Adds xonsh to `environment.systemPackages` and `environment.shells` |
-| `yazi` | `brooklyn.programs.yazi.enable` | `true` | File manager |
 | `zsh` | `brooklyn.programs.zsh.enable` | `true` | Zsh shell (enabled, not default) |
+
+> The earlier AGENTS.md listed `buku`, `docker`, `gcloud-cli`, `gnupg`,
+> `kubectl`, `mise`, and `yazi` here, but those modules live in
+> `nix/home-manager/modules/programs/` — see [home-manager/AGENTS.md](../../home-manager/AGENTS.md).
 
 ---
 
@@ -59,7 +60,8 @@ Key patterns used in modules:
 - `lib.mkIf pkgs.stdenv.isDarwin` — platform-conditional logic
 - `lib.optionalAttrs` — conditionally adds attrs
 
-Some modules (like `1password`) use the `isDarwin` special arg or `inputs` for flake inputs.
+Some modules (like `1password`) use the `isDarwin` special arg or `inputs` for
+flake inputs.
 
 ---
 
@@ -67,5 +69,6 @@ Some modules (like `1password`) use the `isDarwin` special arg or `inputs` for f
 
 1. Create `nix/common/modules/<name>/default.nix`
 2. Follow the template above
-3. Add `./modules/<name>` to the `imports` list in `nix/common/default.nix` — this is automatic for every module
-4. Hosts opt in with `brooklyn.programs.<name>.enable = true` or opt out with `false`
+3. Add `./modules/<name>` to the `imports` list in `nix/common/default.nix`
+4. Hosts opt in with `brooklyn.programs.<name>.enable = true` or opt out with
+   `false`

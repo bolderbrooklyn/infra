@@ -8,21 +8,23 @@ with [nix-homebrew](https://github.com/zhaofengli/nix-homebrew) for declarative 
 ## Entry Points
 
 | File | Purpose |
-|---|---|
-| `default.nix` | Darwin base: imports common/, homebrew, colima, stats modules; Touch ID sudo; hostname |
+| --- | --- |
+| `default.nix` | Darwin base: imports `common/`, `modules/brew`, `modules/colima`, `modules/sikarugir`, `modules/stats`; Touch ID sudo; hostname |
 | `home.nix` | macOS defaults: Dock, Finder, Safari, keyboard, screencapture via `targets.darwin.defaults` |
 
-The darwin base is loaded when flake.nix matches a darwin hostname. It imports `../common`
-for shared config.
+The darwin base is loaded when `flake.nix` matches a darwin hostname. It
+imports `../common` for shared cross-platform config (and indirectly
+`nix/common/profiles/gui`).
 
 ---
 
 ## Module Architecture
 
 | Module | Path | What It Does |
-|---|---|---|
+| --- | --- | --- |
 | **brew** | `modules/brew/` | nix-homebrew setup, Homebrew taps (as locked flake inputs), casks/brews, 1password shell plugins |
 | **colima** | `modules/colima/` | Docker VM via Colima, installed and started through Homebrew `brew services` |
+| **sikarugir** | `modules/sikarugir/` | Per-host helper used by `xerneas` (enabled by that host) |
 | **stats** | `modules/stats/` | Stats menu bar app + macOS defaults for all widget preferences |
 
 ---
@@ -45,7 +47,7 @@ Set in `home.nix` using the format `"com.apple.<domain>" = { key = value; }`.
 Common domains:
 
 | Domain | What It Configures |
-|---|---|
+| --- | --- |
 | `com.apple.desktopservices` | Network/USB .DS_Store creation |
 | `com.apple.dock` | Autohide, minimize, recents, persistent apps/others |
 | `com.apple.finder` | Sort order, status bar |
@@ -66,7 +68,8 @@ brooklyn.programs._1password.enable = lib.mkDefault true;
 ```
 
 This means hosts can **override** these with plain assignment (lower priority).
-Hosts set `networking.computerName` explicitly; `hostName` derives from it automatically.
+Hosts set `networking.computerName` explicitly; `hostName` derives from it
+automatically.
 
 ---
 

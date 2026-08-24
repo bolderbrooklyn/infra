@@ -2,7 +2,8 @@
 
 System configuration and dotfiles for Jesse Brooklyn Hannah's machines.
 Uses **Nix Flakes** + **Lix** across **NixOS (Linux)** and
-**nix-darwin (macOS)**.
+**nix-darwin (macOS)**, with a small standalone **system-manager** host
+and a standalone **home-manager** host.
 
 ---
 
@@ -14,7 +15,8 @@ Uses **Nix Flakes** + **Lix** across **NixOS (Linux)** and
 | `miraidon` | nix-darwin | aarch64-darwin | Secondary/desktop Mac |
 | `comfey` | nix-darwin | aarch64-darwin | Work laptop (nclusion) |
 | `xerneas` | nix-darwin | aarch64-darwin | Daily driver MacBook |
-| `kalmiya` | NixOS + standalone HM | x86_64-linux | Service user on tinkaton |
+| `archaludon` | standalone home-manager | x86_64-linux | `frosmoth` — daily-driver Linux desktop (NVIDIA) |
+| `kalmiya` | system-manager | x86_64-linux | Lightweight service-user host (separate physical/VPS box from tinkaton) |
 
 ---
 
@@ -29,35 +31,44 @@ make up            # update + switch + devenv
 direnv allow       # Activate devenv shell
 ```
 
+`make switch` selects a host via `hostname -s` against the table above.
+
 ---
 
 ## Code Map
 
 Key symbols and where they're defined:
 
-| Symbol | Type | Defined In | Refs | Role |
-| --- | --- | --- | --- | --- |
-| `brooklyn.programs.*.enable` | Option pattern | `nix/{common/modules,common/profiles/gui/modules,darwin/modules,nixos/modules}/*/default.nix` | 34 + 11 + 4 + 19 = 68 modules | Feature toggle convention; every module exposes a `brooklyn.programs.<name>.enable` toggle and is imported globally at the root of its grouping. Hosts opt in or out via the toggle. |
-| `isDarwin` | specialArg | `flake.nix:86-90` | 11 files | Platform conditional |
-| `config.common.username` | Option | `nix/common/default.nix:13` | 50+ refs | Default user "brooklyn" |
-| `age.secrets.<name>` | Agenix pattern | `secrets.nix` | 4 secrets | Decrypt at activation |
-| `nix-homebrew` | Flake input | `flake.nix:48` | darwin hosts | Declarative brew with locked taps |
-| `targets.darwin.defaults` | nix-darwin module | `nix/darwin/home.nix` | all darwin | macOS `defaults write` |
-| `mnt-genesect-media.mount` | Systemd mount unit | `nix/nixos/modules/media/default.nix` | 5+ services | Shared NFS mount dependency; declared by `media` module, depended on by audiobookshelf/jellyfin/navidrome/plex/servarr |
-| `agent-instructions` | Home-manager module | `nix/home-manager/modules/agent-instructions/default.nix` | *(no toggle — activates when any agent module is enabled)* | Writes shared guardrails to every enabled agent's global instruction file (claude-code, codex, opencode, pi-coding-agent, crush, copilot-cli, antigravity) |
+| Symbol | Type | Defined In | Role |
+| --- | --- | --- | --- |
+| `brooklyn.programs.*.enable` | Option pattern | `nix/{common/modules,common/profiles/gui/modules,darwin/modules,nixos/modules}/*/default.nix` and `nix/home-manager/modules/programs/*/default.nix` and `nix/home-manager/profiles/gui/modules/programs/*/default.nix` | Feature toggle convention; every module exposes a `brooklyn.programs.<name>.enable` toggle and is imported globally at the root of its grouping. Hosts/users opt in or out via the toggle. |
+| `brooklyn.gui.enable` | Option pattern | `nix/home-manager/profiles/gui/default.nix`, `nix/common/profiles/gui/default.nix` | Gates GUI-only modules (`ghostty`, `neovide`, `obsidian` for HM; the GUI profile wraps common GUI for NixOS) |
+| `isDarwin` | specialArg | `flake.nix` | Platform conditional |
+| `config.common.username` | Option | `nix/common/default.nix` | Default user "brooklyn" |
+| `config.brooklyn.{username,homeDirectory}` | Option | `nix/home-manager/default.nix` | Per-user identity for the home-manager layer |
+| `age.secrets.<name>` | Agenix pattern | `secrets.nix` | Decrypt at activation |
+| `nix-homebrew` | Flake input | `flake.nix` | Declarative brew with locked taps (darwin hosts) |
+| `targets.darwin.defaults` | nix-darwin module | `nix/darwin/home.nix` | macOS `defaults write` |
+| `mnt-genesect-media.mount` | Systemd mount unit | `nix/nixos/modules/media/default.nix` | Shared NFS mount dependency; depended on by `audiobookshelf`, `jellyfin`, `navidrome`, `plex`, `servarr` |
+| `agent-instructions` | Home-manager module | `nix/home-manager/modules/agent-instructions/default.nix` | *(no toggle — activates when any agent module is enabled)*. Writes shared guardrails to every enabled agent's global instruction file (claude-code, codex, opencode, pi-coding-agent, crush, copilot-cli) |
 
 ## Directory Map & Quick Task Reference
 
 | Task | Path | Doc |
 | --- | --- | --- |
 | **Add cross-platform tool** | `nix/common/modules/` | [→](nix/common/modules/AGENTS.md) |
-| **Add GUI editor/terminal** | `nix/common/profiles/gui/modules/` | [→](nix/common/profiles/gui/AGENTS.md) |
+| **Add GUI editor/terminal (cross-platform)** | `nix/common/profiles/gui/modules/` | [→](nix/common/profiles/gui/AGENTS.md) |
+| **Add home-manager-only CLI/shell tool** | `nix/home-manager/modules/programs/<name>/default.nix` | [→](nix/home-manager/AGENTS.md) |
+| **Add home-manager-only GUI app** | `nix/home-manager/profiles/gui/modules/programs/<name>/default.nix` | [→](nix/home-manager/profiles/gui/AGENTS.md) |
 | **Add NixOS service** | `nix/nixos/modules/` | [→](nix/nixos/modules/AGENTS.md) |
 | **Add macOS app** | `nix/darwin/hosts/<name>/brew.nix` | [→](nix/darwin/hosts/AGENTS.md) |
 | **Manage secrets** | `secrets.nix` + `secrets/*.age` | — |
 | **Update dependencies** | `make up` (project root) | — |
-| **Debug module activation** | `nix/common/default.nix` | [→](nix/common/AGENTS.md) |
-| **Standalone flake** | `nix/users/kalmiya/` | [→](nix/users/kalmiya/AGENTS.md) |
+| **Debug common module activation** | `nix/common/default.nix` | [→](nix/common/AGENTS.md) |
+| **Debug home-manager activation** | `nix/home-manager/default.nix` | [→](nix/home-manager/AGENTS.md) |
+| **Add/edit a system-manager host** | `nix/system-manager/hosts/<name>/` | [→](nix/system-manager/AGENTS.md) |
+| **Add/edit a home-manager host** | `nix/home-manager/hosts/<name>/` | [→](nix/home-manager/hosts/AGENTS.md) |
+| **Edit per-user config** | `nix/home-manager/users/<name>/default.nix` | [→](nix/home-manager/users/AGENTS.md) |
 | **Cross-platform base** | `nix/common/` | [→](nix/common/AGENTS.md) |
 | **Darwin platform** | `nix/darwin/` | [→](nix/darwin/AGENTS.md) |
 | **NixOS platform** | `nix/nixos/` | [→](nix/nixos/AGENTS.md) |
@@ -69,7 +80,8 @@ Key symbols and where they're defined:
 
 - **Feature toggle**:
   `options.brooklyn.programs.<name>.enable = lib.mkEnableOption "<name>"`
-- **Username**: `config.common.username` (default: `brooklyn`)
+- **Username**: `config.common.username` (default: `brooklyn`) for NixOS/darwin;
+  `config.brooklyn.username` for the home-manager layer
 - **Platform conditional**: `isDarwin` special arg or `pkgs.stdenv.isDarwin`
 - **Secrets**: agenix — encrypted `.age` files decrypted at activation
   via `~/.ssh/id_ed25519`
@@ -86,7 +98,8 @@ Key symbols and where they're defined:
 - `devenv.yml` → `devenv update` → PR on `update-devenv-*`
 - `auto-merge.yml` → auto-squash-merge for dependabot + update PRs
 
-Uses `cachix/install-nix-action@v31` on `ubuntu-latest`.
+Uses `cachix/install-nix-action@v31` on `ubuntu-latest`. See
+[Anti-Patterns](#anti-patterns-known-issues) for the GitHub-vs-Codeberg caveat.
 
 ---
 
@@ -99,7 +112,9 @@ Uses `cachix/install-nix-action@v31` on `ubuntu-latest`.
 - `home-manager.backupFileExtension = "hm-backup"` — existing dotfiles
   get backed up before replacement
 - `hardware-configuration.nix` is **auto-generated** — don't edit manually
-- `system.stateVersion`: darwin = `6`, NixOS = `"25.05"`
+- `system.stateVersion`: darwin = `6`, NixOS = `"25.05"`,
+  home-manager = `"26.11"` default (overridden to `"26.05"` in `nix/common/home.nix`),
+  system-manager = `"26.05"`
 - `devenv.yaml` uses `cachix/devenv-nixpkgs/rolling` (not a pinned channel)
 
 ## Anti-Patterns (Known Issues)
@@ -107,11 +122,10 @@ Uses `cachix/install-nix-action@v31` on `ubuntu-latest`.
 These are documented problem areas an agent should be aware of — not to
 perpetuate, but to recognize when working in the codebase.
 
-- **Orphaned toggle**: `brooklyn.programs.antigravity-cli.enable` exists
-  in `nix/home-manager/modules/programs/antigravity-cli/` but no host ever sets it to
-  true. The `agent-instructions` module's `antigravityEnabled` check is
-  therefore also dead. The module is still globally imported, so the
-  package is installed but the `lib.mkIf enable` block never executes.
+- **Dead toggle**: `brooklyn.programs.antigravity-cli.enable` is referenced
+  in the `agent-instructions` module's `antigravityEnabled` check, but no
+  `nix/home-manager/modules/programs/antigravity-cli/` directory exists and
+  no host sets the toggle to true. The `antigravityEnabled` branch is dead.
 - **`k8s/traefik.yml` is orphaned**: Not referenced by any Nix config.
   It's a Kubernetes HelmChartConfig living alongside Nix config. May be
   dead or managed out-of-band.
@@ -120,33 +134,52 @@ perpetuate, but to recognize when working in the codebase.
   `nix build`, or `nix eval`. Config breakage only caught at activation.
 - **Codeberg/GitHub mismatch**: CI workflows target GitHub Actions
   (`cachix/install-nix-action`, `peter-evans/create-pull-request`,
-  `gh pr merge`) but the repo lives on Codeberg. Workflows may never run.
-- **kalmiya dual-management**: The NixOS module at
-  `nix/nixos/modules/kalmiya/default.nix` imports `home.nix` directly
-  from `../../../users/kalmiya/home.nix`, effectively bypassing the
-  standalone flake's agenix and `allowUnfree` config. The standalone
-  flake exists but its build pipeline is disconnected from the root build.
-- **Missing NFS mount for emulation**: Syncthing config references
-  `/mnt/genesect/emulation/library` but no
-  `fileSystems."/mnt/genesect/emulation"` mount is defined anywhere.
+  `gh pr merge`) but the repo lives on Codeberg
+  (`ssh://git@codeberg.org/bolderbrooklyn/infra.git`). Workflows may never
+  fire unless the project is mirrored.
+- **Broken kalmiya NixOS module**: `nix/nixos/modules/kalmiya/default.nix`
+  imports `../../../users/kalmiya/home.nix`, but no such file exists.
+  kalmiya is in fact provisioned by the standalone system-manager flake at
+  `nix/system-manager/hosts/kalmiya/`. The NixOS module should either be
+  deleted or have its import path corrected.
+- **Missing NFS mount for emulation**: Syncthing config on `archaludon`
+  references `/run/media/brooklyn/Storage/Emulation` (sibling: the old
+  `/mnt/genesect/emulation/library` path), but no
+  `fileSystems` mount provides it. Either the mount is missing or the
+  Syncthing config should be reworked to a non-NFS path.
 
 ## Unique Styles
 
 Non-standard patterns that differ from typical Nix/NixOS conventions:
 
 - **Custom toggle namespace**: `brooklyn.programs.*.enable` — not
-  standard `programs.*` or `services.*`. Every module in `nix/common/modules/`,
-  `nix/common/profiles/gui/modules/`, `nix/darwin/modules/`, and
-  `nix/nixos/modules/` exposes a toggle at this namespace.
+  standard `programs.*` or `services.*`. Every module in
+  `nix/common/modules/`, `nix/common/profiles/gui/modules/`,
+  `nix/darwin/modules/`, `nix/nixos/modules/`,
+  `nix/home-manager/modules/programs/`, and
+  `nix/home-manager/profiles/gui/modules/programs/` exposes a toggle at
+  this namespace.
 - **Cross-layer callbacks**: The darwin `brew` module reads
   `brooklyn.programs.powershell.extraConfig` and injects homebrew
   shellenv into PowerShell config. Modules can reach across layers.
-- **Standalone flake in monorepo**: `nix/users/kalmiya/flake.nix` has
-  its own inputs, lock file, secrets, and nixpkgs pin — completely
-  independent of the root flake but lives in the same repo.
-- **Two-tier GUI profile**: Common GUI (11 modules for terminals/editors)
-  is wrapped inside NixOS GUI (KDE Plasma 6, SDDM, PipeWire) for the
-  Linux host. Darwin skips the NixOS wrapper.
+- **Standalone system-manager host**: `nix/system-manager/hosts/kalmiya/`
+  builds with `system-manager.lib.makeSystemConfig` (not NixOS/darwin),
+  exposing its own `systemConfigs.kalmiya` flake output. Lives inside the
+  root flake but uses its own user config under `users/kalmiya/`.
+- **Standalone home-manager host**: `nix/home-manager/hosts/archaludon/`
+  builds with `home-manager.lib.homeManagerConfiguration` and is
+  activated via the standalone `archaludon.brooklyn` flake output
+  (consumed by `frosmoth`). Imports the `brooklyn` user config from
+  `nix/home-manager/users/brooklyn/`.
+- **Two-tier GUI profile (home-manager side)**:
+  `nix/home-manager/profiles/gui/` wraps `./modules/programs` (currently
+  `ghostty`, `neovide`, `obsidian`) and is enabled per-user via
+  `brooklyn.gui.enable`. `brooklyn` sets it to `true` on archaludon.
+- **Two-tier GUI profile (cross-platform)**:
+  `nix/common/profiles/gui/modules/` provides cross-platform GUI apps
+  (terminals, editors) and is wrapped by `nix/nixos/profiles/gui/` for
+  the Linux host (KDE Plasma 6, SDDM, PipeWire). Darwin skips the NixOS
+  wrapper and only loads the common profile.
 - **Shared agent guardrails**: The `agent-instructions` module writes
   a single set of workspace, secrets, and shell-and-network rules to
   every enabled agent's global instruction file. Adding a new agent
