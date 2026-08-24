@@ -118,10 +118,43 @@
 
         modules = [
           ./nix/home-manager/users/brooklyn
-          {
+          ({ config, ... }: {
             brooklyn.gui.enable = true;
 
             programs.git.settings.gpg.ssh.program = "/opt/1Password/op-ssh-sign";
+
+            services.syncthing.settings.folders = {
+              "${config.brooklyn.homeDirectory}/Sync" = {
+                id = "default";
+                label = "Default";
+                devices = [
+                  "frosmoth"
+                  "miraidon"
+                  "tinkaton"
+                  "xerneas"
+                ];
+              };
+
+              "${config.brooklyn.homeDirectory}/Documents/Obsidian" = {
+                id = "obsidian";
+                label = "Obsidian";
+                devices = [
+                  "frosmoth"
+                  "kalmiya"
+                ];
+              };
+
+              "/run/media/brooklyn/Storage/Emulation" = {
+                id = "emulation";
+                label = "Emulation";
+                devices = [
+                  "frosmoth"
+                  "miraidon"
+                  "tinkaton"
+                  "xerneas"
+                ];
+              };
+            };
 
             nixpkgs.config.nvidia.acceptLicense = true;
 
@@ -134,7 +167,7 @@
                 version = "610.57.04";
               };
             };
-          }
+          })
         ];
       };
 
