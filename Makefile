@@ -1,4 +1,5 @@
 HOSTNAME := $(shell hostname -s)
+USERNAME := $(shell whoami)
 ACTIONS := build
 SUDO_ACTIONS := boot check
 REBUILD_CMD = $(if $(shell test -f /etc/NIXOS && echo true),nixos-rebuild,darwin-rebuild) $@
@@ -22,10 +23,11 @@ switch:
 	prev=$$((gen - 1)); \
 	nix store diff-closures /nix/var/nix/profiles/system-$$prev-link /nix/var/nix/profiles/system-$$gen-link
 
-devenv:
-	devenv update
+home:
+	home-manager switch --flake .\#$(HOSTNAME).$(USERNAME) -b hm-backup
 
 update:
 	nix flake update
+	devenv update
 
-up: update switch devenv 
+up: update switch

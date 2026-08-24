@@ -1,4 +1,9 @@
-{ config, home-manager, ... }:
+{
+  config,
+  home-manager,
+  lib,
+  ...
+}:
 let
   inherit (config.common) username;
 in
@@ -10,6 +15,12 @@ in
   home-manager.users.${username} =
     { config, pkgs, ... }:
     {
+      brooklyn = {
+        font.size = 15;
+        gui.enable = true;
+        homeDirectory = "/Users/${username}";
+      };
+
       home = {
         shellAliases = {
           pbc = "pbcopy";
@@ -25,6 +36,8 @@ in
           Capslock = "Control";
         };
       };
+
+      services.syncthing.tray.enable = lib.mkForce false;
 
       targets.darwin.defaults = {
         "com.apple.desktopservices" = {

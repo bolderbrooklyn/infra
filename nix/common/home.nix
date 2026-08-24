@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
   agenix,
@@ -14,12 +15,19 @@ in
       agenix.homeManagerModules.default
     ];
 
-    useGlobalPkgs = true;
+    extraSpecialArgs = {
+      inherit (inputs) catppuccin llm-agents nix-obsidian-extensions;
+    };
+
     backupFileExtension = "hm-backup";
 
     users.${username} =
       { config, ... }:
       {
+        imports = [
+          ../home-manager/users/brooklyn
+        ];
+
         age.identityPaths = [
           "${config.home.homeDirectory}/.ssh/id_ed25519"
         ];
@@ -46,25 +54,12 @@ in
         };
 
         programs = {
-          home-manager.enable = true;
-
           ssh = {
             enable = true;
           }
           // lib.optionalAttrs (builtins.hasAttr "enableDefaultConfig" config.programs.ssh) {
             enableDefaultConfig = false;
           };
-
-          zoxide.enable = true;
-        };
-
-        services.home-manager = {
-          autoExpire.enable = true;
-        };
-
-        xdg = {
-          enable = true;
-          localBinInPath = true;
         };
       };
   };

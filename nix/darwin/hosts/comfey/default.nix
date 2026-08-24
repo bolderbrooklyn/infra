@@ -22,14 +22,7 @@ in
   };
 
   brooklyn.programs = {
-    claude-code.enable = true;
-    codex.enable = true;
     colima.enable = true;
-    crush.enable = true;
-    gcloud-cli.enable = true;
-    kubectl.enable = true;
-    opencode.enable = true;
-    pi-coding-agent.enable = true;
 
     cursor = {
       enable = true;
@@ -42,6 +35,12 @@ in
   home-manager.users.${config.common.username} =
     { config, ... }:
     {
+      brooklyn.programs = {
+        claude-code.enable = true;
+        gcloud-cli.enable = true;
+        kubectl.enable = true;
+      };
+
       home.sessionPath = [ "${config.home.homeDirectory}/.npm/bin" ];
 
       programs = {

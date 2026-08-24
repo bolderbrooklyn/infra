@@ -1,0 +1,27 @@
+{
+  imports = [
+    ./bat
+    ./btop
+    ./buku
+    ./claude-code
+    ./codex
+    ./crush
+    ./docker
+    ./eza
+    ./fd
+    ./fish
+    ./fzf
+    ./gcloud-cli
+    ./git
+    ./gnupg
+    ./kubectl
+    ./mise
+    ./nvim
+    ./opencode
+    ./pi-coding-agent
+    ./ripgrep
+    ./starship
+    ./television
+    ./tmux
+  ];
+}
