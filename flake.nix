@@ -107,6 +107,7 @@
     {
       homeConfigurations."archaludon.brooklyn" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
+
         extraSpecialArgs = {
           inherit (inputs)
             agenix
@@ -117,57 +118,7 @@
         };
 
         modules = [
-          ./nix/home-manager/users/brooklyn
-          ({ config, ... }: {
-            brooklyn.gui.enable = true;
-
-            programs.git.settings.gpg.ssh.program = "/opt/1Password/op-ssh-sign";
-
-            services.syncthing.settings.folders = {
-              "${config.brooklyn.homeDirectory}/Sync" = {
-                id = "default";
-                label = "Default";
-                devices = [
-                  "frosmoth"
-                  "miraidon"
-                  "tinkaton"
-                  "xerneas"
-                ];
-              };
-
-              "${config.brooklyn.homeDirectory}/Documents/Obsidian" = {
-                id = "obsidian";
-                label = "Obsidian";
-                devices = [
-                  "frosmoth"
-                  "kalmiya"
-                ];
-              };
-
-              "/run/media/brooklyn/Storage/Emulation" = {
-                id = "emulation";
-                label = "Emulation";
-                devices = [
-                  "frosmoth"
-                  "miraidon"
-                  "tinkaton"
-                  "xerneas"
-                ];
-              };
-            };
-
-            nixpkgs.config.nvidia.acceptLicense = true;
-
-            targets.genericLinux = {
-              enable = true;
-
-              gpu.nvidia = {
-                enable = true;
-                sha256 = "sha256-suk1xmuDuwDAyFe8jg7g/VLekoa0DJzB7sKafOfrEW0=";
-                version = "610.57.04";
-              };
-            };
-          })
+          ./nix/home-manager/hosts/archaludon
         ];
       };
 
