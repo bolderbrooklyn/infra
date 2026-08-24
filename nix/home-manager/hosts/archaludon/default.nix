@@ -33,9 +33,7 @@
       label = "Emulation";
       devices = [
         "frosmoth"
-        "miraidon"
         "tinkaton"
-        "xerneas"
       ];
     };
   };
