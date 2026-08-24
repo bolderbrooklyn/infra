@@ -31,7 +31,7 @@ in
         { config, ... }:
         let
           _1password_ssh_agent_sock = "${config.home.homeDirectory}/${
-            if pkgs.stdenv.isDarwin then "Library/Group Containers/2BUA8C4S2C.com.1password/t" else ".1password"
+            if pkgs.stdenv.hostPlatform.isDarwin then "Library/Group Containers/2BUA8C4S2C.com.1password/t" else ".1password"
           }/agent.sock";
         in
         {

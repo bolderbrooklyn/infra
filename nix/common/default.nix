@@ -7,7 +7,7 @@
 }:
 let
   inherit (config.common) username;
-  home = "/${if pkgs.stdenv.isDarwin then "Users" else "home"}/${username}";
+  home = "/${if pkgs.stdenv.hostPlatform.isDarwin then "Users" else "home"}/${username}";
 in
 {
   options.common = {

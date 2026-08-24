@@ -29,7 +29,7 @@ in
     users.users.${username}.shell = lib.mkIf cfg.defaultShell fish;
 
     home-manager.users.${username} = {
-      home.packages = lib.mkIf pkgs.stdenv.isDarwin [ pkgs.fishPlugins.macos ];
+      home.packages = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin [ pkgs.fishPlugins.macos ];
 
       programs.fish = {
         enable = true;
