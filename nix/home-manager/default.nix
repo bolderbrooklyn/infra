@@ -44,6 +44,16 @@
       overlays = [
         llm-agents.overlays.shared-nixpkgs
         nix-obsidian-extensions.overlays.default
+        (final: prev: {
+          tmux =
+            if prev.stdenv.hostPlatform.isDarwin then
+              prev.tmux.overrideAttrs (old: {
+                buildInputs = old.buildInputs ++ [ prev.jemalloc ];
+                configureFlags = old.configureFlags ++ [ "--enable-jemalloc" ];
+              })
+            else
+              prev.tmux;
+        })
       ];
     };
 
