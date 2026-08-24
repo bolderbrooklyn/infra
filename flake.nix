@@ -107,7 +107,14 @@
     {
       homeConfigurations."archaludon.brooklyn" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = { inherit (inputs) agenix catppuccin llm-agents; };
+        extraSpecialArgs = {
+          inherit (inputs)
+            agenix
+            catppuccin
+            llm-agents
+            nix-obsidian-extensions
+            ;
+        };
 
         modules = [
           ./nix/home-manager/users/brooklyn

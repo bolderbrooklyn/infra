@@ -6,7 +6,6 @@
 {
   imports = [
     ../brew
-    ../../../common/modules/docker
   ];
 
   options.brooklyn.programs.colima = {

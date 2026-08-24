@@ -59,7 +59,6 @@ in
             ;
         })
         inputs.llm-agents.overlays.shared-nixpkgs
-        inputs.nix-obsidian-extensions.overlays.default
       ];
     };
 

@@ -2,6 +2,7 @@
   config,
   lib,
   llm-agents,
+  nix-obsidian-extensions,
   pkgs,
   ...
 }:
@@ -31,17 +32,18 @@
     home = {
       inherit (config.brooklyn) username homeDirectory;
 
-      stateVersion = "26.11";
+      stateVersion = lib.mkDefault "26.11";
       enableNixpkgsReleaseCheck = false;
     };
 
-    nix.package = pkgs.lix;
+    nix.package = lib.mkDefault pkgs.lix;
 
     nixpkgs = {
-      config.allowUnfree = true;
+      config.allowUnfree = lib.mkDefault true;
 
       overlays = [
         llm-agents.overlays.shared-nixpkgs
+        nix-obsidian-extensions.overlays.default
       ];
     };
 
