@@ -8,10 +8,6 @@
   options.brooklyn.programs.nvim.enable = lib.mkEnableOption "nvim";
 
   config = lib.mkIf config.brooklyn.programs.nvim.enable {
-    home.sessionVariables = {
-      DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = 1;
-    };
-
     programs.neovim = {
       enable = true;
       defaultEditor = true;
