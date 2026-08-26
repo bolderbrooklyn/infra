@@ -41,8 +41,9 @@ in
         window-colorspace = "display-p3";
         window-inherit-working-directory = false;
 
-        keybind = lib.mkIf isDarwin [
-          "global:cmd+ctrl+backquote=toggle_quick_terminal"
+        keybind = [
+          (lib.mkIf isDarwin "global:cmd+ctrl+backquote=toggle_quick_terminal")
+          (lib.mkIf (!isDarwin) "global:ctrl+alt+backquote=toggle_quick_terminal")
         ];
       };
     };
