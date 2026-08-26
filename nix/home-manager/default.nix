@@ -32,6 +32,10 @@
     home = {
       inherit (config.brooklyn) username homeDirectory;
 
+      sessionVariables = {
+        GOPATH = "${config.xdg.dataHome}/go";
+      };
+
       stateVersion = lib.mkDefault "26.11";
       enableNixpkgsReleaseCheck = false;
     };
@@ -67,6 +71,11 @@
     xdg = {
       enable = true;
       localBinInPath = true;
+
+      userDirs = {
+        enable = true;
+        createDirectories = true;
+      };
     };
   };
 }

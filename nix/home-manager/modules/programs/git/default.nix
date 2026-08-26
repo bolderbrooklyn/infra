@@ -112,7 +112,7 @@ in
 
         settings = {
           repoPaths = {
-            ":owner/:repo" = "${config.home.homeDirectory}/Developer/Repositories/github.com/:owner/:repo";
+            ":owner/:repo" = "${config.xdg.userDirs.projects}/Repositories/github.com/:owner/:repo";
           };
         };
       };
