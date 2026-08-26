@@ -47,6 +47,8 @@ in
         trusted-users = [
           username
         ];
+
+        use-xdg-base-directories = true;
       };
     };
 

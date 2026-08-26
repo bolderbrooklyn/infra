@@ -36,7 +36,10 @@
       enableNixpkgsReleaseCheck = false;
     };
 
-    nix.package = lib.mkDefault pkgs.lix;
+    nix = {
+      package = lib.mkDefault pkgs.lix;
+      settings.use-xdg-base-directories = true;
+    };
 
     nixpkgs = {
       config.allowUnfree = lib.mkDefault true;
