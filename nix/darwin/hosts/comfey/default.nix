@@ -47,7 +47,7 @@ in
         git.includes = [
           {
             inherit (nclusionGit) contents;
-            condition = "gitdir:${config.home.homeDirectory}/Developer/Repositories/github.com/nclusion/";
+            condition = "gitdir:${config.xdg.userDirs.projects}/Repositories/github.com/nclusion/";
           }
         ];
 
@@ -60,7 +60,7 @@ in
           };
         };
 
-        obsidian.vaults.Nclusion.target = "${config.home.homeDirectory}/Documents/Obsidian/Nclusion";
+        obsidian.vaults.Nclusion.target = "${config.xdg.userDirs.documents}/Obsidian/Nclusion";
 
         opencode.settings.plugin = [ "opencode-claude-auth" ];
       };

@@ -19,7 +19,7 @@
       ];
     };
 
-    "${config.brooklyn.homeDirectory}/Documents/Obsidian" = {
+    "${config.xdg.userDirs.documents}/Obsidian" = {
       id = "obsidian";
       label = "Obsidian";
       devices = [

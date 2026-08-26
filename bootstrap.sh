@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-WORKDIR="$HOME/Developer/Repositories/codeberg.org/bolderbrook/infra"
+WORKDIR="$HOME/Projects/Repositories/codeberg.org/bolderbrook/infra"
 
 if [[ "$(uname)" == "Darwin" ]]; then
   # install xcode command line tools

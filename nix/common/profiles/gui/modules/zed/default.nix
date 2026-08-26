@@ -16,7 +16,7 @@ in
 
   config = lib.mkIf config.brooklyn.programs.zed-editor.enable (
     {
-      home-manager.users.${username} = {
+      home-manager.users.${username} = { config, ... }: {
         home.shellAliases.zed = lib.mkIf (!isDarwin) "zeditor";
 
         programs.zed-editor = {
@@ -83,7 +83,7 @@ in
 
             journal = {
               hour_format = "hour24";
-              path = "~/Documents";
+              path = config.xdg.userDirs.documents;
             };
             languages = {
               CSS = {
