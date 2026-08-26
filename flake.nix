@@ -119,6 +119,7 @@
 
         modules = [
           ./nix/home-manager/hosts/archaludon
+          ./nix/home-manager/users/brooklyn
         ];
       };
 
