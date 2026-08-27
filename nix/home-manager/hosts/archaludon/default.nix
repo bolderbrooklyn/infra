@@ -1,6 +1,7 @@
 { config, ... }: {
   brooklyn.gui.enable = true;
 
+  programs.btop.package = null;
   programs.git.settings.gpg.ssh.program = "/opt/1Password/op-ssh-sign";
 
   services.syncthing.settings.folders = {
