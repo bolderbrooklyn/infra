@@ -1,7 +1,15 @@
-{ config, ... }: {
+{ config, pkgs, ... }: {
   brooklyn.gui.enable = true;
 
-  programs.btop.package = null;
+  programs.btop.package = pkgs.btop.overrideAttrs (old: {
+    nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ pkgs.patchelf ];
+    postFixup = (old.postFixup or "") + ''
+      ${pkgs.patchelf}/bin/patchelf \
+        --add-rpath "/run/opengl-driver/lib" \
+        $out/bin/btop
+    '';
+  });
+
   programs.git.settings.gpg.ssh.program = "/opt/1Password/op-ssh-sign";
 
   services.syncthing.settings.folders = {
