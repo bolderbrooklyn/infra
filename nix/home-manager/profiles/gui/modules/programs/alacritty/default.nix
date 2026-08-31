@@ -25,6 +25,8 @@ in
           y = 2;
         };
       };
+
+      window.opacity = 0.9;
     };
   };
 }
