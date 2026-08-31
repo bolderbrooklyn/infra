@@ -1,11 +1,17 @@
-{ lib, pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
   options.brooklyn.programs.fish.enable = lib.mkEnableOption "fish";
 
   config = {
     home.packages = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin [ pkgs.fishPlugins.macos ];
 
     programs.fish = {
-      enable = true;
+      inherit (config.brooklyn.programs.fish) enable;
 
       functions = {
         fish_greeting = "";
