@@ -31,6 +31,7 @@ in
     catppuccin.enable = true;
 
     programs = {
+      alacritty.enable = guiEnable;
       bat.enable = true;
       btop.enable = true;
       crush.enable = true;
