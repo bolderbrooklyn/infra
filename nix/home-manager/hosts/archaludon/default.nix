@@ -3,34 +3,41 @@
 
   programs.git.settings.gpg.ssh.program = "/opt/1Password/op-ssh-sign";
 
-  services.syncthing.settings.folders = {
-    "${config.brooklyn.homeDirectory}/Sync" = {
-      id = "default";
-      label = "Default";
-      devices = [
-        "frosmoth"
-        "miraidon"
-        "tinkaton"
-        "xerneas"
-      ];
+  services = {
+    syncthing.settings.folders = {
+      "${config.brooklyn.homeDirectory}/Sync" = {
+        id = "default";
+        label = "Default";
+        devices = [
+          "frosmoth"
+          "miraidon"
+          "tinkaton"
+          "xerneas"
+        ];
+      };
+
+      "${config.xdg.userDirs.documents}/Obsidian" = {
+        id = "obsidian";
+        label = "Obsidian";
+        devices = [
+          "frosmoth"
+          "kalmiya"
+        ];
+      };
+
+      "/run/media/brooklyn/Storage/Emulation" = {
+        id = "emulation";
+        label = "Emulation";
+        devices = [
+          "frosmoth"
+          "tinkaton"
+        ];
+      };
     };
 
-    "${config.xdg.userDirs.documents}/Obsidian" = {
-      id = "obsidian";
-      label = "Obsidian";
-      devices = [
-        "frosmoth"
-        "kalmiya"
-      ];
-    };
-
-    "/run/media/brooklyn/Storage/Emulation" = {
-      id = "emulation";
-      label = "Emulation";
-      devices = [
-        "frosmoth"
-        "tinkaton"
-      ];
+    tailscale-systray = {
+      enable = true;
+      theme = "dark:nobg";
     };
   };
 
