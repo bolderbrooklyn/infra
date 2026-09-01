@@ -58,7 +58,7 @@ top-level `agent-instructions`, `catppuccin`, and `font` modules.
 | `fish` | `brooklyn.programs.fish.enable` | `false` | `fish` shell |
 | `fzf` | `brooklyn.programs.fzf.enable` | `false` | Uses `${pkgs.fd}/bin/fd` for `defaultCommand` and `changeDirWidget.command` |
 | `gcloud-cli` | `brooklyn.programs.gcloud-cli.enable` | `false` | Google Cloud SDK + SQL proxy |
-| `git` | `brooklyn.programs.git.enable` | `false` | Git + delta + gh + lazygit. Defines `programs.git.signingKey` and `programs.git.user` sub-options |
+| `git` | `brooklyn.programs.git.enable` | `false` | Git + delta + gh + lazygit. Defines `programs.git.signingKey` and `programs.git.user` sub-options. On non-darwin GUI-enabled systems (NixOS hosts, standalone HM `archaludon`), also overrides `programs.git.package` with `pkgs.git.override { withLibsecret = true; }` and sets `credential.helper = "libsecret"` |
 | `gnupg` | `brooklyn.programs.gnupg.enable` | `false` | GPG agent configuration |
 | `kubectl` | `brooklyn.programs.kubectl.enable` | `false` | kubectl + helm + k9s + kubecolor |
 | `mise` | `brooklyn.programs.mise.enable` | `false` | Version manager. Note: blocked by an HM option rename (`programs.mise.settings` → `programs.mise.globalConfig.settings`) |

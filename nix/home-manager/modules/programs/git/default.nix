@@ -7,6 +7,8 @@
 let
   cfg = config.programs.git;
 
+  useLibsecret = config.brooklyn.gui.enable && !pkgs.stdenv.hostPlatform.isDarwin;
+
   signingKey = {
     type = "ssh";
     key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOAnSncawa7Y3U7/ZUkqnXLrAgJ5mxNLLKOgM20+dsV+";
@@ -77,6 +79,8 @@ in
           signer = "ssh-keygen";
         };
 
+        package = lib.mkIf useLibsecret (pkgs.git.override { withLibsecret = true; });
+
         ignores = [
           ".DS_Store"
           ".antigravitycli"
@@ -95,6 +99,9 @@ in
           merge.conflictStyle = "zdiff3";
           pull.rebase = true;
           push.autoSetupRemote = true;
+        }
+        // lib.optionalAttrs useLibsecret {
+          credential.helper = "libsecret";
         };
       };
 
